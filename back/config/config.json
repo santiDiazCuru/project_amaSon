@@ -1,0 +1,7 @@
+{
+    "database": "project_amaSon",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false,
+    "username": "santiago"
+  }

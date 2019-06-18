@@ -1,7 +1,7 @@
 const express = require('express');
 const chalk = require('chalk')
 const app = express();
-
+const db = require('./models/database')
 
 const path = require('path');
 const bodyParser = require('body-parser')
@@ -33,5 +33,8 @@ app.get('/*', function (req, res) {
 
 //Levanta server
 
-app.listen(8000);
-console.log(chalk.magenta('amaSon_project en el server ') + chalk.white(8000))
+db.sync()
+   .then(function () {
+      app.listen(8000)
+      console.log(chalk.magenta.underline.bold('Aguante el servidor ') + chalk.white.underline.bold(3000 + '!'))
+   })
