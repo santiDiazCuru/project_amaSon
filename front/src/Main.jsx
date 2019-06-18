@@ -5,7 +5,7 @@ export default () => (
   <div className="container-fluid">
     {/* NAV */}
     
-    
+    <h1>Hello Amason</h1>
     <Switch>
         
         {/* ROUTES */}
