@@ -1,15 +1,16 @@
-import React from 'react'
+import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-
-
-
-export default () => {
-    return (
-        <div id="Main">
-            <Switch>
+export default () => (
+  <div className="container-fluid">
+    {/* NAV */}
     
-            </Switch>
-        </div>
-    )
-}
+    
+    <Switch>
+        
+        {/* ROUTES */}
+        <Redirect from="/" to="/notfound" />
+      </Switch>
+
+  </div>
+);
