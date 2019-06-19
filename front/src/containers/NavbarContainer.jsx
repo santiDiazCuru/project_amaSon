@@ -43,7 +43,10 @@ class NavBarContainer extends React.Component {
             )
         }
         return (
+            <div>
             <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} />
+            <DropdownNavbar />
+            </div>
         );
     };
 };
