@@ -45,7 +45,7 @@ export default ({handleChange,handleSubmit, handleModal}) => (
                         </li> */}
                         <form className="navbar-form navbar-left">
                         <div className="form-group">
-                        <li className="active"><button type='submit' onClick={handleModal} className='btn btn-default btn-md'>Log In<span className="sr-only">(current)</span></button></li>
+                        <li className="active"><button type='submit' onClick={handleModal} className='btn btn-default btn-md'>Log In<span className="sr-only"></span></button></li>
                         </div>
                         </form>
                         <li><a href="#" className='glyphicon glyphicon-shopping-cart'></a></li>
