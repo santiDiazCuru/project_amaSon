@@ -12,9 +12,6 @@ const imgStyle = {
 export default (props) => (
 
     <div>
-        <h1>Bienvenido al Home de amaSon!</h1>
-
-
 {/* esto es el carrousell */}
         <div id="myCarousel" className="carousel slide" data-ride="carousel">
 

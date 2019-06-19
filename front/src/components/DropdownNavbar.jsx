@@ -1,12 +1,11 @@
 import React from 'react'
 
 const style = {
-    marginTop: -20,
-    minHeight: 35
+    minHeight: 35,
+    position: 'fixed',
+    top: 45,
+    zIndex:500
 }
-
-
-
 
 export default () => (
     <div>
