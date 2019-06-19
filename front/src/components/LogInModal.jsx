@@ -23,7 +23,7 @@ export default ({ handleModal }) => (
                         <input type="password" name='password' className="form-control" placeholder="Password" aria-describedby="basic-addon2"></input>
                     </div>
                     <div>
-                        <button type="submit" className="btn btn-default">Crer cuenta!</button>
+                        <button type="submit" className="btn btn-default">Crear cuenta!</button>
                     </div>
                 </form>
             </div>

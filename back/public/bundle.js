@@ -33192,10 +33192,17 @@ var fetchProducts = function fetchProducts(input) {
 
 /***/ }),
 
+<<<<<<< HEAD
+/***/ "./src/components/CarritoComponent.jsx":
+/*!*********************************************!*\
+  !*** ./src/components/CarritoComponent.jsx ***!
+  \*********************************************/
+=======
 /***/ "./src/components/DropdownNavbar.jsx":
 /*!*******************************************!*\
   !*** ./src/components/DropdownNavbar.jsx ***!
   \*******************************************/
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -33203,6 +33210,58 @@ var fetchProducts = function fetchProducts(input) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+<<<<<<< HEAD
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var handleCarrito = _ref.handleCarrito;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-wrapper",
+    style: {
+      transform: 'translateY(0vh)',
+      opacity: '1'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Carrito"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "close-modal-btn",
+    onClick: handleCarrito
+  }, "x")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gridGap: "16px"
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: "block",
+      padding: "20px",
+      color: "white",
+      background: "grey",
+      boxShadow: "2px 2px 10px rgba(0,0,0,.25)"
+    }
+  }, "WOOOHOOOOOO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: "block",
+      padding: "20px",
+      color: "white",
+      background: "grey",
+      boxShadow: "2px 2px 10px rgba(0,0,0,.25)"
+    }
+  }, "WOoohooo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "#",
+    style: {
+      "float": 'left'
+    }
+  }, "Vaciar Carrito!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/compra"
+  }, "Finalizar Compra!"))));
+=======
 
 var style = {
   minHeight: 35,
@@ -33278,6 +33337,7 @@ var style = {
     className: "dropdown-item",
     href: "#"
   }, "Descuentos a jubilados")))))));
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
 });
 
 /***/ }),
@@ -33515,7 +33575,7 @@ __webpack_require__.r(__webpack_exports__);
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: "btn btn-default"
-  }, "Crer cuenta!")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Crear cuenta!")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/register"
@@ -33541,7 +33601,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var handleChange = _ref.handleChange,
       handleSubmit = _ref.handleSubmit,
+<<<<<<< HEAD
+      handleModal = _ref.handleModal,
+      handleCarrito = _ref.handleCarrito;
+=======
       handleModal = _ref.handleModal;
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-default navbar-fixed-top"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -33597,7 +33662,8 @@ __webpack_require__.r(__webpack_exports__);
     className: "sr-only"
   }, "(current)"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: "glyphicon glyphicon-shopping-cart"
+    className: "glyphicon glyphicon-shopping-cart",
+    onClick: handleCarrito
   })))))));
 });
 
@@ -33702,6 +33768,69 @@ RECIBE 2 PARAMETROS :
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUCTS", function() { return FETCH_PRODUCTS; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+
+/***/ }),
+
+/***/ "./src/containers/CarritoContainer.jsx":
+/*!*********************************************!*\
+  !*** ./src/containers/CarritoContainer.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CarritoComponent */ "./src/components/CarritoComponent.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var CarritoContainer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CarritoContainer, _React$Component);
+
+  function CarritoContainer() {
+    _classCallCheck(this, CarritoContainer);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(CarritoContainer).call(this));
+  }
+
+  _createClass(CarritoContainer, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleCarrito: this.props.handleCarrito
+      });
+    }
+  }]);
+
+  return CarritoContainer;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])()(CarritoContainer));
 
 /***/ }),
 
@@ -33851,7 +33980,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/NavbarComponent */ "./src/components/NavbarComponent.jsx");
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
 /* harmony import */ var _LogInContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LogInContainer */ "./src/containers/LogInContainer.jsx");
+<<<<<<< HEAD
+/* harmony import */ var _CarritoContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CarritoContainer */ "./src/containers/CarritoContainer.jsx");
+=======
 /* harmony import */ var _components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/DropdownNavbar */ "./src/components/DropdownNavbar.jsx");
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33890,11 +34023,16 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBarContainer).call(this));
     _this.state = {
       inputValue: '',
-      showLogInModal: false
+      showLogInModal: false,
+      showCarrito: false
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleModal = _this.handleModal.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+<<<<<<< HEAD
+    _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
+=======
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
     return _this;
   }
 
@@ -33909,6 +34047,19 @@ function (_React$Component) {
       });
     }
   }, {
+<<<<<<< HEAD
+    key: "handleCarrito",
+    value: function handleCarrito() {
+      if (!this.state.showCarrito) this.setState({
+        showCarrito: true
+      });
+      if (this.state.showCarrito) this.setState({
+        showCarrito: false
+      });
+    }
+  }, {
+=======
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
     key: "handleChange",
     value: function handleChange(e) {
       var _this2 = this;
@@ -33933,6 +34084,29 @@ function (_React$Component) {
       if (this.state.showLogInModal) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
           handleChange: this.handleChange,
+<<<<<<< HEAD
+          handleModal: this.handleModal,
+          handleSubmit: this.handleSubmit
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          handleModal: this.handleModal
+        }));
+      } else if (this.state.showCarrito) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          handleChange: this.handleChange,
+          handleCarrito: this.handleCarrito,
+          handleSubmit: this.handleSubmit
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CarritoContainer__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          handleCarrito: this.handleCarrito
+        }));
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleChange: this.handleChange,
+        handleModal: this.handleModal,
+        handleSubmit: this.handleSubmit,
+        handleCarrito: this.handleCarrito
+      });
+=======
           handleModal: this.handleModal
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
           handleModal: this.handleModal
@@ -33944,6 +34118,7 @@ function (_React$Component) {
         handleModal: this.handleModal,
         handleSubmit: this.handleSubmit
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
     }
   }]);
 

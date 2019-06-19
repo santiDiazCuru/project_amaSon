@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-export default ({handleChange,handleSubmit, handleModal}) => (
+import { Link } from 'react-router-dom'
+export default ({ handleChange, handleSubmit, handleModal, handleCarrito }) => (
     <div>
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
@@ -16,7 +16,7 @@ export default ({handleChange,handleSubmit, handleModal}) => (
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <form className="navbar-form navbar-left" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <input type="text" className="form-control" placeholder="Search" onChange={handleChange}/>
+                            <input type="text" className="form-control" placeholder="Search" onChange={handleChange} />
                         </div>
                         <button type="submit" className="btn btn-default">Submit</button>
                     </form>
@@ -31,7 +31,7 @@ export default ({handleChange,handleSubmit, handleModal}) => (
                         </li> */}
 
                         {/* ///// */}
-                        
+
                         {/* <li className="dropdown">  ESTO ES PARA EL ADMIN
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Admin<span className="caret"></span></a>
                             <ul className="dropdown-menu">
@@ -44,11 +44,11 @@ export default ({handleChange,handleSubmit, handleModal}) => (
                             </ul>
                         </li> */}
                         <form className="navbar-form navbar-left">
-                        <div className="form-group">
-                        <li className="active"><button type='submit' onClick={handleModal} className='btn btn-default btn-md'>Log In<span className="sr-only">(current)</span></button></li>
-                        </div>
+                            <div className="form-group">
+                                <li className="active"><button type='submit' onClick={handleModal} className='btn btn-default btn-md'>Log In<span className="sr-only">(current)</span></button></li>
+                            </div>
                         </form>
-                        <li><a href="#" className='glyphicon glyphicon-shopping-cart'></a></li>
+                        <li><a href="#" className='glyphicon glyphicon-shopping-cart' onClick={handleCarrito}></a></li>
                     </ul>
                 </div>
             </div>
