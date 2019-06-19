@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 
+const style = {
+    height: 334,
+    border: "1px solid grey"
+}
+
+const imgStyle = {
+    objectFit: 'contain'
+}
 
 export default (props) => (
 
@@ -7,18 +15,7 @@ export default (props) => (
         <h1>Bienvenido al Home de amaSon!</h1>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+{/* esto es el carrousell */}
         <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
             <ol className="carousel-indicators">
@@ -66,11 +63,33 @@ export default (props) => (
                 <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span className="sr-only">Next</span>
             </a>
-        </div></div>
+        </div>
 
 
+
+
+{/* esto es el banner */}
+
+        <div className="row">
+            <div className="col-lg-4" style={style}>
+                <h2>Métodos de Pago</h2>
+                <img className="img-thumbnail" style={imgStyle} src="https://bambae.com/themes/vmt/img/bambae/tarjetascredito.png" alt="Responsive image" />
+                <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
+            </div>
+            <div className="col-lg-4" style={style}>
+                <h2>Te enviamos tu compra!</h2>
+                <img className="img-thumbnail" style={imgStyle} src="https://mlstaticquic-a.akamaihd.net/autopartes-envios-D_NQ_NP_735102-MLU27856184841_072018-F.jpg" alt="Responsive image"/>
+                <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
+            </div>
+            <div className="col-lg-4" style={style}>
+                <h2>Servicio Post Venta!</h2>
+
+                <img className='img-thumbnail' style={imgStyle} src="https://brandslogo.net/wp-content/uploads/2018/03/social-network-logo-vector-200x200.png" alt="Responsive image" />
+                <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
+            </div>
+        </div>
+
+
+    </div>
 
 );
-
-
-
