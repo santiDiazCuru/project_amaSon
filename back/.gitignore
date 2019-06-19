@@ -1,2 +1,4 @@
 node_modules
-back/config/config_json
+back/config/config.json
+back/public/bundle.js
+back/public/bundle.js.map
