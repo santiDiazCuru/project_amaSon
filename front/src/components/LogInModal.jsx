@@ -1,31 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default () => (
+export default ({ handleModal }) => (
     <div>
-        <div className="modal-wrapper"
-            style={{
-                transform: show ? 'translateY(0vh)' : 'translateY(-100vh)',
-                opacity: show ? '1' : '0'
-            }}>
+        <div className="modal-wrapper" style={{
+            transform: 'translateY(0vh)',
+            opacity: '1'
+        }}>
             <div className="modal-header">
                 <h3>Log In</h3>
+                <span className="close-modal-btn" onClick={handleModal}>x</span>
             </div>
-            <div className='modal-body'>
-            <form>
-                <div class="input-group">
-                    <input type="text" name='username' class="form-control" placeholder="Username" aria-describedby="basic-addon1"></input>
-                </div>
-                <div class="input-group">
-                    <input type="email" name='email' class="form-control" placeholder="Email" aria-describedby="basic-addon2"></input>
-                </div>
-                <div class="input-group">
-                    <input type="password" name='password' class="form-control" placeholder="Password" aria-describedby="basic-addon2"></input>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-default">Crer cuenta!</button>
-                </div>
-            </form>
+            <div className='modal-body input-group'>
+                <form >
+                    <div className="input-group">
+                        <input type="text" name='username' className="form-control" placeholder="Username" aria-describedby="basic-addon1"></input>
+                    </div>
+                    <div className="input-group">
+                        <input type="email" name='email' className="form-control" placeholder="Email" aria-describedby="basic-addon2"></input>
+                    </div>
+                    <div className="input-group">
+                        <input type="password" name='password' className="form-control" placeholder="Password" aria-describedby="basic-addon2"></input>
+                    </div>
+                    <div>
+                        <button type="submit" className="btn btn-default">Crer cuenta!</button>
+                    </div>
+                </form>
             </div>
             <div className="modal-footer">
                 <Link to='/register'>Registrarme</Link>
