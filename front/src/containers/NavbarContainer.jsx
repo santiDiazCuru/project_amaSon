@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NavbarComponent from '../components/NavbarComponent'
+import DropdownNavbar from '../components/DropdownNavbar'
 import {fetchProducts} from '../action-creators/getProducts'
 
 class NavBarContainer extends React.Component {
@@ -21,7 +22,12 @@ class NavBarContainer extends React.Component {
 
     render() {
         return (
+            <div>
+
             <NavbarComponent handleChange={this.handleChange} />
+            <DropdownNavbar />
+
+            </div>
         );
     };
 };
