@@ -4,7 +4,7 @@ import HomeContainer from './containers/HomeContainer';
 import NavbarContainer from './containers/NavbarContainer'
 import RegisterContainer from './containers/RegisterContainer'
 export default () => (
-      
+
   <div className="container-fluid">
     {/* NAV */}
     
