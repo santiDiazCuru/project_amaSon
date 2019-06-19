@@ -7,7 +7,6 @@ const addProducts = (productos) => ({
 });
 
 export const fetchProducts = (input) => {
-    console.log(input)
     Axios.get(`/api/products/${input}`)
         .then(productos => store.dispatch(addProducts(productos.data)))
         
