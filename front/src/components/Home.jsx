@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Producto from './product'
 
 const style = {
     height: 334,
@@ -64,7 +65,6 @@ export default (props) => (
 
 
 
-
 {/* esto es el banner */}
 
         <div className="row">
@@ -86,7 +86,45 @@ export default (props) => (
             </div>
         </div>
 
+        <Producto 
+            col = {data.col}
+            list = {data.list}
+        />
 
     </div>
 
 );
+
+const data = {
+    col: 3,
+    list: [
+        {
+            id: 1,
+            titulo: 'Lg Celular Lmx210rm Negro',
+            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/hfb/h70/10024006778910/00174028-174273-01.png',
+            precio: 100.99,
+            valoracion: 1
+        },
+        {
+            id: 1,
+            titulo: 'Celulares Liberados Motorola ',
+            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h9b/h03/10024007368734/00174033-174278-01.png',
+            precio: 100.99,
+            valoracion: 2
+        },
+        {
+            id: 1,
+            titulo: 'Celular One Xt19415 Negro',
+            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h08/h93/10023847788574/00157032-174150-01.png',
+            precio: 100.99,
+            valoracion: 1.5
+        },
+        {
+            id: 1,
+            titulo: 'Tcl Celular 5158a Negro',
+            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h88/hcf/10030731231262/00181040-174527-01.png',
+            precio: 100.99,
+            valoracion: 3.5
+        }
+    ]
+}

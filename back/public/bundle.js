@@ -33293,6 +33293,8 @@ var style = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product */ "./src/components/product.jsx");
+
 
 var style = {
   height: 334,
@@ -33421,8 +33423,39 @@ var imgStyle = {
     className: "btn btn-primary",
     href: "#",
     role: "button"
-  }, "Mas detalles... \xBB")))));
+  }, "Mas detalles... \xBB")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    col: data.col,
+    list: data.list
+  }));
 });
+var data = {
+  col: 3,
+  list: [{
+    id: 1,
+    titulo: 'Lg Celular Lmx210rm Negro',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/hfb/h70/10024006778910/00174028-174273-01.png',
+    precio: 100.99,
+    valoracion: 1
+  }, {
+    id: 1,
+    titulo: 'Celulares Liberados Motorola ',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h9b/h03/10024007368734/00174033-174278-01.png',
+    precio: 100.99,
+    valoracion: 2
+  }, {
+    id: 1,
+    titulo: 'Celular One Xt19415 Negro',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h08/h93/10023847788574/00157032-174150-01.png',
+    precio: 100.99,
+    valoracion: 1.5
+  }, {
+    id: 1,
+    titulo: 'Tcl Celular 5158a Negro',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h88/hcf/10030731231262/00181040-174527-01.png',
+    precio: 100.99,
+    valoracion: 3.5
+  }]
+};
 
 /***/ }),
 
@@ -33566,6 +33599,94 @@ __webpack_require__.r(__webpack_exports__);
     href: "#",
     className: "glyphicon glyphicon-shopping-cart"
   })))))));
+});
+
+/***/ }),
+
+/***/ "./src/components/product.jsx":
+/*!************************************!*\
+  !*** ./src/components/product.jsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../estilos/styleProduct */ "./src/estilos/styleProduct.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+/*
+RECIBE 2 PARAMETROS :
+    col => representa la cantidad de columnas (boostrap) que necesita
+    list => representa el arreglo de productos a renderizar:
+        {
+            id,
+            titulo,
+            img1,
+            precio,
+            valoracion
+        }
+*/
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var col = _ref.col,
+      list = _ref.list;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, // Itera el arreglo que se ingresa y construye cada productos
+  list && list.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-xs-6 col-lg-".concat(col)
+    }, "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["style"]
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["styleImg"],
+      src: item.img1,
+      alt: "{item.img1}"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["TitleStyle"],
+      key: item.id
+    }, item.titulo)), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["starStyle"]
+    }, function (cantidad) {
+      var rows = [];
+
+      for (var i = 0; i < cantidad; i++) {
+        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "completa.png",
+          width: "25px"
+        }));
+      }
+
+      return rows;
+    }(parseInt(item.valoracion)), (item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "media.png",
+      width: "25px"
+    }) : '', function (cantidad) {
+      var rows = [];
+
+      for (var i = 0; i < cantidad; i++) {
+        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "vacia.png",
+          width: "25px"
+        }));
+      }
+
+      return rows;
+    }((item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? 5 - parseInt(item.valoracion) - 1 : 5 - parseInt(item.valoracion))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bottom", {
+      className: "btn btn-default",
+      role: "button"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "glyphicon glyphicon-shopping-cart",
+      "aria-hidden": "true"
+    }), "Add Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["price"]
+    }, "$ ", item.precio))));
+  }));
 });
 
 /***/ }),
@@ -33840,6 +33961,50 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(NavBarContainer));
+
+/***/ }),
+
+/***/ "./src/estilos/styleProduct.js":
+/*!*************************************!*\
+  !*** ./src/estilos/styleProduct.js ***!
+  \*************************************/
+/*! exports provided: style, styleImg, TitleStyle, starStyle, price */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "style", function() { return style; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styleImg", function() { return styleImg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TitleStyle", function() { return TitleStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starStyle", function() { return starStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price", function() { return price; });
+var style = {
+  border: '8px solid #f3f1f1',
+  backGroundColor: 'white',
+  padding: 2,
+  margin: 1,
+  boxSizing: "border-box",
+  WebkitBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
+  MozBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
+  boxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)"
+};
+var styleImg = {
+  width: '100%',
+  objectFit: 'contain'
+};
+var TitleStyle = {
+  fontSize: '18px'
+};
+var starStyle = {
+  marginTop: -24,
+  marginLeft: 9
+};
+var price = {
+  fontSize: 21,
+  "float": 'right',
+  marginRight: 11,
+  marginTop: 5
+};
 
 /***/ }),
 
