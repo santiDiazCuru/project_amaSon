@@ -20,7 +20,8 @@ class NavBarContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCarrito = this.handleCarrito.bind(this);
     };
-    handleModal() {
+    handleModal(e) {
+        e.preventDefault()
         if (!this.state.showLogInModal) this.setState({ showLogInModal: true })
         if (this.state.showLogInModal) this.setState({ showLogInModal: false })
     };
