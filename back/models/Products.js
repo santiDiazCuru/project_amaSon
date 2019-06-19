@@ -1,7 +1,7 @@
 var db = require('./database');
 var Sequelize = require('sequelize');
 
-var Product = db.define('users', {
+var Product = db.define('productos', {
   
     titulo: {
         type: Sequelize.STRING,

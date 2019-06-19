@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import HomeContainer from './containers/HomeContainer';
-import Product from './components/product'
+import NavbarContainer from './containers/NavbarContainer'
 export default () => (
   <div className="container-fluid">
     {/* NAV */}
-    <Product />
-    <h1>Hello Amason</h1>
+    
+    <NavbarContainer />
     <Switch>
         <Route path='/' component={HomeContainer}/>
         
@@ -14,5 +14,6 @@ export default () => (
         {/* <Redirect from="/" to="/notfound" /> */}
       </Switch>
 
-  </div>
-);
+    </div>
+  )
+;
