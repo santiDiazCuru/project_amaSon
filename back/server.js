@@ -36,5 +36,5 @@ app.get('/*', function (req, res) {
 db.sync()
    .then(function () {
       app.listen(8000)
-      console.log(chalk.magenta.underline.bold('Aguante el servidor ') + chalk.white.underline.bold(3000 + '!'))
+      console.log(chalk.magenta.underline.bold('Aguante el servidor ') + chalk.blue.underline.bold(8000 + '!'))
    })
