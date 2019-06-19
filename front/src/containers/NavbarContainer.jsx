@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NavbarComponent from '../components/NavbarComponent'
 import { fetchProducts } from '../action-creators/getProducts'
 import LogInContainer from './LogInContainer'
+import CarritoContainer from './CarritoContainer';
 
 
 class NavBarContainer extends React.Component {
@@ -10,15 +11,22 @@ class NavBarContainer extends React.Component {
         super();
         this.state = {
             inputValue: '',
-            showLogInModal: false
+            showLogInModal: false,
+            showCarrito: false
         };
-        this.handleChange = this.handleChange.bind(this)
-        this.handleModal = this.handleModal.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleModal = this.handleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCarrito = this.handleCarrito.bind(this);
     };
-    handleModal(){
-        if (!this.state.showLogInModal) this.setState({showLogInModal: true})
-        if (this.state.showLogInModal) this.setState({showLogInModal: false})
+    handleModal() {
+        if (!this.state.showLogInModal) this.setState({ showLogInModal: true })
+        if (this.state.showLogInModal) this.setState({ showLogInModal: false })
+    };
+
+    handleCarrito() {
+        if (!this.state.showCarrito) this.setState({ showCarrito: true })
+        if (this.state.showCarrito) this.setState({ showCarrito: false })
     }
 
     handleChange(e) {
@@ -33,17 +41,24 @@ class NavBarContainer extends React.Component {
     };
 
     render() {
-        if(this.state.showLogInModal){
+        if (this.state.showLogInModal) {
             return (
                 <div>
-                <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} />
-                <LogInContainer handleModal={this.handleModal}/>
+                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <LogInContainer handleModal={this.handleModal} />
+                </div>
+            )
+        } else if (this.state.showCarrito){
+            return (
+                <div>
+                    <NavbarComponent handleChange={this.handleChange} handleCarrito={this.handleCarrito} handleSubmit={this.handleSubmit}/>
+                    <CarritoContainer handleCarrito={this.handleCarrito}/>
                 </div>
             )
         }
-        return (
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} />
-        );
+            return (
+                <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito}/>
+            );
     };
 };
 
