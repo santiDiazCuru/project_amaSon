@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NavbarComponent from '../components/NavbarComponent'
 import { fetchProducts } from '../action-creators/getProducts'
 import LogInContainer from './LogInContainer'
+import DropdownNavbar from '../components/DropdownNavbar'
 
 
 class NavBarContainer extends React.Component {
