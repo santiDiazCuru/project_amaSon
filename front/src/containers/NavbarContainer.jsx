@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NavbarComponent from '../components/NavbarComponent'
+import { fetchProducts } from '../action-creators/getProducts'
 import LogInContainer from './LogInContainer'
-import {fetchProducts} from '../action-creators/getProducts'
+
 
 class NavBarContainer extends React.Component {
     constructor() {
@@ -13,6 +14,7 @@ class NavBarContainer extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this)
         this.handleModal = this.handleModal.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
     handleModal(){
         if (!this.state.showLogInModal) this.setState({showLogInModal: true})
@@ -22,7 +24,12 @@ class NavBarContainer extends React.Component {
     handleChange(e) {
         e.preventDefault();
         let inputValue = e.target.value
-        this.setState({ inputValue }, ()=> fetchProducts(this.state.inputValue));
+        this.setState({ inputValue }, () => this.state.inputValue && fetchProducts(this.state.inputValue));
+    };
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.state.inputValue && fetchProducts(this.state.inputValue)
     };
 
     render() {
@@ -35,13 +42,13 @@ class NavBarContainer extends React.Component {
             )
         }
         return (
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} />
+            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} />
         );
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
     fetchProducts: (input) => dispatch(fetchProducts(input))
- });
- 
- export default connect(null, mapDispatchToProps)(NavBarContainer)
+});
+
+export default connect(null, mapDispatchToProps)(NavBarContainer)

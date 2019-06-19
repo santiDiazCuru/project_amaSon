@@ -1,4 +1,10 @@
 /*  MODAL CSS */
+
+body {
+    padding-top: 42px;
+}
+
+
 .modal-wrapper {
     background: white;
     border: 5px solid grey;
