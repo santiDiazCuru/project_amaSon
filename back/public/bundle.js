@@ -33192,10 +33192,17 @@ var fetchProducts = function fetchProducts(input) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./src/components/CarritoComponent.jsx":
 /*!*********************************************!*\
   !*** ./src/components/CarritoComponent.jsx ***!
   \*********************************************/
+=======
+/***/ "./src/components/DropdownNavbar.jsx":
+/*!*******************************************!*\
+  !*** ./src/components/DropdownNavbar.jsx ***!
+  \*******************************************/
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -33203,6 +33210,7 @@ var fetchProducts = function fetchProducts(input) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+<<<<<<< HEAD
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
@@ -33253,6 +33261,83 @@ __webpack_require__.r(__webpack_exports__);
   }, "Vaciar Carrito!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/compra"
   }, "Finalizar Compra!"))));
+=======
+
+var style = {
+  minHeight: 35,
+  position: 'fixed',
+  top: 45,
+  zIndex: 500
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    className: "navbar navbar-default",
+    style: style
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "dropdown"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-secondary dropdown-toggle",
+    type: "button",
+    id: "dropdownMenuButton",
+    "data-toggle": "dropdown",
+    "aria-haspopup": "true",
+    "aria-expanded": "false"
+  }, "CATEGORIAS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dropdown-menu",
+    "aria-labelledby": "dropdownMenuButton"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Entretenimiento")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Vida Saludable")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Deportes extremos"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "dropdown"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-secondary dropdown-toggle",
+    type: "button",
+    id: "dropdownMenuButton",
+    "data-toggle": "dropdown",
+    "aria-haspopup": "true",
+    "aria-expanded": "false"
+  }, "OFERTAS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dropdown-menu",
+    "aria-labelledby": "dropdownMenuButton"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Ofertas del mes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Financiacion")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Compra mas, paga menos!"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "dropdown"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-secondary dropdown-toggle",
+    type: "button",
+    id: "dropdownMenuButton",
+    "data-toggle": "dropdown",
+    "aria-haspopup": "true",
+    "aria-expanded": "false"
+  }, "PROMOCIONES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dropdown-menu",
+    "aria-labelledby": "dropdownMenuButton"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Adquiri nuestra tarjeta")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Suma puntos y gana premios!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Descuentos a jubilados")))))));
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
 });
 
 /***/ }),
@@ -33268,6 +33353,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product */ "./src/components/product.jsx");
+
 
 var style = {
   height: 334,
@@ -33277,7 +33364,7 @@ var imgStyle = {
   objectFit: 'contain'
 };
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Bienvenido al Home de amaSon!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "myCarousel",
     className: "carousel slide",
     "data-ride": "carousel"
@@ -33396,8 +33483,39 @@ var imgStyle = {
     className: "btn btn-primary",
     href: "#",
     role: "button"
-  }, "Mas detalles... \xBB")))));
+  }, "Mas detalles... \xBB")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    col: data.col,
+    list: data.list
+  }));
 });
+var data = {
+  col: 3,
+  list: [{
+    id: 1,
+    titulo: 'Lg Celular Lmx210rm Negro',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/hfb/h70/10024006778910/00174028-174273-01.png',
+    precio: 100.99,
+    valoracion: 1
+  }, {
+    id: 1,
+    titulo: 'Celulares Liberados Motorola ',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h9b/h03/10024007368734/00174033-174278-01.png',
+    precio: 100.99,
+    valoracion: 2
+  }, {
+    id: 1,
+    titulo: 'Celular One Xt19415 Negro',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h08/h93/10023847788574/00157032-174150-01.png',
+    precio: 100.99,
+    valoracion: 1.5
+  }, {
+    id: 1,
+    titulo: 'Tcl Celular 5158a Negro',
+    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h88/hcf/10030731231262/00181040-174527-01.png',
+    precio: 100.99,
+    valoracion: 3.5
+  }]
+};
 
 /***/ }),
 
@@ -33483,8 +33601,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var handleChange = _ref.handleChange,
       handleSubmit = _ref.handleSubmit,
+<<<<<<< HEAD
       handleModal = _ref.handleModal,
       handleCarrito = _ref.handleCarrito;
+=======
+      handleModal = _ref.handleModal;
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-default navbar-fixed-top"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -33543,6 +33665,94 @@ __webpack_require__.r(__webpack_exports__);
     className: "glyphicon glyphicon-shopping-cart",
     onClick: handleCarrito
   })))))));
+});
+
+/***/ }),
+
+/***/ "./src/components/product.jsx":
+/*!************************************!*\
+  !*** ./src/components/product.jsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../estilos/styleProduct */ "./src/estilos/styleProduct.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+/*
+RECIBE 2 PARAMETROS :
+    col => representa la cantidad de columnas (boostrap) que necesita
+    list => representa el arreglo de productos a renderizar:
+        {
+            id,
+            titulo,
+            img1,
+            precio,
+            valoracion
+        }
+*/
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var col = _ref.col,
+      list = _ref.list;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, // Itera el arreglo que se ingresa y construye cada productos
+  list && list.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-xs-6 col-lg-".concat(col)
+    }, "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["style"]
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["styleImg"],
+      src: item.img1,
+      alt: "{item.img1}"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["TitleStyle"],
+      key: item.id
+    }, item.titulo)), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["starStyle"]
+    }, function (cantidad) {
+      var rows = [];
+
+      for (var i = 0; i < cantidad; i++) {
+        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "completa.png",
+          width: "25px"
+        }));
+      }
+
+      return rows;
+    }(parseInt(item.valoracion)), (item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "media.png",
+      width: "25px"
+    }) : '', function (cantidad) {
+      var rows = [];
+
+      for (var i = 0; i < cantidad; i++) {
+        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "vacia.png",
+          width: "25px"
+        }));
+      }
+
+      return rows;
+    }((item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? 5 - parseInt(item.valoracion) - 1 : 5 - parseInt(item.valoracion))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bottom", {
+      className: "btn btn-default",
+      role: "button"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "glyphicon glyphicon-shopping-cart",
+      "aria-hidden": "true"
+    }), "Add Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["price"]
+    }, "$ ", item.precio))));
+  }));
 });
 
 /***/ }),
@@ -33770,7 +33980,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/NavbarComponent */ "./src/components/NavbarComponent.jsx");
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
 /* harmony import */ var _LogInContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LogInContainer */ "./src/containers/LogInContainer.jsx");
+<<<<<<< HEAD
 /* harmony import */ var _CarritoContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CarritoContainer */ "./src/containers/CarritoContainer.jsx");
+=======
+/* harmony import */ var _components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/DropdownNavbar */ "./src/components/DropdownNavbar.jsx");
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33815,7 +34029,10 @@ function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleModal = _this.handleModal.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+<<<<<<< HEAD
     _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
+=======
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
     return _this;
   }
 
@@ -33830,6 +34047,7 @@ function (_React$Component) {
       });
     }
   }, {
+<<<<<<< HEAD
     key: "handleCarrito",
     value: function handleCarrito() {
       if (!this.state.showCarrito) this.setState({
@@ -33840,6 +34058,8 @@ function (_React$Component) {
       });
     }
   }, {
+=======
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
     key: "handleChange",
     value: function handleChange(e) {
       var _this2 = this;
@@ -33864,6 +34084,7 @@ function (_React$Component) {
       if (this.state.showLogInModal) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
           handleChange: this.handleChange,
+<<<<<<< HEAD
           handleModal: this.handleModal,
           handleSubmit: this.handleSubmit
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -33885,6 +34106,19 @@ function (_React$Component) {
         handleSubmit: this.handleSubmit,
         handleCarrito: this.handleCarrito
       });
+=======
+          handleModal: this.handleModal
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          handleModal: this.handleModal
+        }));
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleChange: this.handleChange,
+        handleModal: this.handleModal,
+        handleSubmit: this.handleSubmit
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+>>>>>>> 191b59bec82f3ff484be672e14ae5173d86f9870
     }
   }]);
 
@@ -33902,6 +34136,50 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(NavBarContainer));
+
+/***/ }),
+
+/***/ "./src/estilos/styleProduct.js":
+/*!*************************************!*\
+  !*** ./src/estilos/styleProduct.js ***!
+  \*************************************/
+/*! exports provided: style, styleImg, TitleStyle, starStyle, price */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "style", function() { return style; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styleImg", function() { return styleImg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TitleStyle", function() { return TitleStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starStyle", function() { return starStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price", function() { return price; });
+var style = {
+  border: '8px solid #f3f1f1',
+  backGroundColor: 'white',
+  padding: 2,
+  margin: 1,
+  boxSizing: "border-box",
+  WebkitBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
+  MozBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
+  boxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)"
+};
+var styleImg = {
+  width: '100%',
+  objectFit: 'contain'
+};
+var TitleStyle = {
+  fontSize: '18px'
+};
+var starStyle = {
+  marginTop: -24,
+  marginLeft: 9
+};
+var price = {
+  fontSize: 21,
+  "float": 'right',
+  marginRight: 11,
+  marginTop: 5
+};
 
 /***/ }),
 

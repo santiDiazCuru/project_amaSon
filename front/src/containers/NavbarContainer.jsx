@@ -4,6 +4,7 @@ import NavbarComponent from '../components/NavbarComponent'
 import { fetchProducts } from '../action-creators/getProducts'
 import LogInContainer from './LogInContainer'
 import CarritoContainer from './CarritoContainer';
+import DropdownNavbar from '../components/DropdownNavbar'
 
 
 class NavBarContainer extends React.Component {
@@ -56,9 +57,12 @@ class NavBarContainer extends React.Component {
                 </div>
             )
         }
-            return (
-                <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito}/>
-            );
+        return (
+            <div>
+            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
+            <DropdownNavbar />
+            </div>
+        );
     };
 };
 

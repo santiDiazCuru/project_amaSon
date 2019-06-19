@@ -9,6 +9,7 @@ export default () => (
     <NavbarContainer />
     <Switch>
         <Route path='/' component={HomeContainer}/>
+        
         {/* ROUTES */}
         {/* <Redirect from="/" to="/notfound" /> */}
       </Switch>

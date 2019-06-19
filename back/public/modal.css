@@ -1,7 +1,7 @@
 /*  MODAL CSS */
 
 body {
-    padding-top: 42px;
+    padding-top: 85px;
 }
 
 
@@ -15,8 +15,7 @@ body {
     width: 40%;
     font-size: 20px;
     position: fixed;
-    z-index: 1079;
-    top: auto;
+    z-index: 250;
     -webkit-box-shadow: 10px 10px 10px 10px rgba(80, 77, 77, 0.75);
 -moz-box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
