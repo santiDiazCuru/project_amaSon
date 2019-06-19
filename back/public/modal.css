@@ -1,24 +1,25 @@
 /*  MODAL CSS */
 .modal-wrapper {
     background: white;
-    border: 5px solid #f44336;
+    border: 5px solid grey;
+    border-radius: 5px;
     margin: 0 auto;
+    left: 30%;
     transition: all .8s;
-    width: 70%;
+    width: 40%;
     font-size: 20px;
     position: fixed;
     z-index: 1079;
-    top: 40px;
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    top: auto;
+    -webkit-box-shadow: 10px 10px 10px 10px rgba(80, 77, 77, 0.75);
+-moz-box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
 
 }
 .imgAlert {
     position: fixed;
     left: 116px;
     top: 40px;
-    
 }
 
 .modal-header {
@@ -26,7 +27,7 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     height: 40px;
     line-height: 40px;
     padding: 5px 20px;
-    text-align: right;
+    text-align: center;
 }
 
 .modal-header h3 {
@@ -44,7 +45,7 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 .modal-footer {
     background: #263238;
     height: 35px;
-    padding: 15px;
+    padding: 30px;
 }
 
 .close-modal-btn {
