@@ -27932,7 +27932,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34082,20 +34082,19 @@ function (_React$Component) {
     key: "handleModal",
     value: function handleModal(e) {
       e.preventDefault();
-      if (!this.state.showLogInModal) this.setState({
+      !this.state.showLogInModal ? this.setState({
         showLogInModal: true
-      });
-      if (this.state.showLogInModal) this.setState({
+      }) : this.setState({
         showLogInModal: false
       });
     }
   }, {
     key: "handleCarrito",
-    value: function handleCarrito() {
-      if (!this.state.showCarrito) this.setState({
+    value: function handleCarrito(e) {
+      e.preventDefault();
+      !this.state.showCarrito ? this.setState({
         showCarrito: true
-      });
-      if (this.state.showCarrito) this.setState({
+      }) : this.setState({
         showCarrito: false
       });
     }
@@ -34121,30 +34120,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.state.showLogInModal) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          handleChange: this.handleChange,
-          handleModal: this.handleModal,
-          handleSubmit: this.handleSubmit
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          handleModal: this.handleModal
-        }));
-      } else if (this.state.showCarrito) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          handleChange: this.handleChange,
-          handleCarrito: this.handleCarrito,
-          handleSubmit: this.handleSubmit
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CarritoContainer__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          handleCarrito: this.handleCarrito
-        }));
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
         handleChange: this.handleChange,
         handleModal: this.handleModal,
         handleSubmit: this.handleSubmit,
         handleCarrito: this.handleCarrito
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_6__["default"], null));
+      }), " &&", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_6__["default"], null), this.state.showLogInModal && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        handleModal: this.handleModal
+      }) || this.state.showCarrito && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CarritoContainer__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        handleCarrito: this.handleCarrito
+      }));
     }
   }]);
 

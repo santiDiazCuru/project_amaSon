@@ -21,14 +21,13 @@ class NavBarContainer extends React.Component {
         this.handleCarrito = this.handleCarrito.bind(this);
     };
     handleModal(e) {
-        e.preventDefault()
-        if (!this.state.showLogInModal) this.setState({ showLogInModal: true })
-        if (this.state.showLogInModal) this.setState({ showLogInModal: false })
+        e.preventDefault();
+        !this.state.showLogInModal ? this.setState({ showLogInModal: true }) : this.setState({ showLogInModal: false });
     };
 
-    handleCarrito() {
-        if (!this.state.showCarrito) this.setState({ showCarrito: true })
-        if (this.state.showCarrito) this.setState({ showCarrito: false })
+    handleCarrito(e) {
+        e.preventDefault();
+        !this.state.showCarrito ? this.setState({ showCarrito: true }) : this.setState({ showCarrito: false });
     }
 
     handleChange(e) {
@@ -43,27 +42,11 @@ class NavBarContainer extends React.Component {
     };
 
     render() {
-        if (this.state.showLogInModal) {
-            return (
-                <div>
-                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
-                    <LogInContainer handleModal={this.handleModal} />
-                </div>
-            )
-        } else if (this.state.showCarrito){
-            return (
-                <div>
-                    <NavbarComponent handleChange={this.handleChange} handleCarrito={this.handleCarrito} handleSubmit={this.handleSubmit}/>
-                    <CarritoContainer handleCarrito={this.handleCarrito}/>
-                </div>
-            )
-        }
-        return (
-            <div>
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
+        return (<>
+            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito}/> &&
             <DropdownNavbar />
-            </div>
-        );
+            {this.state.showLogInModal && <LogInContainer handleModal={this.handleModal} /> || this.state.showCarrito && <CarritoContainer handleCarrito={this.handleCarrito} />}
+        </>);
     };
 };
 
