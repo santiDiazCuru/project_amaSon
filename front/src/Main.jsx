@@ -15,8 +15,6 @@ export default () => (
     <Route component={NavbarContainer} />
     <Switch>
         <Route exact path='/' component={HomeContainer}/>
-        <Route path = '/register' component={RegisterContainer} />
-        <Route path='/search' component={Sidebar2Container}/>
         <Route path='/categoria/:category' component={CategoryContainer}/>
         <Route path='/search/' component={SearchContainer}/>
         {/* ROUTES */}
