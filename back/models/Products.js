@@ -1,6 +1,7 @@
 var db = require('./database');
 var Sequelize = require('sequelize');
 
+
 var Product = db.define('productos', {
   
     titulo: {
