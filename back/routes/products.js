@@ -16,4 +16,14 @@ Router.get(`/:search`, (req, res) => {
 })
 
 
+// =====  EXTRACCION DE TODA LA DATA POR CATEGORIA =======
+Router.get('/categoria/:category', (req, res) => {
+    Products.findAll({
+        where:{
+            categorias:req.params.category
+        }
+    })
+    .then(products => res.json(products))
+})
+
 module.exports= Router

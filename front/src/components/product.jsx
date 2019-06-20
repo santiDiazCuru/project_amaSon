@@ -60,10 +60,10 @@ export default ({ col, list }) => {
                             
                         </p>
                         <p>
-                            <bottom className="btn btn-default" role="button">
+                            <button className="btn btn-default" role="button">
                                 <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                                 Add Cart
-                            </bottom>
+                            </button>
                             
                             <span style={price}>
                              $ {item.precio}    

@@ -1,11 +1,15 @@
 const express = require("express");
 const Router = express.Router();
-const ProductsRouter = require('./products')
+const productsRouter = require('./products')
+const usersRouter = require('./users')
 const path = require('path')
 const Products = require('../models/Products');
 
-//Router.use('/products', ProductsRouter)
-Router.use('/api/products', ProductsRouter)
+//Router.use('/products', productsRouter)
+Router.use('/api/products', productsRouter)
 
+Router.use('/products', productsRouter)
+Router.use('/api/products', productsRouter)
+Router.use('register', usersRouter)
 module.exports = Router
 
