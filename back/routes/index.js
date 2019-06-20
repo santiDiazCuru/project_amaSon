@@ -10,6 +10,7 @@ Router.use('/api/products', productsRouter)
 
 Router.use('/products', productsRouter)
 Router.use('/api/products', productsRouter)
-Router.use('register', usersRouter)
+Router.use('/users', usersRouter)
+
 module.exports = Router
 

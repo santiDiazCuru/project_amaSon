@@ -3,11 +3,15 @@ const Router = express.Router()
 const User = require("../models/Users")
 
 Router.post('/register', function(req,res){
-    console.log('entra al request de post para crear un nuevo usuario')
     User.create(req.body)
-    .then((newUser)=>{
-        console.log('Crea un nuevo usuario: '+ newUser)
-        res.json(newUser)})
+    .then((newUser)=>res.json(newUser))
+})
+Router.post('/login', function(req,res){
+    User.findOne({where: {
+        username: req.body.username,
+        //password: req.body.password
+    }})
+    .then((user)=> res.json(user))
 })
 
 module.exports = Router
