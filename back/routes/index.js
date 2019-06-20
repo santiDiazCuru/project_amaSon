@@ -3,7 +3,7 @@ const Router = express.Router();
 const ProductsRouter = require('./products')
 const Products = require('../models/Products');
 
-Router.use('/products', ProductsRouter)
+//Router.use('/products', ProductsRouter)
 Router.use('/api/products', ProductsRouter)
 
 Router.get('/', function(req,res){

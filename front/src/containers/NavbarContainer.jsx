@@ -17,7 +17,8 @@ class NavBarContainer extends React.Component {
         this.handleModal = this.handleModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
     };
-    handleModal(){
+    handleModal(e){
+        e.preventDefault();
         if (!this.state.showLogInModal) this.setState({showLogInModal: true})
         if (this.state.showLogInModal) this.setState({showLogInModal: false})
     }
@@ -34,20 +35,14 @@ class NavBarContainer extends React.Component {
     };
 
     render() {
-        if(this.state.showLogInModal){
-            return (
-                <div>
-                <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} />
-                <LogInContainer handleModal={this.handleModal}/>
-                </div>
-            )
-        }
         return (
             <div>
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} />
-            <DropdownNavbar />
+                <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} />
+                <DropdownNavbar />
+                
+                {(this.state.showLogInModal)&&<LogInContainer handleModal={this.handleModal} />}
             </div>
-        );
+        )
     };
 };
 
