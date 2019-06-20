@@ -9,7 +9,7 @@ import LogInModal from '../components/LogInModal'
 
     render(){
          return (
-             <LogInModal handleModal={this.props.handleModal}/>
+             <LogInModal handleModal={this.props.handleModal} handleRegister={this.props.handleRegister}/>
          )
     }
 }

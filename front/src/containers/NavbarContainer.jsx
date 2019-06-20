@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import NavbarComponent from '../components/NavbarComponent'
 import { fetchProducts } from '../action-creators/getProducts'
 import LogInContainer from './LogInContainer'
+import CarritoContainer from './CarritoContainer';
 import DropdownNavbar from '../components/DropdownNavbar'
+import RegisterContainer from './RegisterContainer';
 
 
 class NavBarContainer extends React.Component {
@@ -11,36 +13,75 @@ class NavBarContainer extends React.Component {
         super();
         this.state = {
             inputValue: '',
-            showLogInModal: false
+            showLogInModal: false,
+            showCarrito: false,
+            showRegister: false
         };
-        this.handleChange = this.handleChange.bind(this)
-        this.handleModal = this.handleModal.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleModal = this.handleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    };
-    handleModal(e){
-        e.preventDefault();
-        if (!this.state.showLogInModal) this.setState({showLogInModal: true})
-        if (this.state.showLogInModal) this.setState({showLogInModal: false})
-    }
+       
+        this.handleCarrito = this.handleCarrito.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
 
+    };
+    handleModal(e) {
+        e.preventDefault()
+        if (!this.state.showLogInModal) this.setState({ showLogInModal: true })
+        if (this.state.showLogInModal) this.setState({ showLogInModal: false })
+        if (this.state.showRegister) this.setState({ showRegister: false })
+    };
+    handleCarrito() {
+        if (!this.state.showCarrito) this.setState({ showCarrito: true })
+        if (this.state.showCarrito) this.setState({ showCarrito: false })
+    };
     handleChange(e) {
         e.preventDefault();
         let inputValue = e.target.value
         this.setState({ inputValue }, () => this.state.inputValue && fetchProducts(this.state.inputValue));
     };
-
     handleSubmit(e) {
         e.preventDefault();
         this.state.inputValue && fetchProducts(this.state.inputValue)
     };
+    handleRegister(e){
+        if (!this.state.showRegister) this.setState({ showRegister: true })
+        if (this.state.showRegister) this.setState({ showRegister: false })
+        if (this.state.showLogInModal) this.setState({ showLogInModal: false })
+    }
 
     render() {
+        if (this.state.showLogInModal) {
+            return (
+                <div>
+                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <DropdownNavbar />
+                    <LogInContainer handleModal={this.handleModal} handleRegister={this.handleRegister}/>
+                </div>
+            )
+            
+        } else if (this.state.showCarrito){
+            return (
+                <div>
+                    <NavbarComponent handleChange={this.handleChange} handleCarrito={this.handleCarrito} handleSubmit={this.handleSubmit}/>
+                    <DropdownNavbar />
+                    <CarritoContainer handleCarrito={this.handleCarrito}/>
+                </div>
+            )
+        } if (this.state.showRegister) {
+            return (
+                <div>
+                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <DropdownNavbar />
+                    <RegisterContainer handleRegister={this.handleRegister} />
+                </div>
+            )
+            
+        }
         return (
             <div>
-                <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} />
-                <DropdownNavbar />
-                
-                {(this.state.showLogInModal)&&<LogInContainer handleModal={this.handleModal} />}
+            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
+            <DropdownNavbar />
             </div>
         )
     };
