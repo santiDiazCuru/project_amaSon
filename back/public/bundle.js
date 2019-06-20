@@ -34704,7 +34704,7 @@ function (_React$Component) {
       this.setState({
         inputValue: inputValue
       }, function () {
-        return _this2.state.inputValue && Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProducts"])(_this2.state.inputValue);
+        return _this2.state.inputValue && _this2.props.fetchProducts(_this2.state.inputValue);
       });
     }
   }, {

@@ -37,7 +37,7 @@ class NavBarContainer extends React.Component {
         e.preventDefault();
         this.props.history.push('/search')
         let inputValue = e.target.value
-        this.setState({ inputValue }, () => this.state.inputValue && fetchProducts(this.state.inputValue));
+        this.setState({ inputValue }, () => this.state.inputValue && this.props.fetchProducts(this.state.inputValue));
     };
     handleSubmit(e) {
         e.preventDefault();
