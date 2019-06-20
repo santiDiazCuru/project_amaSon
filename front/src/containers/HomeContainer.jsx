@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Home from '../components/Home'
+import Home from '../components/Home';
+import Footer from '../components/Footer'
 
 class HomeContainer extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class HomeContainer extends React.Component {
             <div>
 
                     <Home />
+                    <Footer/>
             </div>
         );
     }

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Producto from './product'
+import React from 'react';
+import Producto from './product';
 
 const style = {
     height: 334,
@@ -90,6 +90,7 @@ export default (props) => (
             col = {data.col}
             list = {data.list}
         />
+
 
     </div>
 
