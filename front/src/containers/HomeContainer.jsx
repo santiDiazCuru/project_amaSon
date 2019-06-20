@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchAllProductsHome } from '../action-creators/getProducts'
 import Producto from '../components/product'
-
+import Footer from '../components/Footer'
 import Home from '../components/Home'
 
 class HomeContainer extends React.Component {
@@ -22,6 +22,7 @@ class HomeContainer extends React.Component {
                     col={3}
                     list={this.props.listaProductos}
                 />
+                 <Footer/>
 
             </div>
         );
