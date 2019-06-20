@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React from 'react';
 import Producto from './product';
+=======
+import React, { Component } from 'react';
+
+>>>>>>> 2e91a50539c3aeadb987c8e45861c482030a9142
 
 const style = {
     height: 334,
@@ -11,9 +16,8 @@ const imgStyle = {
 }
 
 export default (props) => (
-
     <div>
-{/* esto es el carrousell */}
+        {/* esto es el carrousell */}
         <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
             <ol className="carousel-indicators">
@@ -23,7 +27,7 @@ export default (props) => (
             </ol>
             <div className="carousel-inner" role="listbox">
                 <div className="item active">
-                    <img className="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide" />
+                    <img className="first-slide" src="https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-tvs-60_-de-descuento.png" alt="First slide" />
                     <div className="container">
                         <div className="carousel-caption">
                             <h1>Example headline.</h1>
@@ -33,7 +37,7 @@ export default (props) => (
                     </div>
                 </div>
                 <div className="item">
-                    <img className="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide" />
+                    <img className="second-slide" src="https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-televisores.png" alt="Second slide" />
                     <div className="container">
                         <div className="carousel-caption">
                             <h1>Another example headline.</h1>
@@ -43,7 +47,7 @@ export default (props) => (
                     </div>
                 </div>
                 <div className="item">
-                    <img className="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide" />
+                    <img className="third-slide" src="http://disttec.mx/wp-content/uploads/2017/03/Banner-Audio-Ambiental.jpg" alt="Third slide" />
                     <div className="container">
                         <div className="carousel-caption">
                             <h1>One more for good measure.</h1>
@@ -65,7 +69,7 @@ export default (props) => (
 
 
 
-{/* esto es el banner */}
+        {/* esto es el banner */}
 
         <div className="row">
             <div className="col-lg-4" style={style}>
@@ -75,7 +79,7 @@ export default (props) => (
             </div>
             <div className="col-lg-4" style={style}>
                 <h2>Te enviamos tu compra!</h2>
-                <img className="img-thumbnail" style={imgStyle} src="https://mlstaticquic-a.akamaihd.net/autopartes-envios-D_NQ_NP_735102-MLU27856184841_072018-F.jpg" alt="Responsive image"/>
+                <img className="img-thumbnail" style={imgStyle} src="https://mlstaticquic-a.akamaihd.net/autopartes-envios-D_NQ_NP_735102-MLU27856184841_072018-F.jpg" alt="Responsive image" />
                 <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
             </div>
             <div className="col-lg-4" style={style}>
@@ -85,47 +89,10 @@ export default (props) => (
                 <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
             </div>
         </div>
-
-        <Producto 
-            col = {data.col}
-            list = {data.list}
-        />
+        <br />
+        
 
 
     </div>
 
 );
-
-const data = {
-    col: 3,
-    list: [
-        {
-            id: 1,
-            titulo: 'Lg Celular Lmx210rm Negro',
-            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/hfb/h70/10024006778910/00174028-174273-01.png',
-            precio: 100.99,
-            valoracion: 1
-        },
-        {
-            id: 1,
-            titulo: 'Celulares Liberados Motorola ',
-            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h9b/h03/10024007368734/00174033-174278-01.png',
-            precio: 100.99,
-            valoracion: 2
-        },
-        {
-            id: 1,
-            titulo: 'Celular One Xt19415 Negro',
-            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h08/h93/10023847788574/00157032-174150-01.png',
-            precio: 100.99,
-            valoracion: 1.5
-        },
-        {
-            id: 1,
-            titulo: 'Tcl Celular 5158a Negro',
-            img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h88/hcf/10030731231262/00181040-174527-01.png',
-            precio: 100.99,
-            valoracion: 3.5
-        }
-    ]
-}

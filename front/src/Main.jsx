@@ -11,7 +11,6 @@ export default () => (
     <NavbarContainer />
     <Switch>
         <Route exact path='/' component={HomeContainer}/>
-        <Route path = '/register' component={RegisterContainer} />
         {/* ROUTES */}
         {/* <Redirect from="/" to="/notfound" /> */}
       </Switch>

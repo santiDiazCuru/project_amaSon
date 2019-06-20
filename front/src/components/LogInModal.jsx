@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
-export default ({ handleModal }) => (
+export default ({ handleModal, handleRegister }) => (
     <div>
         <div className="modal-wrapper">
             <h2 id='LogInTitle'>Log In...</h2>
@@ -13,11 +12,10 @@ export default ({ handleModal }) => (
                     <input type="password" name='password' className="form-control" placeholder="Password" aria-describedby="basic-addon2"></input>
                     <br />
                     <button type="submit" className="btn btn-default">Ingresar</button>
-                    <div id='registerSubmit' className='btn btn-default'>
-                        <Link to='/register'>Registrarme</Link>
+                    <div onClick={handleRegister} id='registerSubmit' className='btn btn-default'>
+                        <span>Registrarme</span>
                     </div>
                 </form>
-
             </div>
             {/* <button type='submit' className="btn btn-default">Registrarme</button> */}
         </div>

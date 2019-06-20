@@ -35,6 +35,9 @@ var Product = db.define('productos', {
     valoracion:{
         type: Sequelize.VIRTUAL,
         defaultValue: 0
+    },
+    categorias: {
+        type: Sequelize.STRING
     }
 });
 
