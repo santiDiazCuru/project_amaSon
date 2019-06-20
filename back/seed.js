@@ -6,7 +6,8 @@ Products.bulkCreate([
         precio: 7400,
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb2/h61/10023505035294/00035055-172634-01.png",
-        valoracion: 5
+        valoracion: 5,
+        categorias: "aspiradora"
     },
     {
         titulo: "MICROONDA ATMA MD1720N",
@@ -14,7 +15,8 @@ Products.bulkCreate([
         precio: 7099,
         stock: 5,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb3/h25/10023646756894/00064056-173161-01.png",
-        valoracion: 4.3
+        valoracion: 4.3,
+        categorias:"microondas"
     },
     {
         titulo: "Heladeras Patrick Heladera Con Freezer",
@@ -22,7 +24,8 @@ Products.bulkCreate([
         precio: 23599,
         stock: 25,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h9b/h6f/10023774584862/00133004-135733-01.jpg",
-        valoracion: 1.6
+        valoracion: 1.6,
+        categorias: "heladeras"
     },
     {
         titulo: "Televisores Noblex Smart Tv 32 Hd 32x5000",
@@ -30,7 +33,8 @@ Products.bulkCreate([
         precio: 12999,
         stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h86/h29/10027280367646/00189018-174267-01.png",
-        valoracion: 5
+        valoracion: 5,
+        categorias:"televisores"
     },
     {
         titulo: "Notebook Exo Cloud E15 Intel Atom",
@@ -38,7 +42,8 @@ Products.bulkCreate([
         precio: 10999,
         stock: 2,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h16/hda/10007422173214/00014330-133442-01.jpg",
-        valoracion: 3
+        valoracion: 3,
+        categorias: "notebook"
     },
     {
         titulo: "NOTEBOOK ACER ASPIRE 3 INTEL CELERON",
@@ -46,7 +51,8 @@ Products.bulkCreate([
         precio: 19999,
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h0f/h73/10024042954782/00181176-136244-01.jpg",
-        valoracion: 2.6
+        valoracion: 2.6,
+        categorias: "notebook"
     },
     {
         titulo: "Tablets Exo Tablet Wave I007 Kids",
@@ -54,7 +60,8 @@ Products.bulkCreate([
         precio: 2999,
         stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/he8/h7c/10023997145118/00181076-136140-01.jpg",
-        valoracion: 4.5
+        valoracion: 4.5,
+        categorias: "tablets"
     },
     {
         titulo: "Motorola Celular Moto E5 Xt19443 Gris",
@@ -62,12 +69,13 @@ Products.bulkCreate([
         precio: 8549,
         stock: 12,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h78/hd9/10023764721694/00125055-173962-01.png",
-        valoracion: 3
+        valoracion: 3,
+        categorias:"celulares"
     }
     
 ])
     .then(console.log("Esta todo piola"))
-    .catch(console.log("sss"))
+    
 
 
 

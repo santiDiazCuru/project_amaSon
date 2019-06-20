@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchAllProducts } from '../action-creators/getProducts'
+import { fetchAllProductsHome } from '../action-creators/getProducts'
 import Producto from '../components/product'
 import Footer from '../components/Footer'
 import Home from '../components/Home'
@@ -11,9 +11,9 @@ class HomeContainer extends React.Component {
 
     }
     componentDidMount() {
-        this.props.fetchAllProducts()
+        this.props.fetchAllProductsHome()
     }
-
+    
     render() {
         return (
             <div>
@@ -30,12 +30,12 @@ class HomeContainer extends React.Component {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        listaProductos: state.product.productos
+        listaProductos: state.product.productosHome
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAllProducts: ()=> dispatch(fetchAllProducts())
+        fetchAllProductsHome: ()=> dispatch(fetchAllProductsHome())
     }
 }
 
