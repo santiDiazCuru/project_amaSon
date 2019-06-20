@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Register from '../components/Register'
+import RegisterModal from '../components/RegisterModal'
 
 export default class RegisterContainer extends React.Component{
     constructor(props){
@@ -13,7 +13,7 @@ export default class RegisterContainer extends React.Component{
     render() {
         return (
             <div>
-            <Register />
+            <RegisterModal handleRegister={this.props.handleRegister} />
             </div>
         )
     }

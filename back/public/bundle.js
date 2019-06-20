@@ -33174,12 +33174,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./src/action-creators/getProducts.js ***!
   \********************************************/
-/*! exports provided: fetchProducts */
+/*! exports provided: fetchProducts, fetchAllProducts */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProducts", function() { return fetchProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllProducts", function() { return fetchAllProducts; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
@@ -33195,10 +33196,27 @@ var addProducts = function addProducts(productos) {
   };
 };
 
+var allProducts = function allProducts(productos) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_PRODUCTS"],
+    productos: productos
+  };
+};
+
 var fetchProducts = function fetchProducts(input) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(input)).then(function (productos) {
     return _store__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch(addProducts(productos.data));
   });
+}; // BUSCA TODO LOS PRODUCTOS
+
+var fetchAllProducts = function fetchAllProducts() {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/").then(function (productos) {
+      return dispatch(allProducts(productos.data));
+    }).then(function (data) {
+      console.log(data, "DATAAA");
+    });
+  };
 };
 
 /***/ }),
@@ -33284,7 +33302,15 @@ var style = {
   minHeight: 35,
   position: 'fixed',
   top: 45,
-  zIndex: 500
+  zIndex: 500,
+  width: "100%",
+  backgroundColor: "#efefef",
+  marginLeft: -14,
+  borderBottom: "solid 1px #868686",
+  borderTop: "solid 8px #ffffff"
+};
+var colorNav = {
+  backgroundColor: "#efefef"
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -33294,12 +33320,16 @@ var style = {
     className: "dropdown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-secondary dropdown-toggle",
+    style: colorNav,
     type: "button",
     id: "dropdownMenuButton",
     "data-toggle": "dropdown",
     "aria-haspopup": "true",
     "aria-expanded": "false"
-  }, "CATEGORIAS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "CATEGORIAS ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-triangle-bottom",
+    "aria-hidden": "true"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdown-menu",
     "aria-labelledby": "dropdownMenuButton"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -33315,12 +33345,16 @@ var style = {
     className: "dropdown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-secondary dropdown-toggle",
+    style: colorNav,
     type: "button",
     id: "dropdownMenuButton",
     "data-toggle": "dropdown",
     "aria-haspopup": "true",
     "aria-expanded": "false"
-  }, "OFERTAS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "OFERTAS ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-triangle-bottom",
+    "aria-hidden": "true"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdown-menu",
     "aria-labelledby": "dropdownMenuButton"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -33336,12 +33370,16 @@ var style = {
     className: "dropdown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-secondary dropdown-toggle",
+    style: colorNav,
     type: "button",
     id: "dropdownMenuButton",
     "data-toggle": "dropdown",
     "aria-haspopup": "true",
     "aria-expanded": "false"
-  }, "PROMOCIONES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "PROMOCIONES ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-triangle-bottom",
+    "aria-hidden": "true"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdown-menu",
     "aria-labelledby": "dropdownMenuButton"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -33369,8 +33407,6 @@ var style = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product */ "./src/components/product.jsx");
-
 
 var style = {
   height: 334,
@@ -33403,7 +33439,7 @@ var imgStyle = {
     className: "item active"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "first-slide",
-    src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==",
+    src: "https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-tvs-60_-de-descuento.png",
     alt: "First slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -33417,7 +33453,7 @@ var imgStyle = {
     className: "item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "second-slide",
-    src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==",
+    src: "https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-televisores.png",
     alt: "Second slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -33431,7 +33467,7 @@ var imgStyle = {
     className: "item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "third-slide",
-    src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==",
+    src: "http://disttec.mx/wp-content/uploads/2017/03/Banner-Audio-Ambiental.jpg",
     alt: "Third slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -33499,39 +33535,8 @@ var imgStyle = {
     className: "btn btn-primary",
     href: "#",
     role: "button"
-  }, "Mas detalles... \xBB")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    col: data.col,
-    list: data.list
-  }));
+  }, "Mas detalles... \xBB")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
 });
-var data = {
-  col: 3,
-  list: [{
-    id: 1,
-    titulo: 'Lg Celular Lmx210rm Negro',
-    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/hfb/h70/10024006778910/00174028-174273-01.png',
-    precio: 100.99,
-    valoracion: 1
-  }, {
-    id: 1,
-    titulo: 'Celulares Liberados Motorola ',
-    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h9b/h03/10024007368734/00174033-174278-01.png',
-    precio: 100.99,
-    valoracion: 2
-  }, {
-    id: 1,
-    titulo: 'Celular One Xt19415 Negro',
-    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h08/h93/10023847788574/00157032-174150-01.png',
-    precio: 100.99,
-    valoracion: 1.5
-  }, {
-    id: 1,
-    titulo: 'Tcl Celular 5158a Negro',
-    img1: 'https://medias.musimundo.com/medias/sys_master/images/images/h88/hcf/10030731231262/00181040-174527-01.png',
-    precio: 100.99,
-    valoracion: 3.5
-  }]
-};
 
 /***/ }),
 
@@ -33546,11 +33551,10 @@ var data = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var handleModal = _ref.handleModal;
+  var handleModal = _ref.handleModal,
+      handleRegister = _ref.handleRegister;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -33574,11 +33578,10 @@ __webpack_require__.r(__webpack_exports__);
     type: "submit",
     className: "btn btn-default"
   }, "Ingresar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: handleRegister,
     id: "registerSubmit",
     className: "btn btn-default"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/register"
-  }, "Registrarme"))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Registrarme"))))));
 });
 
 /***/ }),
@@ -33676,7 +33679,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var handleChangeMin = _ref.handleChangeMin,
+      priceMin = _ref.priceMin,
+      handleClickMin = _ref.handleClickMin,
+      priceMax = _ref.priceMax,
+      handleChangeMax = _ref.handleChangeMax,
+      handleClickMax = _ref.handleClickMax;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       width: '97%',
@@ -33694,18 +33703,55 @@ __webpack_require__.r(__webpack_exports__);
       backgroundColor: '#ffe900',
       borderRadius: '3px'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Televisores ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Celulares ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Microondas ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Televisores ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Notebooks ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Tablets ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Heladeras ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Celulares ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Microondas ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      cursor: 'pointer',
+      backgroundColor: '#333333',
+      borderRadius: '0 50% 50% 50%',
+      height: '40px',
+      width: '40px',
+      transform: 'rotate(-135deg)',
+      margin: 'auto'
+    },
+    onClick: handleClickMin
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      color: 'white',
+      fontSize: '20px',
+      transform: 'rotate(135deg)',
+      position: 'relative',
+      top: '6px'
+    }
+  }, priceMin)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      height: '10px'
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "0"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Minimo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "100"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       top: '0',
       bottom: '0',
@@ -33714,7 +33760,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "range",
-    name: "price",
+    name: "priceMin",
     min: "0",
     max: "100",
     style: {
@@ -33723,10 +33769,61 @@ __webpack_require__.r(__webpack_exports__);
       boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)",
       WebkitAppearance: "none",
       backgroundColor: '#f2ff00'
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    },
+    onChange: handleChangeMin,
+    value: priceMin
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Filter by: Price")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      backgroundColor: '#ffe900',
+      top: '0',
+      bottom: '0',
+      left: '0',
+      right: '0'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "range",
+    name: "priceMax",
+    min: "0",
+    max: "100",
+    style: {
+      width: "80%",
+      margin: "auto",
+      boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)",
+      WebkitAppearance: "none",
+      backgroundColor: '#f2ff00'
+    },
+    onChange: handleChangeMax,
+    value: priceMax
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "0"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Maximo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "100"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      height: '5px'
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      cursor: 'pointer',
+      backgroundColor: '#333333',
+      borderRadius: '0 50% 50% 50%',
+      height: '40px',
+      width: '40px',
+      transform: 'rotate(44deg)',
+      margin: 'auto'
+    },
+    onClick: handleClickMax
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      color: 'white',
+      fontSize: '20px',
+      transform: 'rotate(-44deg)',
+      position: 'relative',
+      top: '6px'
+    }
+  }, priceMax)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      backgroundColor: 'black',
       borderRadius: '3px'
     }
   }));
@@ -33734,10 +33831,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/components/Register.jsx":
-/*!*************************************!*\
-  !*** ./src/components/Register.jsx ***!
-  \*************************************/
+/***/ "./src/components/RegisterModal.jsx":
+/*!******************************************!*\
+  !*** ./src/components/RegisterModal.jsx ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -33746,10 +33843,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var handleRegister = _ref.handleRegister;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "form-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Registrarse..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    id: "LogInTitle"
+  }, "Registrarse..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    onClick: handleRegister,
+    className: "close-modal-btn"
+  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "username"
@@ -33870,13 +33973,15 @@ RECIBE 2 PARAMETROS :
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUCTS", function() { return FETCH_PRODUCTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_PRODUCTS", function() { return FETCH_ALL_PRODUCTS; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 
 /***/ }),
 
@@ -33955,7 +34060,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Home */ "./src/components/Home.jsx");
+/* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
+/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/product */ "./src/components/product.jsx");
+/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Home */ "./src/components/Home.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33978,6 +34085,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var HomeContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -33990,9 +34099,17 @@ function (_React$Component) {
   }
 
   _createClass(HomeContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchAllProducts();
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Home__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_product__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        col: 3,
+        list: this.props.listaProductos
+      }));
     }
   }]);
 
@@ -34000,14 +34117,20 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    listaProductos: state.product.productos
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    fetchAllProducts: function fetchAllProducts() {
+      return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_2__["fetchAllProducts"])());
+    }
+  };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])()(HomeContainer));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(HomeContainer));
 
 /***/ }),
 
@@ -34035,9 +34158,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -34053,29 +34176,17 @@ function (_React$Component) {
   _inherits(LogInContainer, _React$Component);
 
   function LogInContainer(props) {
-    var _this;
-
     _classCallCheck(this, LogInContainer);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(LogInContainer).call(this, props));
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(LogInContainer).call(this, props));
   }
 
   _createClass(LogInContainer, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      console.log(this.props);
-      e.preventDefault();
-      this.props.handleModal(e);
-      this.props.history.push('/register');
-    }
-  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_LogInModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         handleModal: this.props.handleModal,
-        handleClick: this.handleClick
+        handleRegister: this.props.handleRegister
       });
     }
   }]);
@@ -34104,6 +34215,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LogInContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LogInContainer */ "./src/containers/LogInContainer.jsx");
 /* harmony import */ var _CarritoContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CarritoContainer */ "./src/containers/CarritoContainer.jsx");
 /* harmony import */ var _components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/DropdownNavbar */ "./src/components/DropdownNavbar.jsx");
+/* harmony import */ var _RegisterContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RegisterContainer */ "./src/containers/RegisterContainer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34130,6 +34242,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var NavBarContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -34144,12 +34257,14 @@ function (_React$Component) {
     _this.state = {
       inputValue: '',
       showLogInModal: false,
-      showCarrito: false
+      showCarrito: false,
+      showRegister: false
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleModal = _this.handleModal.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
+    _this.handleRegister = _this.handleRegister.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -34191,6 +34306,19 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.state.inputValue && Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProducts"])(this.state.inputValue);
+    }
+  }, {
+    key: "handleRegister",
+    value: function handleRegister(e) {
+      e.preventDefault();
+      !this.state.showRegister ? this.setState({
+        showRegister: true
+      }) : this.setState({
+        showRegister: false
+      });
+      if (this.state.showLogInModal) this.setState({
+        showLogInModal: false
+      });
     }
   }, {
     key: "render",
@@ -34248,9 +34376,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -34266,15 +34394,104 @@ function (_React$Component) {
   _inherits(ProductsContainer, _React$Component);
 
   function ProductsContainer() {
+    var _this;
+
     _classCallCheck(this, ProductsContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProductsContainer).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductsContainer).call(this)); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+    _this.state = {
+      priceMin: 0,
+      priceMax: 100
+    };
+    _this.handleChangeMin = _this.handleChangeMin.bind(_assertThisInitialized(_this));
+    _this.handleChangeMax = _this.handleChangeMax.bind(_assertThisInitialized(_this));
+    _this.handleClickMin = _this.handleClickMin.bind(_assertThisInitialized(_this));
+    _this.handleClickMax = _this.handleClickMax.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProductsContainer, [{
+    key: "handleClickMin",
+    value: function handleClickMin(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+      this.setState({
+        priceMin: 0
+      }, function () {
+        return console.log(_this2.state.priceMin, 'onClickMin');
+      });
+    }
+  }, {
+    key: "handleChangeMin",
+    value: function handleChangeMin(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var priceMin = Number(e.target.value);
+      this.setState({
+        priceMin: priceMin
+      }, function () {
+        return console.log(_this3.state.priceMin, 'onChangeMin');
+      });
+
+      if (this.state.priceMin >= this.state.priceMax) {
+        var _priceMin = this.state.priceMax - 1;
+
+        this.setState({
+          priceMin: _priceMin
+        });
+        alert("Error");
+      }
+    }
+  }, {
+    key: "handleClickMax",
+    value: function handleClickMax(e) {
+      var _this4 = this;
+
+      e.preventDefault(); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+      this.setState({
+        priceMax: 100
+      }, function () {
+        return console.log(_this4.state.priceMax, 'onClickMax');
+      });
+    }
+  }, {
+    key: "handleChangeMax",
+    value: function handleChangeMax(e) {
+      var _this5 = this;
+
+      e.preventDefault();
+      var priceMax = Number(e.target.value);
+      this.setState({
+        priceMax: priceMax
+      }, function () {
+        return console.log(_this5.state.priceMax, 'onChangeMax');
+      });
+
+      if (this.state.priceMax <= this.state.priceMin) {
+        var _priceMax = this.state.priceMin + 1;
+
+        this.setState({
+          priceMax: _priceMax
+        });
+        alert("Error");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ProductsComponent__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ProductsComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleChangeMin: this.handleChangeMin,
+        priceMin: this.state.priceMin,
+        handleClickMin: this.handleClickMin,
+        priceMax: this.state.priceMax,
+        handleChangeMax: this.handleChangeMax,
+        handleClickMax: this.handleClickMax
+      });
     }
   }]);
 
@@ -34308,7 +34525,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _components_Register__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Register */ "./src/components/Register.jsx");
+/* harmony import */ var _components_RegisterModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/RegisterModal */ "./src/components/RegisterModal.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34345,7 +34562,9 @@ function (_React$Component) {
   _createClass(RegisterContainer, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Register__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_RegisterModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleRegister: this.props.handleRegister
+      }));
     }
   }]);
 
@@ -34378,14 +34597,19 @@ var style = {
   boxSizing: "border-box",
   WebkitBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
   MozBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
-  boxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)"
+  boxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
+  marginTop: 8
 };
 var styleImg = {
   width: '100%',
-  objectFit: 'contain'
+  objectFit: 'contain',
+  maxHeight: 200,
+  height: 300
 };
 var TitleStyle = {
-  fontSize: '18px'
+  fontSize: '18px',
+  height: 50,
+  textTransform: "uppercase"
 };
 var starStyle = {
   marginTop: -24,
@@ -34469,7 +34693,12 @@ var initialState = {
   switch (action.type) {
     case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_PRODUCTS"]:
       return Object.assign({}, state, {
-        productos: action.product
+        productos: action.productos
+      });
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_PRODUCTS"]:
+      return Object.assign({}, state, {
+        productos: action.productos
       });
 
     default:

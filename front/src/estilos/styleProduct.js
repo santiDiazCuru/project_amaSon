@@ -6,14 +6,20 @@ export const style = {
     boxSizing: "border-box",
     WebkitBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
     MozBoxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
-    boxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)"
+    boxShadow: "-2px -1px 25px 1px rgba(158,158,158,1)",
+    marginTop:8
+    
 }
 export const styleImg = {
     width: '100%',
-    objectFit: 'contain'
+    objectFit: 'contain',
+    maxHeight:200,
+    height:300
 }
 export const TitleStyle = {
-    fontSize: '18px'
+    fontSize: '18px',
+    height:50,
+    textTransform: "uppercase"
 }
 export const starStyle = {
     marginTop: -24,

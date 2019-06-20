@@ -1,13 +1,27 @@
-import { FETCH_PRODUCTS } from "../constants"
+import { FETCH_PRODUCTS, FETCH_ALL_PRODUCTS } from "../constants"
 import Axios from "axios"
 import store from '../store'
+
 const addProducts = (productos) => ({
     type: FETCH_PRODUCTS,
     productos
 });
 
+const allProducts = (productos) => ({
+    type: FETCH_ALL_PRODUCTS,
+    productos
+});
+
 export const fetchProducts = (input) => {
     Axios.get(`/api/products/${input}`)
-        .then(productos => store.dispatch(addProducts(productos.data)))
-        
+        .then(productos => store.dispatch(addProducts(productos.data)))   
+}
+
+// BUSCA TODO LOS PRODUCTOS
+export const fetchAllProducts = () => dispatch => {
+    Axios.get(`/api/products/`)
+        .then(productos => dispatch(allProducts(productos.data))) 
+        .then((data)=>{
+            console.log(data, "DATAAA")
+        })  
 }
