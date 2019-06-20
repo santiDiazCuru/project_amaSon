@@ -20,6 +20,7 @@ class NavBarContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleModal = this.handleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+       
         this.handleCarrito = this.handleCarrito.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
 
@@ -82,7 +83,7 @@ class NavBarContainer extends React.Component {
             <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
             <DropdownNavbar />
             </div>
-        );
+        )
     };
 };
 
