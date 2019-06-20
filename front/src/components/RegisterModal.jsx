@@ -1,8 +1,9 @@
 import React from 'react';
 
-export default () => (
+export default ({handleRegister}) => (
     <div id='form-container' >
-        <h2>Registrarse...</h2>
+         <h2 id='LogInTitle'>Registrarse...</h2>
+            <span onClick={handleRegister} className="close-modal-btn" >x</span>
         <form>
             <div>
                 <div className='input-container'>
