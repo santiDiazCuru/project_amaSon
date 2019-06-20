@@ -12,16 +12,13 @@ const allProducts = (productos) => ({
     productos
 });
 
-export const fetchProducts = (input) => {
+export const fetchProducts = (input) => dispatch => {
     Axios.get(`/api/products/${input}`)
-        .then(productos => store.dispatch(addProducts(productos.data)))   
+        .then(productos => dispatch(addProducts(productos.data))) 
 }
 
 // BUSCA TODO LOS PRODUCTOS
 export const fetchAllProducts = () => dispatch => {
     Axios.get(`/api/products/`)
-        .then(productos => dispatch(allProducts(productos.data))) 
-        .then((data)=>{
-            console.log(data, "DATAAA")
-        })  
+        .then(productos => dispatch(allProducts(productos.data)))   
 }

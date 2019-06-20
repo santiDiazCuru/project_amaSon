@@ -33196,17 +33196,96 @@ var allProducts = function allProducts(productos) {
 };
 
 var fetchProducts = function fetchProducts(input) {
-  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(input)).then(function (productos) {
-    return _store__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch(addProducts(productos.data));
-  });
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(input)).then(function (productos) {
+      return dispatch(addProducts(productos.data));
+    });
+  };
 }; // BUSCA TODO LOS PRODUCTOS
 
 var fetchAllProducts = function fetchAllProducts() {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/").then(function (productos) {
       return dispatch(allProducts(productos.data));
-    }).then(function (data) {
-      console.log(data, "DATAAA");
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./src/action-creators/logInUser.js":
+/*!******************************************!*\
+  !*** ./src/action-creators/logInUser.js ***!
+  \******************************************/
+/*! exports provided: validateUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateUser", function() { return validateUser; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var logInUser = function logInUser(user) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["LOG_IN_USER"],
+    user: user
+  };
+}; // Esta funcion es llamada cuando se clickea en el boton LOG IN. va a la base de datos
+// a buscar un usuario que matchee con el username ingresado (todavía no valida con contraseña :(( )
+//despues setea el estado del store y queda con un campo user que a su vez tiene un campo currentUser
+// y otro isLoggedIn (por defecto este ultimo es false asi cualquiera puede acceder y elegir que componentes
+// renderizar segun si hay alguien loggeado o no)
+//el objeto state tiene el campo users que se ve así:
+// user: {
+//     currentUser: {id: 1, username: "pok", email: "pok@pok", password: "20ff13269cc3180d972b28d438c415852a955b3a", salt: "5e53edf453a4df378ebeee0957eaafb5868b6e73"},
+//     isLoggedIn: true
+// }
+
+
+var validateUser = function validateUser(userData) {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/users/login', userData).then(function (user) {
+      return dispatch(logInUser(user.data));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./src/action-creators/registerUser.js":
+/*!*********************************************!*\
+  !*** ./src/action-creators/registerUser.js ***!
+  \*********************************************/
+/*! exports provided: registerUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerUser", function() { return registerUser; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+ // la funcion de registerUser hace solo un axios con un post para crear un nuevo user en la DB.
+// recibe un argumento(newUserInfo) que es un objeto que viene seteado ya con la data del nuevo usuario 
+//tomada de los inputs del RegisterContainer
+// luego llama a logInUser y hace que se setee el usuario en el estado del store!
+
+var logInUser = function logInUser(user) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["LOG_IN_USER"],
+    user: user
+  };
+};
+
+var registerUser = function registerUser(newUserInfo) {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/users/register', newUserInfo).then(function (newUser) {
+      return dispatch(logInUser(newUser.data));
     });
   };
 };
@@ -33546,7 +33625,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var handleModal = _ref.handleModal,
-      handleRegister = _ref.handleRegister;
+      handleRegister = _ref.handleRegister,
+      handleSubmit = _ref.handleSubmit,
+      handleChanges = _ref.handleChanges;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -33554,13 +33635,17 @@ __webpack_require__.r(__webpack_exports__);
   }, "Log In..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "close-modal-btn",
     onClick: handleModal
-  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChanges,
     type: "text",
     name: "username",
     className: "form-control",
     placeholder: "Username",
     "aria-describedby": "basic-addon1"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChanges,
     type: "password",
     name: "password",
     className: "form-control",
@@ -33672,7 +33757,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var handleRegister = _ref.handleRegister;
+  var handleRegister = _ref.handleRegister,
+      handleChanges = _ref.handleChanges,
+      handleSubmit = _ref.handleSubmit;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "form-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -33680,23 +33767,28 @@ __webpack_require__.r(__webpack_exports__);
   }, "Registrarse..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     onClick: handleRegister,
     className: "close-modal-btn"
-  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "username"
   }, "Usuario"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChanges,
     name: "username",
     type: "text",
     className: "form-control"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
   }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChanges,
     name: "email",
     type: "email",
     className: "form-control"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password"
   }, "Contrase\xF1a"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChanges,
     name: "password",
     type: "password",
     className: "form-control"
@@ -33801,15 +33893,17 @@ RECIBE 2 PARAMETROS :
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, LOG_IN_USER */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUCTS", function() { return FETCH_PRODUCTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_PRODUCTS", function() { return FETCH_ALL_PRODUCTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_IN_USER", function() { return LOG_IN_USER; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
+var LOG_IN_USER = 'LOG_IN_USER';
 
 /***/ }),
 
@@ -33971,11 +34065,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LogInContainer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_LogInModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/LogInModal */ "./src/components/LogInModal.jsx");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33986,13 +34080,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -34004,15 +34099,49 @@ function (_React$Component) {
   _inherits(LogInContainer, _React$Component);
 
   function LogInContainer(props) {
+    var _this;
+
     _classCallCheck(this, LogInContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(LogInContainer).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LogInContainer).call(this, props)), _this.state = {
+      //maneja los inputsss!
+      username: '',
+      password: ''
+    };
+    _this.handleChanges = _this.handleChanges.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(LogInContainer, [{
+    key: "handleChanges",
+    value: function handleChanges(e) {
+      e.preventDefault();
+      if (e.target.name === 'username') this.setState({
+        username: e.target.value
+      });
+      if (e.target.name === 'password') this.setState({
+        password: e.target.value
+      });
+      console.log(this.state);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var user = {
+        username: this.state.username,
+        password: this.state.password
+      };
+      e.preventDefault();
+      this.state.username && this.state.password && this.props.validateUser(user) && this.props.handleModal();
+    } //handleModal viene por props y es para cerrar el modal. handleRegister es para abrir o cerrar el registerModal
+
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_LogInModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleSubmit: this.handleSubmit,
+        handleChanges: this.handleChanges,
         handleModal: this.props.handleModal,
         handleRegister: this.props.handleRegister
       });
@@ -34022,7 +34151,15 @@ function (_React$Component) {
   return LogInContainer;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    validateUser: function validateUser(user) {
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__["validateUser"])(user));
+    }
+  };
+};
 
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(LogInContainer));
 
 /***/ }),
 
@@ -34219,11 +34356,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RegisterContainer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_RegisterModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/RegisterModal */ "./src/components/RegisterModal.jsx");
+/* harmony import */ var _action_creators_registerUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/registerUser */ "./src/action-creators/registerUser.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34234,13 +34371,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -34252,16 +34390,55 @@ function (_React$Component) {
   _inherits(RegisterContainer, _React$Component);
 
   function RegisterContainer(props) {
+    var _this;
+
     _classCallCheck(this, RegisterContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RegisterContainer).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RegisterContainer).call(this, props)), _this.state = {
+      //maneja los inputsss!
+      username: '',
+      email: '',
+      password: ''
+    };
+    _this.handleChanges = _this.handleChanges.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(RegisterContainer, [{
+    key: "handleChanges",
+    value: function handleChanges(e) {
+      e.preventDefault();
+      if (e.target.name === 'username') this.setState({
+        username: e.target.value
+      });
+      if (e.target.name === 'email') this.setState({
+        email: e.target.value
+      });
+      if (e.target.name === 'password') this.setState({
+        password: e.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var newUser = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password
+      };
+      e.preventDefault();
+      this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser) && this.props.handleRegister();
+    } //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
+    //modal sie sta abierto y que se abra si esta cerrado!!!!
+
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_RegisterModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        handleRegister: this.props.handleRegister
+        handleSubmit: this.handleSubmit,
+        handleRegister: this.props.handleRegister,
+        handleChanges: this.handleChanges
       }));
     }
   }]);
@@ -34269,7 +34446,15 @@ function (_React$Component) {
   return RegisterContainer;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    registerUser: function registerUser(newUser) {
+      return dispatch(Object(_action_creators_registerUser__WEBPACK_IMPORTED_MODULE_3__["registerUser"])(newUser));
+    }
+  };
+};
 
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(RegisterContainer));
 
 /***/ }),
 
@@ -34362,10 +34547,13 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _products_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./products_reducer */ "./src/reducers/products_reducer.js");
+/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_reducer */ "./src/reducers/users_reducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  product: _products_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  product: _products_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  user: _users_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
@@ -34398,6 +34586,45 @@ var initialState = {
       return Object.assign({}, state, {
         productos: action.productos
       });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/users_reducer.js":
+/*!***************************************!*\
+  !*** ./src/reducers/users_reducer.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  currentUser: {},
+  isLoggedIn: false //Entonces este initial state setea el estado por defecto del users reducer como que el usuario actual esta vacío
+  //(es un objeto vacío porque de la DB llega como un objeto cada usuario). Pero además, setea el campo isLoggedIn
+  //a false ya que despues para renderizar los componentes según el usuario esté loggeado o no, no se puede
+  //preguntar if(currentUser) ya que los objetos vacíos siempre devuelven true...
+
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["LOG_IN_USER"]:
+      {
+        return Object.assign({}, state, {
+          currentUser: action.user,
+          isLoggedIn: true
+        });
+      }
 
     default:
       return state;
