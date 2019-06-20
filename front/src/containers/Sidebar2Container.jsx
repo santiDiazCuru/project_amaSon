@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SidebarComponent from '../components/SidebarComponent';
+import Sidebar2Component from '../components/Sidebar2Component';
 
 class SidebarContainer extends React.Component {
     constructor() {
@@ -53,7 +53,7 @@ class SidebarContainer extends React.Component {
 
     render() {
         return (
-            <SidebarComponent handleChangeMin={this.handleChangeMin} priceMin={this.state.priceMin} handleClickMin={this.handleClickMin} priceMax={this.state.priceMax} handleChangeMax={this.handleChangeMax} handleClickMax={this.handleClickMax} />
+            <Sidebar2Component handleChangeMin={this.handleChangeMin} priceMin={this.state.priceMin} handleClickMin={this.handleClickMin} priceMax={this.state.priceMax} handleChangeMax={this.handleChangeMax} handleClickMax={this.handleClickMax} />
         );
     };
 };

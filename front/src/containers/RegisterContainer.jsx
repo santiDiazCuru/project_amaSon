@@ -28,7 +28,8 @@ class RegisterContainer extends React.Component {
             password: this.state.password
         }
         e.preventDefault()
-        this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser) && this.props.handleRegister()
+        this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser)
+        this.props.handleRegister()
         
     }
     //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
