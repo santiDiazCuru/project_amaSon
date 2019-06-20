@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React from 'react';
-import Producto from './product';
-=======
 import React, { Component } from 'react';
 
->>>>>>> 2e91a50539c3aeadb987c8e45861c482030a9142
 
 const style = {
     height: 334,

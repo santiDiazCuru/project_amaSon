@@ -1,14 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-<<<<<<< HEAD
-import Home from '../components/Home';
-import Footer from '../components/Footer'
-=======
 import { fetchAllProducts } from '../action-creators/getProducts'
 import Producto from '../components/product'
-
+import Footer from '../components/Footer'
 import Home from '../components/Home'
->>>>>>> 2e91a50539c3aeadb987c8e45861c482030a9142
 
 class HomeContainer extends React.Component {
     constructor(props) {
@@ -27,12 +22,8 @@ class HomeContainer extends React.Component {
                     col={3}
                     list={this.props.listaProductos}
                 />
+                 <Footer/>
 
-<<<<<<< HEAD
-                    <Home />
-                    <Footer/>
-=======
->>>>>>> 2e91a50539c3aeadb987c8e45861c482030a9142
             </div>
         );
     }
