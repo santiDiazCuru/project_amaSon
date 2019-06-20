@@ -43,7 +43,7 @@ class NavBarContainer extends React.Component {
 
     render() {
         return (<>
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito}/> &&
+            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito}/>
             <DropdownNavbar />
             {this.state.showLogInModal && <LogInContainer handleModal={this.handleModal} /> || this.state.showCarrito && <CarritoContainer handleCarrito={this.handleCarrito} />}
         </>);

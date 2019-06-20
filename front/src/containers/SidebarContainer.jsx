@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 class SidebarContainer extends React.Component {
+    constructor(){
+        super();
+    }
+
+
 
     render() {
         return (
