@@ -20,6 +20,7 @@ const allProductsCategory = (productos) => ({
 
 // BUSQUEDA
 export const fetchProducts = (input) => {
+    console.log(input, "INPUT")
     Axios.get(`/api/products/${input}`)
         .then(productos => store.dispatch(addProducts(productos.data)))   
 }
