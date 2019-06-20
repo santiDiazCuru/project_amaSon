@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom' 
 const style = {
     minHeight: 35,
     position: 'fixed',
@@ -26,10 +26,12 @@ export default () => (
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <ul>
-
-                        <li><a className="dropdown-item" href="#">Entretenimiento</a></li>
-                        <li><a className="dropdown-item" href="#">Vida Saludable</a></li>
-                        <li><a className="dropdown-item" href="#">Deportes extremos</a></li>
+                        <li><Link className="dropdown-item" to="/categoria/celulares">Celulares</Link></li>
+                        <li><Link className="dropdown-item" to="/categoria/microondas">Microondas</Link></li>
+                        <li><Link className="dropdown-item" to="/categoria/heladeras">Heladeras</Link></li>
+                        <li><Link className="dropdown-item" to="/categoria/notebook">Notebook</Link></li>
+                        <li><Link className="dropdown-item" to="/categoria/tablets">Tablets</Link></li>
+                        <li><Link className="dropdown-item" to="/categoria/televisores">Televisores</Link></li>
 
                     </ul>
                 </div>
@@ -41,9 +43,9 @@ export default () => (
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <ul>
 
-                        <li><a className="dropdown-item" href="#">Ofertas del mes</a></li>
-                        <li><a className="dropdown-item" href="#">Financiacion</a></li>
-                        <li><a className="dropdown-item" href="#">Compra mas, paga menos!</a></li>
+                        <li><Link className="dropdown-item" to="#">Ofertas del mes</Link></li>
+                        <li><Link className="dropdown-item" to="#">Financiacion</Link></li>
+                        <li><Link className="dropdown-item" to="#">Compra mas, paga menos!</Link></li>
 
                     </ul>
                 </div>
@@ -55,9 +57,9 @@ export default () => (
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <ul>
 
-                        <li><a className="dropdown-item" href="#">Adquiri nuestra tarjeta</a></li>
-                        <li><a className="dropdown-item" href="#">Suma puntos y gana premios!</a></li>
-                        <li><a className="dropdown-item" href="#">Descuentos a jubilados</a></li>
+                        <li><Link className="dropdown-item" to="#">Adquiri nuestra tarjeta</Link></li>
+                        <li><Link className="dropdown-item" to="#">Suma puntos y gana premios!</Link></li>
+                        <li><Link className="dropdown-item" to="#">Descuentos a jubilados</Link></li>
 
                     </ul>
                 </div>
