@@ -21,12 +21,13 @@ class LogInContainer extends React.Component {
         console.log(this.state)
     }
     handleSubmit(e) {
+        e.preventDefault()
         const user = {
             username: this.state.username,
             password: this.state.password
         }
-        e.preventDefault()
-        this.state.username &&  this.state.password && this.props.validateUser(user) && this.props.handleModal()
+        this.state.username &&  this.state.password && this.props.validateUser(user) 
+        this.props.handleModal()
     }
     //handleModal viene por props y es para cerrar el modal. handleRegister es para abrir o cerrar el registerModal
 

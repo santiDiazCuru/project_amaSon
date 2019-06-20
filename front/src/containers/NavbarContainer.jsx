@@ -7,7 +7,6 @@ import CarritoContainer from './CarritoContainer';
 import DropdownNavbar from '../components/DropdownNavbar'
 import RegisterContainer from './RegisterContainer';
 
-
 class NavBarContainer extends React.Component {
     constructor() {
         super();
@@ -25,7 +24,7 @@ class NavBarContainer extends React.Component {
 
     };
     handleModal(e) {
-        e.preventDefault();
+        if(e) e.preventDefault()
         !this.state.showLogInModal ? this.setState({ showLogInModal: true }) : this.setState({ showLogInModal: false });
     };
 
@@ -45,17 +44,45 @@ class NavBarContainer extends React.Component {
         this.state.inputValue && fetchProducts(this.state.inputValue)
     };
     handleRegister(e){
-        e.preventDefault();
+        if (e) e.preventDefault()
         !this.state.showRegister ? this.setState({ showRegister: true }) : this.setState({ showRegister: false })
         if (this.state.showLogInModal) this.setState({ showLogInModal: false })
     }
 
     render() {
-        return (<>
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito}/>
+        if (this.state.showLogInModal) {
+            return (
+                <div>
+                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <DropdownNavbar />
+                    <LogInContainer handleModal={this.handleModal} handleRegister={this.handleRegister}/>
+                </div>
+            )
+            
+        } else if (this.state.showCarrito){
+            return (
+                <div>
+                    <NavbarComponent handleChange={this.handleChange} handleCarrito={this.handleCarrito} handleSubmit={this.handleSubmit}/>
+                    <DropdownNavbar />
+                    <CarritoContainer handleCarrito={this.handleCarrito}/>
+                </div>
+            )
+        } if (this.state.showRegister) {
+            return (
+                <div>
+                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <DropdownNavbar />
+                    <RegisterContainer handleRegister={this.handleRegister} />
+                </div>
+            )
+            
+        }
+        return (
+            <div>
+            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
             <DropdownNavbar />
-            {this.state.showLogInModal && <LogInContainer handleModal={this.handleModal} /> || this.state.showCarrito && <CarritoContainer handleCarrito={this.handleCarrito} />}
-        </>);
+            </div>
+        )
     };
 };
 
