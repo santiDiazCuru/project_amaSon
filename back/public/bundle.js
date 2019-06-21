@@ -33587,51 +33587,53 @@ __webpack_require__.r(__webpack_exports__);
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-4 mb-5 mb-lg-0"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Castillo 1332", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " (Timbre Rojo)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-map-marker",
+    "aria-hidden": "true"
+  }), "Castillo 1332 Cap. Fed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-4 mb-5 mb-lg-0 images"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Redes Sociales"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.facebook.com/",
-    target: "_blank  "
+    target: "_blank  ",
+    className: "images"
   }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "images",
+    width: "50px",
     src: "./facebook.png",
     alt: ""
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.instagram.com/",
-    target: "_blank  "
+    target: "_blank  ",
+    className: "images"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "images",
+    width: "50px",
     src: "./instragram.png",
     alt: ""
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.linkedin.com/",
-    target: "_blank  "
+    target: "_blank  ",
+    className: "images"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "images",
+    width: "50px",
     src: "./linkedin.png",
     alt: ""
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.twitter.com/",
-    target: "_blank  "
+    target: "_blank  ",
+    className: "images"
   }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "images",
+    width: "50px",
     src: "./twitter.png",
     alt: ""
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "mb-4"
-  }, "About AmaSon"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "lead mb-0"
-  }, "Skereeeee"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xA9 2019 AmaSon Company, Inc. \xB7 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "col-lg-4 mb-5 mb-lg-0"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Contacto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-envelope",
+    "aria-hidden": "true"
+  }), "info@amason.com"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xA9 2019 AmaSon Company, Inc. \xB7 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: ""
   }, "Privacy "), " \xB7 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "#"
-  }, "Terms")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg 3 home"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "./"
-  }, "GO TO BACK"))));
+  }, "Terms"))));
 });
 
 /***/ }),
