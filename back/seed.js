@@ -209,8 +209,6 @@ Products.bulkCreate([
         valoracion: 3,
         categorias: "televisores"
     }
-
-
 ])
 
 Users.bulkCreate([
