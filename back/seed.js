@@ -73,48 +73,6 @@ Products.bulkCreate([
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h78/hd9/10023764721694/00125055-173962-01.png",
         valoracion: 3,
         categorias: "celulares"
-    }
-
-])
-
-Users.bulkCreate([
-    {
-        username: "Lucas",
-        email: "lucas@aguirre.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Nico",
-        email: "carello@martino.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Seba",
-        email: "seba@necochea.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Kenyi",
-        email: "kenyi@lewis.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Santi",
-        email: "santi@curu.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        categorias: "celulares"
     },
     {
         titulo: "motorola celular moto e5 xt19443 gold",
@@ -253,6 +211,45 @@ Users.bulkCreate([
     }
 
 
+])
+
+Users.bulkCreate([
+    {
+        username: "Lucas",
+        email: "lucas@aguirre.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Nico",
+        email: "carello@martino.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Seba",
+        email: "seba@necochea.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Kenyi",
+        email: "kenyi@lewis.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Santi",
+        email: "santi@curu.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    
 ])
 
 
