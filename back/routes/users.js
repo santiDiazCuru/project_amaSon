@@ -14,8 +14,10 @@ Router.post('/login', function(req,res){
     .then((user)=> res.json(user))
 })
 
-module.exports = Router
+Router.get('/', function(req, res){
+    User.findAll()
+    .then(users => {res.json(users)})
+})
 
 
-
-
+module.exports = Router;

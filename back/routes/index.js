@@ -8,7 +8,7 @@ const Products = require('../models/Products');
 
 Router.use('/products', productsRouter)
 Router.use('/api/products', productsRouter)
-Router.use('/users', usersRouter)
+Router.use('/api/users', usersRouter)
 
 module.exports = Router
 

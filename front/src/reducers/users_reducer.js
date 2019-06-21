@@ -2,7 +2,7 @@ import {LOG_IN_USER, LOG_OUT_USER} from '../constants';
 
 const initialState = {
     currentUser: {},
-    isLoggedIn: false
+    isLoggedIn: false,
 }
 //Entonces este initial state setea el estado por defecto del users reducer como que el usuario actual esta vacío
 //(es un objeto vacío porque de la DB llega como un objeto cada usuario). Pero además, setea el campo isLoggedIn
