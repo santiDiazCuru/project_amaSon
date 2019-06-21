@@ -24,7 +24,7 @@ Router.get(`/:search`, (req, res) => {
 // =====  EXTRACCION DE TODA LA DATA =======
 // ==== Extraccion de toda la base (provisoriamente)
 Router.get('/', (req, res) => {
-    Products.findAll({})
+    Products.findAll({ limit: 8 })
     .then(products => res.json(products))
 })
 

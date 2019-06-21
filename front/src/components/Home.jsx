@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 
 const style = {
-    height: 334,
-    border: "1px solid grey"
+    backgroundColor: "#fff",
+    border: "4px solid #E2E2E2",
+    transition: "all 0.15s linear",
+    maxHeight:200,
+    minHeight:200,
+    marginTop:-40,
+}
+const sombraRow = {
+    boxShadow: "rgb(158, 158, 158) -2px -1px 25px 1px"
+}
+const imgStyle = {
+    objectFit: 'contain',
+    maxHeight:120,
+    minHeight:120,
+    maxWidth:"100%"
 }
 
-const imgStyle = {
-    objectFit: 'contain'
+const categoryName =  {
+    color: "#333",
+    fontSize: 16,
+    lineHeight: "initial",
+    padding: "2px 0",
+    textDecoration: "none"
 }
 
 export default (props) => (
@@ -62,38 +79,63 @@ export default (props) => (
             </a>
         </div>
 
-
-
         {/* esto es el banner */}
-
-        <div className="row">
-            <div className="col-lg-3" style={style}>
-                <h2>Métodos de Pago</h2>
-                <img className="img-thumbnail" style={imgStyle} src="https://bambae.com/themes/vmt/img/bambae/tarjetascredito.png" alt="Responsive image" />
-                <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
+        <div className="container">
+        <div className="row" style={sombraRow}>
+            <div className="col-md-3" style={style}>
+                <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
+                    <div className="card">
+                        <img style={imgStyle} className="block"
+                        src="https://mottaplantillas.com/wp-content/uploads/2015/11/paypal.png" />
+                        <div className="card-text category-info card-text--fixed-bottom">
+                        <h3 style={categoryName}>Métodos de Pago</h3>
+                        <span className="category-discount">Más detalles &raquo;</span>
+                        </div>
+                    </div>
+                </Link> 
             </div>
-            <div className="col-lg-3" style={style}>
-                <h2>Te enviamos tu compra!</h2>
-                <img className="img-thumbnail" style={imgStyle} src="https://mlstaticquic-a.akamaihd.net/autopartes-envios-D_NQ_NP_735102-MLU27856184841_072018-F.jpg" alt="Responsive image" />
-                <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
+            <div className="col-md-3" style={style}>
+                <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
+                    <div className="card">
+                        <img style={imgStyle} className="block"
+                        src="https://habitarvirtual.com.ar/pub/media/wysiwyg/envios-a-todos-el-pais.jpg" />
+                        <div className="card-text category-info card-text--fixed-bottom">
+                        <h3 style={categoryName}>Envios a domicilio</h3>
+                        <span className="category-discount">Más detalles &raquo;</span>
+                        </div>
+                    </div>
+                </Link> 
             </div>
-            <div className="col-lg-3" style={style}>
-                <h2>Servicio Post Venta!</h2>
-
-                <img className='img-thumbnail' style={imgStyle} src="https://brandslogo.net/wp-content/uploads/2018/03/social-network-logo-vector-200x200.png" alt="Responsive image" />
-                <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
+            <div className="col-md-3" style={style}>
+                <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
+                    <div className="card">
+                        <img style={imgStyle} className="block"
+                        src="https://www.calidda.com.pe/atencion-al-cliente/Calidda/images/Servicios---Atencion-al-Cliente.jpg" />
+                        <div className="card-text category-info card-text--fixed-bottom">
+                        <h3 style={categoryName}>Atencion al Cliente 24hs</h3>
+                        <span className="category-discount">Más detalles &raquo;</span>
+                        </div>
+                    </div>
+                </Link> 
             </div>
-            <div className="col-lg-3" style={style}>
-                <h2>Servicio Post Venta!</h2>
-
-                <img className='img-thumbnail' style={imgStyle} src="https://brandslogo.net/wp-content/uploads/2018/03/social-network-logo-vector-200x200.png" alt="Responsive image" />
-                <p><a className="btn btn-primary" href="#" role="button">Mas detalles... &raquo;</a></p>
+            <div className="col-md-3" style={style}>
+                <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
+                    <div className="card">
+                        <img style={imgStyle} className="block"
+                        src="http://www.axosvisual.com/ImagenesBlog/ofertas.jpeg" />
+                        <div className="card-text category-info card-text--fixed-bottom">
+                        <h3 style={categoryName}>Ofertas Semanales</h3>
+                        <span className="category-discount">Más detalles &raquo;</span>
+                        </div>
+                    </div>
+                </Link> 
             </div>
+            
         </div>
         <br />
         
 
-
+        </div>
     </div>
 
 );

@@ -24,8 +24,8 @@ class CategoryContainer extends React.Component {
                         <li><a href="">====================</a></li>
                         <li><a href="">====================</a></li>
                         <li><a href="">====================</a></li>
-                        <li><a href="">FILTRO DE</a></li>
-                        <li><a href="">SEBA ACA</a></li>
+                        <li><a href="">COMPONENTE</a></li>
+                        <li><a href="">FILTRO</a></li>
                         <li><a href="">====================</a></li>
                         <li><a href="">====================</a></li>
                         <li><a href="">====================</a></li>
