@@ -1,7 +1,7 @@
 const Products = require('./models/Products');
 Products.bulkCreate([
     {
-        titulo: "aspiradoras samsung aspiradora vc20cc azul",
+        titulo: "aspiradoras samsung vc20cc azul",
         descripcion: "Acabar con la suciedad, el pelo de las mascotas y también con las bolsas. Las aspiradoras con bolsas no atrapan el polvo como las aspiradoras sin. Incluso las bolsas pueden tener que ser reemplazadas antes de que siquiera esté medio llena.",
         precio: 7400,
         stock: 10,
@@ -19,7 +19,7 @@ Products.bulkCreate([
         categorias:"microondas"
     },
     {
-        titulo: "heladeras patrick heladera con freezer",
+        titulo: "heladeras patrick con freezer",
         descripcion: "Capacidad bruta 364L/neta 359L. Estantes tipo rejilla removibles. Luz interior Led. Anaqueles en contrapuerta regulables en altura. Control de temperatura interior a perilla. Criper doble p/frutas y verduras. Sistema de refrigeración Cíclico. EE:A",
         precio: 23599,
         stock: 25,
@@ -28,7 +28,7 @@ Products.bulkCreate([
         categorias: "heladeras"
     },
     {
-        titulo: "televisores noblex smart tv 32 hd 32x5000",
+        titulo: "televisores noblex smart tv 32",
         descripcion: "TV LED 32 HD (1366x768). Formato 16. Brillo 210cd/m². Contraste 2000:1. Tasa de refresco 60Hz. Tiempo de respuesta 6.5ms. HDMIx2. USBx2. Bluetooth Pot.de audio 6W RMSx2. Salida para auriculares. A/V.",
         precio: 12999,
         stock: 8,
@@ -91,7 +91,7 @@ Products.bulkCreate([
         categorias:"celulares"
     },
     {
-        titulo: "motorola celular moto e5 plus xt19245 gris",
+        titulo: "motorola celular moto e5 plus xt19245",
         descripcion: "4G LTE. Pant.IPS 6.0HD+. Proc.Quad Core 1.4Ghz. SO Android 8.0. Cámara post.12Mp c/enfoque láser, frontal 5Mp. Video en 1080p. Radio FM. Memoria int.16Gb/RAM 2Gb. Bluetooth 4.2. Wi-Fi. A-GPS. Bateria Li-Ion 5000mAh (h/40hs). Lector de huella dactilar.",
         precio: 9999,
         stock: 6,
@@ -100,7 +100,7 @@ Products.bulkCreate([
         categorias:"celulares"
     },
     {
-        titulo: "motorola celular   moto g7 play xt19522 gold",
+        titulo: "motorola celular   moto g7 play xt19522",
         descripcion: "El Motorola Moto G7 PLAY tiene una pantalla de 5.7 pulgadas a resolución HD+ un procesador Snapdragon 632 acompañado de 2GB de RAM y 32GB de almacenamiento una cámara de 13 MP cámara frontal de 8",
         precio:12999 ,
         stock:7,
@@ -109,7 +109,7 @@ Products.bulkCreate([
         categorias:"celulares"
     },
     {
-        titulo: "notebook exo smart e13x intel celeron n3350",
+        titulo: "notebook exo smart e13x n3350",
         descripcion: "La nueva NOTEBOOK EXO SMART E13X esta diseñada para vivir conectada como vos. Diseñada con materiales ultra-livianos. Elegante por donde la mires. Fascinante por donde la mires. Con su pantalla FUL",
         precio: 15999,
         stock: 4,
@@ -118,7 +118,7 @@ Products.bulkCreate([
         categorias:"notebook"
     },
     {
-        titulo: "notebooks 2 en 1 exo notebook  wings k2200 intel atom",
+        titulo: "notebooks 2 en 1 exo notebook",
         descripcion: "2 En 1 desmontable. Proc.Intel Atom X5-Z8300 Quad Core 1.44Ghz. SO Windows 10 Home. Memoria int.32Gb/RAM 2Gb. Pant.IPS 10.1 multitouch (1280x800). Wi-Fi. Bluetooth. Cámara dual de 2Mp. Micro HDMI/Micro USB/USB 2.0/DC-Jack/Auricular 3.5mm. Bateria 6000mAh",
         precio: 10999,
         stock: 6,
@@ -145,7 +145,7 @@ Products.bulkCreate([
         categorias:"notebook"
     },
     {
-        titulo: "notebook hdc cloudbook cy141ih intel celeron",
+        titulo: "notebook hdc cloudbook cy141ih celeron",
         descripcion: "Proc.Intel Celeron N-3350. Memoria 3Gb LPDDR3. Almacenamiento 32Gb eMMC. Socalo p/Disco Duro 2.5 Sata h/1TB.Pantalla 14IPS Full HD. Wi-Fi. Bluetooth 4.2. Mini HDMI. Slot p/micro SD h/128gb. SO Windows 10.",
         precio: 9299,
         stock: 10,
@@ -154,7 +154,7 @@ Products.bulkCreate([
         categorias:"notebook"
     },
     {
-        titulo: "televisores samsung smart tv 32 hd 32 un32j4300ag hd",
+        titulo: "televisores samsung smart tv 32 hd",
         descripcion: "TV 32 SMART BASIC UN32J4300AG.",
         precio: 15999,
         stock:2 ,
@@ -163,7 +163,7 @@ Products.bulkCreate([
         categorias:"televisores"
     },
     {
-        titulo: "televisores philips smart tv  32 hd 32 32phg583377",
+        titulo: "televisores philips smart tv  32 hd",
         descripcion: "Pantalla: LED HD Ready. Resolución: 1366x768p. Relación de aspecto: 4:3 / 16:9. Potencia de salida (RMS): 10W. HDMI x2. USB x2. Conexiones: Antena tipo F. Entrada I/D de audio. Salida de audio digita",
         precio: 13769,
         stock: 3,
@@ -172,7 +172,7 @@ Products.bulkCreate([
         categorias:"televisores"
     },
     {
-        titulo: "televisores philips smart tv  32 hd 32phg581377",
+        titulo: "televisores philips smart tv  32 hd",
         descripcion: "El Smart TV 32 pulgadas Philips 32PHG5813/77 cuenta con una pantalla de visualización LED de formato widescreen (16:9) y resolución HD 1366 x 768 píxeles que brinda una gran calidad de imagen y contr",
         precio: 13299,
         stock: 5,
@@ -181,7 +181,7 @@ Products.bulkCreate([
         categorias:"televisores"
     },
     {
-        titulo: "televisores tcl smart tv  40 pulgadas hd l40s6500 android",
+        titulo: "televisores tcl smart tv 40 hd android",
         descripcion: "Smart TV de 40. Full HD. Android.Conexión HDMI. Puerto USB. Bluetooth. Wi Fi . Sintonizador TDA. Google assistant: control por voz integrado. Netflix. Youtube.",
         precio: 17999,
         stock: 6,
@@ -190,7 +190,7 @@ Products.bulkCreate([
         categorias:"televisores"
     },
     {
-        titulo: "televisores samsung smart tv  40 fhd 40 fhd un40j5200ag",
+        titulo: "televisores samsung smart tv 40",
         descripcion: "Smart TV LED 40 Full HD (1920x1080). Sintonizador digital. Wide Color Enhancer. Motion Rate 60Hz. Sonido Virtual Surround. Potencia de audio 20W RMS. Modo Futbol. Connect Share Movie. Wi-Fi. HDMIx2. USBx1",
         precio: 18999,
         stock: 3,
@@ -199,7 +199,7 @@ Products.bulkCreate([
         categorias:"televisores"
     },
     {
-        titulo: "televisores samsung smart tv 43 pulgadas 4k uhd 43mu6100",
+        titulo: "televisores samsung smart tv 43 4k",
         descripcion: "Viví una experiencia natural con los colores de PurColour. Sumergite en tu entretenimiento y admirá los colores de la naturaleza con detalles precisos.",
         precio: 28499,
         stock: 1,

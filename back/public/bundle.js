@@ -34061,6 +34061,164 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/SidebarComponent.jsx":
+/*!*********************************************!*\
+  !*** ./src/components/SidebarComponent.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var handleChangeMin = _ref.handleChangeMin,
+      priceMin = _ref.priceMin,
+      handleClickMin = _ref.handleClickMin,
+      priceMax = _ref.priceMax,
+      handleChangeMax = _ref.handleChangeMax,
+      handleClickMax = _ref.handleClickMax,
+      color = _ref.color,
+      letraMax = _ref.letraMax,
+      letraMin = _ref.letraMin;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn btn-block btn-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Televisores ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn btn-block btn-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Notebooks ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn btn-block btn-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Tablets ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn btn-block btn-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Heladeras ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn btn-block btn-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Celulares ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn btn-block btn-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Microondas ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "foo"
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      cursor: 'pointer',
+      backgroundColor: '#333333',
+      borderRadius: '0 50% 50% 50%',
+      height: '40px',
+      width: '40px',
+      transform: 'rotate(-135deg)',
+      margin: 'auto'
+    },
+    onClick: handleClickMin
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      color: 'white',
+      fontSize: "".concat(letraMin, "px"),
+      transform: 'rotate(135deg)',
+      position: 'relative',
+      top: '10px',
+      left: '-2px'
+    }
+  }, priceMin)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      height: '10px'
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "0"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Minimo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "100000"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      top: '0',
+      bottom: '0',
+      left: '0',
+      right: '0'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "range",
+    name: "priceMin",
+    min: "0",
+    max: "100000",
+    style: {
+      width: "80%",
+      margin: "auto",
+      boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)",
+      WebkitAppearance: "none",
+      backgroundColor: color
+    },
+    onChange: handleChangeMin,
+    value: priceMin
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Filter by: Price")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      top: '0',
+      bottom: '0',
+      left: '0',
+      right: '0'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "range",
+    name: "priceMax",
+    min: "0",
+    max: "100000",
+    style: {
+      width: "80%",
+      margin: "auto",
+      boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)",
+      WebkitAppearance: "none",
+      backgroundColor: color
+    },
+    onChange: handleChangeMax,
+    value: priceMax
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "0"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Maximo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "100000"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      height: '5px'
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      cursor: 'pointer',
+      backgroundColor: '#333333',
+      borderRadius: '0 50% 50% 50%',
+      height: '40px',
+      width: '40px',
+      transform: 'rotate(44deg)',
+      margin: 'auto'
+    },
+    onClick: handleClickMax
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      color: 'white',
+      fontSize: "".concat(letraMax, "px"),
+      transform: 'rotate(-44deg)',
+      position: 'relative',
+      top: '10px'
+    }
+  }, priceMax))));
+});
+
+/***/ }),
+
 /***/ "./src/components/product.jsx":
 /*!************************************!*\
   !*** ./src/components/product.jsx ***!
@@ -34115,21 +34273,21 @@ RECIBE 2 PARAMETROS :
 
       for (var i = 0; i < cantidad; i++) {
         rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "completa.png",
+          src: "http://localhost:8000/completa.png",
           width: "25px"
         }));
       }
 
       return rows;
     }(parseInt(item.valoracion)), (item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "media.png",
+      src: "http://localhost:8000/media.png",
       width: "25px"
     }) : '', function (cantidad) {
       var rows = [];
 
       for (var i = 0; i < cantidad; i++) {
         rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "vacia.png",
+          src: "http://localhost:8000/vacia.png",
           width: "25px"
         }));
       }
@@ -34249,6 +34407,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
 /* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/product */ "./src/components/product.jsx");
+/* harmony import */ var _components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SidebarComponent */ "./src/components/SidebarComponent.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34259,13 +34418,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -34278,13 +34438,157 @@ var CategoryContainer =
 function (_React$Component) {
   _inherits(CategoryContainer, _React$Component);
 
+  //Eventos del filtro
+  // ===============================================
   function CategoryContainer() {
+    var _this;
+
     _classCallCheck(this, CategoryContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CategoryContainer).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CategoryContainer).call(this)); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+    _this.state = {
+      priceMin: 0,
+      priceMax: 100000,
+      color: '#f2ff00',
+      letraMax: 12,
+      letraMin: 20
+    };
+    _this.handleChangeMin = _this.handleChangeMin.bind(_assertThisInitialized(_this));
+    _this.handleChangeMax = _this.handleChangeMax.bind(_assertThisInitialized(_this));
+    _this.handleClickMin = _this.handleClickMin.bind(_assertThisInitialized(_this));
+    _this.handleClickMax = _this.handleClickMax.bind(_assertThisInitialized(_this));
+    _this.handleChangeLetraMin = _this.handleChangeLetraMin.bind(_assertThisInitialized(_this));
+    _this.handleChangeLetraMax = _this.handleChangeLetraMax.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CategoryContainer, [{
+    key: "handleClickMin",
+    value: function handleClickMin(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+      this.setState({
+        priceMin: 0
+      }, function () {
+        return _this2.setState({
+          color: '#f2ff00'
+        });
+      });
+    }
+  }, {
+    key: "handleChangeLetraMin",
+    value: function handleChangeLetraMin() {
+      // console.log(this.state.priceMin)
+      this.state.priceMin.toString().length == 1 && this.setState({
+        letraMin: 20
+      });
+      this.state.priceMin.toString().length == 2 && this.setState({
+        letraMin: 18
+      });
+      this.state.priceMin.toString().length == 3 && this.setState({
+        letraMin: 16
+      });
+      this.state.priceMin.toString().length == 4 && this.setState({
+        letraMin: 14
+      });
+      this.state.priceMin.toString().length == 5 && this.setState({
+        letraMin: 12
+      });
+    }
+  }, {
+    key: "handleChangeMin",
+    value: function handleChangeMin(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      this.state.priceMin && this.handleChangeLetraMin();
+      var priceMin = Number(e.target.value);
+      this.setState({
+        priceMin: priceMin
+      }, function () {
+        if (_this3.state.priceMin >= _this3.state.priceMax) {
+          _this3.setState({
+            color: '#ff0000'
+          });
+
+          var _priceMin = _this3.state.priceMax - 1;
+
+          _this3.setState({
+            priceMin: _priceMin
+          });
+        } else {
+          _this3.setState({
+            color: '#f2ff00'
+          });
+        }
+      });
+    }
+  }, {
+    key: "handleClickMax",
+    value: function handleClickMax(e) {
+      var _this4 = this;
+
+      e.preventDefault(); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+      this.setState({
+        priceMax: 100000
+      }, function () {
+        return _this4.setState({
+          color: '#f2ff00'
+        });
+      });
+    }
+  }, {
+    key: "handleChangeMax",
+    value: function handleChangeMax(e) {
+      var _this5 = this;
+
+      e.preventDefault();
+      this.state.priceMax && this.handleChangeLetraMax();
+      var priceMax = Number(e.target.value);
+      this.setState({
+        priceMax: priceMax
+      }, function () {
+        if (_this5.state.priceMax <= _this5.state.priceMin) {
+          _this5.setState({
+            color: '#ff0000'
+          });
+
+          var _priceMax = _this5.state.priceMin + 1;
+
+          _this5.setState({
+            priceMax: _priceMax
+          });
+        } else {
+          _this5.setState({
+            color: '#f2ff00'
+          });
+        }
+      });
+    }
+  }, {
+    key: "handleChangeLetraMax",
+    value: function handleChangeLetraMax() {
+      this.state.priceMax.toString().length == 1 && this.setState({
+        letraMax: 20
+      });
+      this.state.priceMax.toString().length == 2 && this.setState({
+        letraMax: 18
+      });
+      this.state.priceMax.toString().length == 3 && this.setState({
+        letraMax: 16
+      });
+      this.state.priceMax.toString().length == 4 && this.setState({
+        letraMax: 14
+      });
+      this.state.priceMax.toString().length == 5 && this.setState({
+        letraMax: 12
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllProducts(this.props.categoryParams);
@@ -34295,7 +34599,9 @@ function (_React$Component) {
       if (this.props.categoryParams !== prevProps.categoryParams) {
         this.props.fetchAllProducts(this.props.categoryParams);
       }
-    }
+    } // Renderiza body
+    // ===============================================
+
   }, {
     key: "render",
     value: function render() {
@@ -34308,27 +34614,17 @@ function (_React$Component) {
         style: {
           zIndex: 8
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "nav nav-sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "COMPONENTE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "FILTRO============")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        handleChangeMin: this.handleChangeMin,
+        priceMin: this.state.priceMin,
+        handleClickMin: this.handleClickMin,
+        priceMax: this.state.priceMax,
+        handleChangeMax: this.handleChangeMax,
+        handleClickMax: this.handleClickMax,
+        color: this.state.color,
+        letraMax: this.state.letraMax,
+        letraMin: this.state.letraMin
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         className: "breadcrumb"
@@ -34905,8 +35201,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
-/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/product */ "./src/components/product.jsx");
+/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/product */ "./src/components/product.jsx");
+/* harmony import */ var _components_SidebarComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SidebarComponent */ "./src/components/SidebarComponent.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34917,9 +35213,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -34936,22 +35232,160 @@ var CategoryContainer =
 function (_React$Component) {
   _inherits(CategoryContainer, _React$Component);
 
+  //Eventos del filtro
+  // ===============================================
   function CategoryContainer() {
+    var _this;
+
     _classCallCheck(this, CategoryContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CategoryContainer).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CategoryContainer).call(this)); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+    _this.state = {
+      priceMin: 0,
+      priceMax: 100000,
+      color: '#f2ff00',
+      letraMax: 12,
+      letraMin: 20
+    };
+    _this.handleChangeMin = _this.handleChangeMin.bind(_assertThisInitialized(_this));
+    _this.handleChangeMax = _this.handleChangeMax.bind(_assertThisInitialized(_this));
+    _this.handleClickMin = _this.handleClickMin.bind(_assertThisInitialized(_this));
+    _this.handleClickMax = _this.handleClickMax.bind(_assertThisInitialized(_this));
+    _this.handleChangeLetraMin = _this.handleChangeLetraMin.bind(_assertThisInitialized(_this));
+    _this.handleChangeLetraMax = _this.handleChangeLetraMax.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CategoryContainer, [{
+    key: "handleClickMin",
+    value: function handleClickMin(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+      this.setState({
+        priceMin: 0
+      }, function () {
+        return _this2.setState({
+          color: '#f2ff00'
+        });
+      });
+    }
+  }, {
+    key: "handleChangeLetraMin",
+    value: function handleChangeLetraMin() {
+      // console.log(this.state.priceMin)
+      this.state.priceMin.toString().length == 1 && this.setState({
+        letraMin: 20
+      });
+      this.state.priceMin.toString().length == 2 && this.setState({
+        letraMin: 18
+      });
+      this.state.priceMin.toString().length == 3 && this.setState({
+        letraMin: 16
+      });
+      this.state.priceMin.toString().length == 4 && this.setState({
+        letraMin: 14
+      });
+      this.state.priceMin.toString().length == 5 && this.setState({
+        letraMin: 12
+      });
+    }
+  }, {
+    key: "handleChangeMin",
+    value: function handleChangeMin(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      this.state.priceMin && this.handleChangeLetraMin();
+      var priceMin = Number(e.target.value);
+      this.setState({
+        priceMin: priceMin
+      }, function () {
+        if (_this3.state.priceMin >= _this3.state.priceMax) {
+          _this3.setState({
+            color: '#ff0000'
+          });
+
+          var _priceMin = _this3.state.priceMax - 1;
+
+          _this3.setState({
+            priceMin: _priceMin
+          });
+        } else {
+          _this3.setState({
+            color: '#f2ff00'
+          });
+        }
+      });
+    }
+  }, {
+    key: "handleClickMax",
+    value: function handleClickMax(e) {
+      var _this4 = this;
+
+      e.preventDefault(); // cambiar el estado de price default por la diferencia el precio menor y el mayor
+
+      this.setState({
+        priceMax: 100000
+      }, function () {
+        return _this4.setState({
+          color: '#f2ff00'
+        });
+      });
+    }
+  }, {
+    key: "handleChangeMax",
+    value: function handleChangeMax(e) {
+      var _this5 = this;
+
+      e.preventDefault();
+      this.state.priceMax && this.handleChangeLetraMax();
+      var priceMax = Number(e.target.value);
+      this.setState({
+        priceMax: priceMax
+      }, function () {
+        if (_this5.state.priceMax <= _this5.state.priceMin) {
+          _this5.setState({
+            color: '#ff0000'
+          });
+
+          var _priceMax = _this5.state.priceMin + 1;
+
+          _this5.setState({
+            priceMax: _priceMax
+          });
+        } else {
+          _this5.setState({
+            color: '#f2ff00'
+          });
+        }
+      });
+    }
+  }, {
+    key: "handleChangeLetraMax",
+    value: function handleChangeLetraMax() {
+      this.state.priceMax.toString().length == 1 && this.setState({
+        letraMax: 20
+      });
+      this.state.priceMax.toString().length == 2 && this.setState({
+        letraMax: 18
+      });
+      this.state.priceMax.toString().length == 3 && this.setState({
+        letraMax: 16
+      });
+      this.state.priceMax.toString().length == 4 && this.setState({
+        letraMax: 14
+      });
+      this.state.priceMax.toString().length == 5 && this.setState({
+        letraMax: 12
+      });
+    } // Renderiza body
+    // ===============================================
+
+  }, {
     key: "render",
-    // componentDidMount() {
-    //     this.props.fetchProducts(this.props.categoryParams)
-    // }
-    // componentDidUpdate(prevProps) {
-    //      if (this.props.categoryParams !== prevProps.categoryParams) {
-    //         this.props.fetchProducts(this.props.categoryParams)
-    //      }
-    // }
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid"
@@ -34962,29 +35396,17 @@ function (_React$Component) {
         style: {
           zIndex: 8
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "nav nav-sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "COMPONENTE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "FILTRO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "====================")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        handleChangeMin: this.handleChangeMin,
+        priceMin: this.state.priceMin,
+        handleClickMin: this.handleClickMin,
+        priceMax: this.state.priceMax,
+        handleChangeMax: this.handleChangeMax,
+        handleClickMax: this.handleClickMax,
+        color: this.state.color,
+        letraMax: this.state.letraMax,
+        letraMin: this.state.letraMin
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         className: "breadcrumb"
@@ -34992,7 +35414,7 @@ function (_React$Component) {
         to: "/"
       }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Categorias")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "active"
-      }, this.props.categoryParams)), console.log(this.props.listaProductos, "LISTA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_product__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, this.props.categoryParams)), console.log(this.props.listaProductos, "LISTA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_product__WEBPACK_IMPORTED_MODULE_3__["default"], {
         col: 3,
         list: this.props.listaProductos
       }))));

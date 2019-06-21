@@ -18,6 +18,7 @@ RECIBE 2 PARAMETROS :
 export default ({ col, list }) => {
     return <div className="row">
         {
+            
             // Itera el arreglo que se ingresa y construye cada productos
             list && list.map(item => (
                 <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
@@ -33,14 +34,14 @@ export default ({ col, list }) => {
                             {
                             function (cantidad) {
                                 let rows = [];
-                                for (let i = 0; i < cantidad; i++) {rows.push(<img src='completa.png' width="25px" />)}
+                                for (let i = 0; i < cantidad; i++) {rows.push(<img src='http://localhost:8000/completa.png' width="25px" />)}
                                 return rows;
                             }(parseInt(item.valoracion))
                             }
                             {/* TERNARIO DE CONDICION SI ES MAYOR A 0.5 AGREGA LA MITAD DE LA ESTRELLA */}
                             {
                                 ((item.valoracion-parseInt(item.valoracion))*10>=5)?
-                                <img src='media.png' width="25px" />
+                                <img src='http://localhost:8000/media.png' width="25px" />
                                 :''
                             }
                             
@@ -48,7 +49,7 @@ export default ({ col, list }) => {
                             {
                             function (cantidad) {
                                 let rows = [];
-                                for (let i = 0; i < cantidad; i++) {rows.push(<img src='vacia.png' width="25px" />)}
+                                for (let i = 0; i < cantidad; i++) {rows.push(<img src='http://localhost:8000/vacia.png' width="25px" />)}
                                 return rows;
                             }(
                                 ((item.valoracion-parseInt(item.valoracion))*10>=5)?

@@ -34,8 +34,9 @@ var Product = db.define('productos', {
         defaultValue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySeSCBK0wVu7ecVH9MnFRd8Orchj6KfNOuQV_6D--Z72m2SGE",
     },
     valoracion:{
-        type: Sequelize.VIRTUAL,
-        defaultValue: 0
+        type: Sequelize.DECIMAL,
+        allowNull: false,
+        defaultValue: 0.00,
     },
     categorias: {
         type: Sequelize.STRING
