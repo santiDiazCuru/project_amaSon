@@ -1,3 +1,4 @@
+
 /*  MODAL CSS */
 
 body {
@@ -21,7 +22,9 @@ body {
     box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.75);
     transition: all .8s;
     position: fixed;
-    z-index: 250;
+    z-index: 950;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
 }
 .imgAlert {
     position: fixed;
@@ -104,6 +107,10 @@ body {
     padding: 10px;
     font-weight: bold;
 }
+#inputS {
+    width: 500px;
+    max-width: 100%;
+}
 #form-container {
     color: white;
     background-color: #7ba8be;
@@ -116,7 +123,7 @@ body {
     padding-top: 0px;
     border: 5px solid whitesmoke;
     border-radius: 10px;
-    z-index: 250;
+    z-index: 650;
     position: fixed;
     -webkit-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.75);
@@ -130,4 +137,24 @@ box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.75);
 }
 #registerSubmit{
     float: right
+}
+
+
+@media screen and (max-width: 800px) {
+    .modal-wrapper {
+        width: 92%;
+        left:18px;       
+    }
+
+    #form-container {
+        width: 92%;
+        left:18px; 
+
+    }
+    #inputS {
+        width: 100%;
+    }
+    .navbar-nav {
+        margin: 7.5px 14px;
+    }
 }

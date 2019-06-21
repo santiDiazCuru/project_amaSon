@@ -10,12 +10,14 @@ export const style = {
     marginTop:8
     
 }
+
 export const styleImg = {
     width: '100%',
     objectFit: 'contain',
     maxHeight:200,
     height:300
 }
+
 export const TitleStyle = {
     fontSize: '18px',
     height:50,

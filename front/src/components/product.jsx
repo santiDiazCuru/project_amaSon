@@ -18,7 +18,9 @@ RECIBE 2 PARAMETROS :
 export default ({ col, list }) => {
     return <div className="row">
         {
-            
+            (list.length === 0)?
+            <span>No se ha encontrado ningún producto..</span>
+            :
             // Itera el arreglo que se ingresa y construye cada productos
             list && list.map(item => (
                 <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
