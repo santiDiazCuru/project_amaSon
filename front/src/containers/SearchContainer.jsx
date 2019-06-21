@@ -1,40 +1,107 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchProducts } from '../action-creators/getProducts'
 import Producto from '../components/product'
+import SidebarComponent from '../components/SidebarComponent'
 
 class CategoryContainer extends React.Component {
-    // componentDidMount() {
-    //     this.props.fetchProducts(this.props.categoryParams)
-    // }
-    // componentDidUpdate(prevProps) {
-    //      if (this.props.categoryParams !== prevProps.categoryParams) {
-    //         this.props.fetchProducts(this.props.categoryParams)
-    //      }
-    // }
+    //Eventos del filtro
+    // ===============================================
+    constructor() {
+        super();
+        // cambiar el estado de price default por la diferencia el precio menor y el mayor
+        this.state = {
+            priceMin: 0,
+            priceMax: 100000,
+            color: '#f2ff00',
+            letraMax: 12,
+            letraMin: 20
+        };
+        this.handleChangeMin = this.handleChangeMin.bind(this);
+        this.handleChangeMax = this.handleChangeMax.bind(this);
+        this.handleClickMin = this.handleClickMin.bind(this);
+        this.handleClickMax = this.handleClickMax.bind(this);
+        this.handleChangeLetraMin = this.handleChangeLetraMin.bind(this);
+        this.handleChangeLetraMax = this.handleChangeLetraMax.bind(this);
+    };
+
+
+    handleClickMin(e) {
+        e.preventDefault();
+        // cambiar el estado de price default por la diferencia el precio menor y el mayor
+        this.setState({ priceMin: 0 },()=>this.setState({ color: '#f2ff00' }))
+    };
+
+    handleChangeLetraMin() {
+        // console.log(this.state.priceMin)
+        this.state.priceMin.toString().length == 1 && this.setState({ letraMin: 20 })
+        this.state.priceMin.toString().length == 2 && this.setState({ letraMin: 18 })
+        this.state.priceMin.toString().length == 3 && this.setState({ letraMin: 16 }) 
+        this.state.priceMin.toString().length == 4 && this.setState({ letraMin: 14 })
+        this.state.priceMin.toString().length == 5 && this.setState({ letraMin: 12 })
+    }
+
+    handleChangeMin(e) {
+        e.preventDefault();
+        this.state.priceMin && this.handleChangeLetraMin()
+        let priceMin = Number(e.target.value)
+        this.setState({ priceMin }, () => {
+            if (this.state.priceMin >= this.state.priceMax) {
+                this.setState({ color: '#ff0000' })
+                let priceMin = this.state.priceMax - 1
+                this.setState({ priceMin })
+            } else {
+                this.setState({ color: '#f2ff00' })
+            }
+        })
+    };
+
+    handleClickMax(e) {
+        e.preventDefault();
+        // cambiar el estado de price default por la diferencia el precio menor y el mayor
+        this.setState({ priceMax: 100000 },()=>this.setState({ color: '#f2ff00' }))
+    };
+
+    handleChangeMax(e) {
+        e.preventDefault();
+        this.state.priceMax && this.handleChangeLetraMax()
+        let priceMax = Number(e.target.value)
+        this.setState({ priceMax }, () => {
+            if (this.state.priceMax <= this.state.priceMin) {
+                this.setState({ color: '#ff0000' })
+                let priceMax = this.state.priceMin + 1
+                this.setState({ priceMax })
+            } else {
+                this.setState({ color: '#f2ff00' })
+            }
+        })
+    };
+    handleChangeLetraMax(){
+        this.state.priceMax.toString().length == 1 && this.setState({ letraMax: 20 })
+        this.state.priceMax.toString().length == 2 && this.setState({ letraMax: 18 })
+        this.state.priceMax.toString().length == 3 && this.setState({ letraMax: 16 }) 
+        this.state.priceMax.toString().length == 4 && this.setState({ letraMax: 14 })
+        this.state.priceMax.toString().length == 5 && this.setState({ letraMax: 12 })
+    }
+
+    // Renderiza body
+    // ===============================================
     render() {
         return <div className="container-fluid">
             <div className="row">
                 <br /><br />
                 <div className="col-sm-3 col-md-2 sidebar" style={({ zIndex: 8 })}>
-                    <ul className="nav nav-sidebar">
-
-                        <br />
-                        <li><a href="">====================</a></li>
-                        <li><a href="">====================</a></li>
-                        <li><a href="">====================</a></li>
-                        <li><a href="">FILTRO DE</a></li>
-                        <li><a href="">SEBA ACA</a></li>
-                        <li><a href="">====================</a></li>
-                        <li><a href="">====================</a></li>
-                        <li><a href="">====================</a></li>
-                        <li><a href="">====================</a></li>
-                        <li><a href="">====================</a></li>
-
-                        <br />
-
-                    </ul>
+                    {/* RENDERIZA COMPONENTE DE FILTRO */}
+                    <SidebarComponent 
+                        handleChangeMin={this.handleChangeMin} 
+                        priceMin={this.state.priceMin} 
+                        handleClickMin={this.handleClickMin} 
+                        priceMax={this.state.priceMax} 
+                        handleChangeMax={this.handleChangeMax} 
+                        handleClickMax={this.handleClickMax} 
+                        color={this.state.color} 
+                        letraMax={this.state.letraMax} 
+                        letraMin={this.state.letraMin} />
                 </div>
                 <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol className="breadcrumb">

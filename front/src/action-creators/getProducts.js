@@ -17,6 +17,7 @@ const allProductsCategory = (productos) => ({
     productos
 });
 export const fetchProducts = (input) => dispatch => {
+    console.log(input,"jjjjjjj")
     Axios.get(`/api/products/${input}`)
         .then(productos => dispatch(addProducts(productos.data))) 
 }
