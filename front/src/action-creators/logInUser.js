@@ -1,10 +1,13 @@
-import { LOG_IN_USER } from "../constants"
+import { LOG_IN_USER, LOG_OUT_USER} from "../constants"
 import Axios from "axios"
 
 const logInUser = (user) => ({
     type: LOG_IN_USER,
     user
 });
+const logOutUser = () => ({
+    type: LOG_OUT_USER
+})
 
 // Esta funcion es llamada cuando se clickea en el boton LOG IN. va a la base de datos
 // a buscar un usuario que matchee con el username ingresado (todavía no valida con contraseña :(( )
@@ -21,4 +24,10 @@ const logInUser = (user) => ({
 export const validateUser = (userData) => dispatch =>{
     Axios.post('/users/login', userData)
     .then((user)=>dispatch(logInUser(user.data)))
+}
+
+export const endSession = () => dispatch =>{
+    // Axios.post('/users/logout')           ======>EsTA parte va cuando tengamos passport
+    // .then(()=>dispatch(logOutUser()))     ======> así tiene adonde hacer el poedido para que termine la sesion
+    dispatch(logOutUser())
 }

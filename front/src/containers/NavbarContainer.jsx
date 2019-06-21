@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import NavbarComponent from '../components/NavbarComponent'
 import { fetchProducts } from '../action-creators/getProducts'
+import { endSession } from '../action-creators/logInUser'
 import LogInContainer from './LogInContainer'
 import CarritoContainer from './CarritoContainer';
 import DropdownNavbar from '../components/DropdownNavbar'
@@ -21,12 +22,18 @@ class NavBarContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCarrito = this.handleCarrito.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
+        this.handleSession = this.handleSession.bind(this);
 
     };
     handleModal(e) {
-        if(e) e.preventDefault()
+        if (e) e.preventDefault()
         !this.state.showLogInModal ? this.setState({ showLogInModal: true }) : this.setState({ showLogInModal: false });
     };
+
+    handleSession(e){
+        e.preventDefault()
+        this.props.endSession()
+    }
 
     handleCarrito(e) {
         e.preventDefault();
@@ -43,7 +50,7 @@ class NavBarContainer extends React.Component {
         e.preventDefault();
         this.state.inputValue && fetchProducts(this.state.inputValue)
     };
-    handleRegister(e){
+    handleRegister(e) {
         if (e) e.preventDefault()
         !this.state.showRegister ? this.setState({ showRegister: true }) : this.setState({ showRegister: false })
         if (this.state.showLogInModal) this.setState({ showLogInModal: false })
@@ -53,41 +60,73 @@ class NavBarContainer extends React.Component {
         if (this.state.showLogInModal) {
             return (
                 <div>
-                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <NavbarComponent 
+                        handleSession={this.handleSession}
+                        currentUser={this.props.currentUser}
+                        isLoggedIn={this.props.isLoggedIn}
+                        handleChange={this.handleChange}
+                        handleModal={this.handleModal}
+                        handleSubmit={this.handleSubmit} />
                     <DropdownNavbar />
-                    <LogInContainer handleModal={this.handleModal} handleRegister={this.handleRegister}/>
+                    <LogInContainer handleModal={this.handleModal} handleRegister={this.handleRegister} />
                 </div>
             )
-            
-        } else if (this.state.showCarrito){
+
+        } else if (this.state.showCarrito) {
             return (
                 <div>
-                    <NavbarComponent handleChange={this.handleChange} handleCarrito={this.handleCarrito} handleSubmit={this.handleSubmit}/>
+                    <NavbarComponent 
+                        handleSession={this.handleSession}
+                        currentUser={this.props.currentUser}
+                        isLoggedIn={this.props.isLoggedIn}
+                        handleChange={this.handleChange}
+                        handleCarrito={this.handleCarrito}
+                        handleSubmit={this.handleSubmit} />
                     <DropdownNavbar />
-                    <CarritoContainer handleCarrito={this.handleCarrito}/>
+                    <CarritoContainer handleCarrito={this.handleCarrito} />
                 </div>
             )
         } if (this.state.showRegister) {
             return (
                 <div>
-                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <NavbarComponent 
+                        handleSession={this.handleSession}
+                        currentUser={this.props.currentUser}
+                        isLoggedIn={this.props.isLoggedIn}
+                        handleChange={this.handleChange}
+                        handleModal={this.handleModal}
+                        handleSubmit={this.handleSubmit} />
                     <DropdownNavbar />
                     <RegisterContainer handleRegister={this.handleRegister} />
                 </div>
             )
-            
+
         }
         return (
             <div>
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
-            <DropdownNavbar />
+                <NavbarComponent 
+                    handleSession={this.handleSession}
+                    currentUser={this.props.currentUser}
+                    isLoggedIn={this.props.isLoggedIn}
+                    handleChange={this.handleChange}
+                    handleModal={this.handleModal}
+                    handleSubmit={this.handleSubmit}
+                    handleCarrito={this.handleCarrito} />
+                <DropdownNavbar />
             </div>
         )
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchProducts: (input) => dispatch(fetchProducts(input))
+    fetchProducts: (input) => dispatch(fetchProducts(input)),
+    endSession: () => dispatch(endSession())
 });
+const mapStateToProps = (state, ownProps) => {
+    return {
+        currentUser: state.user.currentUser,
+        isLoggedIn: state.user.isLoggedIn,
+    }
+}
 
-export default connect(null, mapDispatchToProps)(NavBarContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBarContainer)

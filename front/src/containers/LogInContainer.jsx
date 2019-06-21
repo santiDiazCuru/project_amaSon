@@ -18,7 +18,6 @@ class LogInContainer extends React.Component {
         e.preventDefault()
         if (e.target.name === 'username') this.setState({ username: e.target.value })
         if (e.target.name === 'password') this.setState({ password: e.target.value })
-        console.log(this.state)
     }
     handleSubmit(e) {
         e.preventDefault()

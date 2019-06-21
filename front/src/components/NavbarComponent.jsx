@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {inputSearch, logo, formButton} from '../estilos/styleNav'
-export default ({ handleChange, handleSubmit, handleModal, handleCarrito }) => (
+import { inputSearch, logo, formButton } from '../estilos/styleNav'
+
+export default ({ handleSession, handleChange, handleSubmit, handleModal, handleCarrito, currentUser, isLoggedIn }) => (
     <div>
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
@@ -19,32 +20,21 @@ export default ({ handleChange, handleSubmit, handleModal, handleCarrito }) => (
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <form className="navbar-form navbar-left" onSubmit={handleSubmit}>
                         <center>
-                        <div className="input-group">
-                            <span className="input-group-addon"></span>
-                            <input style={inputSearch} type="text" className="form-control" 
-                            placeholder="¿Qué estas buscando?" onChange={handleChange} />
+                            <div className="input-group">
+                                <span className="input-group-addon"></span>
+                                <input style={inputSearch} type="text" className="form-control"
+                                    placeholder="¿Qué estas buscando?" onChange={handleChange} />
 
-                            <span className="input-group-btn">
-                                <button type="submit" className="btn btn-default">
-                                <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                </button>
-                            </span>
-                        </div>
+                                <span className="input-group-btn">
+                                    <button type="submit" className="btn btn-default">
+                                        <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
+                                </span>
+                            </div>
                         </center>
                     </form>
 
                     <ul className="nav navbar-nav navbar-right">
-                        {/* <li className="dropdown"> ESTO ES PARA EL USER COMÚN
-                            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span className="caret"></span></a>
-                            <ul className="dropdown-menu">
-                                <li><a href="#">Mis Compras</a></li>
-                                <li role="separator" className="divider"></li>
-                                <li><a href="#">Cerrar Sesion</a></li>
-                            </ul>
-                        </li> */}
-
-                        {/* ///// */}
-
                         {/* <li className="dropdown">  ESTO ES PARA EL ADMIN
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Admin<span className="caret"></span></a>
                             <ul className="dropdown-menu">
@@ -56,26 +46,45 @@ export default ({ handleChange, handleSubmit, handleModal, handleCarrito }) => (
                                 <li><a href="#">Cerrar Sesion</a></li>
                             </ul>
                         </li> */}
-                    <li className="active">
-                        <form className="navbar-form navbar-left" style={formButton}>
-                            <div className="form-group">
-                                <button type='submit' onClick={handleModal} 
-                                className='btn btn-success btn-md'>
-                                <span className="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                &nbsp;Log In
+
+                        {/* ESTO ES PARA EL USER COMÚN */}
+
+                        {/* este if hace que se renderize el boton de log in si el usuario no esta logeado y si está logeado un dropdown*/}
+                        {isLoggedIn ?
+                            <li className="dropdown">
+
+                                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{currentUser.username}<span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li><a href="#">Mis Compras</a></li>
+                                    <li role="separator" className="divider"></li>
+                                    <li onClick={handleSession}><a href='#' >Cerrar Sesion</a></li>
+                                </ul>
+                            </li>
+
+                            :
+
+                            <li className="active">
+                                <form className="navbar-form navbar-left" style={formButton}>
+                                    <div className="form-group">
+                                        <button type='submit' onClick={handleModal}
+                                            className='btn btn-success btn-md'>
+                                            <span className="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                            &nbsp;Log In
                                 </button>
-                            </div>
-                        </form>
-                        
-                        <form className="navbar-form navbar-left" style={formButton}>
-                            <div className="form-group">
-                                <span onClick={handleCarrito} 
-                                className='btn btn-default btn-md'>
-                                <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                                &nbsp;Carrito
+                                    </div>
+                                </form>
+                            </li>
+                        }
+                        <li>
+                            <form className="navbar-form navbar-left" style={formButton}>
+                                <div className="form-group">
+                                    <span onClick={handleCarrito}
+                                        className='btn btn-default btn-md'>
+                                        <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                                        &nbsp;Carrito
                                 </span>
-                            </div>
-                        </form>
+                                </div>
+                            </form>
                             {/* <a className='glyphicon glyphicon-shopping-cart' onClick={handleCarrito}></a> */}
                         </li>
                     </ul>
