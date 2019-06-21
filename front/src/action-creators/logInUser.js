@@ -13,7 +13,6 @@ const logInUser = (user) => ({
 // renderizar segun si hay alguien loggeado o no)
 
 //el objeto state tiene el campo users que se ve así:
-
 // user: {
 //     currentUser: {id: 1, username: "pok", email: "pok@pok", password: "20ff13269cc3180d972b28d438c415852a955b3a", salt: "5e53edf453a4df378ebeee0957eaafb5868b6e73"},
 //     isLoggedIn: true
