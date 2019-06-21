@@ -30,7 +30,7 @@ class NavBarContainer extends React.Component {
         !this.state.showLogInModal ? this.setState({ showLogInModal: true }) : this.setState({ showLogInModal: false });
     };
 
-    handleSession(e){
+    handleSession(e) {
         e.preventDefault()
         this.props.endSession()
     }
@@ -49,6 +49,10 @@ class NavBarContainer extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.state.inputValue && fetchProducts(this.state.inputValue)
+        console.log("enter")
+        this.setState({
+            inputValue: ''
+        })
     };
     handleRegister(e) {
         if (e) e.preventDefault()
@@ -60,7 +64,8 @@ class NavBarContainer extends React.Component {
         if (this.state.showLogInModal) {
             return (
                 <div>
-                    <NavbarComponent 
+                    <NavbarComponent
+                        inputValue={this.state.inputValue}
                         handleSession={this.handleSession}
                         currentUser={this.props.currentUser}
                         isLoggedIn={this.props.isLoggedIn}
@@ -75,7 +80,8 @@ class NavBarContainer extends React.Component {
         } else if (this.state.showCarrito) {
             return (
                 <div>
-                    <NavbarComponent 
+                    <NavbarComponent
+                        inputValue={this.state.inputValue}
                         handleSession={this.handleSession}
                         currentUser={this.props.currentUser}
                         isLoggedIn={this.props.isLoggedIn}
@@ -89,7 +95,8 @@ class NavBarContainer extends React.Component {
         } if (this.state.showRegister) {
             return (
                 <div>
-                    <NavbarComponent 
+                    <NavbarComponent
+                        inputValue={this.state.inputValue}
                         handleSession={this.handleSession}
                         currentUser={this.props.currentUser}
                         isLoggedIn={this.props.isLoggedIn}
@@ -104,7 +111,8 @@ class NavBarContainer extends React.Component {
         }
         return (
             <div>
-                <NavbarComponent 
+                <NavbarComponent
+                    inputValue={this.state.inputValue}
                     handleSession={this.handleSession}
                     currentUser={this.props.currentUser}
                     isLoggedIn={this.props.isLoggedIn}

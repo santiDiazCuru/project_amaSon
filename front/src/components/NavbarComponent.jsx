@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { inputSearch, logo, formButton } from '../estilos/styleNav'
-
-export default ({ handleSession, handleChange, handleSubmit, handleModal, handleCarrito, currentUser, isLoggedIn }) => (
+import {inputSearch, logo, formButton} from '../estilos/styleNav'
+export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSubmit, handleModal, handleCarrito, inputValue }) => (
     <div>
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
@@ -20,10 +19,12 @@ export default ({ handleSession, handleChange, handleSubmit, handleModal, handle
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <form className="navbar-form navbar-left" onSubmit={handleSubmit}>
                         <center>
-                            <div className="input-group">
-                                <span className="input-group-addon"></span>
-                                <input style={inputSearch} type="text" className="form-control"
-                                    placeholder="¿Qué estas buscando?" onChange={handleChange} />
+                        <div className="input-group">
+                            <span className="input-group-addon"></span>
+                            <input style={inputSearch} type="text" className="form-control" 
+                            placeholder="¿Qué estas buscando?"
+                            value = {inputValue}
+                            onChange={handleChange} />
 
                                 <span className="input-group-btn">
                                     <button type="submit" className="btn btn-default">
