@@ -1,4 +1,6 @@
 const Products = require('./models/Products');
+const Users = require('./models/Users')
+
 Products.bulkCreate([
     {
         titulo: "aspiradoras samsung vc20cc azul",
@@ -16,7 +18,7 @@ Products.bulkCreate([
         stock: 5,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb3/h25/10023646756894/00064056-173161-01.png",
         valoracion: 4.3,
-        categorias:"microondas"
+        categorias: "microondas"
     },
     {
         titulo: "heladeras patrick con freezer",
@@ -34,7 +36,7 @@ Products.bulkCreate([
         stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h86/h29/10027280367646/00189018-174267-01.png",
         valoracion: 5,
-        categorias:"televisores"
+        categorias: "televisores"
     },
     {
         titulo: "notebook exo cloud e15 intel atom",
@@ -70,7 +72,49 @@ Products.bulkCreate([
         stock: 12,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h78/hd9/10023764721694/00125055-173962-01.png",
         valoracion: 3,
-        categorias:"celulares"
+        categorias: "celulares"
+    }
+
+])
+
+Users.bulkCreate([
+    {
+        username: "Lucas",
+        email: "lucas@aguirre.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Nico",
+        email: "carello@martino.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Seba",
+        email: "seba@necochea.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Kenyi",
+        email: "kenyi@lewis.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Santi",
+        email: "santi@curu.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        categorias: "celulares"
     },
     {
         titulo: "motorola celular moto e5 xt19443 gold",
@@ -79,16 +123,16 @@ Products.bulkCreate([
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h7a/hc5/10023785398302/00125061-173968-01.png",
         valoracion: 3,
-        categorias:"celulares"
+        categorias: "celulares"
     },
     {
         titulo: "motorola celular moto c black negro",
         descripcion: "4G LTE. Pant.TN 5. Resol 854x480. Proc.Quad Core 1.1Ghz. SO Android 7.0. Cámaras de 5Mp y 2Mp c/Flash. Graba video en 720p Memoria int.8Gb/RAM 1Gb. Slot p/micro SD h/32Gb. Bluetooth 4.2. Wi-Fi. A-GPS. Micro USB 2.0. Bateria de 2350mAh.",
         precio: 6999,
-        stock:8 ,
+        stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h2f/hb2/10023660027934/00076065-174122-01.png",
         valoracion: 3,
-        categorias:"celulares"
+        categorias: "celulares"
     },
     {
         titulo: "motorola celular moto e5 plus xt19245",
@@ -97,16 +141,16 @@ Products.bulkCreate([
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h4d/h1b/10023783923742/00140003-174041-01.png",
         valoracion: 3,
-        categorias:"celulares"
+        categorias: "celulares"
     },
     {
         titulo: "motorola celular   moto g7 play xt19522",
         descripcion: "El Motorola Moto G7 PLAY tiene una pantalla de 5.7 pulgadas a resolución HD+ un procesador Snapdragon 632 acompañado de 2GB de RAM y 32GB de almacenamiento una cámara de 13 MP cámara frontal de 8",
-        precio:12999 ,
-        stock:7,
+        precio: 12999,
+        stock: 7,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h70/h8d/10041521995806/00174031-174276-01.png",
         valoracion: 3.8,
-        categorias:"celulares"
+        categorias: "celulares"
     },
     {
         titulo: "notebook exo smart e13x n3350",
@@ -115,7 +159,7 @@ Products.bulkCreate([
         stock: 4,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h85/hb8/10027260510238/00181171-174465-01.png",
         valoracion: 3,
-        categorias:"notebook"
+        categorias: "notebook"
     },
     {
         titulo: "notebooks 2 en 1 exo notebook",
@@ -124,7 +168,7 @@ Products.bulkCreate([
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h94/h1b/10031495872542/00182535-172110-01.png",
         valoracion: 3,
-        categorias:"notebook"
+        categorias: "notebook"
     },
     {
         titulo: "notebook exo smart e17 intel celron",
@@ -133,7 +177,7 @@ Products.bulkCreate([
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h52/ha2/10033231134750/00182915-173042-01.png",
         valoracion: 5,
-        categorias:"notebook"
+        categorias: "notebook"
     },
     {
         titulo: "notebook hp 14ax032la intel celeron",
@@ -142,7 +186,7 @@ Products.bulkCreate([
         stock: 1,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h0c/h32/10023899070494/00128001-173987-01.png",
         valoracion: 1.5,
-        categorias:"notebook"
+        categorias: "notebook"
     },
     {
         titulo: "notebook hdc cloudbook cy141ih celeron",
@@ -151,16 +195,16 @@ Products.bulkCreate([
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h0f/h8b/10011075411998/00159005-135909-01.jpg",
         valoracion: 3,
-        categorias:"notebook"
+        categorias: "notebook"
     },
     {
         titulo: "televisores samsung smart tv 32 hd",
         descripcion: "TV 32 SMART BASIC UN32J4300AG.",
         precio: 15999,
-        stock:2 ,
+        stock: 2,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h71/h95/10023470399518/00151151-130512-01.jpg",
         valoracion: 3,
-        categorias:"televisores"
+        categorias: "televisores"
     },
     {
         titulo: "televisores philips smart tv  32 hd",
@@ -169,7 +213,7 @@ Products.bulkCreate([
         stock: 3,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h1b/h64/10030729265182/00188135-174495-01.png",
         valoracion: 3.9,
-        categorias:"televisores"
+        categorias: "televisores"
     },
     {
         titulo: "televisores philips smart tv  32 hd",
@@ -178,7 +222,7 @@ Products.bulkCreate([
         stock: 5,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hc5/h2d/10023956742174/00169593-174264-01.png",
         valoracion: 3,
-        categorias:"televisores"
+        categorias: "televisores"
     },
     {
         titulo: "televisores tcl smart tv 40 hd android",
@@ -187,7 +231,7 @@ Products.bulkCreate([
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb3/hb6/10037237022750/00185016-136304-01.jpg",
         valoracion: 3,
-        categorias:"televisores"
+        categorias: "televisores"
     },
     {
         titulo: "televisores samsung smart tv 40",
@@ -196,7 +240,7 @@ Products.bulkCreate([
         stock: 3,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h44/h27/10023666909214/00151229-134888-01.jpg",
         valoracion: 3,
-        categorias:"televisores"
+        categorias: "televisores"
     },
     {
         titulo: "televisores samsung smart tv 43 4k",
@@ -205,15 +249,16 @@ Products.bulkCreate([
         stock: 1,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h97/h5e/10023735033886/00118000-135530-01.jpg",
         valoracion: 3,
-        categorias:"televisores"
+        categorias: "televisores"
     }
-    
-    
+
+
 ])
+
+
     .then(console.log("Esta todo piola"))
-    
 
 
 
 
-    
+

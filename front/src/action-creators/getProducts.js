@@ -17,8 +17,8 @@ const allProductsCategory = (productos) => ({
     productos
 });
 export const fetchProducts = (input) => dispatch => {
-    console.log(input,"jjjjjjj")
-    Axios.get(`/api/products/${input}`)
+    let Minuscula = input.toLowerCase()
+    Axios.get(`/api/products/${Minuscula}`)
         .then(productos => dispatch(addProducts(productos.data))) 
 }
 

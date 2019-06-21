@@ -6,7 +6,8 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
                 <div className="navbar-header">
-                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <button type="button" className="navbar-toggle collapsed"
+                     data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span className="sr-only">Toggle navigation</span>
                         <span className="icon-handleChangebar"></span>
                         <span className="icon-bar"></span>
@@ -21,7 +22,7 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         <center>
                         <div className="input-group">
                             <span className="input-group-addon"></span>
-                            <input style={inputSearch} type="text" className="form-control" 
+                            <input id="inputS" type="text" className="form-control" 
                             placeholder="¿Qué estas buscando?"
                             value = {inputValue}
                             onChange={handleChange} />
@@ -53,7 +54,6 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         {/* este if hace que se renderize el boton de log in si el usuario no esta logeado y si está logeado un dropdown*/}
                         {isLoggedIn ?
                             <li className="dropdown">
-
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{currentUser.username}<span className="caret"></span></a>
                                 <ul className="dropdown-menu">
                                     <li><a href="#">Mis Compras</a></li>
@@ -64,10 +64,10 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
 
                             :
 
-                            <li className="active">
+                            <li className="active" id="login">
                                 <form className="navbar-form navbar-left" style={formButton}>
                                     <div className="form-group">
-                                        <button type='submit' onClick={handleModal}
+                                        <button type='submit'  onClick={handleModal}
                                             className='btn btn-success btn-md'>
                                             <span className="glyphicon glyphicon-user" aria-hidden="true"></span>
                                             &nbsp;Log In
