@@ -33879,7 +33879,8 @@ __webpack_require__.r(__webpack_exports__);
   var handleChange = _ref.handleChange,
       handleSubmit = _ref.handleSubmit,
       handleModal = _ref.handleModal,
-      handleCarrito = _ref.handleCarrito;
+      handleCarrito = _ref.handleCarrito,
+      inputValue = _ref.inputValue;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-default navbar-fixed-top"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -33922,6 +33923,7 @@ __webpack_require__.r(__webpack_exports__);
     type: "text",
     className: "form-control",
     placeholder: "\xBFQu\xE9 estas buscando?",
+    value: inputValue,
     onChange: handleChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "input-group-btn"
@@ -34627,6 +34629,10 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.state.inputValue && Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProducts"])(this.state.inputValue);
+      console.log("enter");
+      this.setState({
+        inputValue: ''
+      });
     }
   }, {
     key: "handleRegister",
@@ -34646,6 +34652,7 @@ function (_React$Component) {
     value: function render() {
       if (this.state.showLogInModal) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          inputValue: this.state.inputValue,
           handleChange: this.handleChange,
           handleModal: this.handleModal,
           handleSubmit: this.handleSubmit
@@ -34655,6 +34662,7 @@ function (_React$Component) {
         }));
       } else if (this.state.showCarrito) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          inputValue: this.state.inputValue,
           handleChange: this.handleChange,
           handleCarrito: this.handleCarrito,
           handleSubmit: this.handleSubmit
@@ -34665,6 +34673,7 @@ function (_React$Component) {
 
       if (this.state.showRegister) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          inputValue: this.state.inputValue,
           handleChange: this.handleChange,
           handleModal: this.handleModal,
           handleSubmit: this.handleSubmit
@@ -34674,6 +34683,7 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        inputValue: this.state.inputValue,
         handleChange: this.handleChange,
         handleModal: this.handleModal,
         handleSubmit: this.handleSubmit,

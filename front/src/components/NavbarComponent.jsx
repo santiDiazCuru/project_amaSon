@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {inputSearch, logo, formButton} from '../estilos/styleNav'
-export default ({ handleChange, handleSubmit, handleModal, handleCarrito }) => (
+export default ({ handleChange, handleSubmit, handleModal, handleCarrito, inputValue }) => (
     <div>
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
@@ -22,7 +22,9 @@ export default ({ handleChange, handleSubmit, handleModal, handleCarrito }) => (
                         <div className="input-group">
                             <span className="input-group-addon"></span>
                             <input style={inputSearch} type="text" className="form-control" 
-                            placeholder="¿Qué estas buscando?" onChange={handleChange} />
+                            placeholder="¿Qué estas buscando?"
+                            value = {inputValue}
+                            onChange={handleChange} />
 
                             <span className="input-group-btn">
                                 <button type="submit" className="btn btn-default">

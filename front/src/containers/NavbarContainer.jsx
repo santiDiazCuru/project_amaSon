@@ -42,6 +42,10 @@ class NavBarContainer extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.state.inputValue && fetchProducts(this.state.inputValue)
+        console.log("enter")
+        this.setState({
+            inputValue:''
+        })
     };
     handleRegister(e){
         if (e) e.preventDefault()
@@ -53,7 +57,9 @@ class NavBarContainer extends React.Component {
         if (this.state.showLogInModal) {
             return (
                 <div>
-                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <NavbarComponent 
+                    inputValue = {this.state.inputValue}
+                    handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
                     <DropdownNavbar />
                     <LogInContainer handleModal={this.handleModal} handleRegister={this.handleRegister}/>
                 </div>
@@ -62,7 +68,9 @@ class NavBarContainer extends React.Component {
         } else if (this.state.showCarrito){
             return (
                 <div>
-                    <NavbarComponent handleChange={this.handleChange} handleCarrito={this.handleCarrito} handleSubmit={this.handleSubmit}/>
+                    <NavbarComponent
+                    inputValue = {this.state.inputValue}
+                    handleChange={this.handleChange} handleCarrito={this.handleCarrito} handleSubmit={this.handleSubmit}/>
                     <DropdownNavbar />
                     <CarritoContainer handleCarrito={this.handleCarrito}/>
                 </div>
@@ -70,7 +78,9 @@ class NavBarContainer extends React.Component {
         } if (this.state.showRegister) {
             return (
                 <div>
-                    <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
+                    <NavbarComponent 
+                    inputValue = {this.state.inputValue}
+                    handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit}/>
                     <DropdownNavbar />
                     <RegisterContainer handleRegister={this.handleRegister} />
                 </div>
@@ -79,7 +89,9 @@ class NavBarContainer extends React.Component {
         }
         return (
             <div>
-            <NavbarComponent handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
+            <NavbarComponent 
+            inputValue = {this.state.inputValue}
+            handleChange={this.handleChange} handleModal={this.handleModal} handleSubmit={this.handleSubmit} handleCarrito={this.handleCarrito} />
             <DropdownNavbar />
             </div>
         )
