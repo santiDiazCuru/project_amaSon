@@ -1,4 +1,6 @@
 const Products = require('./models/Products');
+const Users = require('./models/Users')
+
 Products.bulkCreate([
     {
         titulo: "Aspiradoras Samsung Aspiradora Vc20cc Azul",
@@ -16,7 +18,7 @@ Products.bulkCreate([
         stock: 5,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb3/h25/10023646756894/00064056-173161-01.png",
         valoracion: 4.3,
-        categorias:"microondas"
+        categorias: "microondas"
     },
     {
         titulo: "Heladeras Patrick Heladera Con Freezer",
@@ -34,7 +36,7 @@ Products.bulkCreate([
         stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h86/h29/10027280367646/00189018-174267-01.png",
         valoracion: 5,
-        categorias:"televisores"
+        categorias: "televisores"
     },
     {
         titulo: "Notebook Exo Cloud E15 Intel Atom",
@@ -70,14 +72,54 @@ Products.bulkCreate([
         stock: 12,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h78/hd9/10023764721694/00125055-173962-01.png",
         valoracion: 3,
-        categorias:"celulares"
+        categorias: "celulares"
     }
-    
+
 ])
+
+Users.bulkCreate([
+    {
+        username: "Lucas",
+        email: "lucas@aguirre.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Nico",
+        email: "carello@martino.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Seba",
+        email: "seba@necochea.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Kenyi",
+        email: "kenyi@lewis.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Santi",
+        email: "santi@curu.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    }
+
+])
+
+
     .then(console.log("Esta todo piola"))
-    
 
 
 
 
-    
+

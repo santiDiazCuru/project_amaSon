@@ -6,6 +6,7 @@ import RegisterContainer from './containers/RegisterContainer'
 import Sidebar2Container from './containers/Sidebar2Container';
 import CategoryContainer from './containers/CategoryContainer'
 import SearchContainer from './containers/SearchContainer'
+import UserListContainer from './containers/UserListContainer';
 
 export default () => (
 
@@ -17,6 +18,7 @@ export default () => (
         <Route exact path='/' component={HomeContainer}/>
         <Route path='/categoria/:category' component={CategoryContainer}/>
         <Route path='/search/' component={SearchContainer}/>
+        <Route path='/users' component={UserListContainer}/>
         {/* ROUTES */}
         {/* <Redirect from="/" to="/notfound" /> */}
       </Switch>
