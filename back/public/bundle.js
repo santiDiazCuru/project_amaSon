@@ -33217,8 +33217,8 @@ var allProductsCategory = function allProductsCategory(productos) {
 
 var fetchProducts = function fetchProducts(input) {
   return function (dispatch) {
-    console.log(input, "jjjjjjj");
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(input)).then(function (productos) {
+    var Minuscula = input.toLowerCase();
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(Minuscula)).then(function (productos) {
       return dispatch(addProducts(productos.data));
     });
   };
@@ -33936,7 +33936,7 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "input-group-addon"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    style: _estilos_styleNav__WEBPACK_IMPORTED_MODULE_2__["inputSearch"],
+    id: "inputS",
     type: "text",
     className: "form-control",
     placeholder: "\xBFQu\xE9 estas buscando?",
@@ -33975,7 +33975,8 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#"
   }, "Cerrar Sesion")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "active"
+    className: "active",
+    id: "login"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "navbar-form navbar-left",
     style: _estilos_styleNav__WEBPACK_IMPORTED_MODULE_2__["formButton"]
@@ -34253,7 +34254,7 @@ RECIBE 2 PARAMETROS :
       list = _ref.list;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
-  }, // Itera el arreglo que se ingresa y construye cada productos
+  }, list.length === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No se ha encontrado ning\xFAn producto..") : // Itera el arreglo que se ingresa y construye cada productos
   list && list.map(function (item) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "col-xs-6 col-lg-".concat(col)
