@@ -5,15 +5,18 @@ import Producto from '../components/product'
 import Footer from '../components/Footer'
 import Home from '../components/Home'
 
+
 class HomeContainer extends React.Component {
     constructor(props) {
         super(props)
 
     }
     componentDidMount() {
+        window.scrollTo(0, 0)
         this.props.fetchAllProductsHome()
+        
     }
-    
+        
     render() {
         return (
             <div>
