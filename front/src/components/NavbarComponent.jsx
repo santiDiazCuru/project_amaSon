@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {inputSearch, logo, formButton} from '../estilos/styleNav'
+import { inputSearch, logo, formButton } from '../estilos/styleNav'
 export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSubmit, handleModal, handleCarrito, inputValue }) => (
     <div>
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle collapsed"
-                     data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span className="sr-only">Toggle navigation</span>
                         <span className="icon-handleChangebar"></span>
                         <span className="icon-bar"></span>
@@ -67,7 +67,7 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                             <li className="active" id="login">
                                 <form className="navbar-form navbar-left" style={formButton}>
                                     <div className="form-group">
-                                        <button type='submit'  onClick={handleModal}
+                                        <button type='submit' onClick={handleModal}
                                             className='btn btn-success btn-md'>
                                             <span className="glyphicon glyphicon-user" aria-hidden="true"></span>
                                             &nbsp;Log In
@@ -79,11 +79,10 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         <li>
                             <form className="navbar-form navbar-left" style={formButton}>
                                 <div className="form-group">
-                                    <span onClick={handleCarrito}
-                                        className='btn btn-default btn-md'>
+                                    <Link to='/carrito' ><span className='btn btn-default btn-md'>
                                         <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                                         &nbsp;Carrito
-                                </span>
+                                </span></Link>
                                 </div>
                             </form>
                             {/* <a className='glyphicon glyphicon-shopping-cart' onClick={handleCarrito}></a> */}

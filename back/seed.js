@@ -1,5 +1,11 @@
 const Products = require('./models/Products');
 const Users = require('./models/Users')
+const Review = require('./models/Reviews')
+
+Review.create({
+    valoracion: 4,
+    comentario: 'esto es un review de prueba broder'
+})
 
 Products.bulkCreate([
     {
