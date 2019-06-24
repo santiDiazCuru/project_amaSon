@@ -1,5 +1,11 @@
 const Products = require('./models/Products');
 const Users = require('./models/Users')
+const Review = require('./models/Reviews')
+
+Review.create({
+    valoracion: 4,
+    comentario: 'esto es un review de prueba broder'
+})
 
 Products.bulkCreate([
     {
@@ -72,48 +78,6 @@ Products.bulkCreate([
         stock: 12,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h78/hd9/10023764721694/00125055-173962-01.png",
         valoracion: 3,
-        categorias: "celulares"
-    }
-
-])
-
-Users.bulkCreate([
-    {
-        username: "Lucas",
-        email: "lucas@aguirre.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Nico",
-        email: "carello@martino.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Seba",
-        email: "seba@necochea.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Kenyi",
-        email: "kenyi@lewis.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Santi",
-        email: "santi@curu.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
         categorias: "celulares"
     },
     {
@@ -252,7 +216,44 @@ Users.bulkCreate([
         categorias: "televisores"
     }
 
+])
 
+Users.bulkCreate([
+    {
+        username: "Lucas",
+        email: "lucas@aguirre.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Nico",
+        email: "carello@martino.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Seba",
+        email: "seba@necochea.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Kenyi",
+        email: "kenyi@lewis.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    },
+    {
+        username: "Santi",
+        email: "santi@curu.com",
+        password: "1234",
+        salt: "lala",
+        isAdmin: false
+    }
 ])
 
 
