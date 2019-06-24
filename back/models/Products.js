@@ -41,6 +41,8 @@ var Product = db.define('productos', {
     categorias: {
         type: Sequelize.STRING
     }
+
 });
+
 
 module.exports = Product;
