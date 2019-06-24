@@ -38,11 +38,16 @@ class NavBarContainer extends React.Component {
         e.preventDefault();
         this.props.history.push('/search')
         let inputValue = e.target.value
-        this.setState({ inputValue }, () => this.state.inputValue && this.props.fetchProducts(this.state.inputValue));
+        this.setState({ inputValue }, 
+            () => 
+             this.state.inputValue &&
+             this.props.fetchProducts(this.state.inputValue,'',0,1000000,1))
+        
     };
     handleSubmit(e) {
         e.preventDefault();
-        this.state.inputValue && fetchProducts(this.state.inputValue)
+        this.state.inputValue && this.props.fetchProducts(this.state.inputValue,'',0,1000000,1)
+        console.log("enter")
         this.setState({
             inputValue: ''
         })
@@ -104,7 +109,7 @@ class NavBarContainer extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchProducts: (input) => dispatch(fetchProducts(input)),
+    fetchProducts: (input,category, min,max,page) => dispatch(fetchProducts(input,category, min,max,page)),
     endSession: () => dispatch(endSession())
 });
 const mapStateToProps = (state, ownProps) => {

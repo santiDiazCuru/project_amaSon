@@ -20,12 +20,12 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <form className="navbar-form navbar-left" onSubmit={handleSubmit}>
                         <center>
-                            <div className="input-group">
-                                <span className="input-group-addon"></span>
-                                <input id="inputS" type="text" className="form-control"
-                                    placeholder="¿Qué estas buscando?"
-                                    value={inputValue}
-                                    onChange={handleChange} />
+                        <div className="input-group">
+                            <span className="input-group-addon"></span>
+                            <input autoComplete="off" id="inputS" type="text" className="form-control" 
+                            placeholder="¿Qué estas buscando?"
+                            value = {inputValue}
+                            onChange={handleChange} />
 
                                 <span className="input-group-btn">
                                     <button type="submit" className="btn btn-default">
