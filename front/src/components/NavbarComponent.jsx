@@ -22,7 +22,7 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         <center>
                         <div className="input-group">
                             <span className="input-group-addon"></span>
-                            <input id="inputS" type="text" className="form-control" 
+                            <input autoComplete="off" id="inputS" type="text" className="form-control" 
                             placeholder="¿Qué estas buscando?"
                             value = {inputValue}
                             onChange={handleChange} />

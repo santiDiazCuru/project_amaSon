@@ -18,6 +18,10 @@ export const styleImg = {
     height:300
 }
 
+export const boton = {
+    marginTop: 20
+}
+
 export const TitleStyle = {
     fontSize: '18px',
     height:50,

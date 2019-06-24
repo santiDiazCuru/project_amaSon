@@ -16,7 +16,8 @@ class CategoryContainer extends React.Component {
             priceMax: 100000,
             color: '#f2ff00',
             letraMax: 12,
-            letraMin: 20
+            letraMin: 20,
+            categoria:''
         };
         this.handleChangeMin = this.handleChangeMin.bind(this);
         this.handleChangeMax = this.handleChangeMax.bind(this);
@@ -24,15 +25,16 @@ class CategoryContainer extends React.Component {
         this.handleClickMax = this.handleClickMax.bind(this);
         this.handleChangeLetraMin = this.handleChangeLetraMin.bind(this);
         this.handleChangeLetraMax = this.handleChangeLetraMax.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleRadioCateg = this.handleRadioCateg.bind(this)
     };
 
-
+    
     handleClickMin(e) {
         e.preventDefault();
         // cambiar el estado de price default por la diferencia el precio menor y el mayor
         this.setState({ priceMin: 0 },()=>this.setState({ color: '#f2ff00' }))
     };
-
     handleChangeLetraMin() {
         // console.log(this.state.priceMin)
         this.state.priceMin.toString().length == 1 && this.setState({ letraMin: 20 })
@@ -77,6 +79,13 @@ class CategoryContainer extends React.Component {
             }
         })
     };
+    handleRadioCateg(e) {
+        e.preventDefault();
+        this.setState({ categoria: e.target.value })
+        
+    }
+
+    
     handleChangeLetraMax(){
         this.state.priceMax.toString().length == 1 && this.setState({ letraMax: 20 })
         this.state.priceMax.toString().length == 2 && this.setState({ letraMax: 18 })
@@ -85,11 +94,31 @@ class CategoryContainer extends React.Component {
         this.state.priceMax.toString().length == 5 && this.setState({ letraMax: 12 })
     }
     componentDidMount() {
-        this.props.fetchAllProducts(this.props.categoryParams)
+        window.scrollTo(0, 0)
+        this.props.fetchAllProducts(
+            this.props.categoryParams,
+            this.state.priceMin, this.state.priceMax, 1
+            )
     }
+    handleSubmit(e) {
+        e.preventDefault();
+        // cambiar el estado de price default por la diferencia el precio menor y el mayor
+        this.props.fetchAllProducts(
+            this.props.categoryParams,
+            this.state.priceMin, this.state.priceMax, 1
+            )
+    };
+    nextPage(page) {
+        this.props.fetchAllProducts(
+            this.props.categoryParams,
+            this.state.priceMin, this.state.priceMax, page
+            )
+    }
+
     componentDidUpdate(prevProps) {
         if (this.props.categoryParams !== prevProps.categoryParams) {
-            this.props.fetchAllProducts(this.props.categoryParams)
+            this.props.fetchAllProducts(this.props.categoryParams,
+                this.state.priceMin, this.state.priceMax, 1)
         }
     }
     
@@ -110,7 +139,9 @@ class CategoryContainer extends React.Component {
                         handleClickMax={this.handleClickMax} 
                         color={this.state.color} 
                         letraMax={this.state.letraMax} 
-                        letraMin={this.state.letraMin} />
+                        letraMin={this.state.letraMin}
+                        handleSubmit = {this.handleSubmit}
+                        handleRadioCateg = {this.handleRadioCateg}  />
                 </div>
                 <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol className="breadcrumb">
@@ -118,10 +149,13 @@ class CategoryContainer extends React.Component {
                         <li><Link >Categorias</Link></li>
                         <li className="active">{this.props.categoryParams}</li>
                     </ol>
-                    {console.log(this.props.listaProductos,"LISTA")}
+                    
                     <Producto
                         col={3}
+                        page={this.props.page}
+                        totalPage={this.props.totalPages}
                         list={this.props.listaProductos}
+                        nextPage={this.nextPage}
                     />
                 </div>
             </div>
@@ -131,14 +165,19 @@ class CategoryContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+
     return {
         listaProductos: state.product.productos,
-        categoryParams: ownProps.match.params.category
+        categoryParams: ownProps.match.params.category,
+        page: state.product.page,
+        totalPages: state.product.totalPages,
+        inputValue: state.product.inputValue,
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAllProducts: (category) => dispatch(fetchAllProducts(category))
+        fetchAllProducts: (category, min, max, page) => dispatch(fetchAllProducts(category, min, max, page))
+        //fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
     }
 }
 
