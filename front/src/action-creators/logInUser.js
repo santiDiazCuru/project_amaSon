@@ -1,4 +1,4 @@
-import { LOG_IN_USER, LOG_OUT_USER} from "../constants"
+import { LOG_IN_USER, LOG_OUT_USER } from "../constants"
 import Axios from "axios"
 
 const logInUser = (user) => ({
@@ -21,13 +21,18 @@ const logOutUser = () => ({
 //     isLoggedIn: true
 // }
 
-export const validateUser = (userData) => dispatch =>{
-    Axios.post('/users/login', userData)
-    .then((user)=>dispatch(logInUser(user.data)))
+export const validateUser = (userData) => dispatch => {
+    return Axios.post('/users/login', userData)
+        .then((user) => dispatch(logInUser(user.data)))
 }
 
-export const endSession = () => dispatch =>{
-    // Axios.post('/users/logout')           ======>EsTA parte va cuando tengamos passport
-    // .then(()=>dispatch(logOutUser()))     ======> así tiene adonde hacer el poedido para que termine la sesion
-    dispatch(logOutUser())
+export const validateSession = () => dispatch => {
+    Axios.get('/users/isLoggedIn')
+        .then((user) => {
+            dispatch(logInUser(user.data))
+        })
+}
+export const endSession = () => dispatch => {
+    Axios.get('/users/logout')
+        .then((msg) => { dispatch(logOutUser()) })
 }
