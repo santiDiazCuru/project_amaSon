@@ -20,7 +20,6 @@ class NavBarContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleModal = this.handleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCarrito = this.handleCarrito.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
         this.handleSession = this.handleSession.bind(this);
 
@@ -35,11 +34,6 @@ class NavBarContainer extends React.Component {
         this.props.endSession()
     }
 
-    handleCarrito(e) {
-        e.preventDefault();
-        !this.state.showCarrito ? this.setState({ showCarrito: true }) : this.setState({ showCarrito: false });
-    }
-
     handleChange(e) {
         e.preventDefault();
         this.props.history.push('/search')
@@ -49,7 +43,6 @@ class NavBarContainer extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.state.inputValue && fetchProducts(this.state.inputValue)
-        console.log("enter")
         this.setState({
             inputValue: ''
         })
@@ -74,22 +67,6 @@ class NavBarContainer extends React.Component {
                         handleSubmit={this.handleSubmit} />
                     <DropdownNavbar />
                     <LogInContainer handleModal={this.handleModal} handleRegister={this.handleRegister} />
-                </div>
-            )
-
-        } else if (this.state.showCarrito) {
-            return (
-                <div>
-                    <NavbarComponent
-                        inputValue={this.state.inputValue}
-                        handleSession={this.handleSession}
-                        currentUser={this.props.currentUser}
-                        isLoggedIn={this.props.isLoggedIn}
-                        handleChange={this.handleChange}
-                        handleCarrito={this.handleCarrito}
-                        handleSubmit={this.handleSubmit} />
-                    <DropdownNavbar />
-                    <CarritoContainer handleCarrito={this.handleCarrito} />
                 </div>
             )
         } if (this.state.showRegister) {

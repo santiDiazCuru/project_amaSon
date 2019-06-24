@@ -33144,9 +33144,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _containers_HomeContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./containers/HomeContainer */ "./src/containers/HomeContainer.jsx");
 /* harmony import */ var _containers_NavbarContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/NavbarContainer */ "./src/containers/NavbarContainer.jsx");
-/* harmony import */ var _containers_CategoryContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/CategoryContainer */ "./src/containers/CategoryContainer.jsx");
-/* harmony import */ var _containers_SearchContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/SearchContainer */ "./src/containers/SearchContainer.jsx");
-/* harmony import */ var _containers_UserListContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/UserListContainer */ "./src/containers/UserListContainer.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _containers_CategoryContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/CategoryContainer */ "./src/containers/CategoryContainer.jsx");
+/* harmony import */ var _containers_SearchContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/SearchContainer */ "./src/containers/SearchContainer.jsx");
+/* harmony import */ var _containers_UserListContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/UserListContainer */ "./src/containers/UserListContainer.jsx");
+/* harmony import */ var _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers/CarritoContainer */ "./src/containers/CarritoContainer.jsx");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -33156,26 +33180,67 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container-fluid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    component: _containers_NavbarContainer__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
-    path: "/",
-    component: _containers_HomeContainer__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/categoria/:category",
-    component: _containers_CategoryContainer__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/search/",
-    component: _containers_SearchContainer__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/users",
-    component: _containers_UserListContainer__WEBPACK_IMPORTED_MODULE_6__["default"]
-  })));
-});
+
+
+
+
+var Main =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Main, _React$Component);
+
+  function Main(props) {
+    _classCallCheck(this, Main);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Main).call(this, props));
+  }
+
+  _createClass(Main, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.props.validateSession();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        component: _containers_NavbarContainer__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/",
+        component: _containers_HomeContainer__WEBPACK_IMPORTED_MODULE_2__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/categoria/:category",
+        component: _containers_CategoryContainer__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/search/",
+        component: _containers_SearchContainer__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/users",
+        component: _containers_UserListContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/carrito",
+        component: _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
+      })));
+    }
+  }]);
+
+  return Main;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    validateSession: function validateSession() {
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_9__["validateSession"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(null, mapDispatchToProps)(Main));
 
 /***/ }),
 
@@ -33289,12 +33354,13 @@ var fetchAllUsers = function fetchAllUsers() {
 /*!******************************************!*\
   !*** ./src/action-creators/logInUser.js ***!
   \******************************************/
-/*! exports provided: validateUser, endSession */
+/*! exports provided: validateUser, validateSession, endSession */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateUser", function() { return validateUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateSession", function() { return validateSession; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "endSession", function() { return endSession; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -33327,16 +33393,23 @@ var logOutUser = function logOutUser() {
 
 var validateUser = function validateUser(userData) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/users/login', userData).then(function (user) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/users/login', userData).then(function (user) {
       return dispatch(logInUser(user.data));
+    });
+  };
+};
+var validateSession = function validateSession() {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/users/isLoggedIn').then(function (user) {
+      dispatch(logInUser(user.data));
     });
   };
 };
 var endSession = function endSession() {
   return function (dispatch) {
-    // Axios.post('/users/logout')           ======>EsTA parte va cuando tengamos passport
-    // .then(()=>dispatch(logOutUser()))     ======> así tiene adonde hacer el poedido para que termine la sesion
-    dispatch(logOutUser());
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/users/logout').then(function (msg) {
+      dispatch(logOutUser());
+    });
   };
 };
 
@@ -33370,7 +33443,7 @@ var logInUser = function logInUser(user) {
 
 var registerUser = function registerUser(newUserInfo) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/users/register', newUserInfo).then(function (newUser) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/users/register', newUserInfo).then(function (newUser) {
       return dispatch(logInUser(newUser.data));
     });
   };
@@ -33390,56 +33463,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var handleCarrito = _ref.handleCarrito;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-wrapper",
-    style: {
-      transform: 'translateY(0vh)',
-      opacity: '1'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Carrito"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "close-modal-btn",
-    onClick: handleCarrito
-  }, "x")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gridGap: "16px"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      display: "block",
-      padding: "20px",
-      color: "white",
-      background: "grey",
-      boxShadow: "2px 2px 10px rgba(0,0,0,.25)"
-    }
-  }, "WOOOHOOOOOO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      display: "block",
-      padding: "20px",
-      color: "white",
-      background: "grey",
-      boxShadow: "2px 2px 10px rgba(0,0,0,.25)"
-    }
-  }, "WOoohooo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-footer"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "#",
-    style: {
-      "float": 'left'
-    }
-  }, "Vaciar Carrito!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/compra"
-  }, "Finalizar Compra!"))));
-});
+  _objectDestructuringEmpty(_ref);
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "panel panel-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "table table-striped"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quitar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "casillaImg"
+  }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "casillaTitulo"
+  }, "Mark"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", _defineProperty({
+    className: "casillaCantidad"
+  }, "className", "cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    className: "cantidad",
+    min: "1"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "casillaImporte"
+  }, "@mdo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "casillaEliminar"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox"
+  })))))));
+}); // <div>
+// <div className="modal-wrapper">
+//     <h2 id='LogInTitle'>Log In...</h2>
+//         { error? <h5>El usuario o la contraseña son incorrectos</h5> : console.log('no hay error')}
+//     <span className="close-modal-btn" onClick={handleModal}>x</span>
+//     <div>
+//         <form onSubmit={handleSubmit}>
+//             <input onChange={handleChanges} type="email" name='email' className="form-control" placeholder="Email" aria-describedby="basic-addon1"></input>
+//             <br />
+//             <input onChange={handleChanges} type="password" name='password' className="form-control" placeholder="Password" aria-describedby="basic-addon2"></input>
+//             <br />
+//             <button type="submit" className="btn btn-default">Ingresar</button>
+//             <div onClick={handleRegister} id='registerSubmit' className='btn btn-default'>
+//                 <span>Registrarme</span>
+//             </div>
+//         </form>
+//     </div>
+//     {/* <button type='submit' className="btn btn-default">Registrarme</button> */}
+// </div>
+// </div>
 
 /***/ }),
 
@@ -33877,7 +33952,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var handleModal = _ref.handleModal,
+  var error = _ref.error,
+      handleModal = _ref.handleModal,
       handleRegister = _ref.handleRegister,
       handleSubmit = _ref.handleSubmit,
       handleChanges = _ref.handleChanges;
@@ -33885,17 +33961,17 @@ __webpack_require__.r(__webpack_exports__);
     className: "modal-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     id: "LogInTitle"
-  }, "Log In..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Log In..."), error ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "El usuario o la contrase\xF1a son incorrectos") : console.log('no hay error'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "close-modal-btn",
     onClick: handleModal
   }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: handleChanges,
-    type: "text",
-    name: "username",
+    type: "email",
+    name: "email",
     className: "form-control",
-    placeholder: "Username",
+    placeholder: "Email",
     "aria-describedby": "basic-addon1"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: handleChanges,
@@ -34037,13 +34113,14 @@ __webpack_require__.r(__webpack_exports__);
     style: _estilos_styleNav__WEBPACK_IMPORTED_MODULE_2__["formButton"]
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/carrito"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    onClick: handleCarrito,
     className: "btn btn-default btn-md"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "glyphicon glyphicon-shopping-cart",
     "aria-hidden": "true"
-  }), "\xA0Carrito")))))))));
+  }), "\xA0Carrito"))))))))));
 });
 
 /***/ }),
@@ -34450,9 +34527,7 @@ function (_React$Component) {
   _createClass(CarritoContainer, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        handleCarrito: this.props.handleCarrito
-      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], null);
     }
   }]);
 
@@ -34870,8 +34945,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LogInContainer).call(this, props)), _this.state = {
       //maneja los inputsss!
-      username: '',
-      password: ''
+      email: '',
+      password: '',
+      error: false
     };
     _this.handleChanges = _this.handleChanges.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -34879,11 +34955,18 @@ function (_React$Component) {
   }
 
   _createClass(LogInContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.state.error) {
+        this.props.handleSubmit();
+      }
+    }
+  }, {
     key: "handleChanges",
     value: function handleChanges(e) {
       e.preventDefault();
-      if (e.target.name === 'username') this.setState({
-        username: e.target.value
+      if (e.target.name === 'email') this.setState({
+        email: e.target.value
       });
       if (e.target.name === 'password') this.setState({
         password: e.target.value
@@ -34892,12 +34975,18 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var user = {
-        username: this.state.username,
+        email: this.state.email,
         password: this.state.password
       };
-      this.state.username && this.state.password && this.props.validateUser(user);
+      this.props.validateUser(user)["catch"](function () {
+        return _this2.setState({
+          error: true
+        });
+      });
       this.props.handleModal();
     } //handleModal viene por props y es para cerrar el modal. handleRegister es para abrir o cerrar el registerModal
 
@@ -34905,6 +34994,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_LogInModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        error: this.state.error,
         handleSubmit: this.handleSubmit,
         handleChanges: this.handleChanges,
         handleModal: this.props.handleModal,
@@ -34995,7 +35085,6 @@ function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleModal = _this.handleModal.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
     _this.handleRegister = _this.handleRegister.bind(_assertThisInitialized(_this));
     _this.handleSession = _this.handleSession.bind(_assertThisInitialized(_this));
     return _this;
@@ -35018,16 +35107,6 @@ function (_React$Component) {
       this.props.endSession();
     }
   }, {
-    key: "handleCarrito",
-    value: function handleCarrito(e) {
-      e.preventDefault();
-      !this.state.showCarrito ? this.setState({
-        showCarrito: true
-      }) : this.setState({
-        showCarrito: false
-      });
-    }
-  }, {
     key: "handleChange",
     value: function handleChange(e) {
       var _this2 = this;
@@ -35046,7 +35125,6 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.state.inputValue && Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProducts"])(this.state.inputValue);
-      console.log("enter");
       this.setState({
         inputValue: ''
       });
@@ -35079,18 +35157,6 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInContainer__WEBPACK_IMPORTED_MODULE_5__["default"], {
           handleModal: this.handleModal,
           handleRegister: this.handleRegister
-        }));
-      } else if (this.state.showCarrito) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavbarComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          inputValue: this.state.inputValue,
-          handleSession: this.handleSession,
-          currentUser: this.props.currentUser,
-          isLoggedIn: this.props.isLoggedIn,
-          handleChange: this.handleChange,
-          handleCarrito: this.handleCarrito,
-          handleSubmit: this.handleSubmit
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DropdownNavbar__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CarritoContainer__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          handleCarrito: this.handleCarrito
         }));
       }
 
@@ -35229,7 +35295,9 @@ function (_React$Component) {
         password: this.state.password
       };
       e.preventDefault();
-      this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser);
+      this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser)["catch"](function (err) {
+        return console.log('el email ya existe', err);
+      });
       this.props.handleRegister();
     } //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
     //modal sie sta abierto y que se abra si esta cerrado!!!!

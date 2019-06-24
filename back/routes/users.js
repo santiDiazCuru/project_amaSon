@@ -1,23 +1,52 @@
-const express = require("express")
-const Router = express.Router()
-const User = require("../models/Users")
+const express = require("express");
+const Router = express.Router();
+const User = require("../models/Users");
+const passport = require('../config/passport');
 
-Router.post('/register', function(req,res){
-    User.create(req.body)
-    .then((newUser)=>res.json(newUser))
-})
-Router.post('/login', function(req,res){
-    User.findOne({where: {
-        username: req.body.username,
-        //password: req.body.password
-    }})
-    .then((user)=> res.json(user))
+Router.post('/register', function (req, res) {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(user => {
+            if (user) return res.status(500).send('el usuario ya existe')
+            if (!user) return User.create(req.body)
+                .then(newUser=>res.send(newUser))
+        })
 })
 
-Router.get('/', function(req, res){
-    User.findAll()
-    .then(users => {res.json(users)})
-})
+Router.post('/login', function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+        if (err) { return next(err) }
+        if (!user) {
+            req.session.message = info.message;
+            return res.status(500).send(info.message); // Devuelve el error Invalid mail o pass
+        }
+        req.logIn(user, function (err) {
+            if (err) { res.send('Otro error') } // Ver que error es
+            return res.json(user);// Retorna el mail del usuario si esta correcto
+        });
+    })(req, res, next);
+});
+
+Router.get("/isLoggedIn", function (req, res) {
+    let Session = req.session.passport;
+    let session = {
+        id: (Session) ? Session.user.id : '',
+        username: (Session) ? Session.user.username : '',
+        email: (Session) ? Session.user.email : '',
+        isAdmin: (Session) ? Session.user.isAdmin : ''
+    }
+
+    Session && res.json(session)
+});
+
+Router.get("/logout", function (req, res) {
+    req.session.destroy();
+    console.log('deslogeado')
+    res.send('Deslogeado')
+});
 
 
 module.exports = Router;

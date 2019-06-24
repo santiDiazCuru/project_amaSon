@@ -29,6 +29,7 @@ class RegisterContainer extends React.Component {
         }
         e.preventDefault()
         this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser)
+        .catch((err)=>console.log('el email ya existe', err))
         this.props.handleRegister()
         
     }
