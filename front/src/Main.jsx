@@ -21,6 +21,8 @@ export default () => (
         <Route path='/categoria/:category' component={CategoryContainer}/>
         <Route path='/search/' component={SearchContainer}/>
         <Route path='/users' component={UserListContainer}/>
+      
+        
         {/* ROUTES */}
         {/* <Redirect from="/" to="/notfound" /> */}
       </Switch>
