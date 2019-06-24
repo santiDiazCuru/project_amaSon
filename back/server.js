@@ -33,7 +33,7 @@ app.get('/*', function(req,res){
 
 //Levanta server
 
-db.sync({force: true})
+db.sync({force: false})
    .then( ()=> {
       app.listen(8000)
       console.log(chalk.yellow.bold('amaSon ') + chalk.white.bold('- ')  + chalk.red.bold(8000) + chalk.red.bold('! ') + chalk.white.bold(':)'))
