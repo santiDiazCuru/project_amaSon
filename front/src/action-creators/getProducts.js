@@ -48,13 +48,17 @@ export const fetchAllProducts = (category, min, max, page) => dispatch => {
     Axios.get(`/api/products/categoria/${category}`, {
         // Asignamos el valor de userInfo a params
         params: {
-            min,
-            max,
-            category,
-            page
+            min, max, category, page
         }
     })
-        .then(productos => dispatch(allProductsCategory(productos.data, category, min, max, page, 2)))
+    .then(productos => dispatch(allProductsCategory(productos.data, category, min, max, page, 2)))
+}
+
+export const addNewProduct = (body) => dispatch => {
+    return Axios.post('/api/products/', body)
+    .then(data=>{
+        return data
+    })
 }
 
 

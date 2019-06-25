@@ -5,16 +5,20 @@ import { style, styleImg, TitleStyle, starStyle, price, boton } from '../estilos
 export default ({ col, list, page, totalPage, nextPage }) => {
 
     if (list.length !== 0) {
-        return <div className="row">
-            {procesar(col, list)}                        
+        return <div >
+            <div className="row">
+                {procesar(col, list)}                        
+            </div>
+            <div className="row">
             {
                 (list.length>=8) ? <center><br/>
                     {/* (page < totalPage) ? <center></center> */}                    
                     <button style={boton} className="btn btn-default btn-md" onClick={()=>nextPage(page + 1)}>
-                        Ver mas..
+                        Cargar más..
                     </button>
                 </center> : ''
             }
+            </div>
         </div>
     } else {
         return <div className="row">

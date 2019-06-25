@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import CategoryContainer from './containers/CategoryContainer'
 import SearchContainer from './containers/SearchContainer'
 import UserListContainer from './containers/UserListContainer';
+import AddProductContainer from './containers/AddProductContainer';
 import CarritoContainer from './containers/CarritoContainer';
 import {validateSession} from './action-creators/logInUser'
 import Axios from 'axios';
@@ -31,11 +32,13 @@ class Main extends React.Component {
         <Route exact path='/' component={HomeContainer} />
         {/* <Route path = '/register' component={RegisterContainer} />
         <Route path='/search' component={Sidebar2Container}/> */}
-        <Route path='/categoria/:category' component={CategoryContainer} />
-        <Route path='/search/' component={SearchContainer} />
-        <Route path='/users' component={UserListContainer} />
+        <Route path='/categoria/:category' component={CategoryContainer}/>
+        <Route path='/search/' component={SearchContainer}/>
+        <Route path='/users' component={UserListContainer}/>
+        <Route path='/product/add' component={AddProductContainer}/>
         <Route path='/carrito' component={CarritoContainer} />
-
+      
+        
         {/* ROUTES */}
         {/* <Redirect from="/" to="/notfound" /> */}
       </Switch>
