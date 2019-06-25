@@ -10,7 +10,7 @@ class CarritoContainer extends React.Component {
 
     render() {
         return (
-            <CarritoComponent handleCarrito={this.props.handleCarrito}/>
+            <CarritoComponent/>
         )
     };
 };
