@@ -1,6 +1,9 @@
 const Products = require('./models/Products');
 const Users = require('./models/Users')
 const Review = require('./models/Reviews')
+const Compra = require('./models/Compras')
+const OC = require('./models/OrdenesDeCompra')
+
 
 Review.create({
     valoracion: 4,
@@ -254,12 +257,85 @@ Users.bulkCreate([
         salt: "lala",
         isAdmin: false
     }
-  ])
-    
-   
-    .then(console.log("Esta todo piola"))
+])
 
 
+// OC.create(
+//     {
+//         estado: 'carrito'
+//     }
+// ).then(oc=>{
+//     oc.setUser(1)
+//     oc.addCompra(3,5)
+// })
+
+// Compra.create({cantidad: 3})
+// .then((compra)=>
+// {compra.setProduct(3)
+// console.log(compra)})
 
 
+// Compra.create({cantidad: 3})
+// .then((compra)=>
+// {compra.setProduct(3)
 
+
+OC.create(
+    {
+        estado: 'carrito'
+    }
+)
+    .then(oc => {
+        oc.setUser(1)
+    })
+
+OC.create(
+    {
+        estado: 'carrito'
+    }
+)
+    .then(oc => {
+        oc.setUser(3)
+    })
+OC.create(
+    {
+        estado: 'carrito'
+    }
+)
+    .then(oc => {
+        oc.setUser(2)
+    })
+
+
+Compra.create({ cantidad: 3 })
+    .then((compra) => {
+        compra.setProduct(2)
+        compra.setOC(1)
+    })
+Compra.create({ cantidad: 1 })
+    .then((compra) => {
+        compra.setProduct(4)
+        compra.setOC(1)
+    })
+Compra.create({ cantidad: 2 })
+    .then((compra) => {
+        compra.setProduct(5)
+        compra.setOC(1)
+    })
+
+Compra.create({ cantidad: 3 })
+    .then((compra) => {
+        compra.setProduct(6)
+        compra.setOC(2)
+    })
+Compra.create({ cantidad: 4 })
+    .then((compra) => {
+        compra.setProduct(9)
+        compra.setOC(2)
+    })
+Compra.create({ cantidad: 1 })
+    .then((compra) => {
+        compra.setProduct(12)
+        compra.setOC(2)
+    })
+    .then(() => console.log('todo pillo'))
