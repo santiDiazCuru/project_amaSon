@@ -24,7 +24,7 @@ export default ({}) => (
                <td className='casillaTitulo'>Mark</td>
                <td className='casillaCantidad' className='cantidad'><input type='number'className='cantidad' min='1'/></td>
                <td className='casillaImporte'>@mdo</td>
-               <td className='casillaEliminar'><input type='checkbox'/></td>
+               <td className='casillaEliminar'><span className='glyphicon glyphicon-trash'></span></td>
 
              </tr>
            </tbody>

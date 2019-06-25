@@ -6,6 +6,9 @@ class CarritoContainer extends React.Component {
     constructor() {
         super();
     };
+    componentDidMount(){
+        
+    }
 
 
     render() {
