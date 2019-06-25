@@ -1,10 +1,34 @@
 const express = require("express")
 const Router = express.Router()
-const Products = require("../models/Products")
+const Products = require("../models").Products
+const Category = require("../models").Category
 
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
+//AGREGAR UN NUEVO PRODUCTO
+Router.post(`/`, (req, res) => {
+    Products.create(req.body)
+    .then(product=>{
+        //console.dir(product.addCategory)
+        let arr = req.body.category
+        
+        for (var i=0; i< arr.length; i++){
+            Category.findOrCreate({
+                where:{
+                    categoria:arr[i]
+                }
+            }).then(category => {
+                console.log(category[0].dataValues.id)
+                // instancia del producto creado
+                product.addCategory(category[0].dataValues.id)
+            })
+        }
+       
+    })
+    .then(res => res.json(res))
+    .catch(err => res.json(err))
+})
 
 // MODIFICAR WHERE POR "CONTIENE (OP LIKE %)"
 Router.get(`/search`, (req, res) => {
@@ -54,12 +78,23 @@ Router.get(`/:search`, (req, res) => {
 
 Router.get('/', (req, res) => {
     Products.findAll({
-        limit: 8,
+        limit: 88,
         where: {
             stock: {
                 [Op.ne]: 0
             }
-        }
+        },
+        include: [{
+            model: Category,
+            as: 'category',
+            where: {categoria: "televisores"},
+            attributes: ['id', 'categoria']
+          }],
+        // include: [{
+        //     model: Category,
+        //     as: 'category',
+        //     through: { where: {categoriaId:1}}
+        // }]
     })
         .then(products => res.json(products))
 })

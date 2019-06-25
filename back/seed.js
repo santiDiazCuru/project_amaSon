@@ -115,7 +115,7 @@ Products.bulkCreate([
         descripcion: "El Motorola Moto G7 PLAY tiene una pantalla de 5.7 pulgadas a resolución HD+ un procesador Snapdragon 632 acompañado de 2GB de RAM y 32GB de almacenamiento una cámara de 13 MP cámara frontal de 8",
         precio: 12999,
         stock: 7,
-        img1: "https://medias.musimundo.com/medias/sys_master/images/images/h70/h8d/10041521995806/00174031-174276-01.png",
+        img1: "https://d34zlyc2cp9zm7.cloudfront.net/products/ef90325950ff4994cc6e6f49bb9a7403abbec25027292b6116fe867a2f414098.webp_350",
         valoracion: 3.8,
         categorias: "celulares"
     },
