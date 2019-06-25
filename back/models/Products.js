@@ -44,3 +44,4 @@ var Product = db.define('productos', {
 });
 
 module.exports = Product;
+

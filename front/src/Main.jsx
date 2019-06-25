@@ -7,6 +7,7 @@ import NavbarContainer from './containers/NavbarContainer'
 import CategoryContainer from './containers/CategoryContainer'
 import SearchContainer from './containers/SearchContainer'
 import UserListContainer from './containers/UserListContainer';
+import AddProductContainer from './containers/AddProductContainer';
 
 export default () => (
 
@@ -21,6 +22,7 @@ export default () => (
         <Route path='/categoria/:category' component={CategoryContainer}/>
         <Route path='/search/' component={SearchContainer}/>
         <Route path='/users' component={UserListContainer}/>
+        <Route path='/product/add' component={AddProductContainer}/>
       
         
         {/* ROUTES */}

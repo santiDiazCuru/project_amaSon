@@ -13,6 +13,7 @@ export default ({ handleChangeMin, priceMin, handleClickMin,
             Aplicar
             </button> 
             </p>
+                <label className="btn btn-block btn-success">(TODOS) <input onChange={handleRadioCateg} value="" type='radio' name='foo' /></label>
                 <label className="btn btn-block btn-default">Televisores <input onChange={handleRadioCateg} value="televisores" type='radio' name='foo' /></label>
                 <label className="btn btn-block btn-default">Notebooks <input onChange={handleRadioCateg} value="notebook" type='radio' name='foo' /></label>
                 <label className="btn btn-block btn-default">Tablets <input onChange={handleRadioCateg} value="tablets" type='radio' name='foo' /></label>
