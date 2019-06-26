@@ -11,7 +11,8 @@ Router.get('/carrito/:id',function(req,res){
         estado: 'carrito'
     }})
     .then((OC)=>{
-         return Compra.findAll({where: {
+        if(!OC)console.log('el carrito está vació')
+        if (OC) {return Compra.findAll({where: {
             OCId: OC.id
         },
     include: {
@@ -19,7 +20,7 @@ Router.get('/carrito/:id',function(req,res){
         as: 'product',
         attributes: ['img1', 'titulo', 'precio']
     }, order:[['id', 'DESC']]
-    })})
+    })}})
     .then((compras)=>res.json(compras))
 })
 Router.put('/update/:compraId', function(req,res){

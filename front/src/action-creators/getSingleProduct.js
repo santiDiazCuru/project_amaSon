@@ -10,7 +10,7 @@ const singleProduct = (product) => ({
 
 // BUSCA PRODUCTO POR ID
 export const fetchSingleProduct = (id) => dispatch => {
-    Axios.get(`/api/products/${id}`)
+    Axios.get(`/api/products/singleView/${id}`)
         .then(product => {
             console.log("ESTO ES EL ACTION", id)
             dispatch(singleProduct(product.data))})

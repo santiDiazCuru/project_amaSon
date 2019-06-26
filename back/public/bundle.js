@@ -33270,7 +33270,6 @@ __webpack_require__.r(__webpack_exports__);
 //solo hace un axios y agrega items a la lista del carrito
 
 var addItem = function addItem(productId, userId) {
-  console.log('entra a la funcion con el pid:', productId, 'y el uid', userId);
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/compras/add/".concat(userId), {
     productId: productId
   });
@@ -33505,7 +33504,7 @@ var singleProduct = function singleProduct(product) {
 
 var fetchSingleProduct = function fetchSingleProduct(id) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(id)).then(function (product) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/singleView/".concat(id)).then(function (product) {
       console.log("ESTO ES EL ACTION", id);
       dispatch(singleProduct(product.data));
     });
@@ -35073,62 +35072,59 @@ __webpack_require__.r(__webpack_exports__);
       className: "row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No se ha encontrado ningun resultado.."));
   }
-});
-
-function procesar(col, listItems, handleCarrito) {
-  return listItems && listItems.map(function (item) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-xs-6 col-lg-".concat(col)
-    }, "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["style"]
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      to: "/products/".concat(item.id)
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["styleImg"],
-      src: item.img1,
-      alt: "{item.img1}"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["TitleStyle"],
-      key: item.id
-    }, item.titulo)), "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["starStyle"]
-    }, function (cantidad) {
-      var rows = [];
-
-      for (var i = 0; i < cantidad; i++) {
-        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "http://localhost:8000/completa.png",
-          width: "25px"
-        }));
-      }
-
-      return rows;
-    }(parseInt(item.valoracion)), (item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "http://localhost:8000/media.png",
-      width: "25px"
-    }) : '', function (cantidad) {
-      var rows = [];
-
-      for (var i = 0; i < cantidad; i++) {
-        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "http://localhost:8000/vacia.png",
-          width: "25px"
-        }));
-      }
-
-      return rows;
-    }((item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? 5 - parseInt(item.valoracion) - 1 : 5 - parseInt(item.valoracion))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      onClick: handleCarrito,
-      className: "btn btn-success",
-      role: "button"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "glyphicon glyphicon-shopping-cart",
-      "aria-hidden": "true"
-    }), "Add Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["price"]
-    }, "$ ", item.precio))));
-  });
-}
+}); // function procesar(col, listItems, handleCarrito) {
+//     return listItems && listItems.map(item => (
+//         <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
+//             <div style={style}>
+//                 <Link to={`/products/${item.id}`} >
+//                 <img style={styleImg} src={item.img1} alt="{item.img1}" />
+//                 <center>
+//                     {/* Titulo */}
+//                     <h2 style={TitleStyle} key={item.id}>{item.titulo}</h2>
+//                 </center>&nbsp;
+//                 </Link>
+//             {/* construccion de las estrellas */}
+//                 <p style={starStyle}>
+//                     {/* CREA UN FOR DE LAS CANTIDAD DE ESTRELLAS COMPLETAS */}
+//                     {
+//                         function (cantidad) {
+//                             let rows = [];
+//                             for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/completa.png' width="25px" />) }
+//                             return rows;
+//                         }(parseInt(item.valoracion))
+//                     }
+//                     {/* TERNARIO DE CONDICION SI ES MAYOR A 0.5 AGREGA LA MITAD DE LA ESTRELLA */}
+//                     {
+//                         ((item.valoracion - parseInt(item.valoracion)) * 10 >= 5) ?
+//                             <img src='http://localhost:8000/media.png' width="25px" />
+//                             : ''
+//                     }
+//                     {/* genera las cantidad de estellas vacias (5-valor) SI TIENE UNA MITAD LE RESTA 1*/}
+//                     {
+//                         function (cantidad) {
+//                             let rows = [];
+//                             for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/vacia.png' width="25px" />) }
+//                             return rows;
+//                         }(
+//                             ((item.valoracion - parseInt(item.valoracion)) * 10 >= 5) ?
+//                                 5 - parseInt(item.valoracion) - 1
+//                                 : 5 - parseInt(item.valoracion)
+//                         )
+//                     }
+//                 </p>
+//                 <p>
+//                     <button onClick={handleCarrito} className="btn btn-success" role="button">
+//                         <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+//                         Add Cart
+//                     </button>
+//                     <span style={price}>
+//                         $ {item.precio}
+//                     </span>
+//                 </p>
+//             </div>
+//         </div>
+//     ))
+// }
 
 /***/ }),
 
@@ -36356,6 +36352,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/product */ "./src/components/product.jsx");
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36379,6 +36377,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ProductContainer =
 /*#__PURE__*/
 function (_Component) {
@@ -36391,13 +36391,24 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductContainer).call(this, props));
     _this.nextPage = _this.nextPage.bind(_assertThisInitialized(_this));
+    _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProductContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.validateSession();
+    }
+  }, {
     key: "nextPage",
     value: function nextPage(page) {
       this.props.fetchProducts(this.props.inputValue, this.props.categoryParams, this.props.min, this.props.max, page);
+    }
+  }, {
+    key: "handleCarrito",
+    value: function handleCarrito(e) {
+      this.props.isLoggedIn ? Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["addItem"])(e.target.name, this.props.currentUser.id) : alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou');
     }
   }, {
     key: "render",
@@ -36407,7 +36418,8 @@ function (_Component) {
         page: this.props.page,
         totalPage: this.props.totalPages,
         list: this.props.listaProductos,
-        nextPage: this.nextPage
+        nextPage: this.nextPage,
+        handleCarrito: this.handleCarrito
       });
     }
   }]);
@@ -36424,7 +36436,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     inputValue: state.product.inputValue,
     min: state.product.filterPriceMin,
     max: state.product.filterPriceMax,
-    listCategory: state.product.listCategory
+    listCategory: state.product.listCategory,
+    currentUser: state.user.currentUser,
+    isLoggedIn: state.user.isLoggedIn
   };
 };
 
@@ -36432,6 +36446,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProducts: function fetchProducts(input, category, min, max, page) {
       return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProducts"])(input, category, min, max, page));
+    },
+    validateSession: function validateSession() {
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__["validateSession"])());
     }
   };
 };
