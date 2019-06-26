@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default ({}) => (
+export default ({userCarrito, handleChange, handleDelete}) => (
     <div className='row'>
         <br/>
         <br/>
@@ -19,37 +19,35 @@ export default ({}) => (
              </tr>
            </thead>
            <tbody>
-             <tr>
-               <td className='casillaImg'>1</td>
-               <td className='casillaTitulo'>Mark</td>
-               <td className='casillaCantidad' className='cantidad'><input type='number'className='cantidad' min='1'/></td>
-               <td className='casillaImporte'>@mdo</td>
-               <td className='casillaEliminar'><span className='glyphicon glyphicon-trash'></span></td>
-
+             {userCarrito && userCarrito.map(item =>{
+               return(
+             <tr key={item.id}>
+               <td className='casillaImg'><img className='img img-thumbnail' width='100px' height='100px' src={`${item.product.img1}`}></img></td>
+               <td className='casillaTitulo'>{item.product.titulo}</td>
+               <td className='casillaCantidad' className='cantidad'><input onClick={handleChange} name={`${item.id}`} defaultValue={`${item.cantidad}`} type='number'className='cantidad' min='1'/></td>
+               <td className='casillaImporte'>${item.cantidad * item.product.precio}</td>
+               <td className='casillaEliminar'><span style={{cursor: 'pointer'}} id={`${item.id}`} onClick={handleDelete} className='glyphicon glyphicon-trash'></span></td>
              </tr>
+             )})}
            </tbody>
          </table>
          </div>
          </div>
 )
 
-// <div>
-// <div className="modal-wrapper">
-//     <h2 id='LogInTitle'>Log In...</h2>
-//         { error? <h5>El usuario o la contraseña son incorrectos</h5> : console.log('no hay error')}
-//     <span className="close-modal-btn" onClick={handleModal}>x</span>
-//     <div>
-//         <form onSubmit={handleSubmit}>
-//             <input onChange={handleChanges} type="email" name='email' className="form-control" placeholder="Email" aria-describedby="basic-addon1"></input>
-//             <br />
-//             <input onChange={handleChanges} type="password" name='password' className="form-control" placeholder="Password" aria-describedby="basic-addon2"></input>
-//             <br />
-//             <button type="submit" className="btn btn-default">Ingresar</button>
-//             <div onClick={handleRegister} id='registerSubmit' className='btn btn-default'>
-//                 <span>Registrarme</span>
-//             </div>
-//         </form>
-//     </div>
-//     {/* <button type='submit' className="btn btn-default">Registrarme</button> */}
-// </div>
-// </div>
+// [
+//   {
+//   "id": 13,
+//   "cantidad": 3,
+//   "createdAt": "2019-06-25T21:02:01.002Z",
+//   "updatedAt": "2019-06-25T21:02:01.085Z",
+//   "OCId": 4,
+//   "productId": 6,
+//   "ordeneId": null,
+//   "product": {
+//   "img1": "https://medias.musimundo.com/medias/sys_master/images/images/h0f/h73/10024042954782/00181176-136244-01.jpg",
+//   "titulo": "notebook acer aspire 3 intel celeron",
+//   "precio": "19999"
+//   }
+//   },
+//]

@@ -6,6 +6,16 @@ const Category = require("../models").Category
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
+//BUSCA PRODUCTOS POR ID
+Router.get(`/:id`, (req, res) => {
+    Products.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(product => res.json(product))
+})
+
 // RUTA SOLO USO DE TEST
 Router.get('/prueba', (req, res) => {
 

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import ProductoContainer from '../containers/ProductContainer'
 import SidebarComponent from '../components/SidebarComponent'
 import { fetchProducts, fetchAllCategory } from '../action-creators/getProducts'
+import {addItem} from '../action-creators/addCarrito'
+import { validateSession } from '../action-creators/logInUser'
 
 class CategoryContainer extends React.Component {
     //Eventos del filtro
@@ -31,6 +33,7 @@ class CategoryContainer extends React.Component {
     };
 
     componentDidMount() {
+        this.props.validateSession();
         window.scrollTo(0, 0)
         this.props.fetchAllCategory()
     }
@@ -82,7 +85,7 @@ class CategoryContainer extends React.Component {
         })
 
     };
-
+    
     handleClickMax(e) {
         e.preventDefault();
         // cambiar el estado de price default por la diferencia el precio menor y el mayor
@@ -154,6 +157,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         categoryParams: ownProps.match.params.category,        
         inputValue: state.product.inputValue,
+        currentUser: state.user.currentUser,
+        isLoggedIn: state.user.isLoggedIn,
         min:state.product.filterPriceMin,
         max:state.product.filterPriceMax,
         listCategory: state.product.listCategory
@@ -162,6 +167,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
+        validateSession: () => dispatch(validateSession()),
         fetchAllCategory: () => dispatch(fetchAllCategory()),
     }
 }
