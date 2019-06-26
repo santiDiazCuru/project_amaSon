@@ -92,6 +92,6 @@ export const addNewProduct = (body) => dispatch => {
 
 // CONSULTA LISTA DE CATEGORIA ACTUAL
 export const fetchAllCategory = () => dispatch => {
-    Axios.get(`/api/products/listCategory`)
+    Axios.get(`/api/products/listCategory/`)
         .then(productos => dispatch(allCategory(productos.data)))
 }
