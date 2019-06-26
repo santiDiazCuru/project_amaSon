@@ -33270,7 +33270,6 @@ __webpack_require__.r(__webpack_exports__);
 //solo hace un axios y agrega items a la lista del carrito
 
 var addItem = function addItem(productId, userId) {
-  console.log('entra a la funcion con el pid:', productId, 'y el uid', userId);
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/compras/add/".concat(userId), {
     productId: productId
   });
@@ -33282,13 +33281,14 @@ var addItem = function addItem(productId, userId) {
 /*!*******************************************!*\
   !*** ./src/action-creators/getCompras.js ***!
   \*******************************************/
-/*! exports provided: getOrdenes, getCarrito, updateCantidad, deleteCompra */
+/*! exports provided: getOrdenes, getCarrito, changeStatus, updateCantidad, deleteCompra */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOrdenes", function() { return getOrdenes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCarrito", function() { return getCarrito; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeStatus", function() { return changeStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCantidad", function() { return updateCantidad; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompra", function() { return deleteCompra; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
@@ -33324,6 +33324,11 @@ var getCarrito = function getCarrito(userId) {
       return dispatch(userCarrito(carrito.data));
     });
   };
+};
+var changeStatus = function changeStatus(newStatus, userId) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/compras/status/".concat(userId), {
+    newStatus: newStatus
+  });
 };
 var updateCantidad = function updateCantidad(compraId, nuevaCantidad, userId) {
   return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/compras/update/".concat(compraId), {
@@ -33690,7 +33695,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var userCarrito = _ref.userCarrito,
       handleChange = _ref.handleChange,
-      handleDelete = _ref.handleDelete;
+      handleDelete = _ref.handleDelete,
+      handleClick = _ref.handleClick;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -33730,7 +33736,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       onClick: handleDelete,
       className: "glyphicon glyphicon-trash"
     })));
-  })))));
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: handleClick,
+    className: "btn btn-default"
+  }, "Comprar..."));
 }); // [
 //   {
 //   "id": 13,
@@ -35526,6 +35535,7 @@ function (_React$Component) {
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -35539,28 +35549,43 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      var _this3 = this;
+
+      console.log('emtra al handler');
+
+      if (this.props.isLoggedIn) {
+        e.preventDefault();
+        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["changeStatus"])('finalizada', this.props.currentUser.id).then(function () {
+          return _this3.props.getCarrito(_this3.props.currentUser.id);
+        });
+      } else alert('Debes estar loggeado para realizar una compra');
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
       Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["updateCantidad"])(e.target.name, e.target.value, this.props.currentUser.id).then(function () {
-        return _this3.props.getCarrito(_this3.props.currentUser.id);
+        return _this4.props.getCarrito(_this4.props.currentUser.id);
       });
     }
   }, {
     key: "handleDelete",
     value: function handleDelete(e) {
-      var _this4 = this;
+      var _this5 = this;
 
       Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["deleteCompra"])(e.target.id).then(function () {
-        return _this4.props.getCarrito(_this4.props.currentUser.id);
+        return _this5.props.getCarrito(_this5.props.currentUser.id);
       });
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleClick: this.handleClick,
         handleDelete: this.handleDelete,
         handleChange: this.handleChange,
         userCarrito: this.props.userCarrito
@@ -35588,7 +35613,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.user.currentUser,
     userOrdenes: state.compras.userOrdenes,
-    userCarrito: state.compras.userCarrito
+    userCarrito: state.compras.userCarrito,
+    isLoggedIn: state.user.isLoggedIn
   };
 };
 
@@ -36311,6 +36337,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/product */ "./src/components/product.jsx");
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36334,6 +36362,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ProductContainer =
 /*#__PURE__*/
 function (_Component) {
@@ -36346,13 +36376,24 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductContainer).call(this, props));
     _this.nextPage = _this.nextPage.bind(_assertThisInitialized(_this));
+    _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProductContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.validateSession();
+    }
+  }, {
     key: "nextPage",
     value: function nextPage(page) {
       this.props.fetchProducts(this.props.inputValue, this.props.categoryParams, this.props.min, this.props.max, page);
+    }
+  }, {
+    key: "handleCarrito",
+    value: function handleCarrito(e) {
+      this.props.isLoggedIn ? Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["addItem"])(e.target.name, this.props.currentUser.id) : alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou');
     }
   }, {
     key: "render",
@@ -36362,7 +36403,8 @@ function (_Component) {
         page: this.props.page,
         totalPage: this.props.totalPages,
         list: this.props.listaProductos,
-        nextPage: this.nextPage
+        nextPage: this.nextPage,
+        handleCarrito: this.handleCarrito
       });
     }
   }]);
@@ -36379,7 +36421,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     inputValue: state.product.inputValue,
     min: state.product.filterPriceMin,
     max: state.product.filterPriceMax,
-    listCategory: state.product.listCategory
+    listCategory: state.product.listCategory,
+    currentUser: state.user.currentUser,
+    isLoggedIn: state.user.isLoggedIn
   };
 };
 
@@ -36387,6 +36431,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProducts: function fetchProducts(input, category, min, max, page) {
       return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProducts"])(input, category, min, max, page));
+    },
+    validateSession: function validateSession() {
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__["validateSession"])());
     }
   };
 };
