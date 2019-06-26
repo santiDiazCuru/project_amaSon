@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
 //BUSCA PRODUCTOS POR ID
-Router.get(`/:id`, (req, res) => {
+Router.get(`/singleView/:id/`, (req, res) => {
     Products.findOne({
         where: {
             id: req.params.id
