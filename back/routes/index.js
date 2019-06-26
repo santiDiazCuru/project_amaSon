@@ -9,7 +9,7 @@ Router.use('/api/compras', comprasRouter)
 Router.use('/products', productsRouter)
 Router.use('/api/products', productsRouter)
 Router.use('/api/users', usersRouter)
-Router.use('/users', usersRouter)
+//Router.use('/users', usersRouter)
 
 
 module.exports = Router
