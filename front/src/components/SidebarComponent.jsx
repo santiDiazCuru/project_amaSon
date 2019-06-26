@@ -15,6 +15,11 @@ export default ({ handleChangeMin, priceMin, handleClickMin,listCategory,
             </p>
             <div style={({height:256,overflow: "auto"})}>
             <label className="btn btn-block btn-success">(TODOS) <input onChange={handleRadioCateg} value="" type='radio' name='foo' /></label>
+                        {(!listCategory)&& <p>
+                            <br/><img src="https://www.5banners.com/store/img/cms/00095-250x250.gif" width="100%"/>
+                        </p>
+                         }
+                        
                         {
                             listCategory && listCategory.map(item=>(                 
                                 <label className="btn-block">
