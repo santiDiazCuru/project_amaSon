@@ -13,7 +13,7 @@ const logInUser = (user) => ({
 });
 
 export const registerUser = (newUserInfo) => dispatch => {
-    return Axios.post('/users/register', newUserInfo)
+    return Axios.post('/api/users/register', newUserInfo)
     .then((newUser)=>dispatch(logInUser(newUser.data)))
 }
 

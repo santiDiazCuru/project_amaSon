@@ -2,6 +2,7 @@ const express = require("express");
 const Router = express.Router();
 const User = require("../models/Users");
 const passport = require('../config/passport');
+const OC = require('../models/index')
 
 Router.get('/', function(req, res){
     User.findAll()
@@ -17,7 +18,7 @@ Router.post('/register', function (req, res) {
         .then(user => {
             if (user) return res.status(500).send('el usuario ya existe')
             if (!user) return User.create(req.body)
-                .then(newUser=>res.send(newUser))
+                .then(newUser => res.send(newUser))
         })
 })
 
@@ -46,6 +47,7 @@ Router.get("/isLoggedIn", function (req, res) {
 
     Session && res.json(session)
 });
+
 
 Router.get("/logout", function (req, res) {
     req.session.destroy();

@@ -8,8 +8,10 @@ import { connect } from 'react-redux'
 import CategoryContainer from './containers/CategoryContainer'
 import SearchContainer from './containers/SearchContainer'
 import UserListContainer from './containers/UserListContainer';
+import AddProductContainer from './containers/AddProductContainer';
 import CarritoContainer from './containers/CarritoContainer';
-import {validateSession} from './action-creators/logInUser'
+import { validateSession } from './action-creators/logInUser'
+
 import Axios from 'axios';
 import SingleProductContainer from './containers/SingleProductContainer';
 
@@ -17,7 +19,7 @@ import SingleProductContainer from './containers/SingleProductContainer';
 class Main extends React.Component {
   constructor(props) {
     super(props)
-   }
+  }
 
   componentDidMount(){
       this.props.validateSession();
@@ -35,8 +37,10 @@ class Main extends React.Component {
         <Route path='/categoria/:category' component={CategoryContainer} />
         <Route path='/search/' component={SearchContainer} />
         <Route path='/users' component={UserListContainer} />
+        <Route path='/product/add' component={AddProductContainer} />
         <Route path='/carrito' component={CarritoContainer} />
         <Route path='/products/:id' component={SingleProductContainer} />
+
 
         {/* ROUTES */}
         {/* <Redirect from="/" to="/notfound" /> */}
@@ -50,8 +54,9 @@ class Main extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    validateSession: () => dispatch(validateSession())
+    validateSession: () => dispatch(validateSession()),
   }
 }
 
 export default connect(null, mapDispatchToProps)(Main)
+

@@ -27,7 +27,7 @@ export const validateUser = (userData) => dispatch => {
 }
 
 export const validateSession = () => dispatch => {
-    Axios.get('/api/users/isLoggedIn')
+   return Axios.get('/api/users/isLoggedIn')
         .then((user) => {
             dispatch(logInUser(user.data))
         })

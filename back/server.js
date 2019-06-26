@@ -6,6 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const indexRouter = require('./routes/index')
 
+
 //const apiRoutes = require('./server/routes/index');
 
 const cookieParser = require('cookie-parser');
@@ -31,7 +32,7 @@ app.get('/*', function(req,res){
    res.sendFile(path.join(__dirname + '/public', 'index.html'))
 })
 
-//Levanta server
+//Levanta server skereeeeee
 
 db.sync({force: false})
    .then( ()=> {
