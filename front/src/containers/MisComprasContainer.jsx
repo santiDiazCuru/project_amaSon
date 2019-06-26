@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 import { fetchAllCompras } from '../action-creators/getComprasAll';
 
 class MisComprasContainer extends Component {
+    
     componentDidMount() {
         this.props.fetchAllCompras();
     }
+
+    // handleShowShopping (){
+
+    // }
 
     render(){
         return(
