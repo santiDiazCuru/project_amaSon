@@ -6,9 +6,6 @@ const usersRouter = require('./users')
 const path = require('path')
 const reviewsRouter = require('./reviews')
 
-const Products = require('../models/Products');
-const Reviews = require('../models/Reviews');
-
 
 //prueba para la db:
 const Products = require('../models').Products

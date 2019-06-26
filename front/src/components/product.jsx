@@ -64,7 +64,7 @@ export default ({ col, list, page, totalPage, nextPage, handleCarrito }) => {
             </div>
             <div className="row">
                 {
-                    (list.length >= 8) ? <center><br />
+                    (list.length >= 8 && page < (Number(totalPage)/8)) ? <center><br />
                         {/* (page < totalPage) ? <center></center> */}
                         <button style={boton} className="btn btn-default btn-md" onClick={() => nextPage(page + 1)}>
                             Cargar más..

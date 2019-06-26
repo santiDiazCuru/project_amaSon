@@ -34651,6 +34651,9 @@ __webpack_require__.r(__webpack_exports__);
     value: "",
     type: "radio",
     name: "foo"
+  })), !listCategory && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://www.5banners.com/store/img/cms/00095-250x250.gif",
+    width: "100%"
   })), listCategory && listCategory.map(function (item) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
       className: "btn-block"
@@ -35061,7 +35064,7 @@ __webpack_require__.r(__webpack_exports__);
       }, "$ ", item.precio))));
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "row"
-    }, list.length >= 8 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, list.length >= 8 && page < Number(totalPage) / 8 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["boton"],
       className: "btn btn-default btn-md",
       onClick: function onClick() {
@@ -35858,6 +35861,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       window.scrollTo(0, 0);
       this.props.fetchAllProducts(this.props.categoryParams, this.state.priceMin, this.state.priceMax, 1);
+      this.props.fetchAllCategory();
     }
   }, {
     key: "handleSubmit",
@@ -35889,16 +35893,17 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
         handleChangeMin: this.handleChangeMin,
-        priceMin: this.state.priceMin,
+        priceMin: this.props.min,
         handleClickMin: this.handleClickMin,
-        priceMax: this.state.priceMax,
+        priceMax: this.props.max,
         handleChangeMax: this.handleChangeMax,
         handleClickMax: this.handleClickMax,
         color: this.state.color,
         letraMax: this.state.letraMax,
         letraMin: this.state.letraMin,
         handleSubmit: this.handleSubmit,
-        handleRadioCateg: this.handleRadioCateg
+        handleRadioCateg: this.handleRadioCateg,
+        listCategory: this.props.listCategory
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
@@ -35928,6 +35933,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchAllProducts: function fetchAllProducts(category, min, max, page) {
       return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchAllProducts"])(category, min, max, page));
+    },
+    fetchAllCategory: function fetchAllCategory() {
+      return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchAllCategory"])());
     } //fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
 
   };

@@ -6,8 +6,8 @@ const Category = require("../models").Category
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
-//BUSCA PRODUCTOS POR ID
-Router.get(`/:id`, (req, res) => {
+// BUSCA PRODUCTOS POR ID
+Router.get(`/singleView/:id`, (req, res) => {
     Products.findOne({
         where: {
             id: req.params.id
@@ -55,6 +55,7 @@ Router.post(`/`, (req, res) => {
 
 // MODIFICAR WHERE POR "CONTIENE (OP LIKE %)"
 Router.get(`/search`, (req, res) => {
+    console.log('entra a /Search')
     let pageSize = 8;
     const offset = 0 //(req.query.page * pageSize) - pageSize
     const limit = (req.query.page * pageSize)//pageSize
@@ -93,9 +94,11 @@ Router.get(`/search`, (req, res) => {
     }
 
 })
+
 Router.get('/listCategory', (req, res) => {
+    console.log('entra /listCategory')
     Category.findAll({
-        attributes: ['categoria'],
+        attributes: ['categoria']
     })
         .then(list => res.json(list))
 })
@@ -156,20 +159,34 @@ Router.get('/categoria/:category', (req, res) => {
     const limit = (req.query.page * pageSize)//pageSize
 
     let objFilter = {}
-    objFilter.categorias = req.params.category
+   // objFilter.categorias = req.params.category
     objFilter.stock = { [Op.ne]: 0 }
     objFilter.precio = { [Op.between]: [req.query.min, req.query.max] }
 
-    if (req.query.category !== '') {
-        objFilter.categorias = req.query.category
-    }
+    
+        Products.findAll({
+            limit,
+            offset,
+            where: objFilter,
+            include: [{
+                model: Category,
+                as: 'category',
+                where: { categoria: req.params.category },
+                attributes: ['id', 'categoria']
+            }]
+        })
+            .then(products => {
+                res.json(products)
+            })
+    
 
-    Products.findAll({
-        limit,
-        offset,
-        where: objFilter
-    })
-        .then(products => res.json(products))
+    
+    // Products.findAll({
+    //     limit,
+    //     offset,
+    //     where: objFilter
+    // })
+    //     .then(products => res.json(products))
 
 })
 
