@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default ({userCarrito, handleChange, handleDelete}) => (
+export default ({userCarrito, handleChange, handleDelete, handleClick}) => (
     <div className='row'>
         <br/>
         <br/>
@@ -32,6 +32,7 @@ export default ({userCarrito, handleChange, handleDelete}) => (
            </tbody>
          </table>
          </div>
+         <button onClick={handleClick} className='btn btn-default'>Comprar...</button>
          </div>
 )
 
