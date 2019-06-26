@@ -1,6 +1,5 @@
 var db = require('./database');
 var Sequelize = require('sequelize');
-var User = require('./Users');
 var Compra = require('./Compras')
 
 var OC = db.define('ordenes', {
@@ -20,7 +19,6 @@ OC.prototype.addCompra = function(cantidad, productId){
     .then(data=>console.log('este es el resultadofinal: ',data))
 } 
 
-OC.belongsTo(User, {as: 'User'})
 
 module.exports = OC;
 

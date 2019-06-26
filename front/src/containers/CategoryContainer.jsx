@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchAllProducts } from '../action-creators/getProducts'
-import Producto from '../components/product'
+import ProductoContainer from '../containers/ProductContainer'
 import SidebarComponent from '../components/SidebarComponent'
 
 class CategoryContainer extends React.Component {
@@ -108,13 +108,7 @@ class CategoryContainer extends React.Component {
             this.state.priceMin, this.state.priceMax, 1
             )
     };
-    nextPage(page) {
-        this.props.fetchAllProducts(
-            this.props.categoryParams,
-            this.state.priceMin, this.state.priceMax, page
-            )
-    }
-
+    
     componentDidUpdate(prevProps) {
         if (this.props.categoryParams !== prevProps.categoryParams) {
             this.props.fetchAllProducts(this.props.categoryParams,
@@ -150,13 +144,14 @@ class CategoryContainer extends React.Component {
                         <li className="active">{this.props.categoryParams}</li>
                     </ol>
                     
-                    <Producto
+                    {/* <Producto
                         col={3}
                         page={this.props.page}
                         totalPage={this.props.totalPages}
                         list={this.props.listaProductos}
                         nextPage={this.nextPage}
-                    />
+                    /> */}
+                    <ProductoContainer />
                 </div>
             </div>
         </div>

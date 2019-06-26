@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Producto from '../components/product'
+import ProductoContainer from '../containers/ProductContainer'
 import SidebarComponent from '../components/SidebarComponent'
-import { fetchProducts } from '../action-creators/getProducts'
+import { fetchProducts, fetchAllCategory } from '../action-creators/getProducts'
+import {addItem} from '../action-creators/addCarrito'
+import { validateSession } from '../action-creators/logInUser'
 
 class CategoryContainer extends React.Component {
     //Eventos del filtro
@@ -27,11 +29,13 @@ class CategoryContainer extends React.Component {
         this.handleChangeLetraMax = this.handleChangeLetraMax.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleRadioCateg = this.handleRadioCateg.bind(this)
-        this.nextPage = this.nextPage.bind(this)
+        
     };
 
     componentDidMount() {
+        this.props.validateSession();
         window.scrollTo(0, 0)
+        this.props.fetchAllCategory()
     }
 
 
@@ -55,11 +59,7 @@ class CategoryContainer extends React.Component {
             this.state.categoria,
             this.state.priceMin, this.state.priceMax, 1)
     };
-    nextPage(page) {
-        this.props.fetchProducts(this.props.inputValue,
-            this.state.categoria,
-            this.state.priceMin, this.state.priceMax, page)
-    }
+    
     handleChangeLetraMin() {
         // console.log(this.state.priceMin)
         this.state.priceMin.toString().length == 1 && this.setState({ letraMin: 20 })
@@ -85,7 +85,7 @@ class CategoryContainer extends React.Component {
         })
 
     };
-
+    
     handleClickMax(e) {
         e.preventDefault();
         // cambiar el estado de price default por la diferencia el precio menor y el mayor
@@ -124,16 +124,18 @@ class CategoryContainer extends React.Component {
                     {/* RENDERIZA COMPONENTE DE FILTRO */}
                     <SidebarComponent
                         handleChangeMin={this.handleChangeMin}
-                        priceMin={this.state.priceMin}
+                        priceMin={this.props.min}
                         handleClickMin={this.handleClickMin}
-                        priceMax={this.state.priceMax}
+                        priceMax={this.props.max}
                         handleChangeMax={this.handleChangeMax}
                         handleClickMax={this.handleClickMax}
                         color={this.state.color}
                         letraMax={this.state.letraMax}
                         letraMin={this.state.letraMin}
                         handleSubmit={this.handleSubmit}
-                        handleRadioCateg={this.handleRadioCateg} />
+                        handleRadioCateg={this.handleRadioCateg} 
+                        listCategory={this.props.listCategory}
+                        />
                 </div>
                 <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol className="breadcrumb">
@@ -142,13 +144,7 @@ class CategoryContainer extends React.Component {
                         <li className="active">{this.props.categoryParams}</li>
                     </ol>
 
-                    <Producto
-                        col={3}
-                        page={this.props.page}
-                        totalPage={this.props.totalPages}
-                        list={this.props.listaProductos}
-                        nextPage={this.nextPage}
-                    />
+                    <ProductoContainer />
 
                 </div>
             </div>
@@ -159,16 +155,20 @@ class CategoryContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        listaProductos: state.product.productos,
-        categoryParams: ownProps.match.params.category,
-        page: state.product.page,
-        totalPages: state.product.totalPages,
+        categoryParams: ownProps.match.params.category,        
         inputValue: state.product.inputValue,
+        currentUser: state.user.currentUser,
+        isLoggedIn: state.user.isLoggedIn,
+        min:state.product.filterPriceMin,
+        max:state.product.filterPriceMax,
+        listCategory: state.product.listCategory
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
+        validateSession: () => dispatch(validateSession()),
+        fetchAllCategory: () => dispatch(fetchAllCategory()),
     }
 }
 
