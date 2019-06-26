@@ -21,7 +21,7 @@ Compra.addComprasWithOC = function (cantidad, productId, OCid) {
         })
 }
 
-Compra.belongsTo(OC, { as: 'OC' })
-Compra.belongsTo(Product, { as: 'Product' })
+// Compra.belongsTo(OC, { as: 'OC' })
+// Compra.belongsTo(Product, { as: 'Product' })
 
 module.exports = Compra;

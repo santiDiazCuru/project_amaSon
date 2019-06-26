@@ -5,4 +5,6 @@ export const LOG_IN_USER = 'LOG_IN_USER';
 export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
 export const LOG_OUT_USER = 'LOG_OUT_USER';
 export const SET_CATEGORY_AND_PRICE = 'SET_CATEGORY_AND_PRICE';
+export const FETCH_ORDENES = 'FETCH_ORDENES';
 export const FETCH_CARRITO = 'FETCH_CARRITO';
+
