@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { style, styleImg, TitleStyle, starStyle, price, boton } from '../estilos/styleProduct'
-
+import { Link } from 'react-router-dom';
 
 export default ({ col, list, page, totalPage, nextPage, handleCarrito }) => {
 
@@ -87,11 +87,15 @@ function procesar(col, listItems, handleCarrito) {
 
         <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
             <div style={style}>
+                <Link to={`/products/${item.id}`} >
                 <img style={styleImg} src={item.img1} alt="{item.img1}" />
+                
                 <center>
                     {/* Titulo */}
                     <h2 style={TitleStyle} key={item.id}>{item.titulo}</h2>
+                    
                 </center>&nbsp;
+                </Link>
             {/* construccion de las estrellas */}
                 <p style={starStyle}>
                     {/* CREA UN FOR DE LAS CANTIDAD DE ESTRELLAS COMPLETAS */}

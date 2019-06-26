@@ -13,6 +13,7 @@ import CarritoContainer from './containers/CarritoContainer';
 import { validateSession } from './action-creators/logInUser'
 
 import Axios from 'axios';
+import SingleProductContainer from './containers/SingleProductContainer';
 
 
 class Main extends React.Component {
@@ -20,8 +21,8 @@ class Main extends React.Component {
     super(props)
   }
 
-  componentWillMount() {
-    this.props.validateSession()
+  componentDidMount(){
+      this.props.validateSession();
   }
 
   render() {
@@ -38,6 +39,7 @@ class Main extends React.Component {
         <Route path='/users' component={UserListContainer} />
         <Route path='/product/add' component={AddProductContainer} />
         <Route path='/carrito' component={CarritoContainer} />
+        <Route path='/products/:id' component={SingleProductContainer} />
 
 
         {/* ROUTES */}

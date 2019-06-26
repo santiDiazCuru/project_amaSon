@@ -8,7 +8,6 @@ import UserList from '../components/UserList'
 class UserListContainer extends React.Component {
     componentDidMount() {
         this.props.fetchAllUsers()
-        console.log("OTRS PROPS", this.props.listaUsuarios)
     }
 
     render() {
@@ -22,9 +21,7 @@ class UserListContainer extends React.Component {
             </div>
         )
     }
-
 }
-
 
 const mapStateToProps = (state, ownProps) => {
     return {

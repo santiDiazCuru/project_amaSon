@@ -10,7 +10,7 @@ const allUsers = (users) => ({
 
 // BUSCA TODOS LOS USUARIOS
 export const fetchAllUsers = () => dispatch => {
-    Axios.get(`/api/users`)
+    Axios.get(`api/users`)
         .then(users => {
-            dispatch(allUsers(users.data))})   
+            dispatch(allUsers(users.data))})
 }
