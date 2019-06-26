@@ -6,6 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const indexRouter = require('./routes/index')
 
+
 //const apiRoutes = require('./server/routes/index');
 
 const cookieParser = require('cookie-parser');

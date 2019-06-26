@@ -33567,8 +33567,8 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
     className: "casillaImporte"
   }, "@mdo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "casillaEliminar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-trash"
   })))))));
 }); // <div>
 // <div className="modal-wrapper">
@@ -34733,7 +34733,7 @@ function procesar(col, listItems) {
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34747,6 +34747,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_CATEGORY_AND_PRICE", function() { return SET_CATEGORY_AND_PRICE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_CATEGORY", function() { return FETCH_ALL_CATEGORY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_LIMIT_CATEGORY", function() { return FETCH_ALL_LIMIT_CATEGORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CARRITO", function() { return FETCH_CARRITO; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 var FETCH_ALL_PRODUCTS_CATEGORY = 'FETCH_ALL_PRODUCTS_CATEGORY';
@@ -34756,6 +34757,7 @@ var LOG_OUT_USER = 'LOG_OUT_USER';
 var SET_CATEGORY_AND_PRICE = 'SET_CATEGORY_AND_PRICE';
 var FETCH_ALL_CATEGORY = 'FETCH_ALL_CATEGORY';
 var FETCH_ALL_LIMIT_CATEGORY = 'FETCH_ALL_LIMIT_CATEGORY';
+var FETCH_CARRITO = 'FETCH_CARRITO';
 
 /***/ }),
 
@@ -35158,6 +35160,9 @@ function (_React$Component) {
   }
 
   _createClass(CarritoContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], null);
