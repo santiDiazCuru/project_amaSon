@@ -104,7 +104,7 @@ export default ({ p, handleChange, handleSubmit }) => {
                             <div class="form-group">
                                 <label for="valoracion" class="col-sm-2 control-label">Valoracion:</label>
                                 <div class="col-sm-4">
-                                    <input onChange={handleChange} name="valoracion" type="number" min="1" max="5" class="form-control" />
+                                    <input name="valoracion" type="number" min="1" max="5" class="form-control" onChange={handleChange} />
                                 </div>
                             </div>
 

@@ -27932,7 +27932,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33468,7 +33468,7 @@ var addNewProduct = function addNewProduct(body) {
 
 var fetchAllCategory = function fetchAllCategory() {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/listCategory").then(function (productos) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/listCategory/").then(function (productos) {
       return dispatch(allCategory(productos.data));
     });
   };
@@ -33504,7 +33504,7 @@ var singleProduct = function singleProduct(product) {
 
 var fetchSingleProduct = function fetchSingleProduct(id) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/singleView/".concat(id)).then(function (product) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/singleView/".concat(id, "/")).then(function (product) {
       console.log("ESTO ES EL ACTION", id);
       dispatch(singleProduct(product.data));
     });
@@ -34898,12 +34898,12 @@ var carrito = {
   }, "Valoracion:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "col-sm-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    onChange: handleChange,
     name: "valoracion",
     type: "number",
     min: "1",
     max: "5",
-    "class": "form-control"
+    "class": "form-control",
+    onChange: handleChange
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "form-group",
     width: "100%",
@@ -35013,6 +35013,8 @@ __webpack_require__.r(__webpack_exports__);
         className: "col-xs-6 col-lg-".concat(col)
       }, "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["style"]
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/products/".concat(item.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["styleImg"],
         src: item.img1,
@@ -35020,7 +35022,7 @@ __webpack_require__.r(__webpack_exports__);
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["TitleStyle"],
         key: item.id
-      }, item.titulo)), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, item.titulo)), "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["starStyle"]
       }, function (cantidad) {
         var rows = [];
@@ -35072,59 +35074,7 @@ __webpack_require__.r(__webpack_exports__);
       className: "row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No se ha encontrado ningun resultado.."));
   }
-}); // function procesar(col, listItems, handleCarrito) {
-//     return listItems && listItems.map(item => (
-//         <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
-//             <div style={style}>
-//                 <Link to={`/products/${item.id}`} >
-//                 <img style={styleImg} src={item.img1} alt="{item.img1}" />
-//                 <center>
-//                     {/* Titulo */}
-//                     <h2 style={TitleStyle} key={item.id}>{item.titulo}</h2>
-//                 </center>&nbsp;
-//                 </Link>
-//             {/* construccion de las estrellas */}
-//                 <p style={starStyle}>
-//                     {/* CREA UN FOR DE LAS CANTIDAD DE ESTRELLAS COMPLETAS */}
-//                     {
-//                         function (cantidad) {
-//                             let rows = [];
-//                             for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/completa.png' width="25px" />) }
-//                             return rows;
-//                         }(parseInt(item.valoracion))
-//                     }
-//                     {/* TERNARIO DE CONDICION SI ES MAYOR A 0.5 AGREGA LA MITAD DE LA ESTRELLA */}
-//                     {
-//                         ((item.valoracion - parseInt(item.valoracion)) * 10 >= 5) ?
-//                             <img src='http://localhost:8000/media.png' width="25px" />
-//                             : ''
-//                     }
-//                     {/* genera las cantidad de estellas vacias (5-valor) SI TIENE UNA MITAD LE RESTA 1*/}
-//                     {
-//                         function (cantidad) {
-//                             let rows = [];
-//                             for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/vacia.png' width="25px" />) }
-//                             return rows;
-//                         }(
-//                             ((item.valoracion - parseInt(item.valoracion)) * 10 >= 5) ?
-//                                 5 - parseInt(item.valoracion) - 1
-//                                 : 5 - parseInt(item.valoracion)
-//                         )
-//                     }
-//                 </p>
-//                 <p>
-//                     <button onClick={handleCarrito} className="btn btn-success" role="button">
-//                         <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-//                         Add Cart
-//                     </button>
-//                     <span style={price}>
-//                         $ {item.precio}
-//                     </span>
-//                 </p>
-//             </div>
-//         </div>
-//     ))
-// }
+});
 
 /***/ }),
 
