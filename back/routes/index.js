@@ -6,7 +6,6 @@ const usersRouter = require('./users')
 const path = require('path')
 const reviewsRouter = require('./reviews')
 
-
 //prueba para la db:
 const Products = require('../models').Products
 const Category = require('../models').category

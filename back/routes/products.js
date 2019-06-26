@@ -6,8 +6,8 @@ const Category = require("../models").Category
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
-// BUSCA PRODUCTOS POR ID
-Router.get(`/singleView/:id`, (req, res) => {
+//BUSCA PRODUCTOS POR ID
+Router.get(`/singleView/:id/`, (req, res) => {
     Products.findOne({
         where: {
             id: req.params.id

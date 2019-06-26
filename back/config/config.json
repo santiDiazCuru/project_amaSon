@@ -3,5 +3,5 @@
     "host": "localhost",
     "dialect": "postgres",
     "logging": false,
-    "username": "postgres"
+    "username": "nicolas"
   }
