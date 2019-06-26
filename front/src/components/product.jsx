@@ -10,8 +10,9 @@ export default ({ col, list, page, totalPage, nextPage }) => {
                 {procesar(col, list)}                        
             </div>
             <div className="row">
+            {console.log(Number(page) < (Number(totalPage)/8),"VALIDA")}
             {
-                (list.length>=8) ? <center><br/>
+                (list.length>=8 && Number(page) < (Number(totalPage)/8)) ? <center><br/>
                     {/* (page < totalPage) ? <center></center> */}                    
                     <button style={boton} className="btn btn-default btn-md" onClick={()=>nextPage(page + 1)}>
                         Cargar más..

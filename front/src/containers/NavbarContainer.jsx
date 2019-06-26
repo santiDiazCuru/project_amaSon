@@ -110,7 +110,7 @@ class NavBarContainer extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
     fetchProducts: (input,category, min,max,page) => dispatch(fetchProducts(input,category, min,max,page)),
-    endSession: () => dispatch(endSession())
+    endSession: () => dispatch(endSession()),
 });
 const mapStateToProps = (state, ownProps) => {
     return {

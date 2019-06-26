@@ -6,6 +6,19 @@ const Category = require("../models").Category
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
+// RUTA SOLO USO DE TEST
+Router.get('/prueba', (req, res) => {
+    
+    Products.findOne({
+        attributes:[
+            [Sequelize.fn('min', Sequelize.col('precio')),'min'],
+            [Sequelize.fn('max', Sequelize.col('precio')),'max'],
+            [Sequelize.fn('count', Sequelize.col('precio')),'count']
+        ]
+    })
+        .then(products => res.json(products))
+})
+
 //AGREGAR UN NUEVO PRODUCTO
 Router.post(`/`, (req, res) => {
     Products.create(req.body)
@@ -49,11 +62,42 @@ Router.get(`/search`, (req, res) => {
     Products.findAll({
         limit,
         offset,
+        where: objFilter,
+    })
+        .then(products => {
+            res.json(products)})
+
+
+})
+Router.get('/listCategory', (req, res) => {
+    Category.findAll({
+        attributes: ['categoria'],
+    })
+    .then(list => res.json(list))
+})
+
+// LIMITES para obtener Max, Min y Count
+Router.get('/limite', (req, res) => {
+    let objFilter = {}
+    console.log(req.query,"param")
+    objFilter.titulo = {[Op.like]: `%${req.query.input}%`}
+    objFilter.stock = {[Op.ne]: 0}
+    objFilter.precio = {[Op.between]: [req.query.min, req.query.max]}
+
+    if(req.query.category!==''){
+        objFilter.categorias = req.query.category  
+    }
+
+    Products.findOne({
+        attributes:[
+            [Sequelize.fn('min', Sequelize.col('precio')),'min'],
+            [Sequelize.fn('max', Sequelize.col('precio')),'max'],
+            [Sequelize.fn('count', Sequelize.col('precio')),'count']
+        ],
         where: objFilter
     })
-        .then(products => res.json(products))
-
-
+        .then(data => {
+            res.json(data)})
 })
 // BUSQUEDA ANTERIOR ( REEMPLAZADA POR BUSQUEDA /SEARCH)
 // Action-creator linea 32
@@ -89,15 +133,11 @@ Router.get('/', (req, res) => {
             as: 'category',
             where: {categoria: "televisores"},
             attributes: ['id', 'categoria']
-          }],
-        // include: [{
-        //     model: Category,
-        //     as: 'category',
-        //     through: { where: {categoriaId:1}}
-        // }]
+          }]
     })
         .then(products => res.json(products))
 })
+
 
 // =====  EXTRACCION DE TODA LA DATA POR CATEGORIA =======
 Router.get('/categoria/:category', (req, res) => {
@@ -123,5 +163,7 @@ Router.get('/categoria/:category', (req, res) => {
         .then(products => res.json(products))
 
 })
+
+
 
 module.exports = Router
