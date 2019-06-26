@@ -3,6 +3,11 @@ const Router = express.Router();
 const User = require("../models/Users");
 const passport = require('../config/passport');
 
+Router.get('/', function(req, res){
+    User.findAll()
+    .then(users => res.json(users))
+})
+
 Router.post('/register', function (req, res) {
     User.findOne({
         where: {

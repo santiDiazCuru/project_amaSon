@@ -3,18 +3,16 @@ const Router = express.Router();
 const productsRouter = require('./products')
 const usersRouter = require('./users')
 const path = require('path')
+const reviewsRouter = require('./reviews')
 
-const Relations = require('../models/Relations')
 const Products = require('../models/Products');
 const Reviews = require('../models/Reviews');
 
 
 
-Router.use('/products', productsRouter)
 Router.use('/api/products', productsRouter)
 Router.use('/api/users', usersRouter)
-Router.use('/users', usersRouter)
+Router.use('/api/reviews', reviewsRouter)
 
 
-module.exports = Router
-
+module.exports = Router;

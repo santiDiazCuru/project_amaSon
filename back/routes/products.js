@@ -5,6 +5,16 @@ const Products = require("../models/Products")
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
+//BUSCA PRODUCTOS POR ID
+Router.get(`/:id`, (req, res) => {
+    Products.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(product => res.json(product))
+})
+
 
 // MODIFICAR WHERE POR "CONTIENE (OP LIKE %)"
 Router.get(`/search`, (req, res) => {

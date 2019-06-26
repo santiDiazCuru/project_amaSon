@@ -215,48 +215,6 @@ Products.bulkCreate([
         valoracion: 3,
         categorias: "televisores"
     }
-<<<<<<< HEAD
-])
-
-Users.bulkCreate([
-    {
-        username: "Lucas",
-        email: "lucas@aguirre.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Nico",
-        email: "carello@martino.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Seba",
-        email: "seba@necochea.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Kenyi",
-        email: "kenyi@lewis.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    {
-        username: "Santi",
-        email: "santi@curu.com",
-        password: "1234",
-        salt: "lala",
-        isAdmin: false
-    },
-    
-=======
->>>>>>> 5072d332b54e60d8086a3d7c6be8dd2db8c512e6
 ])
 
 
