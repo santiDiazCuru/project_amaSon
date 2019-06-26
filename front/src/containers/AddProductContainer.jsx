@@ -77,7 +77,9 @@ class AddProductContainer extends React.Component {
             })
     }
 
-    handleTitle(event) { this.setState({ titulo: event.target.value, response: '' }) }
+    handleTitle(event) { this.setState({ 
+        titulo: (event.target.value).toLowerCase(),
+        response: '' }) }
     handleDescription(event) { this.setState({ descripcion: event.target.value, response: '' }) }
     handlePrice(event) { this.setState({ precio: event.target.value, response: '' }) }
     handleStock(event) { this.setState({ stock: event.target.value, response: '' }) }

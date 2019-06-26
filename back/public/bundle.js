@@ -34902,7 +34902,7 @@ function (_React$Component) {
     key: "handleTitle",
     value: function handleTitle(event) {
       this.setState({
-        titulo: event.target.value,
+        titulo: event.target.value.toLowerCase(),
         response: ''
       });
     }

@@ -18,7 +18,7 @@ Products.bulkCreate([
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb2/h61/10023505035294/00035055-172634-01.png",
         valoracion: 5,
-        categorias: "aspiradora"
+        category:[]
     },
     {
         titulo: "microondas atma md1720n",
@@ -27,7 +27,7 @@ Products.bulkCreate([
         stock: 5,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb3/h25/10023646756894/00064056-173161-01.png",
         valoracion: 4.3,
-        categorias: "microondas"
+        category:[]
     },
     {
         titulo: "heladeras patrick con freezer",
@@ -36,7 +36,7 @@ Products.bulkCreate([
         stock: 25,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h9b/h6f/10023774584862/00133004-135733-01.jpg",
         valoracion: 1.6,
-        categorias: "heladeras"
+        category:[]
     },
     {
         titulo: "televisores noblex smart tv 32",
@@ -45,7 +45,7 @@ Products.bulkCreate([
         stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h86/h29/10027280367646/00189018-174267-01.png",
         valoracion: 5,
-        categorias: "televisores"
+        category:[]
     },
     {
         titulo: "notebook exo cloud e15 intel atom",
@@ -54,7 +54,7 @@ Products.bulkCreate([
         stock: 2,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h16/hda/10007422173214/00014330-133442-01.jpg",
         valoracion: 3,
-        categorias: "notebook"
+        category:[]
     },
     {
         titulo: "notebook acer aspire 3 intel celeron",
@@ -63,7 +63,7 @@ Products.bulkCreate([
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h0f/h73/10024042954782/00181176-136244-01.jpg",
         valoracion: 2.6,
-        categorias: "notebook"
+        category:[]
     },
     {
         titulo: "tablets exo tablet wave i007 kids",
@@ -72,7 +72,7 @@ Products.bulkCreate([
         stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/he8/h7c/10023997145118/00181076-136140-01.jpg",
         valoracion: 4.5,
-        categorias: "tablets"
+        category:[]
     },
     {
         titulo: "motorola celular moto e5 xt19443 gris",
@@ -81,7 +81,7 @@ Products.bulkCreate([
         stock: 12,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h78/hd9/10023764721694/00125055-173962-01.png",
         valoracion: 3,
-        categorias: "celulares"
+        category:[]
     },
     {
         titulo: "motorola celular moto e5 xt19443 gold",
@@ -90,7 +90,7 @@ Products.bulkCreate([
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h7a/hc5/10023785398302/00125061-173968-01.png",
         valoracion: 3,
-        categorias: "celulares"
+        category:[]
     },
     {
         titulo: "motorola celular moto c black negro",
@@ -99,7 +99,7 @@ Products.bulkCreate([
         stock: 8,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h2f/hb2/10023660027934/00076065-174122-01.png",
         valoracion: 3,
-        categorias: "celulares"
+        category:[]
     },
     {
         titulo: "motorola celular moto e5 plus xt19245",
@@ -108,7 +108,7 @@ Products.bulkCreate([
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h4d/h1b/10023783923742/00140003-174041-01.png",
         valoracion: 3,
-        categorias: "celulares"
+        category:[]
     },
     {
         titulo: "motorola celular   moto g7 play xt19522",
@@ -117,7 +117,7 @@ Products.bulkCreate([
         stock: 7,
         img1: "https://d34zlyc2cp9zm7.cloudfront.net/products/ef90325950ff4994cc6e6f49bb9a7403abbec25027292b6116fe867a2f414098.webp_350",
         valoracion: 3.8,
-        categorias: "celulares"
+        category:[]
     },
     {
         titulo: "notebook exo smart e13x n3350",
@@ -126,7 +126,7 @@ Products.bulkCreate([
         stock: 4,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h85/hb8/10027260510238/00181171-174465-01.png",
         valoracion: 3,
-        categorias: "notebook"
+        category:[]
     },
     {
         titulo: "notebooks 2 en 1 exo notebook",
@@ -135,7 +135,7 @@ Products.bulkCreate([
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h94/h1b/10031495872542/00182535-172110-01.png",
         valoracion: 3,
-        categorias: "notebook"
+        category:[]
     },
     {
         titulo: "notebook exo smart e17 intel celron",
@@ -144,7 +144,7 @@ Products.bulkCreate([
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h52/ha2/10033231134750/00182915-173042-01.png",
         valoracion: 5,
-        categorias: "notebook"
+        category:[]
     },
     {
         titulo: "notebook hp 14ax032la intel celeron",
@@ -153,7 +153,7 @@ Products.bulkCreate([
         stock: 1,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h0c/h32/10023899070494/00128001-173987-01.png",
         valoracion: 1.5,
-        categorias: "notebook"
+        category:[]
     },
     {
         titulo: "notebook hdc cloudbook cy141ih celeron",
@@ -162,7 +162,7 @@ Products.bulkCreate([
         stock: 10,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h0f/h8b/10011075411998/00159005-135909-01.jpg",
         valoracion: 3,
-        categorias: "notebook"
+        category:[]
     },
     {
         titulo: "televisores samsung smart tv 32 hd",
@@ -171,7 +171,7 @@ Products.bulkCreate([
         stock: 2,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h71/h95/10023470399518/00151151-130512-01.jpg",
         valoracion: 3,
-        categorias: "televisores"
+        category:[]
     },
     {
         titulo: "televisores philips smart tv  32 hd",
@@ -180,7 +180,7 @@ Products.bulkCreate([
         stock: 3,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h1b/h64/10030729265182/00188135-174495-01.png",
         valoracion: 3.9,
-        categorias: "televisores"
+        category:[]
     },
     {
         titulo: "televisores philips smart tv  32 hd",
@@ -189,7 +189,7 @@ Products.bulkCreate([
         stock: 5,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hc5/h2d/10023956742174/00169593-174264-01.png",
         valoracion: 3,
-        categorias: "televisores"
+        category:[]
     },
     {
         titulo: "televisores tcl smart tv 40 hd android",
@@ -198,7 +198,7 @@ Products.bulkCreate([
         stock: 6,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/hb3/hb6/10037237022750/00185016-136304-01.jpg",
         valoracion: 3,
-        categorias: "televisores"
+        category:[]
     },
     {
         titulo: "televisores samsung smart tv 40",
@@ -207,7 +207,7 @@ Products.bulkCreate([
         stock: 3,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h44/h27/10023666909214/00151229-134888-01.jpg",
         valoracion: 3,
-        categorias: "televisores"
+        category:[]
     },
     {
         titulo: "televisores samsung smart tv 43 4k",
@@ -216,7 +216,7 @@ Products.bulkCreate([
         stock: 1,
         img1: "https://medias.musimundo.com/medias/sys_master/images/images/h97/h5e/10023735033886/00118000-135530-01.jpg",
         valoracion: 3,
-        categorias: "televisores"
+        category:[]
     }
 ])
 
