@@ -10,17 +10,18 @@ import SearchContainer from './containers/SearchContainer'
 import UserListContainer from './containers/UserListContainer';
 import AddProductContainer from './containers/AddProductContainer';
 import CarritoContainer from './containers/CarritoContainer';
-import {validateSession} from './action-creators/logInUser'
+import { validateSession } from './action-creators/logInUser'
+
 import Axios from 'axios';
 
 
 class Main extends React.Component {
   constructor(props) {
     super(props)
-   }
+  }
 
-  componentWillMount(){
-      this.props.validateSession()
+  componentWillMount() {
+    this.props.validateSession()
   }
 
   render() {
@@ -32,13 +33,13 @@ class Main extends React.Component {
         <Route exact path='/' component={HomeContainer} />
         {/* <Route path = '/register' component={RegisterContainer} />
         <Route path='/search' component={Sidebar2Container}/> */}
-        <Route path='/categoria/:category' component={CategoryContainer}/>
-        <Route path='/search/' component={SearchContainer}/>
-        <Route path='/users' component={UserListContainer}/>
-        <Route path='/product/add' component={AddProductContainer}/>
+        <Route path='/categoria/:category' component={CategoryContainer} />
+        <Route path='/search/' component={SearchContainer} />
+        <Route path='/users' component={UserListContainer} />
+        <Route path='/product/add' component={AddProductContainer} />
         <Route path='/carrito' component={CarritoContainer} />
-      
-        
+
+
         {/* ROUTES */}
         {/* <Redirect from="/" to="/notfound" /> */}
       </Switch>
@@ -51,8 +52,9 @@ class Main extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    validateSession: () => dispatch(validateSession())
+    validateSession: () => dispatch(validateSession()),
   }
 }
 
 export default connect(null, mapDispatchToProps)(Main)
+
