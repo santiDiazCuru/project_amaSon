@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default ({ handleChangeMin, priceMin, handleClickMin,
+export default ({ handleChangeMin, priceMin, handleClickMin,listCategory,
     handleSubmit, handleRadioCateg, priceMax, handleChangeMax, handleClickMax, color,letraMax,letraMin }) => (
     <div>
         <div>
@@ -13,14 +13,20 @@ export default ({ handleChangeMin, priceMin, handleClickMin,
             Aplicar
             </button> 
             </p>
-                <label className="btn btn-block btn-success">(TODOS) <input onChange={handleRadioCateg} value="" type='radio' name='foo' /></label>
-                <label className="btn btn-block btn-default">Televisores <input onChange={handleRadioCateg} value="televisores" type='radio' name='foo' /></label>
-                <label className="btn btn-block btn-default">Notebooks <input onChange={handleRadioCateg} value="notebook" type='radio' name='foo' /></label>
-                <label className="btn btn-block btn-default">Tablets <input onChange={handleRadioCateg} value="tablets" type='radio' name='foo' /></label>
-                <label className="btn btn-block btn-default">Heladeras <input onChange={handleRadioCateg} value="heladeras" type='radio' name='foo' /></label>
-                <label className="btn btn-block btn-default">Celulares <input onChange={handleRadioCateg} value="celulares" type='radio' name='foo' /></label>
-                <label className="btn btn-block btn-default">Microondas <input onChange={handleRadioCateg} value="microondas" type='radio' name='foo' /></label>
-            
+            <div style={({height:256,overflow: "auto"})}>
+            <label className="btn btn-block btn-success">(TODOS) <input onChange={handleRadioCateg} value="" type='radio' name='foo' /></label>
+                        {
+                            listCategory && listCategory.map(item=>(                 
+                                <label className="btn-block">
+                                <div className="btn btn-block btn-default">
+
+                                {item.categoria} &nbsp;
+                                <input onChange={handleRadioCateg} value={item.categoria} type='radio' name='foo' />
+                                </div></label>
+                            ))
+                        }
+                    </div>
+
             <br/>
             {/* ///////////////////////////////////////////////////////////////////////////////////// */}
             {/* PRECIO MIN */}
@@ -34,14 +40,14 @@ export default ({ handleChangeMin, priceMin, handleClickMin,
             <div style={{ height: '10px' }}></div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr' }}>
                 <div> </div>
-                <div>0</div> {/* precio minimo */}
+                <div>{priceMin} </div> {/* precio minimo */}
                 <div><label>Minimo</label></div>
-                <div>100000</div> {/* precio maximo */}
+                <div>{priceMax}</div> {/* precio maximo */}
                 <div> </div>
             </div>
             {/* este es el controlador del precio */}
             <div style={{ top: '0', bottom: '0', left: '0', right: '0' }}>
-                <input type="range" name="priceMin" min='0' max='100000' style={{ width: "80%", margin: "auto", boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)", WebkitAppearance: "none", backgroundColor: color }} onChange={handleChangeMin} value={priceMin}/>
+                <input type="range" name="priceMin" min='0' max={priceMax} style={{ width: "80%", margin: "auto", boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)", WebkitAppearance: "none", backgroundColor: color }} onChange={handleChangeMin} defaultValue={priceMin}/>
             </div>
             <div><label>Filter by: Price</label></div>
             {/* PRECIO MIN */}
@@ -49,15 +55,15 @@ export default ({ handleChangeMin, priceMin, handleClickMin,
             {/* PRECIO MAX */}
             {/* el marcador del precio*/}
             <div style={{ top: '0', bottom: '0', left: '0', right: '0' }}>
-                <input type="range" name="priceMax" min='0' max='40000' style={{ width: "80%", margin: "auto", boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)", WebkitAppearance: "none", backgroundColor: color }} onChange={handleChangeMax} value={priceMax}/>
+                <input type="range" name="priceMax" min='0' max={priceMax} style={{ width: "80%", margin: "auto", boxShadow: "inset 0 2px 18px rgba(0,0,0,0.6)", WebkitAppearance: "none", backgroundColor: color }} onChange={handleChangeMax} defaultValue={priceMax}/>
             </div>
             </form>
             {/* precio, hay muchos div por el css-grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr' }}>
                 <div> </div>
-                <div>0</div> {/* precio minimo */}
+                <div>{priceMin} </div> {/* precio minimo */}
                 <div><label>Maximo</label></div>
-                <div>40000</div> {/* precio maximo */}
+                <div>{priceMax} </div> {/* precio maximo */}
                 <div> </div>
             </div>
             <div style={{ height: '5px' }}></div>
