@@ -5,7 +5,7 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
     <div>
         <nav className="navbar navbar-default navbar-fixed-top"
         
-        style={(currentUser.isAdmin)&&({backgroundColor: "#f9ffbf"})}
+        style={(currentUser.isAdmin)?({backgroundColor: "#f9ffbf"}):{}}
             >
             <div className="container-fluid">
                 <div className="navbar-header">

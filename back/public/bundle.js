@@ -34938,9 +34938,9 @@ __webpack_require__.r(__webpack_exports__);
       inputValue = _ref.inputValue;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-default navbar-fixed-top",
-    style: currentUser.isAdmin && {
+    style: currentUser.isAdmin ? {
       backgroundColor: "#f9ffbf"
-    }
+    } : {}
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-fluid"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
