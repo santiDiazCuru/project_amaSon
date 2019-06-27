@@ -1,5 +1,6 @@
 import { LOG_IN_USER} from "../constants"
 import Axios from "axios"
+import {validateUser} from './logInUser'
 
 // la funcion de registerUser hace solo un axios con un post para crear un nuevo user en la DB.
 // recibe un argumento(newUserInfo) que es un objeto que viene seteado ya con la data del nuevo usuario 

@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { fetchSingleProduct } from '../action-creators/getSingleProduct'
 import SingleProduct from '../components/SingleProduct'
 import { postReviews, fetchReviews } from '../action-creators/reviews'
-import {addItem} from '../action-creators/addCarrito'
+import { addItem, setLocalCarrito } from '../action-creators/addCarrito'
+import { alertBottom } from '../action-creators/getProducts'
 
 
 
@@ -12,7 +13,8 @@ class SingleProductContainer extends React.Component {
         super(props)
         this.state = {
             comentario: '',
-            valoracion: 0
+            valoracion: 0,
+            show: false,
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,7 +26,7 @@ class SingleProductContainer extends React.Component {
         this.props.fetchReviews(this.props.productId)
     }
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         if (this.props.isLoggedIn) {
             let dataReview = {
@@ -42,6 +44,11 @@ class SingleProductContainer extends React.Component {
             alert('Debe estar loggeado para enviar reviews')
         }
     }
+    btnCerrar() {
+        this.setState({
+            show: false
+        })
+    }
 
     handleChange(e) {
         e.preventDefault()
@@ -49,7 +56,11 @@ class SingleProductContainer extends React.Component {
     }
 
     handleCarrito(e) {
-        this.props.isLoggedIn ? addItem(e.target.name, this.props.user.id) : alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou')
+        this.props.isLoggedIn ? addItem(e.target.name, this.props.user.id) : this.props.setLocalCarrito(this.props.productito)
+        this.props.alertBottom('success', 'Se ha agregado el producto al carrito');
+        this.setState({
+            show:true
+        })
     }
 
 
@@ -83,7 +94,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSingleProduct: (prod) => dispatch(fetchSingleProduct(prod)),
-        fetchReviews: (rev) => dispatch(fetchReviews(rev))
+        fetchReviews: (rev) => dispatch(fetchReviews(rev)),
+        alertBottom: (tipo, mensaje) => dispatch(alertBottom(tipo, mensaje)),
+        setLocalCarrito: (producto) => dispatch(setLocalCarrito(producto))
     }
 }
 
