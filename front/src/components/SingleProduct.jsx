@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { style, styleImg, TitleStyle, starStyle, price, boton } from '../estilos/styleProduct'
 import product from './product';
+
 const estilo = {
     minHeight: 200
 }
@@ -32,8 +33,8 @@ const carrito = {
 
 }
 
-export default ({ p, handleChange, handleSubmit }) => {
-    console.log("SOY PRODUCTO WACHOOOOO", p)
+export default ({ p, handleChange, handleSubmit, rev }) => {
+    console.log("SOY REVVVVVVVV!!!!!!!", rev)
     return (
 
         <div className="row">
@@ -52,10 +53,28 @@ export default ({ p, handleChange, handleSubmit }) => {
                         <img src={p.productito.img2} width='33%' alt="" />
                         <img src={p.productito.img3} width='33%' alt="" />
                         <button style={carrito} className="btn btn-default" role="button">
-                        <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                        Add Cart
+                            <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                            Add Cart
                     </button>
-                    <h3 style={carrito}>Reviews</h3>
+                        <h3>Reviews</h3>
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Valoracion</th>
+                                <th>Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>{
+                            rev.productReviews && rev.productReviews.map(reviews => (
+                                <tr key={reviews.id}>
+                                    <td>{reviews.userId}</td>
+                                    <td>{reviews.valoracion}</td>
+                                    <td>{reviews.comentario}</td>
+                                </tr>
+                            ))
+                        }
+                        </tbody>
+
 
 
                     </div>
@@ -101,23 +120,23 @@ export default ({ p, handleChange, handleSubmit }) => {
                         <h4 style={rev_style}>Escriba su review de este producto</h4>
                         <form onSubmit={handleSubmit}>
 
-                            <div class="form-group">
-                                <label for="valoracion" class="col-sm-2 control-label">Valoracion:</label>
-                                <div class="col-sm-4">
-                                    <input name="valoracion" type="number" min="1" max="5" class="form-control" onChange={handleChange} />
+                            <div className="form-group">
+                                <label className="col-sm-2 control-label">Valoracion:</label>
+                                <div className="col-sm-4">
+                                    <input name="valoracion" type="number" min="1" max="5" className="form-control" onChange={handleChange} />
                                 </div>
                             </div>
 
-                            <div class="form-group" width='100%' style={style_form}>
-                                <label for='comentario' class="col-sm-2 control-label"></label>
-                                <div class="col-sm-10">
+                            <div className="form-group" width='100%' style={style_form}>
+                                <label className="col-sm-2 control-label"></label>
+                                <div className="col-sm-10">
                                     <textarea onChange={handleChange} name="comentario" placeholder="Escriba aqui su review..." style={style_form}></textarea>
                                 </div>
                             </div>
 
 
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary" style={boto}>Enviar</button>
+                            <div className="col-sm-offset-2 col-sm-10">
+                                <button type="submit" className="btn btn-primary" style={boto}>Enviar</button>
                             </div>
 
 

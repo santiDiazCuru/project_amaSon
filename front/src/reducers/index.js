@@ -4,11 +4,14 @@ import user from './users_reducer'
 import users from './fetch_users'
 import singleProduct from './fetch_single_product_reducer'
 import compras from './compras_reducers'
+import productReviews from './fetch_reviews'
+
 
 export default combineReducers({
     product,
     singleProduct,
     user,
     users,
-    compras
+    compras,
+    productReviews
 });
