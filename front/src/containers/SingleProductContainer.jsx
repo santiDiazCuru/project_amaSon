@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchSingleProduct } from '../action-creators/getSingleProduct'
 import SingleProduct from '../components/SingleProduct'
-import { postReviews } from '../action-creators/reviews'
+import { postReviews, fetchReviews } from '../action-creators/reviews'
 import {addItem} from '../action-creators/addCarrito'
+
 
 
 class SingleProductContainer extends React.Component {
@@ -11,7 +12,7 @@ class SingleProductContainer extends React.Component {
         super(props)
         this.state = {
             comentario: '',
-            valoracion: ''
+            valoracion: 0
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -20,9 +21,10 @@ class SingleProductContainer extends React.Component {
 
     componentDidMount() {
         this.props.fetchSingleProduct(this.props.productId)
+        this.props.fetchReviews(this.props.productId)
     }
 
-    handleSubmit(e) {
+    handleSubmit(e){
         e.preventDefault();
         if (this.props.isLoggedIn) {
             let dataReview = {
@@ -32,6 +34,10 @@ class SingleProductContainer extends React.Component {
                 userId: this.props.user.id
             }
             postReviews(dataReview)
+            // this.setState({
+            //     valoracion: 0,
+            //     comentario: ''
+            // })
         } else {
             alert('Debe estar loggeado para enviar reviews')
         }
@@ -56,6 +62,7 @@ class SingleProductContainer extends React.Component {
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
                     handleCarrito={this.handleCarrito}
+                    rev={this.props.reviews}
                 />
 
             </div>
@@ -68,13 +75,15 @@ const mapStateToProps = (state, ownProps) => {
         productito: state.singleProduct.singleProduct,
         productId: ownProps.match.params.id,
         user: state.user.currentUser,
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        reviews: state.productReviews
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchSingleProduct: (prod) => dispatch(fetchSingleProduct(prod))
+        fetchSingleProduct: (prod) => dispatch(fetchSingleProduct(prod)),
+        fetchReviews: (rev) => dispatch(fetchReviews(rev))
     }
 }
 

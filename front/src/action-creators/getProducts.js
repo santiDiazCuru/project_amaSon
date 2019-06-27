@@ -1,5 +1,5 @@
 import { FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, FETCH_ALL_CATEGORY,
-    FETCH_ALL_LIMIT_CATEGORY } from "../constants"
+    FETCH_ALL_LIMIT_CATEGORY, SET_ALERT } from "../constants"
 import Axios from "axios"
 
 
@@ -18,6 +18,12 @@ const allProducts = (productos) => ({
 const allCategory = (listCategory) => ({
     type: FETCH_ALL_CATEGORY,
     listCategory
+});
+
+const setAlerta = (tipo, mensaje) => ({
+    type: SET_ALERT,
+    tipo,
+    mensaje
 });
 
 const addLimitProduct = (limit) => ({
@@ -94,4 +100,14 @@ export const addNewProduct = (body) => dispatch => {
 export const fetchAllCategory = () => dispatch => {
     Axios.get(`/api/products/listCategory/`)
         .then(productos => dispatch(allCategory(productos.data)))
+}
+
+
+// ELIMINA PRODUCTOS POR ID
+export const deleteProduct = (id) => dispatch => {
+    return Axios.delete(`/api/products/${id}`)
+        //.then(productos => dispatch(allCategory(productos.data)))
+}
+export const alertBottom= (tipo,mensaje)=>dispatch=>{
+    return dispatch(setAlerta(tipo,mensaje))
 }

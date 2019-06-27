@@ -1,4 +1,5 @@
 import React from 'react'
+const random = Math.floor(Math.random()*101)
 
 export default ({ handleSubmit, handleTitle, handleDescription, handlePrice, handleStock,
     handleImg1, handleImg2, handleImg3, handleCategory, state, handleCreateInput, handleAdd, handleDelete,listCategory }) => (
@@ -16,7 +17,14 @@ export default ({ handleSubmit, handleTitle, handleDescription, handlePrice, han
                 {(state.response === 'error') &&
                     <div>
                         <div className="alert alert-danger">
-                            <strong>Lo siento!</strong> Hubo un error al procesar la creaciń..
+                            <strong>Lo siento!</strong> Hubo un error al procesar la creación..
+                        </div>
+                    </div>
+                }
+                {(state.response === 'categoria') &&
+                    <div>
+                        <div className="alert alert-danger">
+                            <strong>Lo siento!</strong> Debes colocar al menos una categoria..
                         </div>
                     </div>
                 }
@@ -59,10 +67,12 @@ export default ({ handleSubmit, handleTitle, handleDescription, handlePrice, han
                     <div style={({ marginTop: 18 })} >
                         Selecciona una Categoria:
                     </div>
+                    
                     <div style={({height:160,overflow: "auto"})}>
+                    
                         {
                             listCategory && listCategory.map(item=>(
-                             <label key={`key_${(state.response=='ok')?'ok':''}_${item.categoria}`} 
+                             <label key={`key_${random}_${(state.response=='ok')?'ok':''}_${item.categoria}`} 
                                style={({ textTransform: "capitalize" })} 
                                className="btn btn-block btn-default">{item.categoria} &nbsp;
                                

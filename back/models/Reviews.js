@@ -15,11 +15,5 @@ var Review = db.define('reviews', {
 
 });
 
-// Review.belongsTo(User, {as: 'user'} )
-// Review.belongsTo(Product, {as: 'product'})
 
-//idProducto viene de la relacion
-//idUser viene de la relacion!
 module.exports = Review
-
-//fijarse si se crea la tabla....maldito sequelize
