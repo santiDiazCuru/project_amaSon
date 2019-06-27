@@ -77,7 +77,11 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                                         <>
                                             <li><Link to="/product/add">Crear Productos</Link></li>
                                             <li><Link to="/users">Lista de Usuarios</Link></li>
+<<<<<<< HEAD
+                                            <li><Link to="#">Mis ventas</Link></li>
+=======
                                             <li><Link to="/ventas">Mis ventas</Link></li>
+>>>>>>> a03ae827745ab3653d0fc409281544d342cfda5f
                                         </>
                                     ):''}
                                     <li role="separator" className="divider"></li>

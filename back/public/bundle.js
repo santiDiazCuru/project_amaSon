@@ -33588,12 +33588,14 @@ var fetchSingleProduct = function fetchSingleProduct(id) {
 /*!*****************************************!*\
   !*** ./src/action-creators/getUsers.js ***!
   \*****************************************/
-/*! exports provided: fetchAllUsers */
+/*! exports provided: fetchAllUsers, deleteUser, changeAdminStatus */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeAdminStatus", function() { return changeAdminStatus; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
@@ -33607,7 +33609,18 @@ var allUsers = function allUsers(users) {
     type: _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_USERS"],
     users: users
   };
-}; // BUSCA TODOS LOS USUARIOS
+};
+
+var changeStatus = function changeStatus(user) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["CHANGE_ADMIN_STATUS"],
+    user: user
+  };
+}; // const userToDelete = (user) => ({
+//     type: DELETE_USER,
+//     user
+// })
+// BUSCA TODOS LOS USUARIOS
 
 
 var fetchAllUsers = function fetchAllUsers() {
@@ -33615,6 +33628,25 @@ var fetchAllUsers = function fetchAllUsers() {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("api/users").then(function (users) {
       dispatch(allUsers(users.data));
     });
+  };
+}; //ELIMINA A UN USUARIO
+
+var deleteUser = function deleteUser(id) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/users/delete/".concat(id)).then(function (user) {
+      dispatch(fetchAllUsers());
+    });
+  };
+}; //CAMBIA ESTADO DE ADMIN
+
+var changeAdminStatus = function changeAdminStatus(id, value) {
+  return function (dispatch) {
+    console.log(id, value);
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/users/changeAdminStatus/".concat(id), {
+      isAdmin: value
+    }); // .then(user => {
+    //     dispatch(changeStatus(user))
+    // })
   };
 };
 
@@ -35336,13 +35368,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var list = _ref.list;
+  var list = _ref.list,
+      handleAdmin = _ref.handleAdmin,
+      handleDelete = _ref.handleDelete;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "table table-striped"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "IsAdmin?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, list && list.map(function (user) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "IsAdmin?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Borrar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, list && list.map(function (user) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: user.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.isAdmin ? 'Admin' : 'No admin'));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "ID ", user.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "USERNAME: ", user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Email: ", user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Is Admin:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      className: "switch"
+    }, user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      key: Math.random(),
+      id: user.id,
+      onChange: handleAdmin,
+      checked: true,
+      name: user.id,
+      type: "checkbox"
+    }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      key: Math.random(),
+      id: user.id,
+      name: user.id,
+      type: "checkbox",
+      onChange: handleAdmin
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "slider round"
+    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Borrar Usuario"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "casillaEliminar"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: {
+        cursor: 'pointer'
+      },
+      id: "".concat(user.id),
+      onClick: handleDelete,
+      className: "glyphicon glyphicon-trash"
+    })));
   })));
 });
 {
@@ -35491,7 +35551,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT, DELETE_USER, CHANGE_ADMIN_STATUS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35510,6 +35570,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CARRITO", function() { return FETCH_CARRITO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_REVIEWS", function() { return FETCH_REVIEWS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_ALERT", function() { return SET_ALERT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_USER", function() { return DELETE_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_ADMIN_STATUS", function() { return CHANGE_ADMIN_STATUS; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 var FETCH_ALL_PRODUCTS_CATEGORY = 'FETCH_ALL_PRODUCTS_CATEGORY';
@@ -35524,6 +35586,8 @@ var FETCH_ALL_LIMIT_CATEGORY = 'FETCH_ALL_LIMIT_CATEGORY';
 var FETCH_CARRITO = 'FETCH_CARRITO';
 var FETCH_REVIEWS = 'FETCH_REVIEWS';
 var SET_ALERT = 'SET_ALERT';
+var DELETE_USER = 'DELETE_USER';
+var CHANGE_ADMIN_STATUS = 'CHANGE_ADMIN_STATUS';
 
 /***/ }),
 
@@ -37882,6 +37946,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getUsers */ "./src/action-creators/getUsers.js");
 /* harmony import */ var _components_UserList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/UserList */ "./src/components/UserList.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37892,13 +37958,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -37911,22 +37978,63 @@ var UserListContainer =
 function (_React$Component) {
   _inherits(UserListContainer, _React$Component);
 
-  function UserListContainer() {
+  function UserListContainer(props) {
+    var _this;
+
     _classCallCheck(this, UserListContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(UserListContainer).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserListContainer).call(this, props));
+    _this.state = {
+      clickedUser: ''
+    };
+    _this.handleAdmin = _this.handleAdmin.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(UserListContainer, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      console.log("CONSOLELOG", prevProps);
+      console.log("prevstate", prevState);
+
+      if (this.props.listaUsuarios.length !== prevProps.listaUsuarios.length) {
+        this.props.fetchAllUsers();
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllUsers();
     }
   }, {
+    key: "handleAdmin",
+    value: function handleAdmin(e) {
+      var _this2 = this;
+
+      e.preventDefault(e);
+      console.log("ESTO ES E L SSSSSSS", e.target.checked, e.target.id);
+      this.props.changeAdminStatus(e.target.id, e.target.checked).then(function () {
+        _this2.props.fetchAllUsers();
+      }).then(function (data) {
+        console.log("SOY LA DATA", data);
+      });
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      console.log("SOY ETARGETTTTTTT", e.target.id);
+      e.preventDefault(e);
+      this.props.deleteUser(e.target.id); // Axios.get(`/api/users/delete/${e.target.id}`)
+      // .then(console.log("BORRADO"))
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UserList__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        list: this.props.listaUsuarios
+        list: this.props.listaUsuarios,
+        handleAdmin: this.handleAdmin,
+        handleDelete: this.handleDelete
       }));
     }
   }]);
@@ -37936,7 +38044,8 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    listaUsuarios: state.users.users
+    listaUsuarios: state.users.users,
+    userBorrado: state.user
   };
 };
 
@@ -37944,6 +38053,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchAllUsers: function fetchAllUsers(us) {
       return dispatch(Object(_action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__["fetchAllUsers"])(us));
+    },
+    deleteUser: function deleteUser(del) {
+      return dispatch(Object(_action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__["deleteUser"])(del));
+    },
+    changeAdminStatus: function changeAdminStatus(id, value) {
+      return dispatch(Object(_action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__["changeAdminStatus"])(id, value));
     }
   };
 };
@@ -38217,7 +38332,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 
 var initialState = {
-  users: []
+  users: [],
+  user: {}
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -38228,6 +38344,13 @@ var initialState = {
       {
         return Object.assign({}, state, {
           users: action.users
+        });
+      }
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["CHANGE_ADMIN_STATUS"]:
+      {
+        return Object.assign({}, state, {
+          user: action.user
         });
       }
 
