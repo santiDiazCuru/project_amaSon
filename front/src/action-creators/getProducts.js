@@ -111,3 +111,10 @@ export const deleteProduct = (id) => dispatch => {
 export const alertBottom= (tipo,mensaje)=>dispatch=>{
     return dispatch(setAlerta(tipo,mensaje))
 }
+
+export const editProduct = (id, body)=>dispatch=>{
+    return  Axios.put(`/api/products/${id}`, body)
+}
+export const fetchOneProduct = (id)=>dispatch=>{
+    return Axios.get(`/api/products/data/${id}`)
+}

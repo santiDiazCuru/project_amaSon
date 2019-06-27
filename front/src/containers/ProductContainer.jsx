@@ -33,6 +33,9 @@ class ProductContainer extends Component {
         this.props.deleteProduct(id)
         .then((data)=>{
             //console.log(data,"DATAA")
+            this.props.fetchProducts(this.props.inputValue,
+                this.props.categoryParams,
+                this.props.min, this.props.max, 1)
             this.props.alertBottom('success','Se ha eliminado correctamente..')
             this.setState({
                 show:true

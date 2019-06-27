@@ -72,11 +72,11 @@ export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUs
                                         <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         &nbsp; Eliminar&nbsp;&nbsp;
                                     </button>&nbsp;
-                                    <button onClick={() => handleEditar(item.id)}
-                                        className="btn btn-default" role="button">
+                                    <Link to={`product/update/${item.id}`} 
+                                    className="btn btn-default">
                                         <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         &nbsp; Editar&nbsp;&nbsp;
-                                    </button>
+                                    </Link>
                                 </p>
                             }
 
