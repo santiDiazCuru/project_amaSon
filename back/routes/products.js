@@ -13,21 +13,21 @@ Router.get(`/singleView/:id`, (req, res) => {
             id: req.params.id
         }
     })
-    .then(product => res.json(product))
+        .then(product => res.json(product))
 })
 
 // RUTA SOLO USO DE TEST
 Router.get('/prueba', (req, res) => {
     Products.destroy({
         where: {
-            id:26
+            id: 26
         },
         include: [{
             model: Category,
             as: 'category',
         }]
     })
-    .then(products => res.json(products))
+        .then(products => res.json(products))
 })
 
 //AGREGAR UN NUEVO PRODUCTO
@@ -66,7 +66,7 @@ Router.get(`/search`, (req, res) => {
     objFilter.stock = { [Op.ne]: 0 }
     objFilter.precio = { [Op.between]: [req.query.min, req.query.max] }
 
-    
+
     if (req.query.category === '') {
         Products.findAll({
             limit,
@@ -76,7 +76,7 @@ Router.get(`/search`, (req, res) => {
             .then(products => {
                 res.json(products)
             })
-    }else {
+    } else {
         Products.findAll({
             limit,
             offset,
@@ -106,14 +106,14 @@ Router.get('/listCategory', (req, res) => {
 Router.get('/prueba', (req, res) => {
     Products.destroy({
         where: {
-            id:26
+            id: 26
         },
         include: [{
             model: Category,
             as: 'category',
         }]
     })
-    .then(products => res.json(products))
+        .then(products => res.json(products))
 })
 
 
@@ -173,36 +173,92 @@ Router.get('/categoria/:category', (req, res) => {
     const limit = (req.query.page * pageSize)//pageSize
 
     let objFilter = {}
-   // objFilter.categorias = req.params.category
+    // objFilter.categorias = req.params.category
     objFilter.stock = { [Op.ne]: 0 }
     objFilter.precio = { [Op.between]: [req.query.min, req.query.max] }
 
-    
-        Products.findAll({
-            limit,
-            offset,
-            where: objFilter,
-            include: [{
-                model: Category,
-                as: 'category',
-                where: { categoria: req.params.category },
-                attributes: ['id', 'categoria']
-            }]
+
+    Products.findAll({
+        limit,
+        offset,
+        where: objFilter,
+        include: [{
+            model: Category,
+            as: 'category',
+            where: { categoria: req.params.category },
+            attributes: ['id', 'categoria']
+        }]
+    })
+        .then(products => {
+            res.json(products)
         })
-            .then(products => {
-                res.json(products)
-            })
-    
+
 })
 
 // RUTA SOLO USO DE TEST
 Router.delete('/:id', (req, res) => {
     Products.destroy({
         where: {
-            id:req.params.id
+            id: req.params.id
         }
     })
-    .then(products => res.json(products))
+        .then(products => res.json(products))
+})
+
+Router.put('/:idProduct', function (req, res, next) {
+    Products.update(
+        req.body,
+        {
+            returning: true
+            ,
+            where: { id: req.params.idProduct },
+            include: [{
+                model: Category,
+                as: 'category',
+                attributes: ['id', 'categoria']
+            }]
+        }
+    )
+        .then(product => {
+            Products.findOne({
+                where: { id: req.params.idProduct }
+            })
+                .then(product => {
+                    // instancia 
+                    let arr = req.body.category
+                    var elementos = []
+                    var promise
+                    for (var i = 0; i < arr.length; i++) {
+                        promise = Category.findOrCreate({ where: { categoria: arr[i] }})
+                        .then(category => {
+                            return (category[0].dataValues.id)
+                        })
+
+                        elementos.push(promise)
+                    }
+                    Promise.all(elementos).then(values => { 
+                        product.setCategory(values)
+                    });
+                    
+                })
+                .then(products => res.json(products))
+                .catch(err=>console.dir(err))
+        })
+})
+
+// BUSCA PRODUCTOS POR ID
+Router.get(`/data/:id`, (req, res) => {
+    Products.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [{
+            model: Category,
+            as: 'category',
+            attributes: ['id', 'categoria']
+        }]
+    })
+        .then(product => res.json(product))
 })
 
 module.exports = Router
