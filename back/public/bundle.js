@@ -34808,7 +34808,10 @@ __webpack_require__.r(__webpack_exports__);
       handleCarrito = _ref.handleCarrito,
       inputValue = _ref.inputValue;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-    className: "navbar navbar-default navbar-fixed-top"
+    className: "navbar navbar-default navbar-fixed-top",
+    style: currentUser.isAdmin && {
+      backgroundColor: "#f9ffbf"
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-fluid"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -34861,6 +34864,18 @@ __webpack_require__.r(__webpack_exports__);
     className: "glyphicon glyphicon-search",
     "aria-hidden": "true"
   })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "nav navbar-nav navbar-left"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "active",
+    id: "login"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "navbar-form navbar-left",
+    style: _estilos_styleNav__WEBPACK_IMPORTED_MODULE_2__["formButton"]
+  }, currentUser.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "http://www.plataformaunimgro.com.mx/img/admin.png",
+    height: "35px",
+    width: "50px"
+  }), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "PERFIL ADMIN")) : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "nav navbar-nav navbar-right"
   }, isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "dropdown"
@@ -34876,13 +34891,13 @@ __webpack_require__.r(__webpack_exports__);
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "dropdown-menu"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "#"
+    to: "/compras"
   }, "Mis Compras")), currentUser.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/product/add"
   }, "Crear Productos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "#"
+    to: "/users"
   }, "Lista de Usuarios")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "#"
+    to: "/ventas"
   }, "Mis ventas"))) : '', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     role: "separator",
     className: "divider"
@@ -37208,6 +37223,8 @@ function (_Component) {
 
       this.props.deleteProduct(id).then(function (data) {
         //console.log(data,"DATAA")
+        _this2.props.fetchProducts(_this2.props.inputValue, _this2.props.categoryParams, _this2.props.min, _this2.props.max, 1);
+
         _this2.props.alertBottom('success', 'Se ha eliminado correctamente..');
 
         _this2.setState({

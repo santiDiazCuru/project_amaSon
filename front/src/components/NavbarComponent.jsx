@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 import { inputSearch, logo, formButton } from '../estilos/styleNav'
 export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSubmit, handleModal, handleCarrito, inputValue }) => (
     <div>
-        <nav className="navbar navbar-default navbar-fixed-top">
+        <nav className="navbar navbar-default navbar-fixed-top"
+        
+        style={(currentUser.isAdmin)&&({backgroundColor: "#f9ffbf"})}
+            >
             <div className="container-fluid">
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle collapsed"
@@ -36,6 +39,19 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         </center>
                     </form>
 
+                    <ul className="nav navbar-nav navbar-left">
+                    <li className="active" id="login">
+                                <form className="navbar-form navbar-left" style={formButton}>
+                                {(currentUser.isAdmin)?(
+                                        <>
+                                        <img src="http://www.plataformaunimgro.com.mx/img/admin.png" height="35px" width= "50px"/>&nbsp;    
+                                        <strong>PERFIL ADMIN</strong>
+                                        </>
+                                    ):''}
+                                    
+                                </form>
+                            </li>
+                    </ul>
                     <ul className="nav navbar-nav navbar-right">
                         {/* <li className="dropdown">  ESTO ES PARA EL ADMIN
                             <Link to="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Admin<span className="caret"></span></Link>
@@ -50,18 +66,18 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         </li> */}
 
                         {/* ESTO ES PARA EL USER COMÚN */}
-
+                        
                         {/* este if hace que se renderize el boton de log in si el usuario no esta logeado y si está logeado un dropdown*/}
                         {isLoggedIn ?
                             <li className="dropdown">
                                 <Link to="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{currentUser.username}<span className="caret"></span></Link>
                                 <ul className="dropdown-menu">
-                                    <li><Link to="#">Mis Compras</Link></li>
+                                    <li><Link to="/compras">Mis Compras</Link></li>
                                     {(currentUser.isAdmin)?(
                                         <>
                                             <li><Link to="/product/add">Crear Productos</Link></li>
-                                            <li><Link to="#">Lista de Usuarios</Link></li>
-                                            <li><Link to="#">Mis ventas</Link></li>
+                                            <li><Link to="/users">Lista de Usuarios</Link></li>
+                                            <li><Link to="/ventas">Mis ventas</Link></li>
                                         </>
                                     ):''}
                                     <li role="separator" className="divider"></li>
