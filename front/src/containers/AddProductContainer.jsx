@@ -54,7 +54,8 @@ class AddProductContainer extends React.Component {
             })
         }
 
-        this.props.addNewProduct(this.state)
+        if(this.state.category.length>0){
+            this.props.addNewProduct(this.state)
             .then(res => {
                 this.props.fetchAllCategory()
                 this.setState({
@@ -75,6 +76,9 @@ class AddProductContainer extends React.Component {
             .catch(res => {
                 this.setState({ response: 'error' })
             })
+        }else {
+            this.setState({ response: 'categoria' })
+        }
     }
 
     handleTitle(event) { this.setState({ 

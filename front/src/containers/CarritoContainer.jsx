@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CarritoComponent from '../components/CarritoComponent'
-import { getCarrito, updateCantidad, deleteCompra } from '../action-creators/getCompras'
+import { getCarrito, updateCantidad, deleteCompra, changeStatus } from '../action-creators/getCompras'
 import { validateSession } from '../action-creators/logInUser'
 
 class CarritoContainer extends React.Component {
@@ -11,13 +11,23 @@ class CarritoContainer extends React.Component {
             carrito: [],
             eliminados: []
         }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClick = this.handleClick.bind(this) 
 
     };
     componentDidMount() {
         this.props.validateSession()
         .then(()=>this.props.getCarrito(this.props.currentUser.id))
+    }
+    handleClick(e){
+        console.log('emtra al handler')
+        if(this.props.isLoggedIn){
+        e.preventDefault();
+        changeStatus('finalizada', this.props.currentUser.id)
+        .then(()=>this.props.getCarrito(this.props.currentUser.id))
+        }
+        else alert('Debes estar loggeado para realizar una compra')
     }
 
     handleChange(e){
@@ -32,7 +42,7 @@ class CarritoContainer extends React.Component {
 
     render() {
         return (
-            <CarritoComponent handleDelete={this.handleDelete} handleChange={this.handleChange} userCarrito={this.props.userCarrito}/>
+            <CarritoComponent handleClick={this.handleClick} handleDelete={this.handleDelete} handleChange={this.handleChange} userCarrito={this.props.userCarrito}/>
         )
     };
 };
@@ -48,7 +58,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         currentUser: state.user.currentUser,
         userOrdenes: state.compras.userOrdenes,
-        userCarrito: state.compras.userCarrito
+        userCarrito: state.compras.userCarrito,
+        isLoggedIn: state.user.isLoggedIn
     }
 }
 

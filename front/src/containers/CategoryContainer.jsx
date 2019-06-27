@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchAllProducts } from '../action-creators/getProducts'
+import { fetchAllProducts, fetchAllCategory } from '../action-creators/getProducts'
 import ProductoContainer from '../containers/ProductContainer'
 import SidebarComponent from '../components/SidebarComponent'
 
@@ -99,6 +99,7 @@ class CategoryContainer extends React.Component {
             this.props.categoryParams,
             this.state.priceMin, this.state.priceMax, 1
             )
+        this.props.fetchAllCategory()
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -124,18 +125,20 @@ class CategoryContainer extends React.Component {
                 <br /><br />
                 <div className="col-sm-3 col-md-2 sidebar" style={({ zIndex: 8 })}>
                     {/* RENDERIZA COMPONENTE DE FILTRO */}
-                    <SidebarComponent 
-                        handleChangeMin={this.handleChangeMin} 
-                        priceMin={this.state.priceMin} 
-                        handleClickMin={this.handleClickMin} 
-                        priceMax={this.state.priceMax} 
-                        handleChangeMax={this.handleChangeMax} 
-                        handleClickMax={this.handleClickMax} 
-                        color={this.state.color} 
-                        letraMax={this.state.letraMax} 
+                    <SidebarComponent
+                        handleChangeMin={this.handleChangeMin}
+                        priceMin={this.props.min}
+                        handleClickMin={this.handleClickMin}
+                        priceMax={this.props.max}
+                        handleChangeMax={this.handleChangeMax}
+                        handleClickMax={this.handleClickMax}
+                        color={this.state.color}
+                        letraMax={this.state.letraMax}
                         letraMin={this.state.letraMin}
-                        handleSubmit = {this.handleSubmit}
-                        handleRadioCateg = {this.handleRadioCateg}  />
+                        handleSubmit={this.handleSubmit}
+                        handleRadioCateg={this.handleRadioCateg} 
+                        listCategory={this.props.listCategory}
+                        />
                 </div>
                 <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol className="breadcrumb">
@@ -167,11 +170,13 @@ const mapStateToProps = (state, ownProps) => {
         page: state.product.page,
         totalPages: state.product.totalPages,
         inputValue: state.product.inputValue,
+        
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAllProducts: (category, min, max, page) => dispatch(fetchAllProducts(category, min, max, page))
+        fetchAllProducts: (category, min, max, page) => dispatch(fetchAllProducts(category, min, max, page)),
+        fetchAllCategory: () => dispatch(fetchAllCategory()),
         //fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
     }
 }

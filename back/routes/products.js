@@ -6,8 +6,8 @@ const Category = require("../models").Category
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
-//BUSCA PRODUCTOS POR ID
-Router.get(`/singleView/:id/`, (req, res) => {
+// BUSCA PRODUCTOS POR ID
+Router.get(`/singleView/:id`, (req, res) => {
     Products.findOne({
         where: {
             id: req.params.id
@@ -18,15 +18,16 @@ Router.get(`/singleView/:id/`, (req, res) => {
 
 // RUTA SOLO USO DE TEST
 Router.get('/prueba', (req, res) => {
-
-    Products.findOne({
-        attributes: [
-            [Sequelize.fn('min', Sequelize.col('precio')), 'min'],
-            [Sequelize.fn('max', Sequelize.col('precio')), 'max'],
-            [Sequelize.fn('count', Sequelize.col('precio')), 'count']
-        ]
+    Products.destroy({
+        where: {
+            id:26
+        },
+        include: [{
+            model: Category,
+            as: 'category',
+        }]
     })
-        .then(products => res.json(products))
+    .then(products => res.json(products))
 })
 
 //AGREGAR UN NUEVO PRODUCTO
@@ -93,12 +94,28 @@ Router.get(`/search`, (req, res) => {
     }
 
 })
+
 Router.get('/listCategory', (req, res) => {
+    console.log('entra /listCategory')
     Category.findAll({
-        attributes: ['categoria'],
+        attributes: ['categoria']
     })
         .then(list => res.json(list))
 })
+// RUTA SOLO USO DE TEST
+Router.get('/prueba', (req, res) => {
+    Products.destroy({
+        where: {
+            id:26
+        },
+        include: [{
+            model: Category,
+            as: 'category',
+        }]
+    })
+    .then(products => res.json(products))
+})
+
 
 // LIMITES para obtener Max, Min y Count
 Router.get('/limite', (req, res) => {
@@ -156,23 +173,36 @@ Router.get('/categoria/:category', (req, res) => {
     const limit = (req.query.page * pageSize)//pageSize
 
     let objFilter = {}
-    objFilter.categorias = req.params.category
+   // objFilter.categorias = req.params.category
     objFilter.stock = { [Op.ne]: 0 }
     objFilter.precio = { [Op.between]: [req.query.min, req.query.max] }
 
-    if (req.query.category !== '') {
-        objFilter.categorias = req.query.category
-    }
-
-    Products.findAll({
-        limit,
-        offset,
-        where: objFilter
-    })
-        .then(products => res.json(products))
-
+    
+        Products.findAll({
+            limit,
+            offset,
+            where: objFilter,
+            include: [{
+                model: Category,
+                as: 'category',
+                where: { categoria: req.params.category },
+                attributes: ['id', 'categoria']
+            }]
+        })
+            .then(products => {
+                res.json(products)
+            })
+    
 })
 
-
+// RUTA SOLO USO DE TEST
+Router.delete('/:id', (req, res) => {
+    Products.destroy({
+        where: {
+            id:req.params.id
+        }
+    })
+    .then(products => res.json(products))
+})
 
 module.exports = Router

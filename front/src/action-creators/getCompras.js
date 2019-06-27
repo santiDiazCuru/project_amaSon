@@ -18,6 +18,9 @@ export const getCarrito = (userId) => dispatch => {
     return Axios.get(`/api/compras/carrito/${userId}`)
         .then((carrito)=> dispatch(userCarrito(carrito.data)))
 }
+export const changeStatus = (newStatus, userId) => {
+    return Axios.patch(`/api/compras/status/${userId}`, {newStatus})
+}
 
 export const updateCantidad = (compraId, nuevaCantidad, userId) => {
    return Axios.put(`/api/compras/update/${compraId}`, {nuevaCantidad})

@@ -65,7 +65,7 @@ export default ({ p, handleChange, handleSubmit, rev }) => {
                             </tr>
                         </thead>
                         <tbody>{
-                            rev.productReviews && rev.productReviews.map(reviews => (
+                            rev && rev.productReviews.map(reviews => (
                                 <tr key={reviews.id}>
                                     <td>{reviews.userId}</td>
                                     <td>{reviews.valoracion}</td>

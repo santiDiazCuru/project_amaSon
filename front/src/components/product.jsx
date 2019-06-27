@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { style, styleImg, TitleStyle, starStyle, price, boton } from '../estilos/styleProduct'
 import { Link } from 'react-router-dom';
 
-export default ({ col, list, page, totalPage, nextPage, handleCarrito }) => {
+export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUser, handleDelete, handleEditar }) => {
 
     if (list.length !== 0) {
         return <div >
@@ -10,15 +10,15 @@ export default ({ col, list, page, totalPage, nextPage, handleCarrito }) => {
                 {list && list.map(item => (
 
                     <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
-                        <div style={style}>
-                        <Link to={`/products/${item.id}`} >
-                            <img style={styleImg} src={item.img1} alt="{item.img1}" />
-                            <center>
-                                {/* Titulo */}
-                                <h2 style={TitleStyle} key={item.id}>{item.titulo}</h2>
-                            </center>&nbsp;
+                        <div className="divProduct">
+                            <Link to={`/products/${item.id}`} >
+                                <img style={styleImg} src={item.img1} alt="{item.img1}" />
+                                <center>
+                                    {/* Titulo */}
+                                    <h2 style={TitleStyle} key={item.id}>{item.titulo}</h2>
+                                </center>&nbsp;
                             </Link>
-    {/* construccion de las estrellas */}
+                            {/* construccion de las estrellas */}
                             <p style={starStyle}>
                                 {/* CREA UN FOR DE LAS CANTIDAD DE ESTRELLAS COMPLETAS */}
                                 {
@@ -60,13 +60,28 @@ export default ({ col, list, page, totalPage, nextPage, handleCarrito }) => {
                                     $ {item.precio}
                                 </span>
                             </p>
+                            {(currentUser.isAdmin) &&
+                                <p>
+                                    <button onClick={()=>handleDelete(item.id)} 
+                                    className="btn btn-default" role="button">
+                                        <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        &nbsp; Eliminar&nbsp;&nbsp;
+                                    </button>&nbsp;
+                                    <button onClick={()=>handleEditar(item.id)} 
+                                    className="btn btn-default" role="button">
+                                        <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        &nbsp; Editar&nbsp;&nbsp;
+                                    </button>
+                                </p>
+                            }
+
                         </div>
                     </div>
                 ))}
             </div>
             <div className="row">
                 {
-                    (list.length >= 8) ? <center><br />
+                    (list.length >= 8 && page < (Number(totalPage) / 8)) ? <center><br />
                         {/* (page < totalPage) ? <center></center> */}
                         <button style={boton} className="btn btn-default btn-md" onClick={() => nextPage(page + 1)}>
                             Cargar más..

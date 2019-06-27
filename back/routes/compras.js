@@ -11,7 +11,8 @@ Router.get('/carrito/:id',function(req,res){
         estado: 'carrito'
     }})
     .then((OC)=>{
-         return Compra.findAll({where: {
+        if(!OC)return [];
+        if (OC) {return Compra.findAll({where: {
             OCId: OC.id
         },
     include: {
@@ -19,7 +20,7 @@ Router.get('/carrito/:id',function(req,res){
         as: 'product',
         attributes: ['img1', 'titulo', 'precio']
     }, order:[['id', 'DESC']]
-    })})
+    })}})
     .then((compras)=>res.json(compras))
 })
 Router.put('/update/:compraId', function(req,res){
@@ -68,6 +69,21 @@ Router.post('/add/:userId', function(req,res){
     })
 })
 
+Router.patch('/status/:userId', function(req, res){
+        OC.findOne({where:{
+            userId: req.params.userId,
+            estado: 'carrito'
+        }})
+        .then(oc=>{
+            if (oc){
+                oc.estado = req.body.newStatus;
+                oc.save().then(()=>{
+                    res.send('listoo')
+                })
+            }
+            else res.send('listoo')
+        })
+})
 //Ejemplo de find or create
 // User
 //   .findOrCreate({where: {username: 'sdepold'}, defaults: {job: 'Technical Lead JavaScript'}})

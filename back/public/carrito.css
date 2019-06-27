@@ -10,3 +10,19 @@
 .casillaTitulo{
     max-width: 120px;
 }
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none
+}
+
+.divProduct:hover{
+    
+    -webkit-box-shadow: -1px 2px 20px 1px rgba(250,90,104,1);
+-moz-box-shadow: -1px 2px 20px 1px rgba(250,90,104,1);
+box-shadow: -1px 2px 20px 1px rgba(250,90,104,1);
+}
+.divProduct{
+    border: 8px solid rgb(243, 241, 241); padding: 2px; margin: 8px 1px 1px; box-sizing: border-box; box-shadow: rgb(158, 158, 158) -2px -1px 25px 1px;
+}
