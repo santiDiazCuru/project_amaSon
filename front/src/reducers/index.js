@@ -14,13 +14,8 @@ export default combineReducers({
     singleProduct,
     user,
     users,
-<<<<<<< HEAD
-    shoppingAll,
-    users,
-    compras
-=======
     compras,
     productReviews,
-    alert
->>>>>>> def727397cbf337e34f8e1c6d536697f53b6fcc5
+    alert,
+    shoppingAll
 });
