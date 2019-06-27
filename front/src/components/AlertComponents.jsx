@@ -5,9 +5,10 @@ export default ({ show, tipo, mensaje, btnCerrar }) => {
         {/* {(state.response === 'error') && */}
         <div style={(
             {
+            
                 position: 'fixed',
-                bottom: 0,
-                right: 5
+                top: 100,
+                right: '35%'
             }
         )}>
             {(show) &&

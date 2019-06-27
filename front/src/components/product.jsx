@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { style, styleImg, TitleStyle, starStyle, price, boton } from '../estilos/styleProduct'
 import { Link } from 'react-router-dom';
 
-export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUser, handleDelete, handleEditar }) => {
+export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUser, handleDelete, handleEditar, isLoggedIn, handleLocalCarrito }) => {
 
     if (list.length !== 0) {
         return <div >
@@ -50,20 +50,25 @@ export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUs
                                 }
 
                             </p>
-                            <p>
-                                <button onClick={handleCarrito} name={`${item.id}`} className="btn btn-success" role="button">
+                            <p>{isLoggedIn ?
+                                <button onClick={handleCarrito} name={item.id} className="btn btn-success" role="button">
                                     <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                                     Add Cart
-            </button>
-
+                                </button>
+                                :
+                                <button onClick={handleLocalCarrito} name={item.id} className="btn btn-success" role="button">
+                                    <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                                    Add Cart
+                                </button>
+                                }
                                 <span style={price}>
                                     $ {item.precio}
                                 </span>
                             </p>
                             {(currentUser.isAdmin) &&
                                 <p>
-                                    <button onClick={()=>handleDelete(item.id)} 
-                                    className="btn btn-default" role="button">
+                                    <button onClick={() => handleDelete(item.id)}
+                                        className="btn btn-default" role="button">
                                         <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         &nbsp; Eliminar&nbsp;&nbsp;
                                     </button>&nbsp;
