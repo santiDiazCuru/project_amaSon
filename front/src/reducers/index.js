@@ -4,11 +4,13 @@ import user from './users_reducer'
 import users from './fetch_users'
 import singleProduct from './fetch_single_product_reducer'
 import compras from './compras_reducers'
+import alert from './alert_reducer'
 
 export default combineReducers({
     product,
     singleProduct,
     user,
     users,
-    compras
+    compras,
+    alert
 });

@@ -38,14 +38,14 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
 
                     <ul className="nav navbar-nav navbar-right">
                         {/* <li className="dropdown">  ESTO ES PARA EL ADMIN
-                            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Admin<span className="caret"></span></a>
+                            <Link to="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Admin<span className="caret"></span></Link>
                             <ul className="dropdown-menu">
-                                <li><a href="#">Mis Compras</a></li>
-                                <li><a href="#">Usuarios</a></li>
-                                <li><a href="#">Mis Ventas</a></li>
-                                <li><a href="#">Crear Productos</a></li>
+                                <li><Link to="#">Mis Compras</Link></li>
+                                <li><Link to="#">Usuarios</Link></li>
+                                <li><Link to="#">Mis Ventas</Link></li>
+                                <li><Link to="#">Crear Productos</Link></li>
                                 <li role="separator" className="divider"></li>
-                                <li><a href="#">Cerrar Sesion</a></li>
+                                <li><Link to="#">Cerrar Sesion</Link></li>
                             </ul>
                         </li> */}
 
@@ -54,11 +54,18 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         {/* este if hace que se renderize el boton de log in si el usuario no esta logeado y si está logeado un dropdown*/}
                         {isLoggedIn ?
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{currentUser.username}<span className="caret"></span></a>
+                                <Link to="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{currentUser.username}<span className="caret"></span></Link>
                                 <ul className="dropdown-menu">
-                                    <li><a href="#">Mis Compras</a></li>
+                                    <li><Link to="#">Mis Compras</Link></li>
+                                    {(currentUser.isAdmin)?(
+                                        <>
+                                            <li><Link to="/product/add">Crear Productos</Link></li>
+                                            <li><Link to="#">Lista de Usuarios</Link></li>
+                                            <li><Link to="#">Mis ventas</Link></li>
+                                        </>
+                                    ):''}
                                     <li role="separator" className="divider"></li>
-                                    <li onClick={handleSession}><a href='#' >Cerrar Sesion</a></li>
+                                    <li onClick={handleSession}><Link to='#' >Cerrar Sesion</Link></li>
                                 </ul>
                             </li>
 
@@ -85,7 +92,7 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                                 </span></Link>
                                 </div>
                             </form>
-                            {/* <a className='glyphicon glyphicon-shopping-cart' onClick={handleCarrito}></a> */}
+                            {/* <Link className='glyphicon glyphicon-shopping-cart' onClick={handleCarrito}></Link> */}
                         </li>
                     </ul>
                 </div>
