@@ -1,27 +1,45 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default ({ list }) => {
-    
-    return <table className="table table-striped">
+export default ({ list, handleAdmin, handleDelete }) => {
+
+  return <table className="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
         <th>Username</th>
         <th>Email</th>
         <th>IsAdmin?</th>
+        <th>Borrar</th>
       </tr>
     </thead>
     <tbody>{
-    list && list.map(user => (
+      list && list.map(user => (
         <tr key={user.id}>
-        <td>{user.id}</td>
-        <td>{user.username}</td>
-        <td>{user.email}</td>
-        <td>{user.isAdmin? 'Admin' : 'No admin'}</td>
-      </tr>
-        ))
-      }
+          <td>ID {user.id}</td>
+          <td>USERNAME: {user.username}</td>
+          <td>Email: {user.email}</td>
+          <td>Is Admin:
+          
+            <form>
+              
+              <label className="switch">
+                {user.isAdmin ?
+                  <input key={Math.random()} id={user.id} onChange={handleAdmin} checked name={user.id} type="checkbox" />
+                  :
+                  <input key={Math.random()} id={user.id} name={user.id} type="checkbox" onChange={handleAdmin} />
+                }
+                
+
+                <span className="slider round"></span>
+              </label>
+            </form>
+          </td>
+            <td>Borrar Usuario</td>
+            <td className='casillaEliminar'><span style={{ cursor: 'pointer' }} id={`${user.id}`} onClick={handleDelete} className='glyphicon glyphicon-trash'></span></td>
+        </tr>
+      ))
+    }
     </tbody>
   </table>
 }

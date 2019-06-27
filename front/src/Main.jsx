@@ -15,6 +15,7 @@ import ComprasAll from './containers/MisComprasContainer';
 
 import Axios from 'axios';
 import SingleProductContainer from './containers/SingleProductContainer';
+import EditProductContainer from './containers/EditProductContainer';
 
 
 class Main extends React.Component {
@@ -39,6 +40,7 @@ class Main extends React.Component {
         <Route path='/search/' component={SearchContainer} />
         <Route path='/users' component={UserListContainer} />
         <Route path='/product/add' component={AddProductContainer} />
+        <Route path='/product/update/:id' component={EditProductContainer} />
         <Route path='/carrito' component={CarritoContainer} />
         <Route path='/products/:id' component={SingleProductContainer} />
         <Route path='/products/:id' component={SingleProductContainer} />
