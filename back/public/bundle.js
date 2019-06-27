@@ -33263,13 +33263,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!*******************************************!*\
   !*** ./src/action-creators/addCarrito.js ***!
   \*******************************************/
-/*! exports provided: addItem, vaciarCarrito, setLocalCarrito, deleteLocalCarrito, vaciarLocalCarrito */
+/*! exports provided: addItem, vaciarCarrito, updateLocalCarrito, setLocalCarrito, deleteLocalCarrito, vaciarLocalCarrito */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addItem", function() { return addItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vaciarCarrito", function() { return vaciarCarrito; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateLocalCarrito", function() { return updateLocalCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLocalCarrito", function() { return setLocalCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteLocalCarrito", function() { return deleteLocalCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vaciarLocalCarrito", function() { return vaciarLocalCarrito; });
@@ -33309,31 +33310,41 @@ var addItem = function addItem(productId, userId) {
 var vaciarCarrito = function vaciarCarrito(userId) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/compras/empty/".concat(userId));
 };
+var updateLocalCarrito = function updateLocalCarrito(productId, newCantidad) {
+  return function (dispatch) {
+    var miStorage = window.localStorage;
+    var carrito = JSON.parse(miStorage.getItem('carrito'));
+
+    for (var i = 0; i < carrito.length; i++) {
+      if (carrito[i].id == productId) {
+        carrito[i].cantidad = newCantidad;
+      }
+    }
+
+    miStorage.setItem("carrito", JSON.stringify(carrito));
+    var localCart = JSON.parse(miStorage.getItem("carrito"));
+    dispatch(setCarrito(localCart));
+  };
+};
 var setLocalCarrito = function setLocalCarrito(producto) {
   return function (dispatch) {
     var miStorage = window.localStorage;
     var carrito = JSON.parse(miStorage.getItem('carrito'));
-    console.log(producto);
 
     if (carrito) {
       producto['cantidad'] = 1;
       var repetido = false;
-      console.log('soy el carrito antes de setear cantidades: ', carrito);
 
       for (var i = 0; i < carrito.length; i++) {
         if (carrito[i].id == producto.id) {
-          console.log('los id matchean');
           carrito[i].cantidad = carrito[i].cantidad + 1;
           repetido = true;
         }
       }
 
-      console.log('soy el carrtiyo despuesde setear cantidades: ', carrito);
-
       if (repetido) {
         miStorage.setItem("carrito", JSON.stringify(carrito));
         var localCart = JSON.parse(miStorage.getItem("carrito"));
-        console.log('soy lo que se setea en el localStorage:', localCart);
         dispatch(setCarrito(localCart));
       } else {
         var newCarrito = [].concat(_toConsumableArray(carrito), [producto]);
@@ -33341,11 +33352,9 @@ var setLocalCarrito = function setLocalCarrito(producto) {
 
         var _localCart = JSON.parse(miStorage.getItem("carrito"));
 
-        console.log('soy lo que entra al else:', _localCart);
         dispatch(setCarrito(_localCart));
       }
     } else {
-      console.log();
       producto['cantidad'] = 1;
       miStorage.setItem('carrito', JSON.stringify([producto]));
       dispatch(setCarrito([producto]));
@@ -33353,17 +33362,22 @@ var setLocalCarrito = function setLocalCarrito(producto) {
   };
 };
 var deleteLocalCarrito = function deleteLocalCarrito(productId) {
-  var miStorage = window.localStorage;
-  var newCarrito = [];
-  var carrito = JSON.parse(miStorage.getItem('carrito'));
+  return function (dispatch) {
+    console.log('entra al delete');
+    var miStorage = window.localStorage;
+    var newCarrito = [];
+    var carrito = JSON.parse(miStorage.getItem('carrito'));
+    console.log(carrito);
 
-  for (var i = 0; i < carrito.length; i++) {
-    if (carrito[i].id !== productId) newCarrito.push(carrito[i]);
-  }
+    for (var i = 0; i < carrito.length; i++) {
+      if (carrito[i].id != productId) newCarrito.push(carrito[i]);
+    }
 
-  miStorage.setItem("carrito", JSON.stringify(newCarrito));
-  var localCart = JSON.parse(miStorage.getItem("carrito"));
-  dispatch(setCarrito(localCart));
+    console.log(newCarrito);
+    miStorage.setItem("carrito", JSON.stringify(newCarrito));
+    var localCart = JSON.parse(miStorage.getItem("carrito"));
+    dispatch(setCarrito(localCart));
+  };
 };
 var vaciarLocalCarrito = function vaciarLocalCarrito() {
   return function (dispatch) {
@@ -36154,6 +36168,9 @@ function (_React$Component) {
         Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["updateCantidad"])(e.target.name, e.target.value, this.props.currentUser.id).then(function () {
           return _this4.props.getCarrito(_this4.props.currentUser.id);
         });
+      } else {
+        e.preventDefault();
+        this.props.updateLocalCarrito(e.target.name, e.target.value);
       }
     }
   }, {
@@ -36165,7 +36182,10 @@ function (_React$Component) {
         Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["deleteCompra"])(e.target.id).then(function () {
           return _this5.props.getCarrito(_this5.props.currentUser.id);
         });
-      } else {}
+      } else {
+        console.log(e.target.id);
+        this.props.deleteLocalCarrito(e.target.id);
+      }
     }
   }, {
     key: "handleEmpty",
@@ -36184,9 +36204,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      {
-        console.log('soy el local carrito!!!!', this.props.localCarrito);
-      }
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
         handleEmpty: this.handleEmpty,
         handleClick: this.handleClick,
@@ -36216,7 +36233,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["vaciarLocalCarrito"])());
     },
     deleteLocalCarrito: function deleteLocalCarrito(productId) {
-      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["vaciarLocalCarrito"])(productId));
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["deleteLocalCarrito"])(productId));
+    },
+    updateLocalCarrito: function updateLocalCarrito(productId, newCantidad) {
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["updateLocalCarrito"])(productId, newCantidad));
     }
   };
 };
