@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import CarritoComponent from '../components/CarritoComponent'
 import { getCarrito, updateCantidad, deleteCompra, changeStatus } from '../action-creators/getCompras'
 import { validateSession } from '../action-creators/logInUser'
+import {vaciarCarrito, addLocalCarrito, vaciarLocalCarrito, deleteLocalCarrito} from '../action-creators/addCarrito'
 
 class CarritoContainer extends React.Component {
     constructor() {
@@ -13,7 +14,8 @@ class CarritoContainer extends React.Component {
         }
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleClick = this.handleClick.bind(this) 
+    this.handleClick = this.handleClick.bind(this); 
+    this.handleEmpty = this.handleEmpty.bind(this);
 
     };
     componentDidMount() {
@@ -39,10 +41,15 @@ class CarritoContainer extends React.Component {
         deleteCompra(e.target.id)
         .then(()=>this.props.getCarrito(this.props.currentUser.id))
     }
+    handleEmpty(e){
+        e.preventDefault();
+        vaciarCarrito(this.props.currentUser.id)
+        .then(()=>this.props.getCarrito(this.props.currentUser.id))
+    }
 
     render() {
         return (
-            <CarritoComponent handleClick={this.handleClick} handleDelete={this.handleDelete} handleChange={this.handleChange} userCarrito={this.props.userCarrito}/>
+            <CarritoComponent handleEmpty={this.handleEmpty} handleClick={this.handleClick} handleDelete={this.handleDelete} handleChange={this.handleChange} userCarrito={this.props.userCarrito}/>
         )
     };
 };
