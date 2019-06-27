@@ -6,8 +6,9 @@ const User = require('./Users')
 const Review = require('./Reviews')
 
 // through => Crea tabla de relacion
-Category.belongsToMany(Products, { as: "product", through: 'ProductCategory' })
-Products.belongsToMany(Category, { as: "category", through: 'ProductCategory' })
+Category.belongsToMany(Products, { as: "product", through: 'ProductCategory', onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+Products.belongsToMany(Category, { as: "category", through: 'ProductCategory', onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+
 
 OC.belongsTo(User, {as: 'user'})
 User.hasMany(OC, {as: 'ordenes'})

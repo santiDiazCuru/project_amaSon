@@ -1,40 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default ({userCarrito, handleChange, handleDelete, handleClick}) => (
-    <div className='row'>
-        <br/>
-        <br/>
+export default ({ userCarrito, handleChange, handleDelete, handleClick, handleEmpty }) => {
+  if (userCarrito.length !== 0) {
+    return <div className='row'>
+      <br />
+      <br />
 
-    <div className='panel panel-default'>
-    <table className="table table-striped">
-           <thead>
-             <tr>
-               <th>#</th>
-               <th>Producto</th>
-               <th>Cantidad</th>
-               <th>Importe</th>
-               <th>Quitar</th>
+      <div className='panel panel-default'>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Importe</th>
+              <th>Quitar</th>
 
-             </tr>
-           </thead>
-           <tbody>
-             {userCarrito && userCarrito.map(item =>{
-               return(
-             <tr key={item.id}>
-               <td className='casillaImg'><img className='img img-thumbnail' width='100px' height='100px' src={`${item.product.img1}`}></img></td>
-               <td className='casillaTitulo'>{item.product.titulo}</td>
-               <td className='casillaCantidad' className='cantidad'><input onClick={handleChange} name={`${item.id}`} defaultValue={`${item.cantidad}`} type='number'className='cantidad' min='1'/></td>
-               <td className='casillaImporte'>${item.cantidad * item.product.precio}</td>
-               <td className='casillaEliminar'><span style={{cursor: 'pointer'}} id={`${item.id}`} onClick={handleDelete} className='glyphicon glyphicon-trash'></span></td>
-             </tr>
-             )})}
-           </tbody>
-         </table>
-         </div>
-         <button onClick={handleClick} className='btn btn-default'>Comprar...</button>
-         </div>
-)
+            </tr>
+          </thead>
+          <tbody>
+            {userCarrito && userCarrito.map(item => {
+              return (
+                <tr key={item.id}>
+                  <td className='casillaImg'><img className='img img-thumbnail' width='100px' height='100px' src={`${item.product.img1}`}></img></td>
+                  <td className='casillaTitulo'>{item.product.titulo}</td>
+                  <td className='casillaCantidad' className='cantidad'><input onClick={handleChange} name={`${item.id}`} defaultValue={`${item.cantidad}`} type='number' className='cantidad' min='1' /></td>
+                  <td className='casillaImporte'>${item.cantidad * item.product.precio}</td>
+                  <td className='casillaEliminar'><span style={{ cursor: 'pointer' }} id={`${item.id}`} onClick={handleDelete} className='glyphicon glyphicon-trash'></span></td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+      <button onClick={handleClick} className='btn btn-default'>Comprar...</button>
+      <button onClick={handleEmpty} className='btn btn-default'>Vaciar Carrito</button>
+
+    </div>
+  }
+  else {
+    return <div className="row">
+      <br/>
+      <span><h3>No hay articulos en el carrito...</h3></span>
+    </div>
+  }
+}
 
 // [
 //   {

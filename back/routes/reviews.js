@@ -3,7 +3,6 @@ const Router = express.Router();
 const Review = require("../models/Reviews");
 
 Router.post('/', (req, res) => {
-    console.log("ASDASDASDSDASDASDASD", req.body)
     Review.create({
         valoracion: req.body.valoracion,
         comentario: req.body.comentario,
@@ -14,8 +13,15 @@ Router.post('/', (req, res) => {
             Promise.all([user, product])
                 .then(finalReview => console.log("SOY FINAL REVIEW", finalReview))
         })
-
 })
 
+Router.get('/:productId/singleReview/', (req, res) => {
+    Review.findAll({
+        where: {
+            productId: req.params.productId
+        }
+    })
+    .then(reviews => res.json(reviews))
+})
 
 module.exports = Router;
