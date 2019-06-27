@@ -33151,9 +33151,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_AddProductContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers/AddProductContainer */ "./src/containers/AddProductContainer.jsx");
 /* harmony import */ var _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./containers/CarritoContainer */ "./src/containers/CarritoContainer.jsx");
 /* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./action-creators/logInUser */ "./src/action-creators/logInUser.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/SingleProductContainer */ "./src/containers/SingleProductContainer.jsx");
+/* harmony import */ var _containers_MisComprasContainer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./containers/MisComprasContainer */ "./src/containers/MisComprasContainer.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./containers/SingleProductContainer */ "./src/containers/SingleProductContainer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33178,6 +33179,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
  // import RegisterContainer from './containers/RegisterContainer'
 // import Sidebar2Container from './containers/Sidebar2Container';
+
 
 
 
@@ -33232,7 +33234,13 @@ function (_React$Component) {
         component: _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/products/:id",
-        component: _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_12__["default"]
+        component: _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_13__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/products/:id",
+        component: _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_13__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/compras/",
+        component: _containers_MisComprasContainer__WEBPACK_IMPORTED_MODULE_11__["default"]
       })));
     }
   }]);
@@ -33366,6 +33374,43 @@ var updateCantidad = function updateCantidad(compraId, nuevaCantidad, userId) {
 var deleteCompra = function deleteCompra(compraId) {
   console.log('llama a delete compra');
   return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/compras/delete/".concat(compraId));
+};
+
+/***/ }),
+
+/***/ "./src/action-creators/getComprasAll.js":
+/*!**********************************************!*\
+  !*** ./src/action-creators/getComprasAll.js ***!
+  \**********************************************/
+/*! exports provided: fetchAllShoping */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllShoping", function() { return fetchAllShoping; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var allShopping = function allShopping(shopping) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_SHOPPING"],
+    shopping: shopping
+  };
+};
+
+var fetchAllShoping = function fetchAllShoping() {
+  return (
+    /*data*/
+    function (dispatch) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/miscompras') //, data)
+      .then(function (shopping) {
+        return dispatch(allShopping(shopping));
+      });
+    }
+  );
 };
 
 /***/ }),
@@ -34541,6 +34586,33 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/MisCompras.jsx":
+/*!***************************************!*\
+  !*** ./src/components/MisCompras.jsx ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var listaCompras = _ref.listaCompras;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "table table-striped"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Orden de Compra"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Estado"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, " ", listaCompras && listaCompras.map(function (compra) {
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      key: compra.id
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, compra.productId), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, compra.cantidad), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, compra.importe), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, compra.estado), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, compra.fecha));
+  }))));
+});
+
+/***/ }),
+
 /***/ "./src/components/NavbarComponent.jsx":
 /*!********************************************!*\
   !*** ./src/components/NavbarComponent.jsx ***!
@@ -35238,10 +35310,41 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_ALL_SHOPPING */
-/***/ (function(module, exports) {
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_ALL_SHOPPING, FETCH_REVIEWS, SET_ALERT */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/src/constants.js: Unexpected token (13:1)\n\n\u001b[0m \u001b[90m 11 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m \u001b[33mFETCH_ALL_LIMIT_CATEGORY\u001b[39m \u001b[33m=\u001b[39m \u001b[32m'FETCH_ALL_LIMIT_CATEGORY'\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m \u001b[33mFETCH_CARRITO\u001b[39m \u001b[33m=\u001b[39m \u001b[32m'FETCH_CARRITO'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m \u001b[33mFETCH_ALL_SHOPPING\u001b[39m \u001b[33m=\u001b[39m \u001b[32m'FETCH_ALL_SHOPPING'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 15 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m \u001b[33mFETCH_REVIEWS\u001b[39m \u001b[33m=\u001b[39m \u001b[32m'FETCH_REVIEWS'\u001b[39m\u001b[0m\n    at Object.raise (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:6344:17)\n    at Object.unexpected (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:7659:16)\n    at Object.jsxParseIdentifier (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3377:12)\n    at Object.jsxParseNamespacedName (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3387:23)\n    at Object.jsxParseElementName (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3398:21)\n    at Object.jsxParseOpeningElementAt (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3480:22)\n    at Object.jsxParseElementAt (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3513:33)\n    at Object.jsxParseElement (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3587:17)\n    at Object.parseExprAtom (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3594:19)\n    at Object.parseExprSubscripts (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8413:23)\n    at Object.parseMaybeUnary (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8393:21)\n    at Object.parseExprOps (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8280:23)\n    at Object.parseMaybeConditional (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8253:23)\n    at Object.parseMaybeAssign (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8200:21)\n    at Object.parseExpression (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8148:23)\n    at Object.parseStatementContent (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9917:23)\n    at Object.parseStatement (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9788:17)\n    at Object.parseBlockOrModuleBlockBody (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:10364:25)\n    at Object.parseBlockBody (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:10351:10)\n    at Object.parseTopLevel (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9717:10)\n    at Object.parse (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:11233:17)\n    at parse (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:11269:38)\n    at parser (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at /home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/core/lib/transform.js:34:34\n    at processTicksAndRejections (internal/process/task_queues.js:82:9)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUCTS", function() { return FETCH_PRODUCTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_PRODUCTS", function() { return FETCH_ALL_PRODUCTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_PRODUCTS_CATEGORY", function() { return FETCH_ALL_PRODUCTS_CATEGORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_IN_USER", function() { return LOG_IN_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_USERS", function() { return FETCH_ALL_USERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_USER", function() { return LOG_OUT_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_CATEGORY_AND_PRICE", function() { return SET_CATEGORY_AND_PRICE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_SINGLE_PRODUCT", function() { return FETCH_SINGLE_PRODUCT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ORDENES", function() { return FETCH_ORDENES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_CATEGORY", function() { return FETCH_ALL_CATEGORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_LIMIT_CATEGORY", function() { return FETCH_ALL_LIMIT_CATEGORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CARRITO", function() { return FETCH_CARRITO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_SHOPPING", function() { return FETCH_ALL_SHOPPING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_REVIEWS", function() { return FETCH_REVIEWS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_ALERT", function() { return SET_ALERT; });
+var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
+var FETCH_ALL_PRODUCTS_CATEGORY = 'FETCH_ALL_PRODUCTS_CATEGORY';
+var LOG_IN_USER = 'LOG_IN_USER';
+var FETCH_ALL_USERS = 'FETCH_ALL_USERS';
+var LOG_OUT_USER = 'LOG_OUT_USER';
+var SET_CATEGORY_AND_PRICE = 'SET_CATEGORY_AND_PRICE';
+var FETCH_SINGLE_PRODUCT = 'FETCH_SINGLE_PRODUCT';
+var FETCH_ORDENES = 'FETCH_ORDENES';
+var FETCH_ALL_CATEGORY = 'FETCH_ALL_CATEGORY';
+var FETCH_ALL_LIMIT_CATEGORY = 'FETCH_ALL_LIMIT_CATEGORY';
+var FETCH_CARRITO = 'FETCH_CARRITO';
+var FETCH_ALL_SHOPPING = 'FETCH_ALL_SHOPPING';
+var FETCH_REVIEWS = 'FETCH_REVIEWS';
+var SET_ALERT = 'SET_ALERT';
 
 /***/ }),
 
@@ -36261,6 +36364,107 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(LogInContainer));
+
+/***/ }),
+
+/***/ "./src/containers/MisComprasContainer.jsx":
+/*!************************************************!*\
+  !*** ./src/containers/MisComprasContainer.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_MisCompras__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/MisCompras */ "./src/components/MisCompras.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _action_creators_getComprasAll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getComprasAll */ "./src/action-creators/getComprasAll.js");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var MisComprasContainer =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MisComprasContainer, _Component);
+
+  function MisComprasContainer(props) {
+    var _this;
+
+    _classCallCheck(this, MisComprasContainer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MisComprasContainer).call(this, props));
+    _this.handleShowShopping = _this.handleShowShopping.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(MisComprasContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.validateSession();
+    }
+  }, {
+    key: "handleShowShopping",
+    value: function handleShowShopping(e) {
+      this.props.isLoggedIn ? this.props.fetchAllCompras(this.props.current.id) : []; //this.props.current.id?
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_MisCompras__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        list: listacompras = this.props.listaCompras
+      }));
+    }
+  }]);
+
+  return MisComprasContainer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    listaCompras: state.listaCompras,
+    // FETCH CARRITO? 
+    currentUser: state.user.currentUser,
+    userOrdenes: state.compras.userOrdenes,
+    isLoggedIn: state.user.isLoggedIn
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchAllCompras: function fetchAllCompras(data) {
+      return dispatch(Object(_action_creators_getComprasAll__WEBPACK_IMPORTED_MODULE_3__["fetchAllCompras"])(data));
+    },
+    validateSession: function validateSession() {
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__["validateSession"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(MisComprasContainer));
 
 /***/ }),
 
@@ -37380,14 +37584,372 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
+/***/ "./src/reducers/alert_reducer.js":
+/*!***************************************!*\
+  !*** ./src/reducers/alert_reducer.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  mensaje: '',
+  tipo: ''
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["SET_ALERT"]:
+      {
+        return Object.assign({}, state, {
+          mensaje: action.mensaje,
+          tipo: action.tipo
+        });
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/compras_reducers.js":
+/*!******************************************!*\
+  !*** ./src/reducers/compras_reducers.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  userOrdenes: [],
+  userCarrito: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ORDENES"]:
+      {
+        return Object.assign({}, state, {
+          userOrdenes: action.ordenes
+        });
+      }
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_CARRITO"]:
+      {
+        console.log('actualizando carrito');
+        return Object.assign({}, state, {
+          userCarrito: action.carrito
+        });
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/fetch_all_shoping.js":
+/*!*******************************************!*\
+  !*** ./src/reducers/fetch_all_shoping.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  shopping: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_SHOPPING"]:
+      {
+        return Object.assign({}, state, {
+          shopping: action.shopping
+        });
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/fetch_reviews.js":
+/*!***************************************!*\
+  !*** ./src/reducers/fetch_reviews.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  productReviews: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_REVIEWS"]:
+      {
+        return Object.assign({}, state, {
+          productReviews: action.reviews
+        });
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/fetch_single_product_reducer.js":
+/*!******************************************************!*\
+  !*** ./src/reducers/fetch_single_product_reducer.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  singleProduct: {}
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_SINGLE_PRODUCT"]:
+      {
+        return Object.assign({}, state, {
+          singleProduct: action.product
+        });
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/fetch_users.js":
+/*!*************************************!*\
+  !*** ./src/reducers/fetch_users.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  users: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_USERS"]:
+      {
+        return Object.assign({}, state, {
+          users: action.users
+        });
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./src/reducers/index.js":
 /*!*******************************!*\
   !*** ./src/reducers/index.js ***!
   \*******************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/src/reducers/index.js: Unexpected token (17:0)\n\n\u001b[0m \u001b[90m 15 | \u001b[39m    user\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m    users\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 18 | \u001b[39m    shoppingAll\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 19 | \u001b[39m    users\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 20 | \u001b[39m    compras\u001b[0m\n    at Object.raise (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:6344:17)\n    at Object.unexpected (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:7659:16)\n    at Object.parseIdentifierName (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9505:18)\n    at Object.parseIdentifier (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9483:23)\n    at Object.parseMaybePrivateName (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8850:19)\n    at Object.parsePropertyName (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9303:98)\n    at Object.parseObjectMember (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9204:10)\n    at Object.parseObj (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9138:25)\n    at Object.parseExprAtom (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8774:21)\n    at Object.parseExprAtom (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:3599:20)\n    at Object.parseExprSubscripts (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8413:23)\n    at Object.parseMaybeUnary (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8393:21)\n    at Object.parseExprOps (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8280:23)\n    at Object.parseMaybeConditional (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8253:23)\n    at Object.parseMaybeAssign (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8200:21)\n    at Object.parseExprListItem (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9475:18)\n    at Object.parseCallExpressionArguments (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8620:22)\n    at Object.parseSubscript (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8515:29)\n    at Object.parseSubscripts (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8434:19)\n    at Object.parseExprSubscripts (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8423:17)\n    at Object.parseMaybeUnary (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8393:21)\n    at Object.parseExprOps (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8280:23)\n    at Object.parseMaybeConditional (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8253:23)\n    at Object.parseMaybeAssign (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:8200:21)\n    at Object.parseExportDefaultExpression (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:10973:24)\n    at Object.parseExport (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:10868:31)\n    at Object.parseStatementContent (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9892:27)\n    at Object.parseStatement (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:9788:17)\n    at Object.parseBlockOrModuleBlockBody (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:10364:25)\n    at Object.parseBlockBody (/home/kenyi-lewis/P5Bootcamp/Amason/project_amaSon/front/node_modules/@babel/parser/lib/index.js:10351:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _products_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./products_reducer */ "./src/reducers/products_reducer.js");
+/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_reducer */ "./src/reducers/users_reducer.js");
+/* harmony import */ var _fetch_users__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fetch_users */ "./src/reducers/fetch_users.js");
+/* harmony import */ var _fetch_all_shoping__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fetch_all_shoping */ "./src/reducers/fetch_all_shoping.js");
+/* harmony import */ var _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./fetch_single_product_reducer */ "./src/reducers/fetch_single_product_reducer.js");
+/* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
+/* harmony import */ var _fetch_reviews__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./fetch_reviews */ "./src/reducers/fetch_reviews.js");
+/* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  product: _products_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  singleProduct: _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  user: _users_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  users: _fetch_users__WEBPACK_IMPORTED_MODULE_3__["default"],
+  compras: _compras_reducers__WEBPACK_IMPORTED_MODULE_6__["default"],
+  productReviews: _fetch_reviews__WEBPACK_IMPORTED_MODULE_7__["default"],
+  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_8__["default"],
+  shoppingAll: _fetch_all_shoping__WEBPACK_IMPORTED_MODULE_4__["default"]
+}));
+
+/***/ }),
+
+/***/ "./src/reducers/products_reducer.js":
+/*!******************************************!*\
+  !*** ./src/reducers/products_reducer.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  productos: [],
+  productosHome: [],
+  inputValue: '',
+  filterCategory: '',
+  filterPriceMin: 0,
+  filterPriceMax: 0,
+  page: 1,
+  totalPages: 1,
+  listCategory: [],
+  selectedCategory: ''
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_PRODUCTS"]:
+      return Object.assign({}, state, {
+        productos: action.productos,
+        inputValue: action.inputValue,
+        filterCategory: action.filterCategory,
+        filterPriceMin: action.filterPriceMin,
+        filterPriceMax: action.filterPriceMax,
+        page: action.page,
+        totalPages: action.totalPages
+      });
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_PRODUCTS"]:
+      return Object.assign({}, state, {
+        productosHome: action.productos
+      });
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_LIMIT_CATEGORY"]:
+      return Object.assign({}, state, {
+        filterPriceMin: action.min,
+        filterPriceMax: action.max,
+        totalPages: action.count
+      });
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_CATEGORY"]:
+      return Object.assign({}, state, {
+        listCategory: action.listCategory
+      });
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_PRODUCTS_CATEGORY"]:
+      return Object.assign({}, state, {
+        productos: action.productos,
+        filterCategory: action.filterCategory,
+        filterPriceMin: action.filterPriceMin,
+        filterPriceMax: action.filterPriceMax,
+        page: action.page,
+        totalPages: action.totalPages
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/users_reducer.js":
+/*!***************************************!*\
+  !*** ./src/reducers/users_reducer.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  currentUser: {},
+  isLoggedIn: false //Entonces este initial state setea el estado por defecto del users reducer como que el usuario actual esta vacío
+  //(es un objeto vacío porque de la DB llega como un objeto cada usuario). Pero además, setea el campo isLoggedIn
+  //a false ya que despues para renderizar los componentes según el usuario esté loggeado o no, no se puede
+  //preguntar if(currentUser) ya que los objetos vacíos siempre devuelven true...
+
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["LOG_IN_USER"]:
+      {
+        return Object.assign({}, state, {
+          currentUser: action.user,
+          isLoggedIn: true
+        });
+      }
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["LOG_OUT_USER"]:
+      {
+        return Object.assign({}, state, {
+          currentUser: {},
+          isLoggedIn: false
+        });
+      }
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 

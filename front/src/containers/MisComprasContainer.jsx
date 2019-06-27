@@ -15,7 +15,7 @@ class MisComprasContainer extends Component {
     }
 
     handleShowShopping (e){
-        this.props.isLoggedIn? this.props.fetchAllCompras(): "Inicia Sesión" ;
+        this.props.isLoggedIn? this.props.fetchAllCompras(this.props.current.id): [] ;
         //this.props.current.id?
     }
 

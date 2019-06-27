@@ -3,10 +3,11 @@ const Router = express.Router();
 const Compra = require('../models/index').Compras;
 const OC = require('../models/index').OC;
 const Product = require('../models/index').Products;
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
-
-Router.get('/carrito/:id',function(req,res){
-  OC.findOne({where:{
+Router.get('/',function(req,res){
+  OC.findAll({where:{
       userId: req.params.id,
       [Op.ne]: {
         estado: 'carrito'

@@ -3,9 +3,5 @@
     "host": "localhost",
     "dialect": "postgres",
     "logging": false,
-<<<<<<< HEAD
-    "username": "kenyi-lewis"
-=======
     "username": "postgres"
->>>>>>> def727397cbf337e34f8e1c6d536697f53b6fcc5
   }
