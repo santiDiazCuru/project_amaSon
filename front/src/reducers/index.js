@@ -11,7 +11,7 @@ export default combineReducers({
     singleProduct,
     user,
     users,
-    shoppingAll
+    shoppingAll,
     users,
     compras
 });

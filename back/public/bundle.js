@@ -35095,7 +35095,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_ALL_SHOPPING */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35112,6 +35112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_CATEGORY", function() { return FETCH_ALL_CATEGORY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_LIMIT_CATEGORY", function() { return FETCH_ALL_LIMIT_CATEGORY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CARRITO", function() { return FETCH_CARRITO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_ALL_SHOPPING", function() { return FETCH_ALL_SHOPPING; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 var FETCH_ALL_PRODUCTS_CATEGORY = 'FETCH_ALL_PRODUCTS_CATEGORY';
@@ -35124,6 +35125,7 @@ var FETCH_ORDENES = 'FETCH_ORDENES';
 var FETCH_ALL_CATEGORY = 'FETCH_ALL_CATEGORY';
 var FETCH_ALL_LIMIT_CATEGORY = 'FETCH_ALL_LIMIT_CATEGORY';
 var FETCH_CARRITO = 'FETCH_CARRITO';
+var FETCH_ALL_SHOPPING = 'FETCH_ALL_SHOPPING';
 
 /***/ }),
 
@@ -37215,6 +37217,39 @@ var initialState = {
 
 /***/ }),
 
+/***/ "./src/reducers/fetch_all_shoping.js":
+/*!*******************************************!*\
+  !*** ./src/reducers/fetch_all_shoping.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  shopping: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_SHOPPING"]:
+      {
+        return Object.assign({}, state, {
+          shopping: action.shopping
+        });
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./src/reducers/fetch_single_product_reducer.js":
 /*!******************************************************!*\
   !*** ./src/reducers/fetch_single_product_reducer.js ***!
@@ -37294,21 +37329,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _products_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./products_reducer */ "./src/reducers/products_reducer.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_reducer */ "./src/reducers/users_reducer.js");
 /* harmony import */ var _fetch_users__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fetch_users */ "./src/reducers/fetch_users.js");
-/* harmony import */ var _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fetch_single_product_reducer */ "./src/reducers/fetch_single_product_reducer.js");
-/* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
+/* harmony import */ var _fetch_all_shoping__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fetch_all_shoping */ "./src/reducers/fetch_all_shoping.js");
+/* harmony import */ var _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./fetch_single_product_reducer */ "./src/reducers/fetch_single_product_reducer.js");
+/* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
+var _combineReducers;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])((_combineReducers = {
   product: _products_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  singleProduct: _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  singleProduct: _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
   user: _users_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   users: _fetch_users__WEBPACK_IMPORTED_MODULE_3__["default"],
-  compras: _compras_reducers__WEBPACK_IMPORTED_MODULE_5__["default"]
-}));
+  shoppingAll: _fetch_all_shoping__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, _defineProperty(_combineReducers, "users", _fetch_users__WEBPACK_IMPORTED_MODULE_3__["default"]), _defineProperty(_combineReducers, "compras", _compras_reducers__WEBPACK_IMPORTED_MODULE_6__["default"]), _combineReducers)));
 
 /***/ }),
 

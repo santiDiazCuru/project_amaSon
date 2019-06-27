@@ -2,52 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8d73f9e-bc0a-40e3-89e9-8b7fc89a6445" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/back/routes/reviews.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/action-creators/addCarrito.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/action-creators/getSingleProduct.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/action-creators/reviews.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/SingleProduct.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/containers/ProductContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/containers/SingleProductContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/reducers/compras_reducers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/reducers/fetch_single_product_reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/models/Compras.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/Compras.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/models/OrdenesDeCompra.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/OrdenesDeCompra.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/models/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/Products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/models/Reviews.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/Reviews.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/models/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/public/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/public/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/public/bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/back/public/bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/compras.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/compras.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/seed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/action-creators/getCompras.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/action-creators/getCompras.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/action-creators/getProducts.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/action-creators/getProducts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/action-creators/getUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/action-creators/getUsers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/action-creators/logInUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/action-creators/logInUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/action-creators/registerUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/action-creators/registerUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/CarritoComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/CarritoComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Formulario.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Formulario.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/SidebarComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/SidebarComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/product.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/AddProductContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/AddProductContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/CarritoContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/CarritoContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/CategoryContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/CategoryContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/HomeContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/HomeContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/LogInContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/LogInContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/NavbarContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/NavbarContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/RegisterContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/RegisterContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/SearchContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/SearchContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/containers/UserListContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/containers/UserListContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/MisCompras.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/MisCompras.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/reducers/products_reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/reducers/products_reducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -65,8 +28,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/back/config/config.json" />
         <option value="$PROJECT_DIR$/front/src/constants.js" />
+        <option value="$PROJECT_DIR$/back/config/config.json" />
       </list>
     </option>
   </component>
@@ -81,7 +44,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -93,6 +55,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -100,6 +63,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -124,22 +88,19 @@
       <option name="presentableId" value="Default" />
       <updated>1561582838938</updated>
       <workItem from="1561582841527" duration="871000" />
+      <workItem from="1561621137144" duration="675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="871000" />
+    <option name="totallyTimeSpent" value="1546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="25" width="1871" height="1055" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -147,6 +108,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.32894737" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />

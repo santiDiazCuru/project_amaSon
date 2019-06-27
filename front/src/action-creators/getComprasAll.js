@@ -8,7 +8,7 @@ const allShopping = (shopping) => ({
 });
 
 export const fetchAllShoping = () => dispatch => {
-    Axios.get('./api/compras')
+    Axios.get('/api/miscompras')
     .then(shopping => dispatch(allShopping(shopping)));
 };
 
