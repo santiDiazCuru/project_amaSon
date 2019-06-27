@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Producto from '../components/product';
 import Alert from '../components/AlertComponents'
-
+import { validateSession } from '../action-creators/logInUser'
+import { addItem } from '../action-creators/addCarrito'
 import { fetchProducts, deleteProduct, alertBottom } from '../action-creators/getProducts'
 
 class ProductContainer extends Component {
@@ -15,7 +16,12 @@ class ProductContainer extends Component {
         this.handleEditar = this.handleEditar.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.btnCerrar = this.btnCerrar.bind(this)
+        this.handleCarrito = this.handleCarrito.bind(this)
+    
     };
+    componentDidMount(){
+        this.props.validateSession()
+    }
 
     nextPage(page) {
         this.props.fetchProducts(this.props.inputValue,
@@ -40,6 +46,11 @@ class ProductContainer extends Component {
     handleEditar(id) {
         console.log(id, "UPDATE")
     }
+    handleCarrito(e){
+        this.props.isLoggedIn? 
+        addItem(e.target.name, this.props.currentUser.id) : 
+        alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou')
+    }
 
     render() {
         return (
@@ -50,6 +61,7 @@ class ProductContainer extends Component {
                 totalPage={this.props.totalPages}
                 list={this.props.listaProductos}
                 nextPage={this.nextPage}
+                handleCarrito={this.handleCarrito}
                 currentUser={this.props.currentUser}
                 handleDelete={this.handleDelete}
                 handleEditar={this.handleEditar}
@@ -77,6 +89,7 @@ const mapStateToProps = (state, ownProps) => {
         max: state.product.filterPriceMax,
         listCategory: state.product.listCategory,
         currentUser: state.user.currentUser,
+        isLoggedIn: state.user.isLoggedIn,
         tipo:state.alert.tipo,
         mensaje:state.alert.mensaje,
     }
@@ -85,7 +98,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
         deleteProduct: (id) => dispatch(deleteProduct(id)),
-        alertBottom:(tipo,mensaje)=> dispatch(alertBottom(tipo,mensaje))
+        alertBottom:(tipo,mensaje)=> dispatch(alertBottom(tipo,mensaje)),
+        validateSession: () => dispatch(validateSession())
     }
 }
 export default connect(
