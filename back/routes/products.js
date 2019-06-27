@@ -18,15 +18,16 @@ Router.get(`/singleView/:id/`, (req, res) => {
 
 // RUTA SOLO USO DE TEST
 Router.get('/prueba', (req, res) => {
-
-    Products.findOne({
-        attributes: [
-            [Sequelize.fn('min', Sequelize.col('precio')), 'min'],
-            [Sequelize.fn('max', Sequelize.col('precio')), 'max'],
-            [Sequelize.fn('count', Sequelize.col('precio')), 'count']
-        ]
+    Products.destroy({
+        where: {
+            id:26
+        },
+        include: [{
+            model: Category,
+            as: 'category',
+        }]
     })
-        .then(products => res.json(products))
+    .then(products => res.json(products))
 })
 
 //AGREGAR UN NUEVO PRODUCTO
@@ -55,7 +56,6 @@ Router.post(`/`, (req, res) => {
 
 // MODIFICAR WHERE POR "CONTIENE (OP LIKE %)"
 Router.get(`/search`, (req, res) => {
-    console.log('entra a /Search')
     let pageSize = 8;
     const offset = 0 //(req.query.page * pageSize) - pageSize
     const limit = (req.query.page * pageSize)//pageSize
@@ -102,6 +102,20 @@ Router.get('/listCategory', (req, res) => {
     })
         .then(list => res.json(list))
 })
+// RUTA SOLO USO DE TEST
+Router.get('/prueba', (req, res) => {
+    Products.destroy({
+        where: {
+            id:26
+        },
+        include: [{
+            model: Category,
+            as: 'category',
+        }]
+    })
+    .then(products => res.json(products))
+})
+
 
 // LIMITES para obtener Max, Min y Count
 Router.get('/limite', (req, res) => {
@@ -179,17 +193,16 @@ Router.get('/categoria/:category', (req, res) => {
                 res.json(products)
             })
     
-
-    
-    // Products.findAll({
-    //     limit,
-    //     offset,
-    //     where: objFilter
-    // })
-    //     .then(products => res.json(products))
-
 })
 
-
+// RUTA SOLO USO DE TEST
+Router.delete('/:id', (req, res) => {
+    Products.destroy({
+        where: {
+            id:req.params.id
+        }
+    })
+    .then(products => res.json(products))
+})
 
 module.exports = Router

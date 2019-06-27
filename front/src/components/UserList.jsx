@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 export default ({ list }) => {
-    console.log("SOY PROPS", list)
+    
     return <table className="table table-striped">
     <thead>
       <tr>
