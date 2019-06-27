@@ -33,8 +33,7 @@ const carrito = {
 
 }
 
-export default ({ p, handleChange, handleSubmit, rev }) => {
-    console.log("SOY REVVVVVVVV!!!!!!!", rev)
+export default ({ p, handleChange, handleSubmit, handleCarrito, rev }) => {
     return (
 
         <div className="row">
@@ -52,7 +51,7 @@ export default ({ p, handleChange, handleSubmit, rev }) => {
                         <img src={p.productito.img1} width='33%' alt="" />
                         <img src={p.productito.img2} width='33%' alt="" />
                         <img src={p.productito.img3} width='33%' alt="" />
-                        <button style={carrito} className="btn btn-default" role="button">
+                        <button style={carrito} onClick={handleCarrito} name={`${p.productito.id}`} className="btn btn-default" role="button">
                             <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                             Add Cart
                     </button>
