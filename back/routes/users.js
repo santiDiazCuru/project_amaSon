@@ -4,9 +4,9 @@ const User = require("../models/Users");
 const passport = require('../config/passport');
 const OC = require('../models/index')
 
-Router.get('/', function(req, res){
-    User.findAll()
-    .then(users => res.json(users))
+Router.get('/', function (req, res) {
+    User.findAll({order: [['id', 'DESC']]})
+        .then(users => res.json(users))
 })
 
 Router.post('/register', function (req, res) {
@@ -54,6 +54,31 @@ Router.get("/logout", function (req, res) {
     console.log('deslogeado')
     res.send('Deslogeado')
 });
+
+Router.put('/changeAdminStatus/:userId', function (req, res) {
+    console.log( req.body.isAdmin,req.params.userId
+        )
+    User.update({
+        isAdmin: req.body.isAdmin
+    },
+        {
+            where: {
+                id: req.params.userId
+            }
+        }
+    ).then(user => res.json(user))
+})
+
+
+Router.get(`/delete/:userId`, function (req, res) {
+    // console.log('entre a deleteUser')
+    User.destroy({ where: { id: req.params.userId } })
+        .then((user) => {
+            res.send('usuario eliminado')
+            console.log('elimine un usuario?!?!: ', user)
+        })
+})
+
 
 
 module.exports = Router;

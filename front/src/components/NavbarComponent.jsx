@@ -60,7 +60,7 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                                     {(currentUser.isAdmin)?(
                                         <>
                                             <li><Link to="/product/add">Crear Productos</Link></li>
-                                            <li><Link to="#">Lista de Usuarios</Link></li>
+                                            <li><Link to="/users">Lista de Usuarios</Link></li>
                                             <li><Link to="#">Mis ventas</Link></li>
                                         </>
                                     ):''}
