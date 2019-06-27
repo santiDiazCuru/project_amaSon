@@ -34328,13 +34328,7 @@ var categoryName = {
     alt: "First slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-caption"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Example headline."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Note: If you're viewing this page via a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, "file://"), " URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-lg btn-primary",
-    href: "#",
-    role: "button"
-  }, "Sign up today"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "second-slide",
@@ -34342,13 +34336,7 @@ var categoryName = {
     alt: "Second slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-caption"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Another example headline."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-lg btn-primary",
-    href: "#",
-    role: "button"
-  }, "Learn more"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "third-slide",
@@ -34356,13 +34344,7 @@ var categoryName = {
     alt: "Third slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-caption"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "One more for good measure."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-lg btn-primary",
-    href: "#",
-    role: "button"
-  }, "Browse gallery")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "left carousel-control",
     href: "#myCarousel",
     role: "button",

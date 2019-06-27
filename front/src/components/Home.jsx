@@ -41,31 +41,16 @@ export default (props) => (
                 <div className="item active">
                     <img className="first-slide" src="https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-tvs-60_-de-descuento.png" alt="First slide" />
                     <div className="container">
-                        <div className="carousel-caption">
-                            <h1>Example headline.</h1>
-                            <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                            <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                        </div>
                     </div>
                 </div>
                 <div className="item">
                     <img className="second-slide" src="https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-televisores.png" alt="Second slide" />
                     <div className="container">
-                        <div className="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                        </div>
                     </div>
                 </div>
                 <div className="item">
                     <img className="third-slide" src="http://disttec.mx/wp-content/uploads/2017/03/Banner-Audio-Ambiental.jpg" alt="Third slide" />
                     <div className="container">
-                        <div className="carousel-caption">
-                            <h1>One more for good measure.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                        </div>
                     </div>
                 </div>
             </div>
