@@ -17,51 +17,59 @@ export const addItem = (productId, userId) => {
 export const vaciarCarrito = (userId) => {
     return Axios.get(`/api/compras/empty/${userId}`)
 }
+export const updateLocalCarrito = (productId, newCantidad) => dispatch => {
+    let miStorage = window.localStorage;
+    let carrito = JSON.parse(miStorage.getItem('carrito'))
+    for (let i = 0; i < carrito.length; i++) {
+        if (carrito[i].id == productId) {
+            carrito[i].cantidad = newCantidad
+        }
+    }
+    miStorage.setItem("carrito", JSON.stringify(carrito))
+    let localCart = JSON.parse(miStorage.getItem("carrito"))
+    dispatch(setCarrito(localCart))
+}
 
 export const setLocalCarrito = (producto) => dispatch => {
     let miStorage = window.localStorage;
     let carrito = JSON.parse(miStorage.getItem('carrito'))
-    console.log(producto)
     if (carrito) {
         producto['cantidad'] = 1;
         let repetido = false
-        console.log('soy el carrito antes de setear cantidades: ',carrito)
         for (let i = 0; i < carrito.length; i++) {
             if (carrito[i].id == producto.id) {
-                console.log('los id matchean')
                 carrito[i].cantidad = carrito[i].cantidad + 1
                 repetido = true
             }
         }
-        console.log('soy el carrtiyo despuesde setear cantidades: ', carrito)
         if (repetido) {
             miStorage.setItem("carrito", JSON.stringify(carrito))
             let localCart = JSON.parse(miStorage.getItem("carrito"))
-            console.log('soy lo que se setea en el localStorage:', localCart)
             dispatch(setCarrito(localCart))
         }
         else {
             let newCarrito = [...carrito, producto]
             miStorage.setItem("carrito", JSON.stringify(newCarrito))
             let localCart = JSON.parse(miStorage.getItem("carrito"))
-            console.log('soy lo que entra al else:', localCart)
             dispatch(setCarrito(localCart))
         }
     }
     else {
-        console.log()
         producto['cantidad'] = 1;
         miStorage.setItem('carrito', JSON.stringify([producto]))
         dispatch(setCarrito([producto]))
     }
 }
-export const deleteLocalCarrito = (productId) => {
+export const deleteLocalCarrito = (productId) => dispatch => {
+    console.log('entra al delete')
     let miStorage = window.localStorage;
     let newCarrito = [];
     let carrito = JSON.parse(miStorage.getItem('carrito'))
+    console.log(carrito)
     for (let i = 0; i < carrito.length; i++) {
-        if (carrito[i].id !== productId) newCarrito.push(carrito[i])
+        if (carrito[i].id != productId) newCarrito.push(carrito[i])
     }
+    console.log(newCarrito)
     miStorage.setItem("carrito", JSON.stringify(newCarrito))
     let localCart = JSON.parse(miStorage.getItem("carrito"))
     dispatch(setCarrito(localCart))
