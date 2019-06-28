@@ -39689,25 +39689,32 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.props.validateSession();
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this3 = this;
 
-      //
-      this.props.validateSession();
-      var id = this.props.currentUser.hasOwnProperty('id') ? this.props.currentUser.id : 0;
-      var status = this.state.data;
-      var admin = this.props.currentUser.isAdmin.toString();
-      var miPromesa = axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("/api/compras/estados/".concat(id, "/").concat(status, "/").concat(admin))["catch"](function (err) {
-        return console.log(err, "ERRRO");
-      });
-      var arregloo = [];
-      arregloo.push(miPromesa);
-      Promise.all(arregloo).then(function (productos) {
-        var depurado = Filter(productos[0].data);
+      this.props.validateSession().then(function () {
+        var id = _this3.props.currentUser.hasOwnProperty('id') ? _this3.props.currentUser.id : 0;
+        var status = _this3.state.data;
 
-        _this3.setState({
-          ListOC: depurado
+        var admin = _this3.props.currentUser.isAdmin.toString();
+
+        var miPromesa = axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("/api/compras/estados/".concat(id, "/").concat(status, "/").concat(admin))["catch"](function (err) {
+          return console.log(err, "ERRRO");
+        });
+        var arregloo = [];
+        arregloo.push(miPromesa);
+        Promise.all(arregloo).then(function (productos) {
+          var depurado = Filter(productos[0].data);
+
+          _this3.setState({
+            ListOC: depurado
+          });
         });
       });
     }
@@ -39721,6 +39728,7 @@ function (_React$Component) {
       });
       alert('Se ha actualizado el estado correctamente');
       this.props.history.push('/ventas');
+      this.props.validateSession();
     }
   }, {
     key: "render",
