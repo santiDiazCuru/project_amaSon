@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import CarritoComponent from '../components/CarritoComponent'
 import { getCarrito, updateCantidad, deleteCompra, changeStatus } from '../action-creators/getCompras'
 import { validateSession } from '../action-creators/logInUser'
-import { vaciarCarrito, setLocalCarrito, vaciarLocalCarrito, deleteLocalCarrito } from '../action-creators/addCarrito'
+import { vaciarCarrito, updateLocalCarrito, vaciarLocalCarrito, deleteLocalCarrito } from '../action-creators/addCarrito'
 
 class CarritoContainer extends React.Component {
     constructor() {
@@ -37,7 +37,11 @@ class CarritoContainer extends React.Component {
             updateCantidad(e.target.name, e.target.value, this.props.currentUser.id)
                 .then(() => this.props.getCarrito(this.props.currentUser.id))
         }
+        else {
+            e.preventDefault();
+            this.props.updateLocalCarrito(e.target.name, e.target.value)
 
+        }
     }
     handleDelete(e) {
         if (this.props.isLoggedIn) {
@@ -45,7 +49,8 @@ class CarritoContainer extends React.Component {
                 .then(() => this.props.getCarrito(this.props.currentUser.id))
         }
         else {
-
+            console.log(e.target.id)
+            this.props.deleteLocalCarrito(e.target.id)
         }
     }
     handleEmpty(e) {
@@ -93,8 +98,8 @@ const mapDispatchToProps = dispatch => {
         getCarrito: (userId) => dispatch(getCarrito(userId)),
         validateSession: () => dispatch(validateSession()),
         vaciarLocalCarrito: () => dispatch(vaciarLocalCarrito()),
-        deleteLocalCarrito: (productId) => dispatch(vaciarLocalCarrito(productId))
-
+        deleteLocalCarrito: (productId) => dispatch(deleteLocalCarrito(productId)),
+        updateLocalCarrito: (productId, newCantidad) => dispatch(updateLocalCarrito(productId, newCantidad))
     }
 }
 const mapStateToProps = (state, ownProps) => {
