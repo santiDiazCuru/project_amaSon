@@ -44,7 +44,7 @@ Router.get("/isLoggedIn", function (req, res) {
         email: (Session) ? Session.user.email : '',
         isAdmin: (Session) ? Session.user.isAdmin : ''
     }
-
+//res.json(Session ? session : {})
     Session && res.json(session)
 });
 

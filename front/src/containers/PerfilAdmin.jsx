@@ -57,7 +57,7 @@ class Perfil extends React.Component {
                   
                     <Link to='/compras' class="list-group-item">
                         <h4 class="list-group-item-heading">
-                        <img src="https://secureservercdn.net/166.62.112.199/mk4.41d.myftpupload.com/wp-content/uploads/2016/06/icons_club-300x282.png" width="60px" /> Mis Ventas:</h4>
+                        <img src="https://secureservercdn.net/166.62.112.199/mk4.41d.myftpupload.com/wp-content/uploads/2016/06/icons_club-300x282.png" width="60px" /> Mis Compras:</h4>
                         <p class="list-group-item-text">
                             <p>
                                 Desde Aqui podrás ver el detalle de tus compras, ordenes de compra y transacciones realizadas...</p>
