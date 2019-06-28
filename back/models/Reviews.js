@@ -1,5 +1,7 @@
-var db = require('./database');
 var Sequelize = require('sequelize');
+var db = require('./database');
+const User = require('./Users')
+const Product = require('./Products')
 
 var Review = db.define('reviews', {
 
@@ -9,11 +11,12 @@ var Review = db.define('reviews', {
     },
     comentario: {
         type: Sequelize.STRING
+    },
+    usuarioCreador: {
+        type: Sequelize.STRING
     }
+
 });
 
-//idProducto viene de la relacion
-//idUser viene de la relacion!
-module.exports = Review;
 
-//fijarse si se crea la tabla....maldito sequelize
+module.exports = Review

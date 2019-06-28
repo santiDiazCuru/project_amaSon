@@ -1,5 +1,6 @@
 import { LOG_IN_USER} from "../constants"
 import Axios from "axios"
+import {validateUser} from './logInUser'
 
 // la funcion de registerUser hace solo un axios con un post para crear un nuevo user en la DB.
 // recibe un argumento(newUserInfo) que es un objeto que viene seteado ya con la data del nuevo usuario 
@@ -13,7 +14,15 @@ const logInUser = (user) => ({
 });
 
 export const registerUser = (newUserInfo) => dispatch => {
-    Axios.post('/users/register', newUserInfo)
-    .then((newUser)=> dispatch(logInUser(newUser.data)))
+    return Axios.post('/api/users/register', newUserInfo)
+    .then((newUser)=>{
+        if (newUser.data=='X'){
+            return true
+        } 
+        else {
+            dispatch(logInUser(newUser.data))
+            return false
+        }
+    })
 }
 

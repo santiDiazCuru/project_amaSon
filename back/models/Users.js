@@ -35,7 +35,7 @@ User.prototype.hashPassword = function (password) {
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
 }
 //mETODO DE INSTANCIA QUE SE PUEDE USAR PARA VALIDAR LA CONTRASEÑA PERRO!!!!!!!
-User.prototype.validPassword = function (password) {
+User.prototype.validatePassword = function (password) {
     return this.password === this.hashPassword(password);
 }
 

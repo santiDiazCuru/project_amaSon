@@ -18,10 +18,16 @@ export const styleImg = {
     height:300
 }
 
+export const boton = {
+    marginTop: 20
+}
+
 export const TitleStyle = {
     fontSize: '18px',
     height:50,
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    color:'#5a5a6d',
+    textDecoration: "none"
 }
 export const starStyle = {
     marginTop: -24,

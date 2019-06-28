@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RegisterModal from '../components/RegisterModal'
 import { registerUser } from '../action-creators/registerUser'
+import { validateUser } from '../action-creators/logInUser'
 
 class RegisterContainer extends React.Component {
     constructor(props) {
@@ -29,11 +30,22 @@ class RegisterContainer extends React.Component {
         }
         e.preventDefault()
         this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser)
-        this.props.handleRegister()
-        
+            .then((X) => {
+                if (X) {
+                    alert('El email ingresado ya existe')
+                }
+                else {
+                    const user = {
+                        email: this.state.email,
+                        password: this.state.password
+                    }
+                    this.props.validateUser(user)
+                    this.props.handleRegister()
+                }
+            })
     }
     //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
-    //modal sie sta abierto y que se abra si esta cerrado!!!!
+    //modal si esta abierto y que se abra si esta cerrado!!!!
 
     render() {
         return (
@@ -46,7 +58,8 @@ class RegisterContainer extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        registerUser: (newUser) => dispatch(registerUser(newUser))
+        registerUser: (newUser) => dispatch(registerUser(newUser)),
+        validateUser: (user) => dispatch(validateUser(user))
     }
 }
 export default connect(null, mapDispatchToProps)(RegisterContainer)
