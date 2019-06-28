@@ -27932,7 +27932,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33668,6 +33668,35 @@ var endSession = function endSession() {
 
 /***/ }),
 
+/***/ "./src/action-creators/precio.js":
+/*!***************************************!*\
+  !*** ./src/action-creators/precio.js ***!
+  \***************************************/
+/*! exports provided: filtrarPrecio */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarPrecio", function() { return filtrarPrecio; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+
+var precioObjeto = function precioObjeto(priceMin, priceMax) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["PRECIO_FILTRO"],
+    priceMin: priceMin,
+    priceMax: priceMax
+  };
+};
+
+var filtrarPrecio = function filtrarPrecio(priceMin, priceMax) {
+  return function (dispatch) {
+    return dispatch(precioObjeto(priceMin, priceMax));
+  };
+};
+
+/***/ }),
+
 /***/ "./src/action-creators/registerUser.js":
 /*!*********************************************!*\
   !*** ./src/action-creators/registerUser.js ***!
@@ -34762,7 +34791,9 @@ __webpack_require__.r(__webpack_exports__);
       handleClickMax = _ref.handleClickMax,
       color = _ref.color,
       letraMax = _ref.letraMax,
-      letraMin = _ref.letraMin;
+      letraMin = _ref.letraMin,
+      min = _ref.min,
+      max = _ref.max;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -34823,7 +34854,7 @@ __webpack_require__.r(__webpack_exports__);
       display: 'grid',
       gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, priceMin, " "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Minimo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, priceMax), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "0 "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Minimo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "100000"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       top: '0',
       bottom: '0',
@@ -34834,7 +34865,7 @@ __webpack_require__.r(__webpack_exports__);
     type: "range",
     name: "priceMin",
     min: "0",
-    max: priceMax,
+    max: "100000",
     style: {
       width: "80%",
       margin: "auto",
@@ -34843,7 +34874,7 @@ __webpack_require__.r(__webpack_exports__);
       backgroundColor: color
     },
     onChange: handleChangeMin,
-    defaultValue: priceMin
+    value: priceMin
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Filter by: Price")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       top: '0',
@@ -34855,7 +34886,7 @@ __webpack_require__.r(__webpack_exports__);
     type: "range",
     name: "priceMax",
     min: "0",
-    max: priceMax,
+    max: "100000",
     style: {
       width: "80%",
       margin: "auto",
@@ -34864,13 +34895,13 @@ __webpack_require__.r(__webpack_exports__);
       backgroundColor: color
     },
     onChange: handleChangeMax,
-    defaultValue: priceMax
+    value: priceMax
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: '1fr 2fr 5fr 2fr 1fr'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, priceMin, " "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Maximo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, priceMax, " "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "0 "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Maximo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "100000 "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       height: '5px'
     }
@@ -35141,12 +35172,21 @@ __webpack_require__.r(__webpack_exports__);
       handleCarrito = _ref.handleCarrito,
       currentUser = _ref.currentUser,
       handleDelete = _ref.handleDelete,
-      handleEditar = _ref.handleEditar;
+      handleEditar = _ref.handleEditar,
+      priceMin = _ref.priceMin,
+      priceMax = _ref.priceMax;
 
   if (list.length !== 0) {
+    if (!priceMin && !priceMax) {
+      priceMin = 0;
+      priceMax = 100000;
+    }
+
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "row"
-    }, list && list.map(function (item) {
+    }, list && list.filter(function (item) {
+      return Number(item.precio) > Number(priceMin) && Number(item.precio) < Number(priceMax);
+    }).map(function (item) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-6 col-lg-".concat(col)
       }, "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -35238,7 +35278,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT, PRECIO_FILTRO */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35257,6 +35297,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CARRITO", function() { return FETCH_CARRITO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_REVIEWS", function() { return FETCH_REVIEWS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_ALERT", function() { return SET_ALERT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PRECIO_FILTRO", function() { return PRECIO_FILTRO; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 var FETCH_ALL_PRODUCTS_CATEGORY = 'FETCH_ALL_PRODUCTS_CATEGORY';
@@ -35271,6 +35312,7 @@ var FETCH_ALL_LIMIT_CATEGORY = 'FETCH_ALL_LIMIT_CATEGORY';
 var FETCH_CARRITO = 'FETCH_CARRITO';
 var FETCH_REVIEWS = 'FETCH_REVIEWS';
 var SET_ALERT = 'SET_ALERT';
+var PRECIO_FILTRO = 'PRECIO_FILTRO';
 
 /***/ }),
 
@@ -35805,6 +35847,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
 /* harmony import */ var _containers_ProductContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../containers/ProductContainer */ "./src/containers/ProductContainer.jsx");
 /* harmony import */ var _components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SidebarComponent */ "./src/components/SidebarComponent.jsx");
+/* harmony import */ var _action_creators_precio__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/precio */ "./src/action-creators/precio.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35822,6 +35865,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -35904,6 +35948,7 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.state.priceMin && this.handleChangeLetraMin();
       var priceMin = Number(e.target.value);
       this.setState({
@@ -35947,6 +35992,7 @@ function (_React$Component) {
       var _this5 = this;
 
       e.preventDefault();
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.state.priceMax && this.handleChangeLetraMax();
       var priceMax = Number(e.target.value);
       this.setState({
@@ -36033,9 +36079,9 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
         handleChangeMin: this.handleChangeMin,
-        priceMin: this.props.min,
+        priceMin: this.state.priceMin,
         handleClickMin: this.handleClickMin,
-        priceMax: this.props.max,
+        priceMax: this.state.priceMax,
         handleChangeMax: this.handleChangeMax,
         handleClickMax: this.handleClickMax,
         color: this.state.color,
@@ -36076,8 +36122,23 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchAllCategory: function fetchAllCategory() {
       return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchAllCategory"])());
-    } //fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
+    },
+    fetchProducts: function (_fetchProducts) {
+      function fetchProducts(_x, _x2, _x3, _x4, _x5) {
+        return _fetchProducts.apply(this, arguments);
+      }
 
+      fetchProducts.toString = function () {
+        return _fetchProducts.toString();
+      };
+
+      return fetchProducts;
+    }(function (input, category, min, max, page) {
+      return dispatch(fetchProducts(input, category, min, max, page));
+    }),
+    filtrarPrecio: function filtrarPrecio(priceMin, priceMax) {
+      return dispatch(Object(_action_creators_precio__WEBPACK_IMPORTED_MODULE_6__["filtrarPrecio"])(priceMin, priceMax));
+    }
   };
 };
 
@@ -36599,6 +36660,11 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      // if(this.props.listaProductos[0]){
+      // console.log(this.props.listaProductos[0].precio,'carloooos')
+      // }
+      // console.log(this.props.priceMin,'aaaaaaaaa')
+      // console.log(this.props.priceMax,'bbbbbbbbb')
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_product__WEBPACK_IMPORTED_MODULE_2__["default"], {
         col: 3,
         page: this.props.page,
@@ -36608,7 +36674,9 @@ function (_Component) {
         handleCarrito: this.handleCarrito,
         currentUser: this.props.currentUser,
         handleDelete: this.handleDelete,
-        handleEditar: this.handleEditar
+        handleEditar: this.handleEditar,
+        priceMin: this.props.priceMin,
+        priceMax: this.props.priceMax
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AlertComponents__WEBPACK_IMPORTED_MODULE_3__["default"], {
         show: this.state.show,
         btnCerrar: this.btnCerrar,
@@ -36634,7 +36702,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     currentUser: state.user.currentUser,
     isLoggedIn: state.user.isLoggedIn,
     tipo: state.alert.tipo,
-    mensaje: state.alert.mensaje
+    mensaje: state.alert.mensaje,
+    priceMin: state.price.priceMin,
+    priceMax: state.price.priceMax
   };
 };
 
@@ -36791,6 +36861,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
 /* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
 /* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_precio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../action-creators/precio */ "./src/action-creators/precio.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36808,6 +36879,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -36914,6 +36986,7 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.state.priceMin && this.handleChangeLetraMin();
       var priceMin = Number(e.target.value);
       this.setState({
@@ -36957,6 +37030,7 @@ function (_React$Component) {
       var _this5 = this;
 
       e.preventDefault();
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.state.priceMax && this.handleChangeLetraMax();
       var priceMax = Number(e.target.value);
       this.setState({
@@ -37014,9 +37088,9 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
         handleChangeMin: this.handleChangeMin,
-        priceMin: this.props.min,
+        priceMin: this.state.priceMin,
         handleClickMin: this.handleClickMin,
-        priceMax: this.props.max,
+        priceMax: this.state.priceMax,
         handleChangeMax: this.handleChangeMax,
         handleClickMax: this.handleClickMax,
         color: this.state.color,
@@ -37062,6 +37136,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchAllCategory: function fetchAllCategory() {
       return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_5__["fetchAllCategory"])());
+    },
+    filtrarPrecio: function filtrarPrecio(priceMin, priceMax) {
+      return dispatch(Object(_action_creators_precio__WEBPACK_IMPORTED_MODULE_8__["filtrarPrecio"])(priceMin, priceMax));
     }
   };
 };
@@ -37602,6 +37679,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
 /* harmony import */ var _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fetch_reviews */ "./src/reducers/fetch_reviews.js");
 /* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
+/* harmony import */ var _precio_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./precio_reducer */ "./src/reducers/precio_reducer.js");
+
 
 
 
@@ -37617,8 +37696,44 @@ __webpack_require__.r(__webpack_exports__);
   users: _fetch_users__WEBPACK_IMPORTED_MODULE_3__["default"],
   compras: _compras_reducers__WEBPACK_IMPORTED_MODULE_5__["default"],
   productReviews: _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__["default"],
-  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
+  price: _precio_reducer__WEBPACK_IMPORTED_MODULE_8__["default"]
 }));
+
+/***/ }),
+
+/***/ "./src/reducers/precio_reducer.js":
+/*!****************************************!*\
+  !*** ./src/reducers/precio_reducer.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  priceMin: '',
+  priceMax: ''
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["PRECIO_FILTRO"]:
+      {
+        return Object.assign({}, state, {
+          priceMin: action.priceMin,
+          priceMax: action.priceMax
+        });
+      }
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 
