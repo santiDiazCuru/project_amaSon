@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn }) => {
+export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn, changeStatus, currentUser }) => {
 
-    if (isLoggedIn) {  
-    
+    if (isLoggedIn) {
+
         return <div className='row'>
             Mis Ventas:&nbsp;
       <div class="input-group">
@@ -25,17 +25,16 @@ export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn }) => {
             </div>
 
             <hr />
-            
             <div className='panel panel-default'>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-
-                            <th>OC</th>
+                            <th>Orden</th>
                             <th>Cantidad</th>
                             <th>Importe</th>
                             <th>Estado</th>
                             <th>Fecha</th>
+                            {currentUser.isAdmin? <th>Cambiar Estado</th> : null}
                             <th>Detalle</th>
                         </tr>
                     </thead>
@@ -48,11 +47,16 @@ export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn }) => {
                                     <td style={({ width: 100 })} className='casillaCantidad' className='cantidad'>$ {conversion(item.Importe)}</td>
                                     <td className='casillaTitulo' style={({ textTransform: "capitalize", fontSize: 16 })}>{item.Estado}</td>
                                     <td className='casillaTitulo' style={({ textTransform: "capitalize", fontSize: 16 })}>{fecha(item.createdAt)}</td>
-                                    
+                                    {currentUser.isAdmin ?
+                                    <td className='casillaTitulo' style={({ textTransform: "capitalize", fontSize: 16 })}>
+                                        <button onClick={changeStatus} id={item.OCId} name='procesando'>Procesando</button>
+                                        <button onClick={changeStatus} id={item.OCId} name='rechazado'>Rechazado</button>
+                                        <button onClick={changeStatus} id={item.OCId} name='finalizado'>Finalizado</button>
+                                    </td> : null}
                                     <td>
                                         <Link to={`/details/compra/${item.OCId}`}>
                                             VER DETALLE
-                  </Link>
+                                        </Link>
                                     </td>
                                 </tr>
                             )
@@ -76,10 +80,10 @@ function conversion(a) {
     return a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim().replace(/\s/g, ',');
 }
 
-function fecha(timeStr){
+function fecha(timeStr) {
     var intermediate = timeStr.split("T"),
-    newStr = intermediate[0].split("-").join("/") + " " + intermediate[1].split(".")[0] + " GMT",
-    newDate = new Date(newStr),
-    newFormat = (newDate.getUTCDate() + "/" + (1 + newDate.getUTCMonth())) + "/" + newDate.getFullYear();
+        newStr = intermediate[0].split("-").join("/") + " " + intermediate[1].split(".")[0] + " GMT",
+        newDate = new Date(newStr),
+        newFormat = (newDate.getUTCDate() + "/" + (1 + newDate.getUTCMonth())) + "/" + newDate.getFullYear();
     return newFormat
 }

@@ -29,6 +29,9 @@ export const getCarrito = (userId) => dispatch => {
 export const changeStatus = (newStatus, userId) => {
     return Axios.patch(`/api/compras/status/${userId}`, {newStatus})
 }
+export const changeOCStatus = (newStatus, OCid) => {
+    return Axios.patch(`api/compras/status`, {newStatus: newStatus, OCid: OCid})
+}
 
 export const updateCantidad = (compraId, nuevaCantidad, userId) => {
    return Axios.put(`/api/compras/update/${compraId}`, {nuevaCantidad})

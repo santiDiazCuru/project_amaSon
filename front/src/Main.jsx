@@ -50,6 +50,7 @@ class Main extends React.Component {
         <Route path='/admin' component={PerfilAdmin} />
         <Route path='/logout' component={Saludo} />
         <Route path='/ventas' component={VentasContainer} />
+        <Route path='/compras' component={VentasContainer} />
         <Route path='/products/:id' component={SingleProductContainer} />
         <Route path='/details/compra/:id' component={DetallesComprasContainer} />
         

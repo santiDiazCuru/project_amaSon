@@ -4,6 +4,7 @@ const Compra = require('../models/index').Compras;
 const OC = require('../models/index').OC;
 const Product = require('../models/index').Products;
 var Sequelize = require('sequelize');
+const Op = Sequelize.Op
 
 Router.get('/carrito/:id', function (req, res) {
     OC.findOne({
@@ -32,15 +33,28 @@ Router.get('/carrito/:id', function (req, res) {
 
 // BUSQUEDA POR ESTADOS
 //===================================
-Router.get('/estados/:id/:status', function (req, res) {
-    if(req.params.status == 'todos'){
+Router.get('/estados/:id/:status/:admin', function (req, res) {
+    console.log(req.params.admin, req.params.status)
+    if(req.params.status == 'todos' && req.params.admin == 'false'){
+        console.log('pero entra a 1')
         var objFiltro = {
             userId:req.params.id,
-           
         }
-    }else {
+    }else if (req.params.admin == 'false') {
+        console.log('pero entra a 2')
         var objFiltro = {
             userId:req.params.id,
+            estado:req.params.status
+        }
+    }
+    else if (req.param.status == 'todos' && req.params.admin == 'true'){
+        console.log('deberia entrar aca')
+        var objFiltro = {
+        }
+    }
+    else if (req.params.status !== 'todos'){
+        console.log('pero entra a 4')
+        var objFiltro = {
             estado:req.params.status
         }
     }
@@ -57,7 +71,7 @@ Router.get('/estados/:id/:status', function (req, res) {
             attributes: ['img1', 'titulo', 'precio']
         }],
         attributes: ['id', 'cantidad', 'OCId'
-        ],
+        ], order: [['id', 'DESC']]
     })
         .then((OC) => {
             res.json(OC)
@@ -134,7 +148,6 @@ Router.get('/updatecarrito/:userId', function (req,res){
         }
     })
     .then((compras) =>{ 
-    console.log('hola so las compras: ',compras)
     res.json(compras)})
     
 })
@@ -165,6 +178,10 @@ Router.post('/add/:userId', function (req, res) {
                 res.send('entro al else  tambmien listoo')
             }
         })
+})
+Router.patch('/status', function(req,res){
+    OC.update({estado: req.body.newStatus},{where: {id: req.body.OCid}})
+    .then(()=>res.send(200))
 })
 
 Router.patch('/status/:userId', function (req, res) {
