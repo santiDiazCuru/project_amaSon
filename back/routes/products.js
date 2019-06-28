@@ -148,7 +148,7 @@ Router.get('/limite', (req, res) => {
 
 Router.get('/', (req, res) => {
     Products.findAll({
-        limit: 88,
+        limit: 8,
         where: {
             stock: {
                 [Op.ne]: 0
@@ -157,7 +157,6 @@ Router.get('/', (req, res) => {
         include: [{
             model: Category,
             as: 'category',
-            where: { categoria: "televisores" },
             attributes: ['id', 'categoria']
         }]
     })

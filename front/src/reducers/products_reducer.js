@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
             })
 
         case FETCH_ALL_PRODUCTS:
-            return Object.assign({}, state, { productosHome: action.productos })
+            return Object.assign({}, state, { productos: action.productos })
         
         case FETCH_ALL_LIMIT_CATEGORY:
         
