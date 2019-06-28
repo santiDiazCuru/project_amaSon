@@ -24,7 +24,7 @@ class CompraContainer extends React.Component {
     }
     handleCompra(e){
         e.preventDefault();
-        changeStatus('pendiente', this.props.currentUser.id)
+        changeStatus('creado', this.props.currentUser.id)
         this.setState({comprado: true})
     }
     handleSubmit(e) {

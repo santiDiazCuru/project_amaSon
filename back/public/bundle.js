@@ -37158,7 +37158,7 @@ function (_React$Component) {
     key: "handleCompra",
     value: function handleCompra(e) {
       e.preventDefault();
-      Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["changeStatus"])('pendiente', this.props.currentUser.id);
+      Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["changeStatus"])('creado', this.props.currentUser.id);
       this.setState({
         comprado: true
       });
@@ -38464,8 +38464,6 @@ function (_React$Component) {
         _this2.props.validateUser(user);
 
         _this2.props.handleRegister();
-      })["catch"](function (err) {
-        return alert('El Email ingresado ya esta registrado', err);
       });
     } //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
     //modal si esta abierto y que se abra si esta cerrado!!!!

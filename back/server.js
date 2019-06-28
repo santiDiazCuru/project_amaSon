@@ -32,7 +32,7 @@ app.get('/*', function(req,res){
    res.sendFile(path.join(__dirname + '/public', 'index.html'))
 })
 
-//Levanta server skereeeeeeee
+//Levanta server skereeeeeeeeeeeeeee
 
 db.sync({force: false})
    .then( ()=> {
