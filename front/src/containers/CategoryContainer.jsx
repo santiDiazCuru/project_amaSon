@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { fetchAllProducts, fetchAllCategory } from '../action-creators/getProducts'
 import ProductoContainer from '../containers/ProductContainer'
 import SidebarComponent from '../components/SidebarComponent'
+import { filtrarPrecio } from '../action-creators/precio'
+
 
 class CategoryContainer extends React.Component {
     //Eventos del filtro
@@ -46,6 +48,7 @@ class CategoryContainer extends React.Component {
 
     handleChangeMin(e) {
         e.preventDefault();
+        this.props.filtrarPrecio(this.state.priceMin,this.state.priceMax)
         this.state.priceMin && this.handleChangeLetraMin()
         let priceMin = Number(e.target.value)
         this.setState({ priceMin }, () => {
@@ -67,6 +70,7 @@ class CategoryContainer extends React.Component {
 
     handleChangeMax(e) {
         e.preventDefault();
+        this.props.filtrarPrecio(this.state.priceMin,this.state.priceMax)
         this.state.priceMax && this.handleChangeLetraMax()
         let priceMax = Number(e.target.value)
         this.setState({ priceMax }, () => {
@@ -79,12 +83,11 @@ class CategoryContainer extends React.Component {
             }
         })
     };
+
     handleRadioCateg(e) {
         e.preventDefault();
         this.setState({ categoria: e.target.value })
-        
     }
-
     
     handleChangeLetraMax(){
         this.state.priceMax.toString().length == 1 && this.setState({ letraMax: 20 })
@@ -127,9 +130,9 @@ class CategoryContainer extends React.Component {
                     {/* RENDERIZA COMPONENTE DE FILTRO */}
                     <SidebarComponent
                         handleChangeMin={this.handleChangeMin}
-                        priceMin={this.props.min}
+                        priceMin={this.state.priceMin}
                         handleClickMin={this.handleClickMin}
-                        priceMax={this.props.max}
+                        priceMax={this.state.priceMax}
                         handleChangeMax={this.handleChangeMax}
                         handleClickMax={this.handleClickMax}
                         color={this.state.color}
@@ -177,7 +180,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchAllProducts: (category, min, max, page) => dispatch(fetchAllProducts(category, min, max, page)),
         fetchAllCategory: () => dispatch(fetchAllCategory()),
-        //fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
+        fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
+        filtrarPrecio: (priceMin,priceMax) => dispatch(filtrarPrecio(priceMin,priceMax))
+
     }
 }
 

@@ -7,6 +7,7 @@ import compras from './compras_reducers'
 import productReviews from './fetch_reviews'
 
 import alert from './alert_reducer'
+import price from './precio_reducer'
 
 export default combineReducers({
     product,
@@ -15,5 +16,6 @@ export default combineReducers({
     users,
     compras,
     productReviews,
-    alert
+    alert,
+    price
 });

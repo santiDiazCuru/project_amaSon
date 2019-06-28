@@ -53,6 +53,11 @@ class ProductContainer extends Component {
     }
 
     render() {
+        // if(this.props.listaProductos[0]){
+        // console.log(this.props.listaProductos[0].precio,'carloooos')
+        // }
+        // console.log(this.props.priceMin,'aaaaaaaaa')
+        // console.log(this.props.priceMax,'bbbbbbbbb')
         return (
             <>
             <Producto
@@ -65,6 +70,8 @@ class ProductContainer extends Component {
                 currentUser={this.props.currentUser}
                 handleDelete={this.handleDelete}
                 handleEditar={this.handleEditar}
+                priceMin={this.props.priceMin}
+                priceMax={this.props.priceMax}
             />
             <Alert 
                 show={this.state.show}
@@ -92,6 +99,8 @@ const mapStateToProps = (state, ownProps) => {
         isLoggedIn: state.user.isLoggedIn,
         tipo:state.alert.tipo,
         mensaje:state.alert.mensaje,
+        priceMin: state.price.priceMin,
+        priceMax: state.price.priceMax
     }
 }
 const mapDispatchToProps = (dispatch) => {

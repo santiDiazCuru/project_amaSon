@@ -2,82 +2,84 @@ import React, { useState } from 'react';
 import { style, styleImg, TitleStyle, starStyle, price, boton } from '../estilos/styleProduct'
 import { Link } from 'react-router-dom';
 
-export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUser, handleDelete, handleEditar }) => {
-
+export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUser, handleDelete, handleEditar, priceMin, priceMax }) => {
     if (list.length !== 0) {
+        if(!priceMin&&!priceMax){
+            priceMin=0
+            priceMax=100000
+        }
         return <div >
             <div className="row">
-                {list && list.map(item => (
-
-                    <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
-                        <div className="divProduct">
-                            <Link to={`/products/${item.id}`} >
-                                <img style={styleImg} src={item.img1} alt="{item.img1}" />
-                                <center>
-                                    {/* Titulo */}
-                                    <h2 style={TitleStyle} key={item.id}>{item.titulo}</h2>
-                                </center>&nbsp;
+                {list && list.filter(item=>Number(item.precio)>Number(priceMin) && Number(item.precio)<Number(priceMax)).map(item => (
+                        <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
+                            <div className="divProduct">
+                                <Link to={`/products/${item.id}`} >
+                                    <img style={styleImg} src={item.img1} alt="{item.img1}" />
+                                    <center>
+                                        {/* Titulo */}
+                                        <h2 style={TitleStyle} key={item.id}>{item.titulo}</h2>
+                                    </center>&nbsp;
                             </Link>
-                            {/* construccion de las estrellas */}
-                            <p style={starStyle}>
-                                {/* CREA UN FOR DE LAS CANTIDAD DE ESTRELLAS COMPLETAS */}
-                                {
-                                    function (cantidad) {
-                                        let rows = [];
-                                        for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/completa.png' width="25px" />) }
-                                        return rows;
-                                    }(parseInt(item.valoracion))
-                                }
-                                {/* TERNARIO DE CONDICION SI ES MAYOR A 0.5 AGREGA LA MITAD DE LA ESTRELLA */}
-                                {
-                                    ((item.valoracion - parseInt(item.valoracion)) * 10 >= 5) ?
-                                        <img src='http://localhost:8000/media.png' width="25px" />
-                                        : ''
-                                }
-
-                                {/* genera las cantidad de estellas vacias (5-valor) SI TIENE UNA MITAD LE RESTA 1*/}
-                                {
-                                    function (cantidad) {
-                                        let rows = [];
-                                        for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/vacia.png' width="25px" />) }
-                                        return rows;
-                                    }(
+                                {/* construccion de las estrellas */}
+                                <p style={starStyle}>
+                                    {/* CREA UN FOR DE LAS CANTIDAD DE ESTRELLAS COMPLETAS */}
+                                    {
+                                        function (cantidad) {
+                                            let rows = [];
+                                            for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/completa.png' width="25px" />) }
+                                            return rows;
+                                        }(parseInt(item.valoracion))
+                                    }
+                                    {/* TERNARIO DE CONDICION SI ES MAYOR A 0.5 AGREGA LA MITAD DE LA ESTRELLA */}
+                                    {
                                         ((item.valoracion - parseInt(item.valoracion)) * 10 >= 5) ?
-                                            5 - parseInt(item.valoracion) - 1
-                                            : 5 - parseInt(item.valoracion)
+                                            <img src='http://localhost:8000/media.png' width="25px" />
+                                            : ''
+                                    }
 
-                                    )
-                                }
+                                    {/* genera las cantidad de estellas vacias (5-valor) SI TIENE UNA MITAD LE RESTA 1*/}
+                                    {
+                                        function (cantidad) {
+                                            let rows = [];
+                                            for (let i = 0; i < cantidad; i++) { rows.push(<img src='http://localhost:8000/vacia.png' width="25px" />) }
+                                            return rows;
+                                        }(
+                                            ((item.valoracion - parseInt(item.valoracion)) * 10 >= 5) ?
+                                                5 - parseInt(item.valoracion) - 1
+                                                : 5 - parseInt(item.valoracion)
 
-                            </p>
-                            <p>
-                                <button onClick={handleCarrito} name={`${item.id}`} className="btn btn-success" role="button">
-                                    <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                                    Add Cart
+                                        )
+                                    }
+
+                                </p>
+                                <p>
+                                    <button onClick={handleCarrito} name={`${item.id}`} className="btn btn-success" role="button">
+                                        <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                                        Add Cart
             </button>
 
-                                <span style={price}>
-                                    $ {item.precio}
-                                </span>
-                            </p>
-                            {(currentUser.isAdmin) &&
-                                <p>
-                                    <button onClick={()=>handleDelete(item.id)} 
-                                    className="btn btn-default" role="button">
-                                        <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                        &nbsp; Eliminar&nbsp;&nbsp;
-                                    </button>&nbsp;
-                                    <button onClick={()=>handleEditar(item.id)} 
-                                    className="btn btn-default" role="button">
-                                        <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                        &nbsp; Editar&nbsp;&nbsp;
-                                    </button>
+                                    <span style={price}>
+                                        $ {item.precio}
+                                    </span>
                                 </p>
-                            }
+                                {(currentUser.isAdmin) &&
+                                    <p>
+                                        <button onClick={() => handleDelete(item.id)}
+                                            className="btn btn-default" role="button">
+                                            <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            &nbsp; Eliminar&nbsp;&nbsp;
+                                    </button>&nbsp;
+                                    <button onClick={() => handleEditar(item.id)}
+                                            className="btn btn-default" role="button">
+                                            <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            &nbsp; Editar&nbsp;&nbsp;
+                                    </button>
+                                    </p>
+                                }
 
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
             </div>
             <div className="row">
                 {
