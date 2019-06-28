@@ -195,8 +195,8 @@ Router.get('/categoria/:category', (req, res) => {
 })
 
 // RUTA SOLO USO DE TEST
-Router.delete('/:id', (req, res) => {
-    Products.destroy({
+Router.patch('/:id', (req, res) => {
+    Products.update({stock: 0},{
         where: {
             id: req.params.id
         }

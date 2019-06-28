@@ -33660,7 +33660,7 @@ var fetchAllCategory = function fetchAllCategory() {
 
 var deleteProduct = function deleteProduct(id) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("/api/products/".concat(id)); //.then(productos => dispatch(allCategory(productos.data)))
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/products/".concat(id)); //.then(productos => dispatch(allCategory(productos.data)))
   };
 };
 var alertBottom = function alertBottom(tipo, mensaje) {
@@ -36152,7 +36152,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         onClick: changeStatus,
         id: item.OCId,
         name: "finalizado"
-      }, "Finzalizado")) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Finalizado")) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/details/compra/".concat(item.OCId)
       }, "VER DETALLE")));
     })))));
@@ -39719,6 +39719,8 @@ function (_React$Component) {
       Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["changeOCStatus"])(e.target.name, e.target.id).then(function () {
         return _this4.state.changeBuscar;
       });
+      alert('Se ha actualizado el estado correctamente');
+      this.props.history.push('/ventas');
     }
   }, {
     key: "render",

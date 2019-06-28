@@ -51,7 +51,7 @@ export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn, changeStatus, 
                                     <td className='casillaTitulo' style={({ textTransform: "capitalize", fontSize: 16 })}>
                                         <button onClick={changeStatus} id={item.OCId} name='procesando'>Procesando</button>
                                         <button onClick={changeStatus} id={item.OCId} name='rechazado'>Rechazado</button>
-                                        <button onClick={changeStatus} id={item.OCId} name='finalizado'>Finzalizado</button>
+                                        <button onClick={changeStatus} id={item.OCId} name='finalizado'>Finalizado</button>
                                     </td> : null}
                                     <td>
                                         <Link to={`/details/compra/${item.OCId}`}>

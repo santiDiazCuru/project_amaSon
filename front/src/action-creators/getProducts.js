@@ -105,7 +105,7 @@ export const fetchAllCategory = () => dispatch => {
 
 // ELIMINA PRODUCTOS POR ID
 export const deleteProduct = (id) => dispatch => {
-    return Axios.delete(`/api/products/${id}`)
+    return Axios.patch(`/api/products/${id}`)
         //.then(productos => dispatch(allCategory(productos.data)))
 }
 export const alertBottom= (tipo,mensaje)=>dispatch=>{

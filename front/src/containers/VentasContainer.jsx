@@ -66,6 +66,8 @@ class VentasContainer extends React.Component {
      changeStatus(e){
          changeOCStatus(e.target.name, e.target.id)
          .then(()=>this.state.changeBuscar)
+         alert('Se ha actualizado el estado correctamente')
+        this.props.history.push('/ventas')
      }
 
 
