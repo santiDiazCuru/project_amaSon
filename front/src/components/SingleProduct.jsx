@@ -33,7 +33,8 @@ const carrito = {
 
 }
 
-export default ({ p, handleChange, handleSubmit, handleCarrito, rev }) => {
+export default ({ p, handleChange, handleSubmit, handleCarrito, rev, valoracion, comentario }) => {
+    // console.log("QUE ES REV?!?!?!?!", rev)
     return (
 
         <div className="row">
@@ -66,7 +67,7 @@ export default ({ p, handleChange, handleSubmit, handleCarrito, rev }) => {
                         <tbody>{
                             rev && rev.productReviews.map(reviews => (
                                 <tr key={reviews.id}>
-                                    <td>{reviews.userId}</td>
+                                    <td>{reviews.usuarioCreador}</td>
                                     <td>{reviews.valoracion}</td>
                                     <td>{reviews.comentario}</td>
                                 </tr>
@@ -122,14 +123,14 @@ export default ({ p, handleChange, handleSubmit, handleCarrito, rev }) => {
                             <div className="form-group">
                                 <label className="col-sm-2 control-label">Valoracion:</label>
                                 <div className="col-sm-4">
-                                    <input name="valoracion" type="number" min="1" max="5" className="form-control" onChange={handleChange} />
+                                    <input name="valoracion" value={valoracion} type="number" min="1" max="5" className="form-control" onChange={handleChange} />
                                 </div>
                             </div>
 
                             <div className="form-group" width='100%' style={style_form}>
                                 <label className="col-sm-2 control-label"></label>
                                 <div className="col-sm-10">
-                                    <textarea onChange={handleChange} name="comentario" placeholder="Escriba aqui su review..." style={style_form}></textarea>
+                                    <textarea onChange={handleChange} value={comentario} name="comentario" placeholder="Escriba aqui su review..." style={style_form}></textarea>
                                 </div>
                             </div>
 

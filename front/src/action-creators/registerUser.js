@@ -15,6 +15,14 @@ const logInUser = (user) => ({
 
 export const registerUser = (newUserInfo) => dispatch => {
     return Axios.post('/api/users/register', newUserInfo)
-    .then((newUser)=>dispatch(logInUser(newUser.data)))
+    .then((newUser)=>{
+        if (newUser.data=='X'){
+            return true
+        } 
+        else {
+            dispatch(logInUser(newUser.data))
+            return false
+        }
+    })
 }
 

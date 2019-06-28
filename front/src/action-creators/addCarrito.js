@@ -29,7 +29,11 @@ export const updateLocalCarrito = (productId, newCantidad) => dispatch => {
     let localCart = JSON.parse(miStorage.getItem("carrito"))
     dispatch(setCarrito(localCart))
 }
-
+export const getLocalCarrito = () => dispatch =>{
+    let miStorage = window.localStorage;
+    let carrito = JSON.parse(miStorage.getItem('carrito'))
+    dispatch(setCarrito(carrito))
+}
 export const setLocalCarrito = (producto) => dispatch => {
     let miStorage = window.localStorage;
     let carrito = JSON.parse(miStorage.getItem('carrito'))

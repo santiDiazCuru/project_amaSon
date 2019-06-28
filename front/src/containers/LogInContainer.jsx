@@ -16,8 +16,8 @@ class LogInContainer extends React.Component {
         this.handleChanges = this.handleChanges.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    componentDidMount(){
-        if (this.state.error){
+    componentDidMount() {
+        if (this.state.error) {
             this.props.handleSubmit()
         }
     }
@@ -34,13 +34,16 @@ class LogInContainer extends React.Component {
             password: this.state.password
         }
         this.props.validateUser(user)
-        .then(()=>{
-            this.props.history.push("/admin");
-        })
-        .catch(()=>{
-            this.setState({error: true})
-        }) 
-        this.props.handleModal()
+            .then(() => {
+                if (this.props.isLoggedIn) {
+                    this.props.handleModal()
+                    this.props.history.push("/admin");
+                }
+            })
+            .catch(() => {
+                this.setState({ error: true })
+            })
+
     }
 
     //handleModal viene por props y es para cerrar el modal. handleRegister es para abrir o cerrar el registerModal
@@ -53,9 +56,8 @@ class LogInContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps,"VER")
     return {
-        
+        isLoggedIn: state.user.isLoggedIn
     }
 }
 

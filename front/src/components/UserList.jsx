@@ -22,9 +22,9 @@ export default ({ list, handleAdmin, handleDelete, idActive, isLogin, status }) 
     <tbody>{
       list && list.map(user => (
         <tr key={user.id}>
-          <td>ID {user.id}</td>
-          <td>USERNAME: {user.username}</td>
-          <td>Email: {user.email}</td>
+          <td>{user.id}</td>
+          <td>{user.username}</td>
+          <td>{user.email}</td>
           <td>
           
             <form>

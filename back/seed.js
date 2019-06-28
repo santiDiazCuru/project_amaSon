@@ -8,7 +8,6 @@ const OC = require('./models/index').OC
 
 
 
-
 Products.create({
     titulo: "aspiradoras samsung vc20cc azul",
     descripcion: "Acabar con la suciedad, el pelo de las mascotas y también con las bolsas. Las aspiradoras con bolsas no atrapan el polvo como las aspiradoras sin. Incluso las bolsas pueden tener que ser reemplazadas antes de que siquiera esté medio llena.",

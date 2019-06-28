@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { style, styleImg, TitleStyle, starStyle, price, boton } from '../estilos/styleProduct'
 import { Link } from 'react-router-dom';
 
-export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUser, handleDelete, handleEditar, isLoggedIn, handleLocalCarrito }) => {
+export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUser, handleDelete, handleEditar, isLoggedIn, handleLocalCarrito, priceMin, priceMax }) => {
 
     if (list.length !== 0) {
+        if (!priceMin && !priceMax) {
+            priceMin = 0
+            priceMax = 100000
+        }
         return <div >
             <div className="row">
-                {list && list.map(item => (
+            {list && list.filter(item => Number(item.precio) > Number(priceMin) && Number(item.precio) < Number(priceMax)).map(item => (
 
                     <div className={`col-xs-6 col-lg-${col}`}>  {/* col define el tamaño de las grillas */}
                         <div className="divProduct">
