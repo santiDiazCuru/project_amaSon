@@ -22,14 +22,17 @@ class MisComprasContainer extends Component {
     render(){
         return(
             <div>
-                <MisCompras list = { listacompras = this.props.listaCompras }/>
+                <MisCompras list = { listacompras = this.props.listaCompras }
+                currentUser = { currentUser = this.props.currentUser }
+                
+                />
             </div>
         );
     }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-        listaCompras: state.listaCompras, // FETCH CARRITO? 
+        listaCompras: state.listaCompras, 
         currentUser: state.user.currentUser,
         userOrdenes: state.compras.userOrdenes,
         isLoggedIn: state.user.isLoggedIn

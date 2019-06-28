@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ listaCompras }) => {
+export default ({ listaCompras, currentuser }) => {
     return (
         <div>
             <table className="table table-striped">
