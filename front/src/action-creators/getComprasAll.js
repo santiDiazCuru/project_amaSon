@@ -7,8 +7,8 @@ const allShopping = (shopping) => ({
     shopping
 });
 
-export const fetchAllShoping = (/*data*/) => dispatch => {
-    Axios.get('/api/miscompras')//, data)
+export const fetchAllShoping = (data) => dispatch => {
+    Axios.get('/api/miscompras', data)
     .then(shopping => dispatch(allShopping(shopping)));
 };
 

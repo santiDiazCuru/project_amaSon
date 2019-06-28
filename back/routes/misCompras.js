@@ -17,13 +17,12 @@ Router.get('/',function(req,res){
       if(!OC)return [];
       if (OC) {return Compra.findAll({where: {
           OCId: OC.id
-          
       },
   include: {
       model: Product,
       as: 'product',
       attributes: ['img1', 'titulo', 'precio']
-  }, order:[['id', 'DESC']]
+  }, order:['id', 'DESC']
   })}})
   .then((compras)=>console.log(compras, "compras"))
   .then((compras)=>res.json(compras))
