@@ -65,6 +65,20 @@ Router.get('/:id', function (req, res) {
     })
         .then((compras) => res.json(compras))
 })
+Router.get('/updatecarrito/:userId', function (req,res){
+    OC.findOne({
+        where: {
+            userId: req.params.userId,
+            estado: 'carrito'
+        }
+    })
+    .then((compras) =>{ 
+    console.log('hola so las compras: ',compras)
+    res.json(compras)})
+    // OC.update({estado: 'pendiente'}, {where:
+    //      {userId: req.params.userId,
+    //         estado: 'carrito'}})
+})
 
 Router.post('/add/:userId', function (req, res) {
     OC.findOrCreate({

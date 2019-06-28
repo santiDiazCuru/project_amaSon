@@ -27,10 +27,10 @@ Router.post('/login', function (req, res, next) {
         if (err) { return next(err) }
         if (!user) {
             req.session.message = info.message;
-            return res.status(500).send(info.message); // Devuelve el error Invalid mail o pass
+            return res.send('X') // Devuelve el error Invalid mail o pass
         }
         req.logIn(user, function (err) {
-            if (err) { res.send('Otro error') } // Ver que error es
+            if (err) { res.send('X') } // Ver que error es
             return res.json(user);// Retorna el mail del usuario si esta correcto
         });
     })(req, res, next);
