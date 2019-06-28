@@ -27932,7 +27932,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33151,9 +33151,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_AddProductContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers/AddProductContainer */ "./src/containers/AddProductContainer.jsx");
 /* harmony import */ var _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./containers/CarritoContainer */ "./src/containers/CarritoContainer.jsx");
 /* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./action-creators/logInUser */ "./src/action-creators/logInUser.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/SingleProductContainer */ "./src/containers/SingleProductContainer.jsx");
+/* harmony import */ var _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./containers/SingleProductContainer */ "./src/containers/SingleProductContainer.jsx");
+/* harmony import */ var _containers_EditProductContainer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/EditProductContainer */ "./src/containers/EditProductContainer.jsx");
+/* harmony import */ var _containers_PerfilAdmin__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./containers/PerfilAdmin */ "./src/containers/PerfilAdmin.jsx");
+/* harmony import */ var _components_Saludo__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Saludo */ "./src/components/Saludo.jsx");
+/* harmony import */ var _components_notfound__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/notfound */ "./src/components/notfound.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33178,6 +33180,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
  // import RegisterContainer from './containers/RegisterContainer'
 // import Sidebar2Container from './containers/Sidebar2Container';
+
+
+
 
 
 
@@ -33228,11 +33233,23 @@ function (_React$Component) {
         path: "/product/add",
         component: _containers_AddProductContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/product/update/:id",
+        component: _containers_EditProductContainer__WEBPACK_IMPORTED_MODULE_12__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/carrito",
         component: _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/admin",
+        component: _containers_PerfilAdmin__WEBPACK_IMPORTED_MODULE_13__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/logout",
+        component: _components_Saludo__WEBPACK_IMPORTED_MODULE_14__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/products/:id",
-        component: _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_12__["default"]
+        component: _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_11__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/",
+        component: _components_notfound__WEBPACK_IMPORTED_MODULE_15__["default"]
       })));
     }
   }]);
@@ -33258,20 +33275,45 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!*******************************************!*\
   !*** ./src/action-creators/addCarrito.js ***!
   \*******************************************/
-/*! exports provided: addItem, vaciarCarrito, addLocalCarrito, deleteLocalCarrito, vaciarLocalCarrito */
+/*! exports provided: addItem, vaciarCarrito, updateLocalCarrito, getLocalCarrito, setLocalCarrito, deleteLocalCarrito, vaciarLocalCarrito */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addItem", function() { return addItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vaciarCarrito", function() { return vaciarCarrito; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addLocalCarrito", function() { return addLocalCarrito; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateLocalCarrito", function() { return updateLocalCarrito; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLocalCarrito", function() { return getLocalCarrito; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLocalCarrito", function() { return setLocalCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteLocalCarrito", function() { return deleteLocalCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vaciarLocalCarrito", function() { return vaciarLocalCarrito; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+
  //este componente no necesita actions porque no setea ninigun estado.
 //solo hace un axios y agrega items a la lista del carrito
+
+var setCarrito = function setCarrito(productos) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_1__["SET_LOCAL_CARRITO"],
+    productos: productos
+  };
+};
+
+var emptyCarrito = function emptyCarrito() {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_1__["EMPTY_LOCAL_CARRITO"]
+  };
+};
 
 var addItem = function addItem(productId, userId) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/compras/add/".concat(userId), {
@@ -33281,26 +33323,87 @@ var addItem = function addItem(productId, userId) {
 var vaciarCarrito = function vaciarCarrito(userId) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/compras/empty/".concat(userId));
 };
-var addLocalCarrito = function addLocalCarrito(productId) {
-  var miStorage = window.localStorage;
-  var item = miStorage.getItem(productId);
+var updateLocalCarrito = function updateLocalCarrito(productId, newCantidad) {
+  return function (dispatch) {
+    var miStorage = window.localStorage;
+    var carrito = JSON.parse(miStorage.getItem('carrito'));
 
-  if (item) {
-    return 'el producto ya está en el carrito';
-  }
+    for (var i = 0; i < carrito.length; i++) {
+      if (carrito[i].id == productId) {
+        carrito[i].cantidad = newCantidad;
+      }
+    }
 
-  miStorage.setItem(productId, productId);
-  return 'OK';
+    miStorage.setItem("carrito", JSON.stringify(carrito));
+    var localCart = JSON.parse(miStorage.getItem("carrito"));
+    dispatch(setCarrito(localCart));
+  };
+};
+var getLocalCarrito = function getLocalCarrito() {
+  return function (dispatch) {
+    var miStorage = window.localStorage;
+    var carrito = JSON.parse(miStorage.getItem('carrito'));
+    dispatch(setCarrito(carrito));
+  };
+};
+var setLocalCarrito = function setLocalCarrito(producto) {
+  return function (dispatch) {
+    var miStorage = window.localStorage;
+    var carrito = JSON.parse(miStorage.getItem('carrito'));
+
+    if (carrito) {
+      producto['cantidad'] = 1;
+      var repetido = false;
+
+      for (var i = 0; i < carrito.length; i++) {
+        if (carrito[i].id == producto.id) {
+          carrito[i].cantidad = carrito[i].cantidad + 1;
+          repetido = true;
+        }
+      }
+
+      if (repetido) {
+        miStorage.setItem("carrito", JSON.stringify(carrito));
+        var localCart = JSON.parse(miStorage.getItem("carrito"));
+        dispatch(setCarrito(localCart));
+      } else {
+        var newCarrito = [].concat(_toConsumableArray(carrito), [producto]);
+        miStorage.setItem("carrito", JSON.stringify(newCarrito));
+
+        var _localCart = JSON.parse(miStorage.getItem("carrito"));
+
+        dispatch(setCarrito(_localCart));
+      }
+    } else {
+      producto['cantidad'] = 1;
+      miStorage.setItem('carrito', JSON.stringify([producto]));
+      dispatch(setCarrito([producto]));
+    }
+  };
 };
 var deleteLocalCarrito = function deleteLocalCarrito(productId) {
-  var miStorage = window.localStorage;
-  miStorage.removeItem(productId);
-  return 'producto eliminado';
+  return function (dispatch) {
+    console.log('entra al delete');
+    var miStorage = window.localStorage;
+    var newCarrito = [];
+    var carrito = JSON.parse(miStorage.getItem('carrito'));
+    console.log(carrito);
+
+    for (var i = 0; i < carrito.length; i++) {
+      if (carrito[i].id != productId) newCarrito.push(carrito[i]);
+    }
+
+    console.log(newCarrito);
+    miStorage.setItem("carrito", JSON.stringify(newCarrito));
+    var localCart = JSON.parse(miStorage.getItem("carrito"));
+    dispatch(setCarrito(localCart));
+  };
 };
 var vaciarLocalCarrito = function vaciarLocalCarrito() {
-  var miStorage = window.localStorage;
-  miStorage.clear();
-  return 'OK';
+  return function (dispatch) {
+    window.localStorage.clear();
+    dispatch(emptyCarrito());
+  };
 };
 
 /***/ }),
@@ -33309,12 +33412,13 @@ var vaciarLocalCarrito = function vaciarLocalCarrito() {
 /*!*******************************************!*\
   !*** ./src/action-creators/getCompras.js ***!
   \*******************************************/
-/*! exports provided: getOrdenes, getCarrito, changeStatus, updateCantidad, deleteCompra */
+/*! exports provided: getOrdenes, getOrdenCarrito, getCarrito, changeStatus, updateCantidad, deleteCompra */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOrdenes", function() { return getOrdenes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOrdenCarrito", function() { return getOrdenCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCarrito", function() { return getCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeStatus", function() { return changeStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCantidad", function() { return updateCantidad; });
@@ -33339,10 +33443,24 @@ var userCarrito = function userCarrito(carrito) {
   };
 };
 
+var carritoOrden = function carritoOrden(orden) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["ORDEN_CARRITO"],
+    orden: orden
+  };
+};
+
 var getOrdenes = function getOrdenes(userId) {
   return function (dispatch) {
     return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/compras/".concat(userId)).then(function (compras) {
       return dispatch(userOrdenes(compras.data));
+    });
+  };
+};
+var getOrdenCarrito = function getOrdenCarrito(userId) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/compras/updatecarrito/".concat(userId)).then(function (compras) {
+      return dispatch(carritoOrden(compras.data));
     });
   };
 };
@@ -33374,7 +33492,7 @@ var deleteCompra = function deleteCompra(compraId) {
 /*!********************************************!*\
   !*** ./src/action-creators/getProducts.js ***!
   \********************************************/
-/*! exports provided: fetchProducts, fetchAllProductsHome, fetchAllProducts, addNewProduct, fetchAllCategory, deleteProduct, alertBottom */
+/*! exports provided: fetchProducts, fetchAllProductsHome, fetchAllProducts, addNewProduct, fetchAllCategory, deleteProduct, alertBottom, editProduct, fetchOneProduct */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33386,6 +33504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllCategory", function() { return fetchAllCategory; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProduct", function() { return deleteProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "alertBottom", function() { return alertBottom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "editProduct", function() { return editProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchOneProduct", function() { return fetchOneProduct; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
@@ -33528,6 +33648,16 @@ var alertBottom = function alertBottom(tipo, mensaje) {
     return dispatch(setAlerta(tipo, mensaje));
   };
 };
+var editProduct = function editProduct(id, body) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/products/".concat(id), body);
+  };
+};
+var fetchOneProduct = function fetchOneProduct(id) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/data/".concat(id));
+  };
+};
 
 /***/ }),
 
@@ -33560,6 +33690,7 @@ var singleProduct = function singleProduct(product) {
 var fetchSingleProduct = function fetchSingleProduct(id) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/singleView/".concat(id, "/")).then(function (product) {
+      console.log("ACASIIIIII");
       dispatch(singleProduct(product.data));
     });
   };
@@ -33571,12 +33702,14 @@ var fetchSingleProduct = function fetchSingleProduct(id) {
 /*!*****************************************!*\
   !*** ./src/action-creators/getUsers.js ***!
   \*****************************************/
-/*! exports provided: fetchAllUsers */
+/*! exports provided: fetchAllUsers, deleteUser, changeAdminStatus */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeAdminStatus", function() { return changeAdminStatus; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
@@ -33590,7 +33723,18 @@ var allUsers = function allUsers(users) {
     type: _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_USERS"],
     users: users
   };
-}; // BUSCA TODOS LOS USUARIOS
+};
+
+var changeStatus = function changeStatus(user) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["CHANGE_ADMIN_STATUS"],
+    user: user
+  };
+}; // const userToDelete = (user) => ({
+//     type: DELETE_USER,
+//     user
+// })
+// BUSCA TODOS LOS USUARIOS
 
 
 var fetchAllUsers = function fetchAllUsers() {
@@ -33598,6 +33742,25 @@ var fetchAllUsers = function fetchAllUsers() {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("api/users").then(function (users) {
       dispatch(allUsers(users.data));
     });
+  };
+}; //ELIMINA A UN USUARIO
+
+var deleteUser = function deleteUser(id) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/users/delete/".concat(id)).then(function (user) {
+      dispatch(fetchAllUsers());
+    });
+  };
+}; //CAMBIA ESTADO DE ADMIN
+
+var changeAdminStatus = function changeAdminStatus(id, value) {
+  return function (dispatch) {
+    console.log(id, value);
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/users/changeAdminStatus/".concat(id), {
+      isAdmin: value
+    }); // .then(user => {
+    //     dispatch(changeStatus(user))
+    // })
   };
 };
 
@@ -33647,7 +33810,7 @@ var logOutUser = function logOutUser() {
 var validateUser = function validateUser(userData) {
   return function (dispatch) {
     return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/users/login', userData).then(function (user) {
-      return dispatch(logInUser(user.data));
+      user.data === 'X' ? alert('El usuario o la contraseña son incorrectos') : dispatch(logInUser(user.data));
     });
   };
 };
@@ -33710,6 +33873,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _logInUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logInUser */ "./src/action-creators/logInUser.js");
+
 
  // la funcion de registerUser hace solo un axios con un post para crear un nuevo user en la DB.
 // recibe un argumento(newUserInfo) que es un objeto que viene seteado ya con la data del nuevo usuario 
@@ -33759,12 +33924,17 @@ var getReviews = function getReviews(reviews) {
 
 
 var postReviews = function postReviews(body) {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/reviews', body);
+  return function (dispatch) {
+    // console.log("LLEGO O NO ACA??!!??!", body)
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/reviews', body).then(function (reviews) {
+      console.log("SOY BODYYY", body);
+    });
+  };
 }; //BUSCA LAS REVIEWS DE UN PRODUCTO
 
 var fetchReviews = function fetchReviews(productId) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/reviews/".concat(productId, "/singleReview")).then(function (reviews) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/reviews/".concat(productId, "/singleReview/")).then(function (reviews) {
       dispatch(getReviews(reviews.data));
     });
   };
@@ -33783,24 +33953,45 @@ var fetchReviews = function fetchReviews(productId) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var show = _ref.show,
       tipo = _ref.tipo,
       mensaje = _ref.mensaje,
       btnCerrar = _ref.btnCerrar;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "moodal"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      position: 'fixed',
-      bottom: 0,
-      right: 5
+      position: "fixed",
+      top: 70,
+      left: 0,
+      width: "100%",
+      zIndex: 99999,
+      padding: "5% 25% 52%",
+      backgroundColor: "rgba(137, 137, 137, 0.37)"
     }
-  }, show && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("buttom", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-wrapper -".concat(tipo),
+    style: {
+      height: "31%",
+      fontSize: 20
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Atencion!"), mensaje, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), mensaje == 'Se ha agregado el producto al carrito..' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Si deseas finalizar o ver el detalle de tu carrito, por favor ingresa aqui", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/carrito",
+    className: "btn btn-md btn-default"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-shopping-cart",
+    "aria-hidden": "true"
+  }), " Carrito")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://cdn.pixabay.com/photo/2017/03/29/04/09/shopping-icon-2184065_960_720.png",
+    width: "90px"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("buttom", {
     className: "btn btn-default",
     onClick: btnCerrar
-  }, "X - Cerrar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "alert alert-".concat(tipo)
-  }, mensaje))));
+  }, "X - Cerrar"))))));
 });
 
 /***/ }),
@@ -33826,12 +34017,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       handleChange = _ref.handleChange,
       handleDelete = _ref.handleDelete,
       handleClick = _ref.handleClick,
-      handleEmpty = _ref.handleEmpty;
+      handleEmpty = _ref.handleEmpty,
+      isLoggedIn = _ref.isLoggedIn,
+      localCarrito = _ref.localCarrito;
 
-  if (userCarrito.length !== 0) {
+  if (isLoggedIn && userCarrito.length !== 0) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Mi Carrito:\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: handleClick,
+      className: "btn btn-success"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "glyphicon glyphicon-credit-card",
+      "aria-hidden": "true"
+    }), " FINALIZAR COMPRA"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: handleEmpty,
+      className: "btn btn-default"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "glyphicon glyphicon-trash",
+      "aria-hidden": "true"
+    }), " VACIAR CARRITO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "panel panel-default"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
       className: "table table-striped"
@@ -33839,15 +34044,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         key: item.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        style: {
+          width: 100
+        },
         className: "casillaImg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img img-thumbnail",
-        width: "100px",
-        height: "100px",
+        width: "60px",
+        height: "60px",
         src: "".concat(item.product.img1)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "casillaTitulo"
+        className: "casillaTitulo",
+        style: {
+          textTransform: "capitalize",
+          fontSize: 16
+        }
       }, item.product.titulo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", _defineProperty({
+        style: {
+          width: 100
+        },
         className: "casillaCantidad"
       }, "className", "cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onClick: handleChange,
@@ -33855,32 +34070,143 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         defaultValue: "".concat(item.cantidad),
         type: "number",
         className: "cantidad",
-        min: "1"
+        min: "1",
+        style: {
+          minWidth: "100%",
+          height: 40,
+          margin: 0,
+          fontSize: 16
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        style: {
+          width: 100,
+          fontSize: 16
+        },
         className: "casillaImporte"
-      }, "$", item.cantidad * item.product.precio), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "$", conversion(item.cantidad * item.product.precio)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        style: {
+          width: 100
+        },
         className: "casillaEliminar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         style: {
-          cursor: 'pointer'
+          cursor: 'pointer',
+          fontSize: 23
         },
         id: "".concat(item.id),
         onClick: handleDelete,
         className: "glyphicon glyphicon-trash"
       })));
-    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+      style: {
+        height: 20,
+        backgroundColor: "#783838",
+        padding: 10,
+        borderRadius: 5,
+        color: "white"
+      }
+    }, "SUMA TOTAL: $ ", conversion(userCarrito.reduce(function (sum, item) {
+      return sum + item.cantidad * item.product.precio;
+    }, 0))));
+  } else if (!isLoggedIn && localCarrito.length !== 0) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "row"
+    }, "Mi Carrito:\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       onClick: handleClick,
-      className: "btn btn-default"
-    }, "Comprar..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "btn btn-success"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "glyphicon glyphicon-credit-card",
+      "aria-hidden": "true"
+    }), " FINALIZAR COMPRA"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       onClick: handleEmpty,
       className: "btn btn-default"
-    }, "Vaciar Carrito"));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "glyphicon glyphicon-trash",
+      "aria-hidden": "true"
+    }), " VACIAR CARRITO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "panel panel-default"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "table table-striped"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quitar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, localCarrito && localCarrito.map(function (item) {
+      var _React$createElement2;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        key: item.id
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "casillaImg",
+        style: {
+          width: 100
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img img-thumbnail",
+        width: "60px",
+        height: "60px",
+        src: "".concat(item.img1)
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "casillaTitulo",
+        style: {
+          textTransform: "capitalize",
+          fontSize: 16
+        }
+      }, item.titulo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", (_React$createElement2 = {
+        className: "casillaCantidad"
+      }, _defineProperty(_React$createElement2, "className", "cantidad"), _defineProperty(_React$createElement2, "style", {
+        width: 100
+      }), _React$createElement2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onClick: handleChange,
+        name: "".concat(item.id),
+        defaultValue: item.cantidad,
+        type: "number",
+        className: "cantidad",
+        min: "1",
+        style: {
+          minWidth: "100%",
+          height: 40,
+          margin: 0,
+          fontSize: 16
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        style: {
+          width: 100,
+          fontSize: 16
+        },
+        className: "casillaImporte"
+      }, conversion(item.precio * item.cantidad)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        style: {
+          width: 100
+        },
+        className: "casillaEliminar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        style: {
+          cursor: 'pointer',
+          fontSize: 23
+        },
+        id: "".concat(item.id),
+        onClick: handleDelete,
+        className: "glyphicon glyphicon-trash"
+      })));
+    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+      style: {
+        height: 20,
+        backgroundColor: "#783838",
+        padding: 10,
+        borderRadius: 5,
+        color: "white"
+      }
+    }, "SUMA TOTAL: $ ", conversion(localCarrito.reduce(function (sum, item) {
+      return sum + item.precio * item.cantidad;
+    }, 0))));
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No hay articulos en el carrito...")));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No hay articulos en el carrito...")));
   }
-}); // [
+});
+
+function conversion(a) {
+  a = a.toString();
+  return a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim().replace(/\s/g, ',');
+} // [
 //   {
 //   "id": 13,
 //   "cantidad": 3,
@@ -33896,6 +34222,72 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //   }
 //   },
 //]
+
+/***/ }),
+
+/***/ "./src/components/CompraModal.jsx":
+/*!****************************************!*\
+  !*** ./src/components/CompraModal.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var comprado = _ref.comprado,
+      handleModal = _ref.handleModal,
+      handleCheckout = _ref.handleCheckout,
+      handleCompra = _ref.handleCompra,
+      OC = _ref.OC,
+      total = _ref.total;
+
+  if (!comprado) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "modal-wrapper"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "table table-striped"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Orden de Compra"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      style: {
+        color: 'black'
+      },
+      className: "casillaImg"
+    }, OC.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      style: {
+        color: 'black'
+      },
+      className: "casillaTitulo"
+    }, "$", conversion(total))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "submit",
+      onClick: handleModal,
+      className: "btn btn-default"
+    }, "Cancelar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      onClick: handleCompra,
+      id: "registerSubmit",
+      className: "btn btn-default"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Comprar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "modal-wrapper"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Su compra est\xE1 siendo procesada... si dentro de las proximas 24hs no recibe una notificaci\xF3n comun\xEDquese al XXXX"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: handleCheckout,
+      type: "submit",
+      className: "btn btn-default"
+    }, "OK!")));
+  }
+});
+
+function conversion(a) {
+  a = a.toString();
+  return a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim().replace(/\s/g, ',');
+}
 
 /***/ }),
 
@@ -34291,6 +34683,230 @@ var random = Math.floor(Math.random() * 101);
 
 /***/ }),
 
+/***/ "./src/components/FormularioEditar.jsx":
+/*!*********************************************!*\
+  !*** ./src/components/FormularioEditar.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var random = Math.floor(Math.random() * 101);
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var handleSubmit = _ref.handleSubmit,
+      handleTitle = _ref.handleTitle,
+      handleDescription = _ref.handleDescription,
+      handlePrice = _ref.handlePrice,
+      handleStock = _ref.handleStock,
+      handleImg1 = _ref.handleImg1,
+      handleImg2 = _ref.handleImg2,
+      handleImg3 = _ref.handleImg3,
+      handleCategory = _ref.handleCategory,
+      state = _ref.state,
+      handleDeleteActivas = _ref.handleDeleteActivas,
+      handleCreateInput = _ref.handleCreateInput,
+      handleAdd = _ref.handleAdd,
+      handleDelete = _ref.handleDelete,
+      listCategory = _ref.listCategory;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-2 main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit
+  }, "Formulario:", state.response === 'ok' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "alert alert-success"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Atenci\xF3n!"), " Los productos se han creado de forma exitosa..")), state.response === 'error' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "alert alert-danger"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Lo siento!"), " Hubo un error al procesar la creaci\xF3n..")), state.response === 'categoria' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "alert alert-danger"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Lo siento!"), " Debes colocar al menos una categoria..")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-addon"
+  }, "Titulo:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    required: true,
+    value: state.titulo,
+    onChange: handleTitle,
+    className: "form-control",
+    name: "titulo",
+    placeholder: "Titulo del producto.."
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-addon"
+  }, "Descripci\xF3n:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    required: true,
+    value: state.descripcion,
+    onChange: handleDescription,
+    className: "form-control",
+    name: "descripcion",
+    placeholder: "Descripci\xF3n del producto.."
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-addon"
+  }, "Precio:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    required: true,
+    value: state.precio,
+    onChange: handlePrice,
+    className: "form-control",
+    min: "0",
+    name: "precio",
+    placeholder: "Precio del producto.."
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-addon"
+  }, "Stock:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    required: true,
+    value: state.stock,
+    onChange: handleStock,
+    className: "form-control",
+    min: "0",
+    name: "stock",
+    placeholder: "Stock del producto.."
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-md",
+    style: {
+      marginTop: 5
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-addon"
+  }, "Imagen 1:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    required: true,
+    value: state.img1,
+    onChange: handleImg1,
+    className: "form-control",
+    name: "img1",
+    placeholder: "Imagen Principal"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-addon"
+  }, "Imagen 2:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    value: state.img2,
+    onChange: handleImg2,
+    className: "form-control",
+    name: "img2",
+    placeholder: "Imagen 2 (Opcional)"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-addon"
+  }, "Imagen 3:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    onChange: handleImg3,
+    className: "form-control",
+    value: state.img3,
+    name: "img3",
+    placeholder: "Imagen 3 (Opcional)"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      marginTop: 18
+    }
+  }, "Categoria actuales:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    style: {
+      marginTop: 8
+    }
+  }, state.categoryGuardado && state.categoryGuardado.map(function (data) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: "cat_".concat(data.categoria),
+      style: {
+        listStyle: "none",
+        textTransform: "capitalize"
+      }
+    }, data.categoria, " \xA0\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      onClick: function onClick() {
+        return handleDeleteActivas(data.category);
+      },
+      style: {
+        color: 'red',
+        cursor: 'pointer'
+      },
+      className: "glyphicon glyphicon-remove-circle",
+      "aria-hidden": "true"
+    }, "\xA0Eliminar"));
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      marginTop: 18
+    }
+  }, "Selecciona una Categoria:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      height: 160,
+      overflow: "auto"
+    }
+  }, listCategory && listCategory.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      key: "key_".concat(random, "_").concat(state.response == 'ok' ? 'ok' : '', "_").concat(item.categoria),
+      style: {
+        textTransform: "capitalize"
+      },
+      className: "btn btn-block btn-default"
+    }, item.categoria, " \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      onChange: handleCategory,
+      value: item.categoria,
+      type: "checkbox",
+      defaultChecked: false,
+      name: "categoria"
+    }));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-md",
+    style: {
+      marginTop: 8
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleCreateInput,
+    value: state.newInputCategory,
+    type: "text",
+    className: "form-control",
+    placeholder: "Nueva categoria.."
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-btn"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "btn btn-info",
+    onClick: function onClick() {
+      return handleAdd();
+    }
+  }, "Modificar Categoria"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    style: {
+      marginTop: 8
+    }
+  }, state.newCategory && state.newCategory.map(function (category) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: "cat_".concat(category),
+      style: {
+        listStyle: "none",
+        textTransform: "capitalize"
+      }
+    }, category, " \xA0\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      onClick: function onClick() {
+        return handleDelete(category);
+      },
+      style: {
+        color: 'red',
+        cursor: 'pointer'
+      },
+      className: "glyphicon glyphicon-remove-circle",
+      "aria-hidden": "true"
+    }, "\xA0Eliminar"));
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-success btn-block",
+    type: "submit"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "glyphicon glyphicon-ok",
+    "aria-hidden": "true"
+  }), " Modificar Producto"))));
+});
+
+/***/ }),
+
 /***/ "./src/components/Home.jsx":
 /*!*********************************!*\
   !*** ./src/components/Home.jsx ***!
@@ -34357,13 +34973,7 @@ var categoryName = {
     alt: "First slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-caption"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Example headline."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Note: If you're viewing this page via a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, "file://"), " URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-lg btn-primary",
-    href: "#",
-    role: "button"
-  }, "Sign up today"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "second-slide",
@@ -34371,13 +34981,7 @@ var categoryName = {
     alt: "Second slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-caption"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Another example headline."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-lg btn-primary",
-    href: "#",
-    role: "button"
-  }, "Learn more"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "third-slide",
@@ -34385,13 +34989,7 @@ var categoryName = {
     alt: "Third slide"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-caption"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "One more for good measure."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-lg btn-primary",
-    href: "#",
-    role: "button"
-  }, "Browse gallery")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "left carousel-control",
     href: "#myCarousel",
     role: "button",
@@ -34596,7 +35194,10 @@ __webpack_require__.r(__webpack_exports__);
       handleCarrito = _ref.handleCarrito,
       inputValue = _ref.inputValue;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-    className: "navbar navbar-default navbar-fixed-top"
+    className: "navbar navbar-default navbar-fixed-top",
+    style: currentUser.isAdmin ? {
+      backgroundColor: "#f9ffbf"
+    } : {}
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-fluid"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -34649,6 +35250,18 @@ __webpack_require__.r(__webpack_exports__);
     className: "glyphicon glyphicon-search",
     "aria-hidden": "true"
   })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "nav navbar-nav navbar-left"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "active",
+    id: "login"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "navbar-form navbar-left",
+    style: _estilos_styleNav__WEBPACK_IMPORTED_MODULE_2__["formButton"]
+  }, currentUser.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "http://www.plataformaunimgro.com.mx/img/admin.png",
+    height: "35px",
+    width: "50px"
+  }), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "PERFIL ADMIN")) : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "nav navbar-nav navbar-right"
   }, isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "dropdown"
@@ -34659,18 +35272,18 @@ __webpack_require__.r(__webpack_exports__);
     role: "button",
     "aria-haspopup": "true",
     "aria-expanded": "false"
-  }, currentUser.username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Bienvenido! ", currentUser.username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "caret"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "dropdown-menu"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "#"
+    to: "/compras"
   }, "Mis Compras")), currentUser.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/product/add"
   }, "Crear Productos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "#"
+    to: "/users"
   }, "Lista de Usuarios")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "#"
+    to: "/ventas"
   }, "Mis ventas"))) : '', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     role: "separator",
     className: "divider"
@@ -34763,6 +35376,149 @@ __webpack_require__.r(__webpack_exports__);
     id: "btnRegister",
     className: "btn btn-default"
   }, "Registrarme"))));
+});
+
+/***/ }),
+
+/***/ "./src/components/Saludo.jsx":
+/*!***********************************!*\
+  !*** ./src/components/Saludo.jsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+var style = {
+  backgroundColor: "#fff",
+  border: "4px solid #E2E2E2",
+  transition: "all 0.15s linear",
+  maxHeight: 200,
+  minHeight: 200,
+  marginTop: -40
+};
+var sombraRow = {
+  boxShadow: "rgb(158, 158, 158) -2px -1px 25px 1px"
+};
+var imgStyle = {
+  objectFit: 'contain',
+  maxHeight: 120,
+  minHeight: 120,
+  maxWidth: "100%"
+};
+var categoryName = {
+  color: "#333",
+  fontSize: 16,
+  lineHeight: "initial",
+  padding: "2px 0",
+  textDecoration: "none"
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container-fluid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-3 col-md-2 sidebar",
+    style: {
+      zIndex: 8
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    width: "100%",
+    src: "https://www.elprogreso.es/media/elprogreso/images/2018/03/23/2018032307383441049.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    width: "100%",
+    src: "https://www.foromarketing.com/wp-content/uploads/2017/11/Simplificar-el-proceso-de-compra-reto-para-el-ecommerce.png",
+    alt: ""
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-5 col-sm-offset-3 col-md-6 col-md-offset-2 main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Muchas Gracias por su visita!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\xA0\xA0AmaSon.. TU mejor amigo."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://1.bp.blogspot.com/-sDDcUxP4UmU/VwpVnWsGucI/AAAAAAAABmw/toEdr8Os0msFRmk8VyA68_vHmTnO9IoQw/s1600/Gracias1.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Recorda todos nuestros beneficios:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row",
+    style: sombraRow
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-4",
+    style: style
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "grid10-item action-box box-sm",
+    "gb-analytics": "true",
+    "data-home-name": "20190621_00a00_volvieronlascuotas",
+    "data-component-type": "multi_grid_three_categories",
+    "data-element-title": "Hornos y Cocina",
+    "data-home-idx": "4",
+    "data-element-position": "",
+    "data-device": "desktop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    style: imgStyle,
+    className: "block",
+    src: "https://mottaplantillas.com/wp-content/uploads/2015/11/paypal.png"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-text category-info card-text--fixed-bottom"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    style: categoryName
+  }, "M\xE9todos de Pago"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "category-discount"
+  }, "M\xE1s detalles \xBB"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-4",
+    style: style
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "grid10-item action-box box-sm",
+    "gb-analytics": "true",
+    "data-home-name": "20190621_00a00_volvieronlascuotas",
+    "data-component-type": "multi_grid_three_categories",
+    "data-element-title": "Hornos y Cocina",
+    "data-home-idx": "4",
+    "data-element-position": "",
+    "data-device": "desktop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    style: imgStyle,
+    className: "block",
+    src: "https://habitarvirtual.com.ar/pub/media/wysiwyg/envios-a-todos-el-pais.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-text category-info card-text--fixed-bottom"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    style: categoryName
+  }, "Envios a domicilio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "category-discount"
+  }, "M\xE1s detalles \xBB"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-4",
+    style: style
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "grid10-item action-box box-sm",
+    "gb-analytics": "true",
+    "data-home-name": "20190621_00a00_volvieronlascuotas",
+    "data-component-type": "multi_grid_three_categories",
+    "data-element-title": "Hornos y Cocina",
+    "data-home-idx": "4",
+    "data-element-position": "",
+    "data-device": "desktop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    style: imgStyle,
+    className: "block",
+    src: "https://www.calidda.com.pe/atencion-al-cliente/Calidda/images/Servicios---Atencion-al-Cliente.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-text category-info card-text--fixed-bottom"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    style: categoryName
+  }, "Atencion al Cliente 24hs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "category-discount"
+  }, "M\xE1s detalles \xBB")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))));
 });
 
 /***/ }),
@@ -34976,7 +35732,10 @@ var carrito = {
       handleChange = _ref.handleChange,
       handleSubmit = _ref.handleSubmit,
       handleCarrito = _ref.handleCarrito,
-      rev = _ref.rev;
+      rev = _ref.rev,
+      valoracion = _ref.valoracion,
+      comentario = _ref.comentario;
+  // console.log("QUE ES REV?!?!?!?!", rev)
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -35021,7 +35780,7 @@ var carrito = {
   }), "Add Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Valoracion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Review"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, rev && rev.productReviews.map(function (reviews) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: reviews.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.userId), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.valoracion), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.comentario));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.usuarioCreador), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.valoracion), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.comentario));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-8"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, p.productito.titulo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Descripcion del producto:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -35067,6 +35826,7 @@ var carrito = {
     className: "col-sm-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "valoracion",
+    value: valoracion,
     type: "number",
     min: "1",
     max: "5",
@@ -35082,6 +35842,7 @@ var carrito = {
     className: "col-sm-10"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     onChange: handleChange,
+    value: comentario,
     name: "comentario",
     placeholder: "Escriba aqui su review...",
     style: style_form
@@ -35111,13 +35872,60 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var list = _ref.list;
+  var list = _ref.list,
+      handleAdmin = _ref.handleAdmin,
+      handleDelete = _ref.handleDelete,
+      idActive = _ref.idActive,
+      isLogin = _ref.isLogin,
+      status = _ref.status;
+
+  if (!isLogin && !status.hasOwnProperty('isAdmin')) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Lo siento.. no tienes permiso de administrador o no estas logueado..");
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "table table-striped"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "IsAdmin?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, list && list.map(function (user) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "IsAdmin?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    colSpan: "2"
+  }, "Borrar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, list && list.map(function (user) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: user.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.isAdmin ? 'Admin' : 'No admin'));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, "NO\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      className: "switch"
+    }, user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      key: Math.random(),
+      disabled: idActive == user.id ? true : false,
+      id: user.id,
+      onChange: handleAdmin,
+      checked: true,
+      name: user.id,
+      type: "checkbox"
+    }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      key: Math.random(),
+      id: user.id,
+      name: user.id,
+      type: "checkbox",
+      onChange: handleAdmin
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "slider round"
+    })), "\xA0SI")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Borrar Usuario"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "casillaEliminar"
+    }, idActive !== user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: {
+        cursor: 'pointer',
+        fontSize: 23
+      },
+      id: "".concat(user.id),
+      onClick: handleDelete,
+      className: "glyphicon glyphicon-trash"
+    }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: {
+        cursor: 'no-drop',
+        fontSize: 23
+      },
+      id: "".concat(user.id),
+      className: "glyphicon glyphicon-remove-circle"
+    })));
   })));
 });
 {
@@ -35147,6 +35955,47 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/notfound.jsx":
+/*!*************************************!*\
+  !*** ./src/components/notfound.jsx ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container-fluid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-3 col-md-2 sidebar",
+    style: {
+      zIndex: 8
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    width: "100%",
+    src: "https://www.elprogreso.es/media/elprogreso/images/2018/03/23/2018032307383441049.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    width: "100%",
+    src: "https://www.foromarketing.com/wp-content/uploads/2017/11/Simplificar-el-proceso-de-compra-reto-para-el-ecommerce.png",
+    alt: ""
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-9 col-sm-offset-9 col-md-9 col-md-offset-2 main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    width: "100%",
+    src: "https://www.boostability.com/wp-content/uploads/2012/10/BOOST_BLOG_IMAGE_RB_SET_10_404_PAGE_1200x628px_v1_3.jpg",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null))));
+});
+
+/***/ }),
+
 /***/ "./src/components/product.jsx":
 /*!************************************!*\
   !*** ./src/components/product.jsx ***!
@@ -35173,6 +36022,8 @@ __webpack_require__.r(__webpack_exports__);
       currentUser = _ref.currentUser,
       handleDelete = _ref.handleDelete,
       handleEditar = _ref.handleEditar,
+      isLoggedIn = _ref.isLoggedIn,
+      handleLocalCarrito = _ref.handleLocalCarrito,
       priceMin = _ref.priceMin,
       priceMax = _ref.priceMax;
 
@@ -35227,9 +36078,17 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         return rows;
-      }((item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? 5 - parseInt(item.valoracion) - 1 : 5 - parseInt(item.valoracion))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }((item.valoracion - parseInt(item.valoracion)) * 10 >= 5 ? 5 - parseInt(item.valoracion) - 1 : 5 - parseInt(item.valoracion))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: handleCarrito,
-        name: "".concat(item.id),
+        name: item.id,
+        className: "btn btn-success",
+        role: "button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "glyphicon glyphicon-shopping-cart",
+        "aria-hidden": "true"
+      }), "Add Cart") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: handleLocalCarrito,
+        name: item.id,
         className: "btn btn-success",
         role: "button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -35246,12 +36105,9 @@ __webpack_require__.r(__webpack_exports__);
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "glyphicon glyphicon-trash",
         "aria-hidden": "true"
-      }), "\xA0 Eliminar\xA0\xA0"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return handleEditar(item.id);
-        },
-        className: "btn btn-default",
-        role: "button"
+      }), "\xA0 Eliminar\xA0\xA0"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "product/update/".concat(item.id),
+        className: "btn btn-default"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "glyphicon glyphicon-pencil",
         "aria-hidden": "true"
@@ -35278,7 +36134,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT, PRECIO_FILTRO */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT, PRECIO_FILTRO, SET_LOCAL_CARRITO, EMPTY_LOCAL_CARRITO, DELETE_USER, CHANGE_ADMIN_STATUS, ORDEN_CARRITO */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35298,6 +36154,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_REVIEWS", function() { return FETCH_REVIEWS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_ALERT", function() { return SET_ALERT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PRECIO_FILTRO", function() { return PRECIO_FILTRO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_LOCAL_CARRITO", function() { return SET_LOCAL_CARRITO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EMPTY_LOCAL_CARRITO", function() { return EMPTY_LOCAL_CARRITO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_USER", function() { return DELETE_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_ADMIN_STATUS", function() { return CHANGE_ADMIN_STATUS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ORDEN_CARRITO", function() { return ORDEN_CARRITO; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 var FETCH_ALL_PRODUCTS_CATEGORY = 'FETCH_ALL_PRODUCTS_CATEGORY';
@@ -35313,6 +36174,11 @@ var FETCH_CARRITO = 'FETCH_CARRITO';
 var FETCH_REVIEWS = 'FETCH_REVIEWS';
 var SET_ALERT = 'SET_ALERT';
 var PRECIO_FILTRO = 'PRECIO_FILTRO';
+var SET_LOCAL_CARRITO = 'SET_LOCAL_CARRITO';
+var EMPTY_LOCAL_CARRITO = 'EMPTY_LOCAL_CARRITO';
+var DELETE_USER = 'DELETE_USER';
+var CHANGE_ADMIN_STATUS = 'CHANGE_ADMIN_STATUS';
+var ORDEN_CARRITO = 'ORDEN_CARRITO';
 
 /***/ }),
 
@@ -35686,10 +36552,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CarritoComponent */ "./src/components/CarritoComponent.jsx");
-/* harmony import */ var _action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getCompras */ "./src/action-creators/getCompras.js");
-/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
-/* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
+/* harmony import */ var _CompraContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CompraContainer */ "./src/containers/CompraContainer.jsx");
+/* harmony import */ var _components_CarritoComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/CarritoComponent */ "./src/components/CarritoComponent.jsx");
+/* harmony import */ var _action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/getCompras */ "./src/action-creators/getCompras.js");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35715,6 +36582,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var CarritoContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -35728,77 +36596,161 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CarritoContainer).call(this));
     _this.state = {
       carrito: [],
-      eliminados: []
+      eliminados: [],
+      showModal: false,
+      total: 0,
+      OC: {}
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.handleEmpty = _this.handleEmpty.bind(_assertThisInitialized(_this));
+    _this.handleModal = _this.handleModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CarritoContainer, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      this.props.validateSession().then(function () {
-        return _this2.props.getCarrito(_this2.props.currentUser.id);
-      });
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.props.getCarrito(this.props.currentUser.id);
+      this.props.getLocalCarrito(); // this.props.validateSession()
+      //     .then(() => this.props.getCarrito(this.props.currentUser.id))
+      // this.props.getOrdenCarrito(this.props.currentUser.id)
     }
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      var _this3 = this;
-
-      console.log('emtra al handler');
+      var _this2 = this;
 
       if (this.props.isLoggedIn) {
-        e.preventDefault();
-        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["changeStatus"])('finalizada', this.props.currentUser.id).then(function () {
-          return _this3.props.getCarrito(_this3.props.currentUser.id);
+        e.preventDefault(); // changeStatus('carrito', this.props.currentUser.id)
+        //     .then(() => this.props.getCarrito(this.props.currentUser.id))
+
+        this.props.getOrdenCarrito(this.props.currentUser.id).then(function () {
+          return _this2.handleModal();
         });
       } else alert('Debes estar loggeado para realizar una compra');
     }
   }, {
+    key: "handleModal",
+    value: function handleModal(e) {
+      if (e) e.preventDefault();
+      !this.state.showModal ? this.setState({
+        showModal: true
+      }) : this.setState({
+        showModal: false
+      });
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(e) {
-      var _this4 = this;
+      var _this3 = this;
 
-      e.preventDefault();
-      Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["updateCantidad"])(e.target.name, e.target.value, this.props.currentUser.id).then(function () {
-        return _this4.props.getCarrito(_this4.props.currentUser.id);
-      });
+      if (this.props.isLoggedIn) {
+        e.preventDefault();
+        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["updateCantidad"])(e.target.name, e.target.value, this.props.currentUser.id).then(function () {
+          return _this3.props.getCarrito(_this3.props.currentUser.id);
+        });
+      } else {
+        e.preventDefault();
+        this.props.updateLocalCarrito(e.target.name, e.target.value);
+      }
     }
   }, {
     key: "handleDelete",
     value: function handleDelete(e) {
-      var _this5 = this;
+      var _this4 = this;
 
-      Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["deleteCompra"])(e.target.id).then(function () {
-        return _this5.props.getCarrito(_this5.props.currentUser.id);
-      });
+      if (this.props.isLoggedIn) {
+        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["deleteCompra"])(e.target.id).then(function () {
+          return _this4.props.getCarrito(_this4.props.currentUser.id);
+        });
+      } else {
+        console.log(e.target.id);
+        this.props.deleteLocalCarrito(e.target.id);
+      }
     }
   }, {
     key: "handleEmpty",
     value: function handleEmpty(e) {
-      var _this6 = this;
+      var _this5 = this;
 
-      e.preventDefault();
-      Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["vaciarCarrito"])(this.props.currentUser.id).then(function () {
-        return _this6.props.getCarrito(_this6.props.currentUser.id);
-      });
+      if (this.props.isLoggedIn) {
+        e.preventDefault();
+        Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["vaciarCarrito"])(this.props.currentUser.id).then(function () {
+          return _this5.props.getCarrito(_this5.props.currentUser.id);
+        });
+      } else {
+        this.props.vaciarLocalCarrito();
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        handleEmpty: this.handleEmpty,
-        handleClick: this.handleClick,
-        handleDelete: this.handleDelete,
-        handleChange: this.handleChange,
-        userCarrito: this.props.userCarrito
-      });
+      if (!this.state.showModal) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-fluid"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-2 col-md-2 sidebar",
+          style: {
+            zIndex: 8
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          width: "100%",
+          src: "https://png.pngtree.com/png_detail/18/09/10/pngtree-design-of-online-shopping-payment-png-clipart_2099730.jpg",
+          alt: ""
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          width: "100%",
+          src: "https://previews.123rf.com/images/yupiramos/yupiramos1609/yupiramos160911629/62901362-compras-en-l%C3%ADnea-ecommerce-iconos-planos-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg",
+          alt: ""
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-2 main"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          handleEmpty: this.handleEmpty,
+          handleClick: this.handleClick,
+          handleDelete: this.handleDelete,
+          handleChange: this.handleChange,
+          userCarrito: this.props.userCarrito,
+          isLoggedIn: this.props.isLoggedIn,
+          localCarrito: this.props.localCarrito
+        }))));
+      } else if (this.state.showModal) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-fluid"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-2 col-md-2 sidebar",
+          style: {
+            zIndex: 8
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          width: "100%",
+          src: "https://png.pngtree.com/png_detail/18/09/10/pngtree-design-of-online-shopping-payment-png-clipart_2099730.jpg",
+          alt: ""
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          width: "100%",
+          src: "https://previews.123rf.com/images/yupiramos/yupiramos1609/yupiramos160911629/62901362-compras-en-l%C3%ADnea-ecommerce-iconos-planos-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg",
+          alt: ""
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-2 main"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CompraContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          OC: this.props.OC,
+          currentUser: this.props.currentUser,
+          handleModal: this.handleModal,
+          userCarrito: this.props.userCarrito
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          handleEmpty: this.handleEmpty,
+          handleClick: this.handleClick,
+          handleDelete: this.handleDelete,
+          handleChange: this.handleChange,
+          userCarrito: this.props.userCarrito,
+          isLoggedIn: this.props.isLoggedIn,
+          localCarrito: this.props.localCarrito
+        }))));
+      }
     }
   }]);
 
@@ -35810,10 +36762,25 @@ function (_React$Component) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     getCarrito: function getCarrito(userId) {
-      return dispatch(Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["getCarrito"])(userId));
+      return dispatch(Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["getCarrito"])(userId));
     },
     validateSession: function validateSession() {
-      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__["validateSession"])());
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_5__["validateSession"])());
+    },
+    vaciarLocalCarrito: function vaciarLocalCarrito() {
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["vaciarLocalCarrito"])());
+    },
+    deleteLocalCarrito: function deleteLocalCarrito(productId) {
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["deleteLocalCarrito"])(productId));
+    },
+    updateLocalCarrito: function updateLocalCarrito(productId, newCantidad) {
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["updateLocalCarrito"])(productId, newCantidad));
+    },
+    getOrdenCarrito: function getOrdenCarrito(userId) {
+      return dispatch(Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["getOrdenCarrito"])(userId));
+    },
+    getLocalCarrito: function getLocalCarrito() {
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["getLocalCarrito"])());
     }
   };
 };
@@ -35823,11 +36790,41 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     currentUser: state.user.currentUser,
     userOrdenes: state.compras.userOrdenes,
     userCarrito: state.compras.userCarrito,
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.user.isLoggedIn,
+    localCarrito: state.localCarrito.localCarrito,
+    OC: state.compras.ordenCarrito
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(CarritoContainer));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(CarritoContainer)); // << HEAD
+//         if (!this.state.showModal) {
+//             return (
+//                 <CarritoComponent
+//                     handleEmpty={this.handleEmpty}
+//                     handleClick={this.handleClick}
+//                     handleDelete={this.handleDelete}
+//                     handleChange={this.handleChange}
+//                     userCarrito={this.props.userCarrito}
+//                     isLoggedIn={this.props.isLoggedIn}
+//                     localCarrito={this.props.localCarrito} />
+//             )
+//         }
+//         else {
+//             {console.log('soy el user carrito que  le estoy pasando', this.props.userCarrito)}
+//             return (
+//                 <div>
+//                     <CompraContainer handleModal={this.handleModal} userCarrito={this.props.userCarrito} />
+//                     <CarritoComponent
+//                         handleEmpty={this.handleEmpty}
+//                         handleClick={this.handleClick}
+//                         handleDelete={this.handleDelete}
+//                         handleChange={this.handleChange}
+//                         userCarrito={this.props.userCarrito}
+//                         isLoggedIn={this.props.isLoggedIn}
+//                         localCarrito={this.props.localCarrito} />
+//                 </div>
+//             )
+//         }
 
 /***/ }),
 
@@ -36146,6 +37143,535 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./src/containers/CompraContainer.jsx":
+/*!********************************************!*\
+  !*** ./src/containers/CompraContainer.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _components_CompraModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CompraModal */ "./src/components/CompraModal.jsx");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/getCompras */ "./src/action-creators/getCompras.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var CompraContainer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CompraContainer, _React$Component);
+
+  function CompraContainer(props) {
+    var _this;
+
+    _classCallCheck(this, CompraContainer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CompraContainer).call(this, props)), _this.state = {
+      total: 0,
+      comprado: false
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleCompra = _this.handleCompra.bind(_assertThisInitialized(_this));
+    _this.handleCheckout = _this.handleCheckout.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CompraContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var total = 0;
+
+      for (var i = 0; i < this.props.userCarrito.length; i++) {
+        total = total + this.props.userCarrito[i].cantidad * this.props.userCarrito[i].product.precio;
+      }
+
+      this.setState({
+        total: total
+      });
+    }
+  }, {
+    key: "handleCompra",
+    value: function handleCompra(e) {
+      e.preventDefault();
+      Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["changeStatus"])('creado', this.props.currentUser.id);
+      this.setState({
+        comprado: true
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.handleModal();
+    }
+  }, {
+    key: "handleCheckout",
+    value: function handleCheckout(e) {
+      this.props.handleModal();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log('hola soy OC', this.props.OC);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CompraModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleCancelar: this.handleCancelar,
+        comprado: this.state.comprado,
+        OC: this.props.OC,
+        total: this.state.total,
+        handleSubmit: this.handleSubmit,
+        handleModal: this.props.handleModal,
+        handleCompra: this.handleCompra,
+        handleCheckout: this.handleCheckout
+      });
+    }
+  }]);
+
+  return CompraContainer;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getOrdenCarrito: function getOrdenCarrito(userId) {
+      return dispatch(Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["getOrdenCarrito"])(userId));
+    },
+    validateSession: function validateSession() {
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__["validateSession"])());
+    }
+  };
+}; // const mapStateToProps = (state, ownProps) => {
+//     return {
+//         ownProps,
+//         currentUser: state.user.currentUser,
+//         OC: state.compras.ordenCarrito,
+//     }
+// }
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(CompraContainer));
+
+/***/ }),
+
+/***/ "./src/containers/EditProductContainer.jsx":
+/*!*************************************************!*\
+  !*** ./src/containers/EditProductContainer.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _components_FormularioEditar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/FormularioEditar */ "./src/components/FormularioEditar.jsx");
+/* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var AddProductContainer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AddProductContainer, _React$Component);
+
+  function AddProductContainer() {
+    var _this;
+
+    _classCallCheck(this, AddProductContainer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddProductContainer).call(this));
+    _this.state = {
+      category: [],
+      response: '',
+      newCategory: [],
+      titulo: '',
+      img1: '',
+      img2: '',
+      img3: '',
+      descripcion: '',
+      precio: '',
+      stock: '',
+      imgFondo: '',
+      categoryGuardado: []
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleTitle = _this.handleTitle.bind(_assertThisInitialized(_this));
+    _this.handleDescription = _this.handleDescription.bind(_assertThisInitialized(_this));
+    _this.handlePrice = _this.handlePrice.bind(_assertThisInitialized(_this));
+    _this.handleStock = _this.handleStock.bind(_assertThisInitialized(_this));
+    _this.handleImg1 = _this.handleImg1.bind(_assertThisInitialized(_this));
+    _this.handleImg2 = _this.handleImg2.bind(_assertThisInitialized(_this));
+    _this.handleImg3 = _this.handleImg3.bind(_assertThisInitialized(_this));
+    _this.handleCreateInput = _this.handleCreateInput.bind(_assertThisInitialized(_this));
+    _this.handleCategory = _this.handleCategory.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.handleAdd = _this.handleAdd.bind(_assertThisInitialized(_this));
+    _this.handleDeleteActivas = _this.handleDeleteActivas.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AddProductContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.scrollTo(0, 0);
+      this.props.fetchAllCategory();
+      this.props.fetchOneProduct(this.props.idProduct).then(function (prod) {
+        _this2.setState({
+          titulo: prod.data.titulo,
+          img1: prod.data.img1,
+          img2: prod.data.img2,
+          img3: prod.data.img3,
+          descripcion: prod.data.descripcion,
+          precio: prod.data.precio,
+          stock: prod.data.stock,
+          categoryGuardado: prod.data.category,
+          imgFondo: prod.data.img1,
+          imgFondo2: prod.data.img2,
+          imgFondo3: prod.data.img3
+        });
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      window.scrollTo(0, 0);
+      e.preventDefault(); // Sumo el push adicional
+
+      var arr = this.state.newCategory;
+      var save = this.state.categoryGuardado;
+      var arrCategory = this.state.category;
+
+      for (var i = 0; i < save.length; i++) {
+        arrCategory.push(save[i].categoria);
+      }
+
+      arrCategory = arrCategory.filter(function (a, i, arr) {
+        return arr.indexOf(a) === i;
+      });
+
+      if (arr.length) {
+        var _arrCategory;
+
+        (_arrCategory = arrCategory).push.apply(_arrCategory, _toConsumableArray(arr));
+
+        arrCategory = arrCategory.filter(function (a, i, arr) {
+          return arr.indexOf(a) === i;
+        });
+        this.setState({
+          response: '',
+          category: arrCategory,
+          newCategory: []
+        });
+      }
+
+      if (true) {
+        arrCategory = arrCategory.filter(function (a, i, arr) {
+          return arr.indexOf(a) === i;
+        });
+        this.setState({
+          response: '',
+          category: arrCategory,
+          newCategory: []
+        }, function () {
+          _this3.props.editProduct(_this3.props.idProduct, _this3.state).then(function (res) {
+            _this3.setState({
+              response: 'ok'
+            });
+          })["catch"](function (res) {
+            _this3.setState({
+              response: 'error'
+            });
+          });
+        });
+      } else {}
+    }
+  }, {
+    key: "handleTitle",
+    value: function handleTitle(event) {
+      this.setState({
+        titulo: event.target.value.toLowerCase(),
+        response: ''
+      });
+    }
+  }, {
+    key: "handleDescription",
+    value: function handleDescription(event) {
+      this.setState({
+        descripcion: event.target.value,
+        response: ''
+      });
+    }
+  }, {
+    key: "handlePrice",
+    value: function handlePrice(event) {
+      this.setState({
+        precio: event.target.value,
+        response: ''
+      });
+    }
+  }, {
+    key: "handleStock",
+    value: function handleStock(event) {
+      this.setState({
+        stock: event.target.value,
+        response: ''
+      });
+    }
+  }, {
+    key: "handleImg1",
+    value: function handleImg1(event) {
+      var _this4 = this;
+
+      var image = event.target.value;
+      this.setState({
+        img1: event.target.value,
+        response: '',
+        imgFondo: 'https://gvhidra.gva.es/svn/genaro/tags/genaro-4_2_0/img/cargando.gif'
+      });
+      setTimeout(function () {
+        _this4.setState({
+          imgFondo: image
+        });
+      }, 2000);
+    }
+  }, {
+    key: "handleImg2",
+    value: function handleImg2(event) {
+      var _this5 = this;
+
+      var image = event.target.value;
+      this.setState({
+        img2: event.target.value,
+        response: '',
+        imgFondo2: 'https://gvhidra.gva.es/svn/genaro/tags/genaro-4_2_0/img/cargando.gif'
+      });
+      setTimeout(function () {
+        _this5.setState({
+          imgFondo2: image
+        });
+      }, 2000);
+    }
+  }, {
+    key: "handleImg3",
+    value: function handleImg3(event) {
+      var _this6 = this;
+
+      var image = event.target.value;
+      this.setState({
+        img3: event.target.value,
+        response: '',
+        imgFondo3: 'https://gvhidra.gva.es/svn/genaro/tags/genaro-4_2_0/img/cargando.gif'
+      });
+      setTimeout(function () {
+        _this6.setState({
+          imgFondo3: image
+        });
+      }, 2000);
+    }
+  }, {
+    key: "handleCreateInput",
+    value: function handleCreateInput(event) {
+      this.setState({
+        newInputCategory: event.target.value,
+        response: ''
+      });
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(name) {
+      var arr = this.state.newCategory;
+      var pos = arr.indexOf(name);
+      arr.splice(pos, 1);
+      this.setState({
+        newCategory: arr,
+        response: ''
+      });
+    }
+  }, {
+    key: "handleDeleteActivas",
+    value: function handleDeleteActivas(name) {
+      var arr = this.state.categoryGuardado;
+      var pos = arr.indexOf(name);
+      arr.splice(pos, 1);
+      this.setState({
+        categoryGuardado: arr
+      });
+    }
+  }, {
+    key: "handleAdd",
+    value: function handleAdd() {
+      var arr = this.state.newCategory;
+      var value = this.state.newInputCategory;
+
+      if (value != "") {
+        if (arr.indexOf(value.toLowerCase()) == -1) {
+          arr.push(value.toLowerCase());
+          this.setState({
+            newCategory: arr,
+            newInputCategory: '',
+            response: ''
+          });
+        }
+      }
+    }
+  }, {
+    key: "handleCategory",
+    value: function handleCategory(e) {
+      var arr = this.state.category;
+      var pos = arr.indexOf(event.target.value);
+
+      if (event.target.checked) {
+        arr.push(event.target.value);
+      } else if (pos != -1) {
+        arr.splice(pos, 1);
+      }
+
+      this.setState({
+        category: arr
+      });
+    } // Renderiza body
+    // ===============================================
+
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-3 col-md-2 sidebar",
+        style: {
+          zIndex: 8
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://cdn2.iconfinder.com/data/icons/business-management-69/64/branding-idea-product-commercial-create-business-512.png",
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
+        style: {
+          fontSize: 18
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Agregar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Producto"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FormularioEditar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleSubmit: this.handleSubmit,
+        handleTitle: this.handleTitle,
+        handleDescription: this.handleDescription,
+        handlePrice: this.handlePrice,
+        handleStock: this.handleStock,
+        handleImg1: this.handleImg1,
+        handleImg2: this.handleImg2,
+        handleImg3: this.handleImg3,
+        handleCategory: this.handleCategory,
+        handleAdd: this.handleAdd,
+        handleDelete: this.handleDelete,
+        handleCreateInput: this.handleCreateInput,
+        listCategory: this.props.listCategory,
+        state: this.state,
+        handleDeleteActivas: this.handleDeleteActivas
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-3  main"
+      }, "vista previa (Img Principal):", this.state.imgFondo2 !== "" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.imgFondo,
+        width: "100%",
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-2  main"
+      }, "(Img2 / Img3):", this.state.imgFondo3 !== "" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.imgFondo2,
+        width: "100%",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.imgFondo3,
+        width: "100%",
+        alt: ""
+      })))));
+    }
+  }]);
+
+  return AddProductContainer;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    idProduct: ownProps.match.params.id,
+    listCategory: state.product.listCategory
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    editProduct: function editProduct(id, data) {
+      return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["editProduct"])(id, data));
+    },
+    fetchAllCategory: function fetchAllCategory() {
+      return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchAllCategory"])());
+    },
+    fetchOneProduct: function fetchOneProduct(id) {
+      return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchOneProduct"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(AddProductContainer));
+
+/***/ }),
+
 /***/ "./src/containers/HomeContainer.jsx":
 /*!******************************************!*\
   !*** ./src/containers/HomeContainer.jsx ***!
@@ -36246,6 +37772,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_LogInModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/LogInModal */ "./src/components/LogInModal.jsx");
 /* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36263,6 +37790,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -36318,12 +37846,17 @@ function (_React$Component) {
         email: this.state.email,
         password: this.state.password
       };
-      this.props.validateUser(user)["catch"](function () {
-        return _this2.setState({
+      this.props.validateUser(user).then(function () {
+        if (_this2.props.isLoggedIn) {
+          _this2.props.handleModal();
+
+          _this2.props.history.push("/admin");
+        }
+      })["catch"](function () {
+        _this2.setState({
           error: true
         });
       });
-      this.props.handleModal();
     } //handleModal viene por props y es para cerrar el modal. handleRegister es para abrir o cerrar el registerModal
 
   }, {
@@ -36342,6 +37875,12 @@ function (_React$Component) {
   return LogInContainer;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    isLoggedIn: state.user.isLoggedIn
+  };
+};
+
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     validateUser: function validateUser(user) {
@@ -36350,7 +37889,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(LogInContainer));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(LogInContainer)));
 
 /***/ }),
 
@@ -36441,25 +37980,29 @@ function (_React$Component) {
     value: function handleSession(e) {
       e.preventDefault();
       this.props.endSession();
+      this.props.history.push('/logout');
     }
   }, {
     key: "handleChange",
     value: function handleChange(e) {
       var _this2 = this;
 
-      e.preventDefault();
-      this.props.history.push('/search');
+      e.preventDefault(); //this.props.history.push('/search')
+
       var inputValue = e.target.value;
       this.setState({
         inputValue: inputValue
       }, function () {
-        return _this2.state.inputValue && _this2.props.fetchProducts(_this2.state.inputValue, '', 0, 1000000, 1);
-      });
+        return _this2.state.inputValue;
+      } //&&
+      //this.props.fetchProducts(this.state.inputValue,'',0,1000000,1)
+      );
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
+      this.props.history.push('/search');
       this.state.inputValue && this.props.fetchProducts(this.state.inputValue, '', 0, 1000000, 1);
       console.log("enter");
       this.setState({
@@ -36551,6 +38094,137 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 /***/ }),
 
+/***/ "./src/containers/PerfilAdmin.jsx":
+/*!****************************************!*\
+  !*** ./src/containers/PerfilAdmin.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Perfil =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Perfil, _React$Component);
+
+  function Perfil() {
+    _classCallCheck(this, Perfil);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Perfil).apply(this, arguments));
+  }
+
+  _createClass(Perfil, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-3 col-md-2 sidebar",
+        style: {
+          zIndex: 8
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "100%",
+        src: "https://secure.webtoolhub.com/static/resources/icons/set108/26ce8716.png",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "100%",
+        src: "http://www.freelogovectors.net/wp-content/uploads/2013/02/administrator_woman2.png",
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-2 main"
+      }, this.props.status.hasOwnProperty('isAdmin') && this.props.status.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Bienvenido al perfil de administrador"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\xBFQu\xE9 deseas hacer?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "list-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/users",
+        "class": "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        "class": "list-group-item-heading"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://cdn0.iconfinder.com/data/icons/user-collection-4/512/users-512.png",
+        width: "60px"
+      }), " Usuarios:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "list-group-item-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lista de Usuarios, editar perfiles, etc.."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/product/add",
+        "class": "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        "class": "list-group-item-heading"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.flaticon.com/icons/png/512/1312/1312091.png",
+        width: "60px"
+      }), " Productos:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "list-group-item-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Desde esta secci\xF3n podras dar de alta a nuevos productos que formar\xE1n parte del surtido.."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/ventas",
+        "class": "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        "class": "list-group-item-heading"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://secureservercdn.net/166.62.112.199/mk4.41d.myftpupload.com/wp-content/uploads/2016/06/icons_club-300x282.png",
+        width: "60px"
+      }), " Mis Ventas:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "list-group-item-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Desde Aqui podr\xE1s ver el detalle de tus venta; gestionar los estados de cada ordenes de compra entre otras cosas..."))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Bienvenido ", this.props.status && this.props.status.userName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\xBFQu\xE9 deseas hacer?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "list-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/compras",
+        "class": "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        "class": "list-group-item-heading"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://secureservercdn.net/166.62.112.199/mk4.41d.myftpupload.com/wp-content/uploads/2016/06/icons_club-300x282.png",
+        width: "60px"
+      }), " Mis Ventas:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "list-group-item-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Desde Aqui podr\xE1s ver el detalle de tus compras, ordenes de compra y transacciones realizadas..."))))))));
+    }
+  }]);
+
+  return Perfil;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    status: state.user.currentUser
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, null)(Perfil));
+
+/***/ }),
+
 /***/ "./src/containers/ProductContainer.jsx":
 /*!*********************************************!*\
   !*** ./src/containers/ProductContainer.jsx ***!
@@ -36613,6 +38287,7 @@ function (_Component) {
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.btnCerrar = _this.btnCerrar.bind(_assertThisInitialized(_this));
     _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
+    _this.handleLocalCarrito = _this.handleLocalCarrito.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -36633,6 +38308,8 @@ function (_Component) {
 
       this.props.deleteProduct(id).then(function (data) {
         //console.log(data,"DATAA")
+        _this2.props.fetchProducts(_this2.props.inputValue, _this2.props.categoryParams, _this2.props.min, _this2.props.max, 1);
+
         _this2.props.alertBottom('success', 'Se ha eliminado correctamente..');
 
         _this2.setState({
@@ -36655,7 +38332,36 @@ function (_Component) {
   }, {
     key: "handleCarrito",
     value: function handleCarrito(e) {
-      this.props.isLoggedIn ? Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["addItem"])(e.target.name, this.props.currentUser.id) : alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou');
+      if (this.props.isLoggedIn) {
+        Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["addItem"])(e.target.name, this.props.currentUser.id);
+        this.props.alertBottom('success', 'Se ha agregado el producto al carrito..');
+        this.setState({
+          show: true
+        });
+      } else {
+        this.props.alertBottom('danger', 'Debes estar logueado para agregar al carrito');
+        this.setState({
+          show: true
+        });
+      } //alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou')
+
+    }
+  }, {
+    key: "handleLocalCarrito",
+    value: function handleLocalCarrito(e) {
+      for (var i = 0; i < this.props.listaProductos.length; i++) {
+        if (this.props.listaProductos[i].id == e.target.name) {
+          this.props.setLocalCarrito(this.props.listaProductos[i]);
+          this.props.alertBottom('success', 'Se ha agregado el producto al carrito..');
+          this.setState({
+            show: true
+          });
+        }
+      } // this.props.alertBottom('success','Se ha agregado el producto al carrito')
+      // this.setState({
+      //     show:true
+      // })
+
     }
   }, {
     key: "render",
@@ -36676,7 +38382,9 @@ function (_Component) {
         handleDelete: this.handleDelete,
         handleEditar: this.handleEditar,
         priceMin: this.props.priceMin,
-        priceMax: this.props.priceMax
+        priceMax: this.props.priceMax,
+        handleLocalCarrito: this.handleLocalCarrito,
+        isLoggedIn: this.props.isLoggedIn
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AlertComponents__WEBPACK_IMPORTED_MODULE_3__["default"], {
         show: this.state.show,
         btnCerrar: this.btnCerrar,
@@ -36721,6 +38429,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     validateSession: function validateSession() {
       return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__["validateSession"])());
+    },
+    setLocalCarrito: function setLocalCarrito(producto) {
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["setLocalCarrito"])(producto));
     }
   };
 };
@@ -36743,6 +38454,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_RegisterModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/RegisterModal */ "./src/components/RegisterModal.jsx");
 /* harmony import */ var _action_creators_registerUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/registerUser */ "./src/action-creators/registerUser.js");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36760,6 +38472,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -36804,18 +38517,26 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       var newUser = {
         username: this.state.username,
         email: this.state.email,
         password: this.state.password
       };
       e.preventDefault();
-      this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser)["catch"](function (err) {
-        return console.log('el email ya existe', err);
+      this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser).then(function () {
+        var user = {
+          email: _this2.state.email,
+          password: _this2.state.password
+        };
+
+        _this2.props.validateUser(user);
+
+        _this2.props.handleRegister();
       });
-      this.props.handleRegister();
     } //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
-    //modal sie sta abierto y que se abra si esta cerrado!!!!
+    //modal si esta abierto y que se abra si esta cerrado!!!!
 
   }, {
     key: "render",
@@ -36835,6 +38556,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     registerUser: function registerUser(newUser) {
       return dispatch(Object(_action_creators_registerUser__WEBPACK_IMPORTED_MODULE_3__["registerUser"])(newUser));
+    },
+    validateUser: function validateUser(user) {
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__["validateUser"])(user));
     }
   };
 };
@@ -37083,10 +38807,17 @@ function (_React$Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-3 col-md-2 sidebar",
+        id: "sidebar",
         style: {
           zIndex: 8
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "pull-right visible-xs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary btn-md",
+        id: "press2"
+      }, "CERRAR")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
         handleChangeMin: this.handleChangeMin,
         priceMin: this.state.priceMin,
         handleClickMin: this.handleClickMin,
@@ -37107,7 +38838,13 @@ function (_React$Component) {
         to: "/"
       }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Categorias")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "active"
-      }, this.props.categoryParams)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_ProductContainer__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+      }, this.props.categoryParams), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "pull-right visible-xs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary btn-md",
+        id: "press"
+      }, "VER FILTROS")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_ProductContainer__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
     }
   }]);
 
@@ -37163,6 +38900,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SingleProduct__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SingleProduct */ "./src/components/SingleProduct.jsx");
 /* harmony import */ var _action_creators_reviews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/reviews */ "./src/action-creators/reviews.js");
 /* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
+/* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
+/* harmony import */ var _components_AlertComponents__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/AlertComponents */ "./src/components/AlertComponents.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37188,6 +38927,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var SingleProductContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -37201,23 +38942,42 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SingleProductContainer).call(this, props));
     _this.state = {
       comentario: '',
-      valoracion: 0
+      valoracion: 0,
+      show: false,
+      mensaje: "",
+      tipo: ""
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
+    _this.btnCerrar = _this.btnCerrar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SingleProductContainer, [{
+    key: "btnCerrar",
+    value: function btnCerrar() {
+      this.setState({
+        show: false
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchSingleProduct(this.props.productId);
       this.props.fetchReviews(this.props.productId);
-    }
+    } // componentDidUpdate(prevProps, prevState){
+    //     if (this.props.reviews.length !== prevProps.reviews.length) {
+    //         this.props.fetchReviews()
+    //         this.setState({comentario: '', valoracion: 0})
+    //     }
+    // }
+
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
 
       if (this.props.isLoggedIn) {
@@ -37225,15 +38985,31 @@ function (_React$Component) {
           comentario: this.state.comentario,
           valoracion: this.state.valoracion,
           productId: this.props.productito.id,
-          userId: this.props.user.id
+          userId: this.props.user.id,
+          username: this.props.user.username
         };
-        Object(_action_creators_reviews__WEBPACK_IMPORTED_MODULE_4__["postReviews"])(dataReview); // this.setState({
-        //     valoracion: 0,
-        //     comentario: ''
-        // })
+        console.log("SOY PROPS", this.props);
+        this.props.postReviews(dataReview).then(function () {
+          console.log("ENTREO A LA PROMESA");
+
+          _this2.props.fetchReviews(_this2.props.productId);
+        });
+        this.setState({
+          valoracion: 0,
+          comentario: ''
+        }, function () {
+          return console.log('ESTOY SETEANDO EL ESTADO', _this2.state);
+        });
       } else {
         alert('Debe estar loggeado para enviar reviews');
       }
+    }
+  }, {
+    key: "btnCerrar",
+    value: function btnCerrar() {
+      this.setState({
+        show: false
+      });
     }
   }, {
     key: "handleChange",
@@ -37248,7 +39024,13 @@ function (_React$Component) {
   }, {
     key: "handleCarrito",
     value: function handleCarrito(e) {
-      this.props.isLoggedIn ? Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["addItem"])(e.target.name, this.props.user.id) : alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou');
+      this.props.isLoggedIn ? Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["addItem"])(e.target.name, this.props.user.id) : this.props.setLocalCarrito(this.props.productito);
+      this.props.alertBottom('success', 'Se ha agregado el producto al carrito');
+      this.setState({
+        show: true,
+        mensaje: "Agregado exitosamente al carrito!",
+        tipo: "success"
+      });
     }
   }, {
     key: "render",
@@ -37258,7 +39040,14 @@ function (_React$Component) {
         handleChange: this.handleChange,
         handleSubmit: this.handleSubmit,
         handleCarrito: this.handleCarrito,
-        rev: this.props.reviews
+        rev: this.props.reviews,
+        valoracion: this.state.valoracion,
+        comentario: this.state.comentario
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AlertComponents__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        show: this.state.show,
+        btnCerrar: this.btnCerrar,
+        tipo: this.state.tipo,
+        mensaje: this.state.mensaje
       }));
     }
   }]);
@@ -37283,6 +39072,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchReviews: function fetchReviews(rev) {
       return dispatch(Object(_action_creators_reviews__WEBPACK_IMPORTED_MODULE_4__["fetchReviews"])(rev));
+    },
+    alertBottom: function alertBottom(tipo, mensaje) {
+      return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_6__["alertBottom"])(tipo, mensaje));
+    },
+    setLocalCarrito: function setLocalCarrito(producto) {
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["setLocalCarrito"])(producto));
+    },
+    postReviews: function postReviews(id) {
+      return dispatch(Object(_action_creators_reviews__WEBPACK_IMPORTED_MODULE_4__["postReviews"])(id));
     }
   };
 };
@@ -37306,6 +39104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getUsers */ "./src/action-creators/getUsers.js");
 /* harmony import */ var _components_UserList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/UserList */ "./src/components/UserList.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37316,13 +39116,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -37335,23 +39136,84 @@ var UserListContainer =
 function (_React$Component) {
   _inherits(UserListContainer, _React$Component);
 
-  function UserListContainer() {
+  function UserListContainer(props) {
+    var _this;
+
     _classCallCheck(this, UserListContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(UserListContainer).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserListContainer).call(this, props));
+    _this.state = {
+      clickedUser: ''
+    };
+    _this.handleAdmin = _this.handleAdmin.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(UserListContainer, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      console.log("CONSOLELOG", prevProps);
+      console.log("prevstate", prevState);
+
+      if (this.props.listaUsuarios.length !== prevProps.listaUsuarios.length) {
+        this.props.fetchAllUsers();
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllUsers();
     }
   }, {
+    key: "handleAdmin",
+    value: function handleAdmin(e) {
+      var _this2 = this;
+
+      e.preventDefault(e);
+      console.log("ESTO ES E L SSSSSSS", e.target.checked, e.target.id);
+      this.props.changeAdminStatus(e.target.id, e.target.checked).then(function () {
+        _this2.props.fetchAllUsers();
+      }).then(function (data) {
+        console.log("SOY LA DATA", data);
+      });
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault(e);
+      this.props.deleteUser(e.target.id); // Axios.get(`/api/users/delete/${e.target.id}`)
+      // .then(console.log("BORRADO"))
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UserList__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        list: this.props.listaUsuarios
-      }));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-2 col-md-2 sidebar",
+        style: {
+          zIndex: 8
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "100%",
+        src: "https://secure.webtoolhub.com/static/resources/icons/set108/26ce8716.png",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "100%",
+        src: "http://www.freelogovectors.net/wp-content/uploads/2013/02/administrator_woman2.png",
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-2 main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UserList__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        list: this.props.listaUsuarios,
+        handleAdmin: this.handleAdmin,
+        handleDelete: this.handleDelete,
+        idActive: this.props.idActive,
+        status: this.props.status
+      })))));
     }
   }]);
 
@@ -37360,7 +39222,11 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    listaUsuarios: state.users.users
+    listaUsuarios: state.users.users,
+    userBorrado: state.user,
+    idActive: state.user.currentUser.id,
+    isLogin: state.user.isLoggedIn,
+    status: state.user.currentUser
   };
 };
 
@@ -37368,6 +39234,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchAllUsers: function fetchAllUsers(us) {
       return dispatch(Object(_action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__["fetchAllUsers"])(us));
+    },
+    deleteUser: function deleteUser(del) {
+      return dispatch(Object(_action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__["deleteUser"])(del));
+    },
+    changeAdminStatus: function changeAdminStatus(id, value) {
+      return dispatch(Object(_action_creators_getUsers__WEBPACK_IMPORTED_MODULE_3__["changeAdminStatus"])(id, value));
     }
   };
 };
@@ -37521,6 +39393,46 @@ var initialState = {
 
 /***/ }),
 
+/***/ "./src/reducers/carrito_reducer.js":
+/*!*****************************************!*\
+  !*** ./src/reducers/carrito_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  localCarrito: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["SET_LOCAL_CARRITO"]:
+      return _objectSpread({}, state, {
+        localCarrito: action.productos
+      });
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["EMPTY_LOCAL_CARRITO"]:
+      return _objectSpread({}, state, {
+        localCarrito: []
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./src/reducers/compras_reducers.js":
 /*!******************************************!*\
   !*** ./src/reducers/compras_reducers.js ***!
@@ -37553,6 +39465,13 @@ var initialState = {
         console.log('actualizando carrito');
         return Object.assign({}, state, {
           userCarrito: action.carrito
+        });
+      }
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["ORDEN_CARRITO"]:
+      {
+        return Object.assign({}, state, {
+          ordenCarrito: action.orden
         });
       }
 
@@ -37641,7 +39560,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
 
 var initialState = {
-  users: []
+  users: [],
+  user: {}
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -37652,6 +39572,13 @@ var initialState = {
       {
         return Object.assign({}, state, {
           users: action.users
+        });
+      }
+
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["CHANGE_ADMIN_STATUS"]:
+      {
+        return Object.assign({}, state, {
+          user: action.user
         });
       }
 
@@ -37678,8 +39605,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fetch_single_product_reducer */ "./src/reducers/fetch_single_product_reducer.js");
 /* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
 /* harmony import */ var _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fetch_reviews */ "./src/reducers/fetch_reviews.js");
-/* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
-/* harmony import */ var _precio_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./precio_reducer */ "./src/reducers/precio_reducer.js");
+/* harmony import */ var _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./carrito_reducer */ "./src/reducers/carrito_reducer.js");
+/* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
+/* harmony import */ var _precio_reducer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./precio_reducer */ "./src/reducers/precio_reducer.js");
+
 
 
 
@@ -37696,8 +39625,9 @@ __webpack_require__.r(__webpack_exports__);
   users: _fetch_users__WEBPACK_IMPORTED_MODULE_3__["default"],
   compras: _compras_reducers__WEBPACK_IMPORTED_MODULE_5__["default"],
   productReviews: _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__["default"],
-  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
-  price: _precio_reducer__WEBPACK_IMPORTED_MODULE_8__["default"]
+  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_8__["default"],
+  price: _precio_reducer__WEBPACK_IMPORTED_MODULE_9__["default"],
+  localCarrito: _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__["default"]
 }));
 
 /***/ }),

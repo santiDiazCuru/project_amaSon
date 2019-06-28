@@ -32,20 +32,23 @@ class NavBarContainer extends React.Component {
     handleSession(e) {
         e.preventDefault()
         this.props.endSession()
+        this.props.history.push('/logout')
     }
 
     handleChange(e) {
         e.preventDefault();
-        this.props.history.push('/search')
+        //this.props.history.push('/search')
         let inputValue = e.target.value
         this.setState({ inputValue }, 
             () => 
-             this.state.inputValue &&
-             this.props.fetchProducts(this.state.inputValue,'',0,1000000,1))
+             this.state.inputValue //&&
+             //this.props.fetchProducts(this.state.inputValue,'',0,1000000,1)
+             )
         
     };
     handleSubmit(e) {
         e.preventDefault();
+        this.props.history.push('/search')
         this.state.inputValue && this.props.fetchProducts(this.state.inputValue,'',0,1000000,1)
         console.log("enter")
         this.setState({

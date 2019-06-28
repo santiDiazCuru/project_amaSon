@@ -30,16 +30,13 @@ Router.get('/carrito/:id', function (req, res) {
         .then((compras) => res.json(compras))
 })
 Router.put('/update/:compraId', function (req, res) {
-    // console.log('hoalallala:',req.body, req.params.compraId)
     Compra.update({ cantidad: req.body.nuevaCantidad }, { where: { id: req.params.compraId } })
         .then(() => res.send('cantidad actualizada!'))
 })
 
 Router.get(`/delete/:compraId`, function (req, res) {
-    console.log('entra a la ruta en el back')
     Compra.destroy({ where: { id: req.params.compraId } })
         .then((compra) => {
-            console.log('hice algo: ', compra)
         })
     res.send('producto eliminado')
 })
@@ -68,9 +65,22 @@ Router.get('/:id', function (req, res) {
     })
         .then((compras) => res.json(compras))
 })
+Router.get('/updatecarrito/:userId', function (req,res){
+    OC.findOne({
+        where: {
+            userId: req.params.userId,
+            estado: 'carrito'
+        }
+    })
+    .then((compras) =>{ 
+    console.log('hola so las compras: ',compras)
+    res.json(compras)})
+    // OC.update({estado: 'pendiente'}, {where:
+    //      {userId: req.params.userId,
+    //         estado: 'carrito'}})
+})
 
 Router.post('/add/:userId', function (req, res) {
-    console.log(req.body.productId, req.params.userId)
     OC.findOrCreate({
         where: {
             userId: req.params.userId,
@@ -89,12 +99,10 @@ Router.post('/add/:userId', function (req, res) {
             if (!result[1]) {
                 result[0].cantidad = result[0].cantidad + 1;
                 result[0].save().then(() => {
-                    console.log(' entro al if   terminadoooo')
                 })
                 res.send('listoo')
             }
             else {
-                console.log('esntro al else')
                 res.send('entro al else  tambmien listoo')
             }
         })

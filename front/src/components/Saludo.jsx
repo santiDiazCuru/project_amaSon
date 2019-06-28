@@ -27,47 +27,28 @@ const categoryName =  {
     textDecoration: "none"
 }
 
-export default (props) => (
-    <div>
-        {/* esto es el carrousell */}
-        <div id="myCarousel" className="carousel slide" data-ride="carousel">
+export default () => (
 
-            <ol className="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <div className="carousel-inner" role="listbox">
-                <div className="item active">
-                    <img className="first-slide" src="https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-tvs-60_-de-descuento.png" alt="First slide" />
-                    <div className="container">
-                    </div>
+        <div className="container-fluid">
+            <div className="row">
+                <br /><br />
+                <div className="col-sm-3 col-md-2 sidebar" style={({ zIndex: 8 })}>
+                    {/* RENDERIZA COMPONENTE DE FILTRO */}
+                    <br/><img width="100%" src="https://www.elprogreso.es/media/elprogreso/images/2018/03/23/2018032307383441049.png" alt=""/>
+                    <br/><hr/>
+                    <img width="100%" src="https://www.foromarketing.com/wp-content/uploads/2017/11/Simplificar-el-proceso-de-compra-reto-para-el-ecommerce.png" alt=""/>
                 </div>
-                <div className="item">
-                    <img className="second-slide" src="https://www.tailoy.com.pe/media/orbitslider/image/b/i/big-banner-televisores.png" alt="Second slide" />
-                    <div className="container">
-                    </div>
-                </div>
-                <div className="item">
-                    <img className="third-slide" src="http://disttec.mx/wp-content/uploads/2017/03/Banner-Audio-Ambiental.jpg" alt="Third slide" />
-                    <div className="container">
-                    </div>
-                </div>
-            </div>
-            <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span className="sr-only">Previous</span>
-            </a>
-            <a className="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span className="sr-only">Next</span>
-            </a>
-        </div>
-
-        {/* esto es el banner */}
+                <div className="col-sm-5 col-sm-offset-3 col-md-6 col-md-offset-2 main">
+                <h3>Muchas Gracias por su visita!</h3>
+                <h4>&nbsp;&nbsp;AmaSon.. TU mejor amigo.</h4>
+                <img src="https://1.bp.blogspot.com/-sDDcUxP4UmU/VwpVnWsGucI/AAAAAAAABmw/toEdr8Os0msFRmk8VyA68_vHmTnO9IoQw/s1600/Gracias1.png" alt=""/>
+                <hr/>
+                {/* esto es el banner */}
+                <p>Recorda todos nuestros beneficios:</p>
+                <hr/>
         <div className="container">
         <div className="row" style={sombraRow}>
-            <div className="col-md-3" style={style}>
+            <div className="col-md-4" style={style}>
                 <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
                     <div className="card">
                         <img style={imgStyle} className="block"
@@ -79,7 +60,7 @@ export default (props) => (
                     </div>
                 </Link> 
             </div>
-            <div className="col-md-3" style={style}>
+            <div className="col-md-4" style={style}>
                 <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
                     <div className="card">
                         <img style={imgStyle} className="block"
@@ -91,7 +72,7 @@ export default (props) => (
                     </div>
                 </Link> 
             </div>
-            <div className="col-md-3" style={style}>
+            <div className="col-md-4" style={style}>
                 <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
                     <div className="card">
                         <img style={imgStyle} className="block"
@@ -103,24 +84,15 @@ export default (props) => (
                     </div>
                 </Link> 
             </div>
-            <div className="col-md-3" style={style}>
-                <Link className="grid10-item action-box box-sm" gb-analytics="true" data-home-name="20190621_00a00_volvieronlascuotas" data-component-type="multi_grid_three_categories" data-element-title="Hornos y Cocina" data-home-idx="4" data-element-position="" data-device="desktop">
-                    <div className="card">
-                        <img style={imgStyle} className="block"
-                        src="http://www.axosvisual.com/ImagenesBlog/ofertas.jpeg" />
-                        <div className="card-text category-info card-text--fixed-bottom">
-                        <h3 style={categoryName}>Ofertas Semanales</h3>
-                        <span className="category-discount">Más detalles &raquo;</span>
-                        </div>
-                    </div>
-                </Link> 
-            </div>
+            
             
         </div>
         <br />
         
 
         </div>
-    </div>
+            </div>
+            </div>
+        </div>
+    );
 
-);

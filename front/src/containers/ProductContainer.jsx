@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Producto from '../components/product';
 import Alert from '../components/AlertComponents'
 import { validateSession } from '../action-creators/logInUser'
-import { addItem } from '../action-creators/addCarrito'
+import { addItem, setLocalCarrito } from '../action-creators/addCarrito'
 import { fetchProducts, deleteProduct, alertBottom } from '../action-creators/getProducts'
 
 class ProductContainer extends Component {
@@ -17,6 +17,7 @@ class ProductContainer extends Component {
         this.handleDelete = this.handleDelete.bind(this)
         this.btnCerrar = this.btnCerrar.bind(this)
         this.handleCarrito = this.handleCarrito.bind(this)
+        this.handleLocalCarrito = this.handleLocalCarrito.bind(this)
     
     };
     componentDidMount(){
@@ -32,6 +33,9 @@ class ProductContainer extends Component {
         this.props.deleteProduct(id)
         .then((data)=>{
             //console.log(data,"DATAA")
+            this.props.fetchProducts(this.props.inputValue,
+                this.props.categoryParams,
+                this.props.min, this.props.max, 1)
             this.props.alertBottom('success','Se ha eliminado correctamente..')
             this.setState({
                 show:true
@@ -47,9 +51,38 @@ class ProductContainer extends Component {
         console.log(id, "UPDATE")
     }
     handleCarrito(e){
-        this.props.isLoggedIn? 
-        addItem(e.target.name, this.props.currentUser.id) : 
-        alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou')
+        if(this.props.isLoggedIn){
+            addItem(e.target.name, this.props.currentUser.id)
+            this.props.alertBottom('success','Se ha agregado el producto al carrito..')
+                    this.setState({
+                        show:true
+                    })
+
+        } else{
+            this.props.alertBottom('danger','Debes estar logueado para agregar al carrito')
+            this.setState({
+                show:true
+            })
+        }
+        //alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou')
+    }
+    handleLocalCarrito(e){
+        
+        for (let i=0; i<this.props.listaProductos.length; i++){
+            if(this.props.listaProductos[i].id == e.target.name){
+                this.props.setLocalCarrito(this.props.listaProductos[i])
+                this.props.alertBottom('success','Se ha agregado el producto al carrito..')
+                this.setState({
+                    show:true
+                })
+
+            }
+        }
+        
+        // this.props.alertBottom('success','Se ha agregado el producto al carrito')
+        // this.setState({
+        //     show:true
+        // })
     }
 
     render() {
@@ -72,6 +105,8 @@ class ProductContainer extends Component {
                 handleEditar={this.handleEditar}
                 priceMin={this.props.priceMin}
                 priceMax={this.props.priceMax}
+                handleLocalCarrito={this.handleLocalCarrito}
+                isLoggedIn={this.props.isLoggedIn}
             />
             <Alert 
                 show={this.state.show}
@@ -108,7 +143,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
         deleteProduct: (id) => dispatch(deleteProduct(id)),
         alertBottom:(tipo,mensaje)=> dispatch(alertBottom(tipo,mensaje)),
-        validateSession: () => dispatch(validateSession())
+        validateSession: () => dispatch(validateSession()),
+        setLocalCarrito: (producto) => dispatch(setLocalCarrito(producto))
     }
 }
 export default connect(

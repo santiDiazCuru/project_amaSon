@@ -11,6 +11,9 @@ var Review = db.define('reviews', {
     },
     comentario: {
         type: Sequelize.STRING
+    },
+    usuarioCreador: {
+        type: Sequelize.STRING
     }
 
 });
