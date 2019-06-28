@@ -3,7 +3,7 @@ const Router = express.Router();
 const Compra = require('../models/index').Compras;
 const OC = require('../models/index').OC;
 const Product = require('../models/index').Products;
-
+var Sequelize = require('sequelize');
 
 Router.get('/carrito/:id', function (req, res) {
     OC.findOne({
@@ -29,6 +29,41 @@ Router.get('/carrito/:id', function (req, res) {
         })
         .then((compras) => res.json(compras))
 })
+
+// BUSQUEDA POR ESTADOS
+//===================================
+Router.get('/estados/:id/:status', function (req, res) {
+    if(req.params.status == 'todos'){
+        var objFiltro = {
+            userId:req.params.id,
+           
+        }
+    }else {
+        var objFiltro = {
+            userId:req.params.id,
+            estado:req.params.status
+        }
+    }
+    Compra.findAll({
+        include: [{
+            model: OC,
+            as: 'OC',
+            attributes: ['id', 'fecha', 'estado', 'createdAt'],
+            where: objFiltro
+        },
+        {
+            model: Product,
+            as: 'product',
+            attributes: ['img1', 'titulo', 'precio']
+        }],
+        attributes: ['id', 'cantidad', 'OCId'
+        ],
+    })
+        .then((OC) => {
+            res.json(OC)
+        })
+})
+
 Router.put('/update/:compraId', function (req, res) {
     Compra.update({ cantidad: req.body.nuevaCantidad }, { where: { id: req.params.compraId } })
         .then(() => res.send('cantidad actualizada!'))
@@ -51,10 +86,10 @@ Router.get('/empty/:userId', function (req, res) {
         OC.destroy()
         OC.save()
         return OCid
-    }).then((OCid)=>
-    Compra.destroy({where: {OCId: OCid}})
+    }).then((OCid) =>
+        Compra.destroy({ where: { OCId: OCid } })
     )
-    .then(()=>res.send('listo!'))
+        .then(() => res.send('listo!'))
 })
 
 Router.get('/:id', function (req, res) {

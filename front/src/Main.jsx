@@ -18,6 +18,7 @@ import EditProductContainer from './containers/EditProductContainer';
 import PerfilAdmin from './containers/PerfilAdmin';
 import Saludo from './components/Saludo';
 import notfound from './components/notfound';
+import VentasContainer from './containers/VentasContainer';
 
 
 
@@ -47,6 +48,7 @@ class Main extends React.Component {
         <Route path='/carrito' component={CarritoContainer} />
         <Route path='/admin' component={PerfilAdmin} />
         <Route path='/logout' component={Saludo} />
+        <Route path='/ventas' component={VentasContainer} />
         <Route path='/products/:id' component={SingleProductContainer} />
 
 
