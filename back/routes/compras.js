@@ -78,6 +78,32 @@ Router.get('/estados/:id/:status/:admin', function (req, res) {
         })
 })
 
+// BUSQUEDA POR OC
+//===================================
+Router.get('/oc/:id', function (req, res) {
+   
+    Compra.findAll({
+        include: [{
+            model: OC,
+            as: 'OC',
+            where:{
+                id:req.params.id
+            },
+            attributes: [],
+        },
+        {
+            model: Product,
+            as: 'product',
+            
+        }],
+        attributes: [],
+    })
+        .then((OC) => {
+            res.json(OC)
+        })
+})
+
+
 Router.put('/update/:compraId', function (req, res) {
     Compra.update({ cantidad: req.body.nuevaCantidad }, { where: { id: req.params.compraId } })
         .then(() => res.send('cantidad actualizada!'))
@@ -123,9 +149,7 @@ Router.get('/updatecarrito/:userId', function (req,res){
     })
     .then((compras) =>{ 
     res.json(compras)})
-    // OC.update({estado: 'pendiente'}, {where:
-    //      {userId: req.params.userId,
-    //         estado: 'carrito'}})
+    
 })
 
 Router.post('/add/:userId', function (req, res) {
