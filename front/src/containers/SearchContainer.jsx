@@ -120,8 +120,11 @@ class CategoryContainer extends React.Component {
         return <div className="container-fluid">
             <div className="row">
                 <br /><br />
-                <div className="col-sm-3 col-md-2 sidebar" style={({ zIndex: 8 })}>
+                <div className="col-sm-3 col-md-2 sidebar" id="sidebar" style={({ zIndex: 8 })}>
                     {/* RENDERIZA COMPONENTE DE FILTRO */}
+                    <span className="pull-right visible-xs">
+                                 <button type="button" className="btn btn-primary btn-md" id="press2">CERRAR</button>
+                    </span>
                     <SidebarComponent
                         handleChangeMin={this.handleChangeMin}
                         priceMin={this.props.min}
@@ -142,6 +145,11 @@ class CategoryContainer extends React.Component {
                         <li><Link to="/">Home</Link></li>
                         <li><Link >Categorias</Link></li>
                         <li className="active">{this.props.categoryParams}</li>
+                        <li>
+                            <span className="pull-right visible-xs">
+                                 <button type="button" className="btn btn-primary btn-md" id="press">VER FILTROS</button>
+                            </span>
+                        </li>
                     </ol>
 
                     <ProductoContainer />

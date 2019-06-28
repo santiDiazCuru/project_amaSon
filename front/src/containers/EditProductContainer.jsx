@@ -74,9 +74,6 @@ class AddProductContainer extends React.Component {
         if (arr.length) {
             arrCategory.push(...arr)
             
-            // if(save.length){
-            //     arrCategory.push(...save)
-            // }
             arrCategory=arrCategory.filter((a,i,arr)=>arr.indexOf(a)===i)
             this.setState({
                 response: '',

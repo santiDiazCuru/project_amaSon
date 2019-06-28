@@ -51,20 +51,34 @@ class ProductContainer extends Component {
         console.log(id, "UPDATE")
     }
     handleCarrito(e){
-        this.props.isLoggedIn? 
-        addItem(e.target.name, this.props.currentUser.id) : 
-        alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou')
-        this.props.alertBottom('success','Se ha agregado el producto al carrito')
-        this.setState({
-            show:true
-        })
+        if(this.props.isLoggedIn){
+            addItem(e.target.name, this.props.currentUser.id)
+            this.props.alertBottom('success','Se ha agregado el producto al carrito..')
+                    this.setState({
+                        show:true
+                    })
+
+        } else{
+            this.props.alertBottom('danger','Debes estar logueado para agregar al carrito')
+            this.setState({
+                show:true
+            })
+        }
+        //alert('el usuario no esta loggeado y hay que hacer que se guarde en local storage perritoou')
     }
     handleLocalCarrito(e){
+        
         for (let i=0; i<this.props.listaProductos.length; i++){
             if(this.props.listaProductos[i].id == e.target.name){
                 this.props.setLocalCarrito(this.props.listaProductos[i])
+                this.props.alertBottom('success','Se ha agregado el producto al carrito..')
+                this.setState({
+                    show:true
+                })
+
             }
         }
+        
         // this.props.alertBottom('success','Se ha agregado el producto al carrito')
         // this.setState({
         //     show:true

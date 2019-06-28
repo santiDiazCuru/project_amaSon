@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import CarritoComponent from '../components/CarritoComponent'
 import { getCarrito, updateCantidad, deleteCompra, changeStatus } from '../action-creators/getCompras'
 import { validateSession } from '../action-creators/logInUser'
-import { vaciarCarrito, setLocalCarrito, vaciarLocalCarrito, deleteLocalCarrito } from '../action-creators/addCarrito'
+import { vaciarCarrito, updateLocalCarrito, vaciarLocalCarrito, deleteLocalCarrito } from '../action-creators/addCarrito'
 
 class CarritoContainer extends React.Component {
     constructor() {
@@ -37,7 +37,11 @@ class CarritoContainer extends React.Component {
             updateCantidad(e.target.name, e.target.value, this.props.currentUser.id)
                 .then(() => this.props.getCarrito(this.props.currentUser.id))
         }
+        else {
+            e.preventDefault();
+            this.props.updateLocalCarrito(e.target.name, e.target.value)
 
+        }
     }
     handleDelete(e) {
         if (this.props.isLoggedIn) {
@@ -45,7 +49,8 @@ class CarritoContainer extends React.Component {
                 .then(() => this.props.getCarrito(this.props.currentUser.id))
         }
         else {
-
+            console.log(e.target.id)
+            this.props.deleteLocalCarrito(e.target.id)
         }
     }
     handleEmpty(e) {
@@ -61,17 +66,30 @@ class CarritoContainer extends React.Component {
     }
 
     render() {
-        {console.log('soy el local carrito!!!!',this.props.localCarrito)}
         return (
-            <CarritoComponent
-                handleEmpty={this.handleEmpty}
-                handleClick={this.handleClick}
-                handleDelete={this.handleDelete}
-                handleChange={this.handleChange}
-                userCarrito={this.props.userCarrito}
-                isLoggedIn={this.props.isLoggedIn}
-                localCarrito={this.props.localCarrito} />
-        )
+            <div className="container-fluid">
+                <div className="row">
+                    <br /><br />
+                    <div className="col-sm-2 col-md-2 sidebar" style={({ zIndex: 8 })}>
+                        {/* RENDERIZA COMPONENTE DE FILTRO */}
+                        <br /><img width="100%" src="https://png.pngtree.com/png_detail/18/09/10/pngtree-design-of-online-shopping-payment-png-clipart_2099730.jpg" alt="" />
+                        <br/><hr/>
+                        <img width="100%" src="https://previews.123rf.com/images/yupiramos/yupiramos1609/yupiramos160911629/62901362-compras-en-l%C3%ADnea-ecommerce-iconos-planos-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg" alt="" />
+                    </div>
+                    <div className="col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-2 main">
+                        <CarritoComponent
+                            handleEmpty={this.handleEmpty}
+                            handleClick={this.handleClick}
+                            handleDelete={this.handleDelete}
+                            handleChange={this.handleChange}
+                            userCarrito={this.props.userCarrito}
+                            isLoggedIn={this.props.isLoggedIn}
+                            localCarrito={this.props.localCarrito} />
+                    </div>
+                </div>
+            </div>
+        );
+
     };
 };
 
@@ -80,8 +98,8 @@ const mapDispatchToProps = dispatch => {
         getCarrito: (userId) => dispatch(getCarrito(userId)),
         validateSession: () => dispatch(validateSession()),
         vaciarLocalCarrito: () => dispatch(vaciarLocalCarrito()),
-        deleteLocalCarrito: (productId) => dispatch(vaciarLocalCarrito(productId))
-
+        deleteLocalCarrito: (productId) => dispatch(deleteLocalCarrito(productId)),
+        updateLocalCarrito: (productId, newCantidad) => dispatch(updateLocalCarrito(productId, newCantidad))
     }
 }
 const mapStateToProps = (state, ownProps) => {
