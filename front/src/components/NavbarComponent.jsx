@@ -70,7 +70,8 @@ export default ({ handleSession, currentUser, isLoggedIn, handleChange, handleSu
                         {/* este if hace que se renderize el boton de log in si el usuario no esta logeado y si está logeado un dropdown*/}
                         {isLoggedIn ?
                             <li className="dropdown">
-                                <Link to="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{currentUser.username}<span className="caret"></span></Link>
+                                <Link to="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Bienvenido! {currentUser.username}<span className="caret"></span></Link>
                                 <ul className="dropdown-menu">
                                     <li><Link to="/compras">Mis Compras</Link></li>
                                     {(currentUser.isAdmin)?(

@@ -1,8 +1,9 @@
-
 import React from 'react';
 import { connect } from 'react-redux'
 import LogInModal from '../components/LogInModal'
 import { validateUser } from '../action-creators/logInUser'
+import { withRouter } from "react-router-dom";
+
 
 class LogInContainer extends React.Component {
     constructor(props) {
@@ -33,7 +34,12 @@ class LogInContainer extends React.Component {
             password: this.state.password
         }
         this.props.validateUser(user)
-        .catch(()=>this.setState({error: true})) 
+        .then(()=>{
+            this.props.history.push("/admin");
+        })
+        .catch(()=>{
+            this.setState({error: true})
+        }) 
         this.props.handleModal()
     }
 
@@ -46,10 +52,18 @@ class LogInContainer extends React.Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps,"VER")
+    return {
+        
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         validateUser: (user) => dispatch(validateUser(user))
     }
 }
 
-export default connect(null, mapDispatchToProps)(LogInContainer)
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LogInContainer));
