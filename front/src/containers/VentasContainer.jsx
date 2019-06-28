@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import VentasComponent from '../components/VentasComponents'
 import { validateSession } from '../action-creators/logInUser'
+import {changeOCStatus} from '../action-creators/getCompras'
 import Axios from "axios"
 
 class VentasContainer extends React.Component {
@@ -13,6 +14,7 @@ class VentasContainer extends React.Component {
         }
         this.changeSelect = this.changeSelect.bind(this)
         this.changeBuscar = this.changeBuscar.bind(this)
+        this.changeStatus = this.changeStatus.bind(this)
     };
     changeSelect(e) {
         this.setState({
@@ -23,6 +25,7 @@ class VentasContainer extends React.Component {
     changeBuscar(e) {
         var id = (this.props.currentUser.hasOwnProperty('id')) ? this.props.currentUser.id : 0
         var status = this.state.data
+       
 
         let miPromesa = Axios.get(`/api/compras/estados/${id}/${status}`)
             .catch(err => console.log(err, "ERRRO"))
@@ -44,8 +47,9 @@ class VentasContainer extends React.Component {
             
         var id = (this.props.currentUser.hasOwnProperty('id')) ? this.props.currentUser.id : 0
         var status = this.state.data
+        var admin = this.props.currentUser.isAdmin.toString()
 
-        let miPromesa = Axios.get(`/api/compras/estados/${id}/${status}`)
+        let miPromesa = Axios.get(`/api/compras/estados/${id}/${status}/${admin}`)
             .catch(err => console.log(err, "ERRRO"))
 
         let arregloo = []
@@ -58,7 +62,11 @@ class VentasContainer extends React.Component {
                     ListOC: depurado
                 })
             })
-    }
+    } 
+     changeStatus(e){
+         changeOCStatus(e.target.name, e.target.id)
+         .then(()=>this.state.changeBuscar)
+     }
 
 
     render() {
@@ -78,6 +86,8 @@ class VentasContainer extends React.Component {
                             isLoggedIn={this.props.isLoggedIn}
                             changeSelect={this.changeSelect}
                             changeBuscar={this.changeBuscar}
+                            changeStatus={this.changeStatus}
+                            currentUser={this.props.currentUser}
                         />
                     </div>
                 </div>
@@ -96,6 +106,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         validateSession: () => dispatch(validateSession()),
+        changeStatus: (newStatus, OCid) => dispatch(changeStatus(newStatus,OCid))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(VentasContainer)

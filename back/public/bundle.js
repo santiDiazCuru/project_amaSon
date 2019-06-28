@@ -27932,7 +27932,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33250,6 +33250,9 @@ function (_React$Component) {
         path: "/ventas",
         component: _containers_VentasContainer__WEBPACK_IMPORTED_MODULE_16__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/compras",
+        component: _containers_VentasContainer__WEBPACK_IMPORTED_MODULE_16__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/products/:id",
         component: _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_11__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -33417,7 +33420,7 @@ var vaciarLocalCarrito = function vaciarLocalCarrito() {
 /*!*******************************************!*\
   !*** ./src/action-creators/getCompras.js ***!
   \*******************************************/
-/*! exports provided: getOrdenes, getOrdenCarrito, getCarrito, changeStatus, updateCantidad, deleteCompra */
+/*! exports provided: getOrdenes, getOrdenCarrito, getCarrito, changeStatus, changeOCStatus, updateCantidad, deleteCompra */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33426,6 +33429,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOrdenCarrito", function() { return getOrdenCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCarrito", function() { return getCarrito; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeStatus", function() { return changeStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeOCStatus", function() { return changeOCStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCantidad", function() { return updateCantidad; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompra", function() { return deleteCompra; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
@@ -33479,6 +33483,12 @@ var getCarrito = function getCarrito(userId) {
 var changeStatus = function changeStatus(newStatus, userId) {
   return axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/compras/status/".concat(userId), {
     newStatus: newStatus
+  });
+};
+var changeOCStatus = function changeOCStatus(newStatus, OCid) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("api/compras/status", {
+    newStatus: newStatus,
+    OCid: OCid
   });
 };
 var updateCantidad = function updateCantidad(compraId, nuevaCantidad, userId) {
@@ -35983,7 +35993,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var ListOC = _ref.ListOC,
       changeSelect = _ref.changeSelect,
       changeBuscar = _ref.changeBuscar,
-      isLoggedIn = _ref.isLoggedIn;
+      isLoggedIn = _ref.isLoggedIn,
+      changeStatus = _ref.changeStatus,
+      currentUser = _ref.currentUser;
 
   if (isLoggedIn) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -36011,11 +36023,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "class": "btn btn-default",
       onClick: changeBuscar,
       type: "button"
-    }, "Buscar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), console.log(ListOC), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Buscar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "panel panel-default"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
       className: "table table-striped"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "OC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Estado"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Detalle"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ListOC && ListOC.map(function (item) {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Orden"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Estado"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha"), currentUser.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cambiar Estado") : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Detalle"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ListOC && ListOC.map(function (item) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         key: item.OCId
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
@@ -36045,7 +36057,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           textTransform: "capitalize",
           fontSize: 16
         }
-      }, fecha(item.createdAt)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, fecha(item.createdAt)), currentUser.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "casillaTitulo",
+        style: {
+          textTransform: "capitalize",
+          fontSize: 16
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: changeStatus,
+        id: item.OCId,
+        name: "procesando"
+      }, "Procesando"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: changeStatus,
+        id: item.OCId,
+        name: "rechazado"
+      }, "Rechazado"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: changeStatus,
+        id: item.OCId,
+        name: "finalizado"
+      }, "Finzalizado")) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/details/compra/".concat(item.OCId)
       }, "VER DETALLE")));
     })))));
@@ -39378,8 +39408,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_VentasComponents__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/VentasComponents */ "./src/components/VentasComponents.jsx");
 /* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/getCompras */ "./src/action-creators/getCompras.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39404,6 +39435,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var VentasContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -39421,6 +39453,7 @@ function (_React$Component) {
     };
     _this.changeSelect = _this.changeSelect.bind(_assertThisInitialized(_this));
     _this.changeBuscar = _this.changeBuscar.bind(_assertThisInitialized(_this));
+    _this.changeStatus = _this.changeStatus.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -39438,7 +39471,7 @@ function (_React$Component) {
 
       var id = this.props.currentUser.hasOwnProperty('id') ? this.props.currentUser.id : 0;
       var status = this.state.data;
-      var miPromesa = axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/compras/estados/".concat(id, "/").concat(status))["catch"](function (err) {
+      var miPromesa = axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("/api/compras/estados/".concat(id, "/").concat(status))["catch"](function (err) {
         return console.log(err, "ERRRO");
       });
       var arregloo = [];
@@ -39460,7 +39493,8 @@ function (_React$Component) {
       this.props.validateSession();
       var id = this.props.currentUser.hasOwnProperty('id') ? this.props.currentUser.id : 0;
       var status = this.state.data;
-      var miPromesa = axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/compras/estados/".concat(id, "/").concat(status))["catch"](function (err) {
+      var admin = this.props.currentUser.isAdmin.toString();
+      var miPromesa = axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("/api/compras/estados/".concat(id, "/").concat(status, "/").concat(admin))["catch"](function (err) {
         return console.log(err, "ERRRO");
       });
       var arregloo = [];
@@ -39471,6 +39505,15 @@ function (_React$Component) {
         _this3.setState({
           ListOC: depurado
         });
+      });
+    }
+  }, {
+    key: "changeStatus",
+    value: function changeStatus(e) {
+      var _this4 = this;
+
+      Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["changeOCStatus"])(e.target.name, e.target.id).then(function () {
+        return _this4.state.changeBuscar;
       });
     }
   }, {
@@ -39499,7 +39542,9 @@ function (_React$Component) {
         ListOC: this.state.ListOC,
         isLoggedIn: this.props.isLoggedIn,
         changeSelect: this.changeSelect,
-        changeBuscar: this.changeBuscar
+        changeBuscar: this.changeBuscar,
+        changeStatus: this.changeStatus,
+        currentUser: this.props.currentUser
       }))));
     }
   }]);
@@ -39520,7 +39565,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     validateSession: function validateSession() {
       return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__["validateSession"])());
-    }
+    },
+    changeStatus: function (_changeStatus) {
+      function changeStatus(_x, _x2) {
+        return _changeStatus.apply(this, arguments);
+      }
+
+      changeStatus.toString = function () {
+        return _changeStatus.toString();
+      };
+
+      return changeStatus;
+    }(function (newStatus, OCid) {
+      return dispatch(changeStatus(newStatus, OCid));
+    })
   };
 };
 
