@@ -59,7 +59,9 @@ class NavBarContainer extends React.Component {
     handleRegister(e) {
         if (e) e.preventDefault()
         !this.state.showRegister ? this.setState({ showRegister: true }) : this.setState({ showRegister: false })
-        if (this.state.showLogInModal) this.setState({ showLogInModal: false })
+        if (this.state.showLogInModal) {
+            this.setState({ showLogInModal: false })   
+        }
     }
 
     render() {

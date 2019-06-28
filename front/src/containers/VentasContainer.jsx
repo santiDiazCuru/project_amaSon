@@ -40,12 +40,14 @@ class VentasContainer extends React.Component {
                     ListOC: depurado
                 })
             })
+
+    }
+    componentWillMount(){
+        this.props.validateSession()
     }
     componentDidMount() {
-        //
         this.props.validateSession()
-            
-        var id = (this.props.currentUser.hasOwnProperty('id')) ? this.props.currentUser.id : 0
+        .then(()=>{ var id = (this.props.currentUser.hasOwnProperty('id')) ? this.props.currentUser.id : 0
         var status = this.state.data
         var admin = this.props.currentUser.isAdmin.toString()
 
@@ -61,13 +63,15 @@ class VentasContainer extends React.Component {
                 this.setState({
                     ListOC: depurado
                 })
-            })
+            })})
+       
     } 
      changeStatus(e){
          changeOCStatus(e.target.name, e.target.id)
          .then(()=>this.state.changeBuscar)
          alert('Se ha actualizado el estado correctamente')
         this.props.history.push('/ventas')
+        this.props.validateSession()
      }
 
 
@@ -82,7 +86,7 @@ class VentasContainer extends React.Component {
                         <br /><hr />
                         <img width="100%" src="https://previews.123rf.com/images/yupiramos/yupiramos1609/yupiramos160911629/62901362-compras-en-l%C3%ADnea-ecommerce-iconos-planos-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg" alt="" />
                     </div>
-                    <div className="col-sm-8 col-sm-offset-8 col-md-8 col-md-offset-2 main">
+                    <div className="col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-2 main">
                         <VentasComponent
                             ListOC={this.state.ListOC}
                             isLoggedIn={this.props.isLoggedIn}
