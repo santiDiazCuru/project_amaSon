@@ -34048,6 +34048,73 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./src/components/CompraModal.jsx":
+/*!****************************************!*\
+  !*** ./src/components/CompraModal.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var error = _ref.error,
+      handleModal = _ref.handleModal,
+      handleRegister = _ref.handleRegister,
+      handleSubmit = _ref.handleSubmit,
+      handleChanges = _ref.handleChanges;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "table table-striped"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Orden de Compra"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quitar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+    key: item.id
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "casillaImg"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "img img-thumbnail",
+    width: "100px",
+    height: "100px",
+    src: "".concat(item.product.img1)
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "casillaTitulo"
+  }, item.product.titulo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", _defineProperty({
+    className: "casillaCantidad"
+  }, "className", "cantidad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onClick: handleChange,
+    name: "".concat(item.id),
+    defaultValue: "".concat(item.cantidad),
+    type: "number",
+    className: "cantidad",
+    min: "1"
+  })))))));
+});
+{
+  /* <h2 id='LogInTitle'>Log In...</h2>
+  { error? <h5>El usuario o la contraseña son incorrectos</h5> : console.log('no hay error')}
+  <span className="close-modal-btn" onClick={handleModal}>x</span>
+  <div>
+  <form onSubmit={handleSubmit}>
+     <input onChange={handleChanges} type="email" name='email' className="form-control" placeholder="Email" aria-describedby="basic-addon1"></input>
+     <br />
+     <input onChange={handleChanges} type="password" name='password' className="form-control" placeholder="Password" aria-describedby="basic-addon2"></input>
+     <br />
+     <button type="submit" className="btn btn-default">Ingresar</button>
+     <div onClick={handleRegister} id='registerSubmit' className='btn btn-default'>
+         <span>Registrarme</span>
+     </div>
+  </form>
+  </div>
+  <button type='submit' className="btn btn-default">Registrarme</button> */
+}
+
+/***/ }),
+
 /***/ "./src/components/DropdownNavbar.jsx":
 /*!*******************************************!*\
   !*** ./src/components/DropdownNavbar.jsx ***!
@@ -36086,10 +36153,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CarritoComponent */ "./src/components/CarritoComponent.jsx");
-/* harmony import */ var _action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getCompras */ "./src/action-creators/getCompras.js");
-/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
-/* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
+/* harmony import */ var _CompraContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CompraContainer */ "./src/containers/CompraContainer.jsx");
+/* harmony import */ var _components_CarritoComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/CarritoComponent */ "./src/components/CarritoComponent.jsx");
+/* harmony import */ var _action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/getCompras */ "./src/action-creators/getCompras.js");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36115,6 +36183,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var CarritoContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -36128,12 +36197,15 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CarritoContainer).call(this));
     _this.state = {
       carrito: [],
-      eliminados: []
+      eliminados: [],
+      showModal: false,
+      total: 0
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.handleEmpty = _this.handleEmpty.bind(_assertThisInitialized(_this));
+    _this.handleModal = _this.handleModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -36149,24 +36221,31 @@ function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      var _this3 = this;
-
       if (this.props.isLoggedIn) {
         e.preventDefault();
-        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["changeStatus"])('finalizada', this.props.currentUser.id).then(function () {
-          return _this3.props.getCarrito(_this3.props.currentUser.id);
-        });
+        this.handleModal(); // changeStatus('carrito', this.props.currentUser.id)
+        //     .then(() => this.props.getCarrito(this.props.currentUser.id))
       } else alert('Debes estar loggeado para realizar una compra');
+    }
+  }, {
+    key: "handleModal",
+    value: function handleModal(e) {
+      if (e) e.preventDefault();
+      !this.state.showModal ? this.setState({
+        showModal: true
+      }) : this.setState({
+        showModal: false
+      });
     }
   }, {
     key: "handleChange",
     value: function handleChange(e) {
-      var _this4 = this;
+      var _this3 = this;
 
       if (this.props.isLoggedIn) {
         e.preventDefault();
-        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["updateCantidad"])(e.target.name, e.target.value, this.props.currentUser.id).then(function () {
-          return _this4.props.getCarrito(_this4.props.currentUser.id);
+        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["updateCantidad"])(e.target.name, e.target.value, this.props.currentUser.id).then(function () {
+          return _this3.props.getCarrito(_this3.props.currentUser.id);
         });
       } else {
         e.preventDefault();
@@ -36176,11 +36255,11 @@ function (_React$Component) {
   }, {
     key: "handleDelete",
     value: function handleDelete(e) {
-      var _this5 = this;
+      var _this4 = this;
 
       if (this.props.isLoggedIn) {
-        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["deleteCompra"])(e.target.id).then(function () {
-          return _this5.props.getCarrito(_this5.props.currentUser.id);
+        Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["deleteCompra"])(e.target.id).then(function () {
+          return _this4.props.getCarrito(_this4.props.currentUser.id);
         });
       } else {
         console.log(e.target.id);
@@ -36190,12 +36269,12 @@ function (_React$Component) {
   }, {
     key: "handleEmpty",
     value: function handleEmpty(e) {
-      var _this6 = this;
+      var _this5 = this;
 
       if (this.props.isLoggedIn) {
         e.preventDefault();
-        Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["vaciarCarrito"])(this.props.currentUser.id).then(function () {
-          return _this6.props.getCarrito(_this6.props.currentUser.id);
+        Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["vaciarCarrito"])(this.props.currentUser.id).then(function () {
+          return _this5.props.getCarrito(_this5.props.currentUser.id);
         });
       } else {
         this.props.vaciarLocalCarrito();
@@ -36204,15 +36283,33 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        handleEmpty: this.handleEmpty,
-        handleClick: this.handleClick,
-        handleDelete: this.handleDelete,
-        handleChange: this.handleChange,
-        userCarrito: this.props.userCarrito,
-        isLoggedIn: this.props.isLoggedIn,
-        localCarrito: this.props.localCarrito
-      });
+      if (!this.state.showModal) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          handleEmpty: this.handleEmpty,
+          handleClick: this.handleClick,
+          handleDelete: this.handleDelete,
+          handleChange: this.handleChange,
+          userCarrito: this.props.userCarrito,
+          isLoggedIn: this.props.isLoggedIn,
+          localCarrito: this.props.localCarrito
+        });
+      } else {
+        {
+          console.log('soy el user carrito que  le estoy pasando', this.props.userCarrito);
+        }
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CompraContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          handleModal: this.handleModal,
+          userCarrito: this.props.userCarrito
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CarritoComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          handleEmpty: this.handleEmpty,
+          handleClick: this.handleClick,
+          handleDelete: this.handleDelete,
+          handleChange: this.handleChange,
+          userCarrito: this.props.userCarrito,
+          isLoggedIn: this.props.isLoggedIn,
+          localCarrito: this.props.localCarrito
+        }));
+      }
     }
   }]);
 
@@ -36224,19 +36321,19 @@ function (_React$Component) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     getCarrito: function getCarrito(userId) {
-      return dispatch(Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_3__["getCarrito"])(userId));
+      return dispatch(Object(_action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__["getCarrito"])(userId));
     },
     validateSession: function validateSession() {
-      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_4__["validateSession"])());
+      return dispatch(Object(_action_creators_logInUser__WEBPACK_IMPORTED_MODULE_5__["validateSession"])());
     },
     vaciarLocalCarrito: function vaciarLocalCarrito() {
-      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["vaciarLocalCarrito"])());
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["vaciarLocalCarrito"])());
     },
     deleteLocalCarrito: function deleteLocalCarrito(productId) {
-      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["deleteLocalCarrito"])(productId));
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["deleteLocalCarrito"])(productId));
     },
     updateLocalCarrito: function updateLocalCarrito(productId, newCantidad) {
-      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["updateLocalCarrito"])(productId, newCantidad));
+      return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__["updateLocalCarrito"])(productId, newCantidad));
     }
   };
 };
@@ -36548,6 +36645,110 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(CategoryContainer));
+
+/***/ }),
+
+/***/ "./src/containers/CompraContainer.jsx":
+/*!********************************************!*\
+  !*** ./src/containers/CompraContainer.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CompraContainer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _components_CompraModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CompraModal */ "./src/components/CompraModal.jsx");
+/* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_getCompras__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/getCompras */ "./src/action-creators/getCompras.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var CompraContainer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CompraContainer, _React$Component);
+
+  function CompraContainer(props) {
+    var _this;
+
+    _classCallCheck(this, CompraContainer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CompraContainer).call(this, props)), _this.state = {
+      total: 0
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CompraContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var total = 0;
+
+      for (var i = 0; i < this.props.userCarrito.length; i++) {
+        console.log(this.props.userCarrito[i].cantidad, this.props.userCarrito[i].product.precio);
+        total = total + this.props.userCarrito[i].cantidad * this.props.userCarrito[i].product.precio;
+      }
+
+      this.setState({
+        total: total
+      }, function () {
+        return console.log(_this2.state, _this2.props.userCarrito);
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.handleModal();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_CompraModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        total: this.state.total,
+        handleSubmit: this.handleSubmit,
+        handleModal: this.props.handleModal
+      });
+    }
+  }]);
+
+  return CompraContainer;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // const mapDispatchToProps = dispatch => {
+//     return {
+//     }
+// }
+//export default connect(null, mapDispatchToProps)(LogInContainer)
+
+
+
 
 /***/ }),
 

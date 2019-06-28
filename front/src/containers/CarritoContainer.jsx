@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import CompraContainer from './CompraContainer'
 import CarritoComponent from '../components/CarritoComponent'
 import { getCarrito, updateCantidad, deleteCompra, changeStatus } from '../action-creators/getCompras'
 import { validateSession } from '../action-creators/logInUser'
@@ -10,13 +11,15 @@ class CarritoContainer extends React.Component {
         super();
         this.state = {
             carrito: [],
-            eliminados: []
+            eliminados: [],
+            showModal: false,
+            total: 0
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleEmpty = this.handleEmpty.bind(this);
-
+        this.handleModal = this.handleModal.bind(this);
     };
     componentDidMount() {
         this.props.validateSession()
@@ -25,11 +28,16 @@ class CarritoContainer extends React.Component {
     handleClick(e) {
         if (this.props.isLoggedIn) {
             e.preventDefault();
-            changeStatus('finalizada', this.props.currentUser.id)
-                .then(() => this.props.getCarrito(this.props.currentUser.id))
+            this.handleModal()
+            // changeStatus('carrito', this.props.currentUser.id)
+            //     .then(() => this.props.getCarrito(this.props.currentUser.id))
         }
         else alert('Debes estar loggeado para realizar una compra')
     }
+    handleModal(e) {
+        if (e) e.preventDefault()
+        !this.state.showModal ? this.setState({ showModal: true }) : this.setState({ showModal: false });
+    };
 
     handleChange(e) {
         if (this.props.isLoggedIn) {
@@ -66,16 +74,34 @@ class CarritoContainer extends React.Component {
     }
 
     render() {
-        return (
-            <CarritoComponent
-                handleEmpty={this.handleEmpty}
-                handleClick={this.handleClick}
-                handleDelete={this.handleDelete}
-                handleChange={this.handleChange}
-                userCarrito={this.props.userCarrito}
-                isLoggedIn={this.props.isLoggedIn}
-                localCarrito={this.props.localCarrito} />
-        )
+        if (!this.state.showModal) {
+            return (
+                <CarritoComponent
+                    handleEmpty={this.handleEmpty}
+                    handleClick={this.handleClick}
+                    handleDelete={this.handleDelete}
+                    handleChange={this.handleChange}
+                    userCarrito={this.props.userCarrito}
+                    isLoggedIn={this.props.isLoggedIn}
+                    localCarrito={this.props.localCarrito} />
+            )
+        }
+        else {
+            {console.log('soy el user carrito que  le estoy pasando', this.props.userCarrito)}
+            return (
+                <div>
+                    <CompraContainer handleModal={this.handleModal} userCarrito={this.props.userCarrito} />
+                    <CarritoComponent
+                        handleEmpty={this.handleEmpty}
+                        handleClick={this.handleClick}
+                        handleDelete={this.handleDelete}
+                        handleChange={this.handleChange}
+                        userCarrito={this.props.userCarrito}
+                        isLoggedIn={this.props.isLoggedIn}
+                        localCarrito={this.props.localCarrito} />
+                </div>
+            )
+        }
     };
 };
 
