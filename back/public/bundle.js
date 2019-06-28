@@ -36289,7 +36289,7 @@ __webpack_require__.r(__webpack_exports__);
         "aria-hidden": "true"
       }), "Add Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         style: _estilos_styleProduct__WEBPACK_IMPORTED_MODULE_1__["price"]
-      }, "$ ", item.precio)), currentUser.isAdmin && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "$ ", conversion(item.precio))), currentUser.isAdmin && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return handleDelete(item.id);
         },
@@ -36320,6 +36320,11 @@ __webpack_require__.r(__webpack_exports__);
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No se ha encontrado ningun resultado.."));
   }
 });
+
+function conversion(a) {
+  a = a.toString();
+  return a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim().replace(/\s/g, ',');
+}
 
 /***/ }),
 

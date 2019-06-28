@@ -66,7 +66,7 @@ export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUs
                                 </button>
                                 }
                                 <span style={price}>
-                                    $ {item.precio}
+                                    $ {conversion(item.precio)}
                                 </span>
                             </p>
                             {(currentUser.isAdmin) &&
@@ -104,4 +104,10 @@ export default ({ col, list, page, totalPage, nextPage, handleCarrito, currentUs
             <span>No se ha encontrado ningun resultado..</span>
         </div>
     }
+}
+
+
+function conversion(a) {
+    a = a.toString()
+    return a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim().replace(/\s/g, ',');
 }
