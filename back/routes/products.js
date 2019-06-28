@@ -148,7 +148,7 @@ Router.get('/limite', (req, res) => {
 
 Router.get('/', (req, res) => {
     Products.findAll({
-        limit: 88,
+        limit: 8,
         where: {
             stock: {
                 [Op.ne]: 0
@@ -157,7 +157,6 @@ Router.get('/', (req, res) => {
         include: [{
             model: Category,
             as: 'category',
-            where: { categoria: "televisores" },
             attributes: ['id', 'categoria']
         }]
     })
@@ -196,8 +195,8 @@ Router.get('/categoria/:category', (req, res) => {
 })
 
 // RUTA SOLO USO DE TEST
-Router.delete('/:id', (req, res) => {
-    Products.destroy({
+Router.patch('/:id', (req, res) => {
+    Products.update({stock: 0},{
         where: {
             id: req.params.id
         }

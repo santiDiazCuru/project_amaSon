@@ -56,6 +56,7 @@ export default ({ p, handleChange, handleSubmit, handleCarrito, rev, valoracion,
                             <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                             Add Cart
                     </button>
+                    
                         <h3>Reviews</h3>
                         <thead>
                             <tr>
