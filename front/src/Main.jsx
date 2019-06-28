@@ -19,6 +19,7 @@ import PerfilAdmin from './containers/PerfilAdmin';
 import Saludo from './components/Saludo';
 import notfound from './components/notfound';
 import VentasContainer from './containers/VentasContainer';
+import DetallesComprasContainer from './containers/DetallesComprasContainer';
 
 
 
@@ -50,7 +51,8 @@ class Main extends React.Component {
         <Route path='/logout' component={Saludo} />
         <Route path='/ventas' component={VentasContainer} />
         <Route path='/products/:id' component={SingleProductContainer} />
-
+        <Route path='/details/compra/:id' component={DetallesComprasContainer} />
+        
 
         {/* ROUTES */}
         <Route path="/" component={notfound} />
