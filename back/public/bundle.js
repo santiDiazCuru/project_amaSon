@@ -38301,6 +38301,7 @@ function (_React$Component) {
       e.preventDefault();
       this.props.endSession();
       this.props.history.push('/logout');
+      window.localStorage.clear();
     }
   }, {
     key: "handleChange",
@@ -40228,7 +40229,7 @@ var initialState = {
 
     case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_PRODUCTS"]:
       return Object.assign({}, state, {
-        productosHome: action.productos
+        productos: action.productos
       });
 
     case _constants__WEBPACK_IMPORTED_MODULE_0__["FETCH_ALL_LIMIT_CATEGORY"]:
