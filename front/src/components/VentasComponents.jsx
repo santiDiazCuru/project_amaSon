@@ -25,7 +25,7 @@ export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn }) => {
             </div>
 
             <hr />
-            {console.log(ListOC)}
+            
             <div className='panel panel-default'>
                 <table className="table table-striped">
                     <thead>
