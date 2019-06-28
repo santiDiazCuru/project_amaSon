@@ -12,5 +12,6 @@ const singleProduct = (product) => ({
 export const fetchSingleProduct = (id) => dispatch => {
     Axios.get(`/api/products/singleView/${id}/`)
         .then(product => {
+            console.log("ACASIIIIII")
             dispatch(singleProduct(product.data))})
 }
