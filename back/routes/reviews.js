@@ -6,12 +6,14 @@ Router.post('/', (req, res) => {
     Review.create({
         valoracion: req.body.valoracion,
         comentario: req.body.comentario,
+        usuarioCreador: req.body.username
     })
         .then(review => {
+            console.log("LLEGO LA REVIEW?!?!?!?", review)
             let user = review.setUser(req.body.userId)
             let product = review.setProduct(req.body.productId)
             Promise.all([user, product])
-                .then(finalReview => console.log("SOY FINAL REVIEW", finalReview))
+                .then(finalReview => res.json(finalReview))
         })
 })
 

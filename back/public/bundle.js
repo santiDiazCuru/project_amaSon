@@ -33690,6 +33690,7 @@ var singleProduct = function singleProduct(product) {
 var fetchSingleProduct = function fetchSingleProduct(id) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/singleView/".concat(id, "/")).then(function (product) {
+      console.log("ACASIIIIII");
       dispatch(singleProduct(product.data));
     });
   };
@@ -33894,12 +33895,17 @@ var getReviews = function getReviews(reviews) {
 
 
 var postReviews = function postReviews(body) {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/reviews', body);
+  return function (dispatch) {
+    // console.log("LLEGO O NO ACA??!!??!", body)
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/reviews', body).then(function (reviews) {
+      console.log("SOY BODYYY", body);
+    });
+  };
 }; //BUSCA LAS REVIEWS DE UN PRODUCTO
 
 var fetchReviews = function fetchReviews(productId) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/reviews/".concat(productId, "/singleReview")).then(function (reviews) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/reviews/".concat(productId, "/singleReview/")).then(function (reviews) {
       dispatch(getReviews(reviews.data));
     });
   };
@@ -35695,7 +35701,10 @@ var carrito = {
       handleChange = _ref.handleChange,
       handleSubmit = _ref.handleSubmit,
       handleCarrito = _ref.handleCarrito,
-      rev = _ref.rev;
+      rev = _ref.rev,
+      valoracion = _ref.valoracion,
+      comentario = _ref.comentario;
+  // console.log("QUE ES REV?!?!?!?!", rev)
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -35740,7 +35749,7 @@ var carrito = {
   }), "Add Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Valoracion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Review"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, rev && rev.productReviews.map(function (reviews) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: reviews.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.userId), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.valoracion), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.comentario));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.usuarioCreador), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.valoracion), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, reviews.comentario));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-8"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, p.productito.titulo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Descripcion del producto:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -35786,6 +35795,7 @@ var carrito = {
     className: "col-sm-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "valoracion",
+    value: valoracion,
     type: "number",
     min: "1",
     max: "5",
@@ -35801,6 +35811,7 @@ var carrito = {
     className: "col-sm-10"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     onChange: handleChange,
+    value: comentario,
     name: "comentario",
     placeholder: "Escriba aqui su review...",
     style: style_form
@@ -35848,7 +35859,7 @@ __webpack_require__.r(__webpack_exports__);
   }, "Borrar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, list && list.map(function (user) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: user.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "ID ", user.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "USERNAME: ", user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Email: ", user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, "NO\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, "NO\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
       className: "switch"
     }, user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
       key: Math.random(),
@@ -37775,13 +37786,16 @@ function (_React$Component) {
         password: this.state.password
       };
       this.props.validateUser(user).then(function () {
-        _this2.props.history.push("/admin");
+        if (_this2.props.isLoggedIn) {
+          _this2.props.handleModal();
+
+          _this2.props.history.push("/admin");
+        }
       })["catch"](function () {
         _this2.setState({
           error: true
         });
       });
-      this.props.handleModal();
     } //handleModal viene por props y es para cerrar el modal. handleRegister es para abrir o cerrar el registerModal
 
   }, {
@@ -37801,8 +37815,9 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(ownProps, "VER");
-  return {};
+  return {
+    isLoggedIn: state.user.isLoggedIn
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -38450,7 +38465,7 @@ function (_React$Component) {
 
         _this2.props.handleRegister();
       })["catch"](function (err) {
-        return console.log('el email ya existe', err);
+        return alert('El Email ingresado ya esta registrado', err);
       });
     } //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
     //modal si esta abierto y que se abra si esta cerrado!!!!
@@ -38811,6 +38826,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_creators_reviews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../action-creators/reviews */ "./src/action-creators/reviews.js");
 /* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
+/* harmony import */ var _components_AlertComponents__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/AlertComponents */ "./src/components/AlertComponents.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38837,6 +38853,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SingleProductContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -38851,23 +38868,41 @@ function (_React$Component) {
     _this.state = {
       comentario: '',
       valoracion: 0,
-      show: false
+      show: false,
+      mensaje: "",
+      tipo: ""
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleCarrito = _this.handleCarrito.bind(_assertThisInitialized(_this));
+    _this.btnCerrar = _this.btnCerrar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SingleProductContainer, [{
+    key: "btnCerrar",
+    value: function btnCerrar() {
+      this.setState({
+        show: false
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchSingleProduct(this.props.productId);
       this.props.fetchReviews(this.props.productId);
-    }
+    } // componentDidUpdate(prevProps, prevState){
+    //     if (this.props.reviews.length !== prevProps.reviews.length) {
+    //         this.props.fetchReviews()
+    //         this.setState({comentario: '', valoracion: 0})
+    //     }
+    // }
+
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
 
       if (this.props.isLoggedIn) {
@@ -38875,12 +38910,21 @@ function (_React$Component) {
           comentario: this.state.comentario,
           valoracion: this.state.valoracion,
           productId: this.props.productito.id,
-          userId: this.props.user.id
+          userId: this.props.user.id,
+          username: this.props.user.username
         };
-        Object(_action_creators_reviews__WEBPACK_IMPORTED_MODULE_4__["postReviews"])(dataReview); // this.setState({
-        //     valoracion: 0,
-        //     comentario: ''
-        // })
+        console.log("SOY PROPS", this.props);
+        this.props.postReviews(dataReview).then(function () {
+          console.log("ENTREO A LA PROMESA");
+
+          _this2.props.fetchReviews(_this2.props.productId);
+        });
+        this.setState({
+          valoracion: 0,
+          comentario: ''
+        }, function () {
+          return console.log('ESTOY SETEANDO EL ESTADO', _this2.state);
+        });
       } else {
         alert('Debe estar loggeado para enviar reviews');
       }
@@ -38908,7 +38952,9 @@ function (_React$Component) {
       this.props.isLoggedIn ? Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["addItem"])(e.target.name, this.props.user.id) : this.props.setLocalCarrito(this.props.productito);
       this.props.alertBottom('success', 'Se ha agregado el producto al carrito');
       this.setState({
-        show: true
+        show: true,
+        mensaje: "Agregado exitosamente al carrito!",
+        tipo: "success"
       });
     }
   }, {
@@ -38919,7 +38965,14 @@ function (_React$Component) {
         handleChange: this.handleChange,
         handleSubmit: this.handleSubmit,
         handleCarrito: this.handleCarrito,
-        rev: this.props.reviews
+        rev: this.props.reviews,
+        valoracion: this.state.valoracion,
+        comentario: this.state.comentario
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AlertComponents__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        show: this.state.show,
+        btnCerrar: this.btnCerrar,
+        tipo: this.state.tipo,
+        mensaje: this.state.mensaje
       }));
     }
   }]);
@@ -38950,6 +39003,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     setLocalCarrito: function setLocalCarrito(producto) {
       return dispatch(Object(_action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_5__["setLocalCarrito"])(producto));
+    },
+    postReviews: function postReviews(id) {
+      return dispatch(Object(_action_creators_reviews__WEBPACK_IMPORTED_MODULE_4__["postReviews"])(id));
     }
   };
 };
