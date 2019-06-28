@@ -16,7 +16,7 @@ Router.post('/register', function (req, res) {
         }
     })
         .then(user => {
-            if (user) return res.status(500).send('el usuario ya existe')
+            if (user) return res.send('X')
             if (!user) return User.create(req.body)
                 .then(newUser => res.send(newUser))
         })

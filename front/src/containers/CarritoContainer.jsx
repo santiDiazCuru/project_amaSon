@@ -22,12 +22,19 @@ class CarritoContainer extends React.Component {
         this.handleEmpty = this.handleEmpty.bind(this);
         this.handleModal = this.handleModal.bind(this);
     };
-    componentWillMount() {
-        this.props.getCarrito(this.props.currentUser.id)
+    componentDidMount() {
         this.props.getLocalCarrito()
-        // this.props.validateSession()
+        let miStorage = window.localStorage
+        if (this.props.currentUser.id) {
+            miStorage.setItem("userId", JSON.stringify(this.props.currentUser.id))
+            this.props.getCarrito(this.props.currentUser.id)
+        }
+        else {
+            let userId = JSON.parse(miStorage.getItem('userId'))
+            this.props.getCarrito(userId)
+        }
         //     .then(() => this.props.getCarrito(this.props.currentUser.id))
-            // this.props.getOrdenCarrito(this.props.currentUser.id)
+        // this.props.getOrdenCarrito(this.props.currentUser.id)
     }
     handleClick(e) {
         if (this.props.isLoggedIn) {
@@ -35,8 +42,8 @@ class CarritoContainer extends React.Component {
             // changeStatus('carrito', this.props.currentUser.id)
             //     .then(() => this.props.getCarrito(this.props.currentUser.id))
             this.props.getOrdenCarrito(this.props.currentUser.id)
-            .then(()=>this.handleModal())
-            
+                .then(() => this.handleModal())
+
         }
         else alert('Debes estar loggeado para realizar una compra')
     }
@@ -115,11 +122,11 @@ class CarritoContainer extends React.Component {
                             <img width="100%" src="https://previews.123rf.com/images/yupiramos/yupiramos1609/yupiramos160911629/62901362-compras-en-l%C3%ADnea-ecommerce-iconos-planos-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg" alt="" />
                         </div>
                         <div className="col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-2 main">
-                            <CompraContainer 
-                            OC={this.props.OC}
-                            currentUser={this.props.currentUser}
-                             handleModal={this.handleModal}
-                              userCarrito={this.props.userCarrito} />
+                            <CompraContainer
+                                OC={this.props.OC}
+                                currentUser={this.props.currentUser}
+                                handleModal={this.handleModal}
+                                userCarrito={this.props.userCarrito} />
                             <CarritoComponent
                                 handleEmpty={this.handleEmpty}
                                 handleClick={this.handleClick}
@@ -156,7 +163,6 @@ const mapStateToProps = (state, ownProps) => {
         isLoggedIn: state.user.isLoggedIn,
         localCarrito: state.localCarrito.localCarrito,
         OC: state.compras.ordenCarrito
-
     }
 }
 

@@ -33831,6 +33831,35 @@ var endSession = function endSession() {
 
 /***/ }),
 
+/***/ "./src/action-creators/precio.js":
+/*!***************************************!*\
+  !*** ./src/action-creators/precio.js ***!
+  \***************************************/
+/*! exports provided: filtrarPrecio */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarPrecio", function() { return filtrarPrecio; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+
+var precioObjeto = function precioObjeto(priceMin, priceMax) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__["PRECIO_FILTRO"],
+    priceMin: priceMin,
+    priceMax: priceMax
+  };
+};
+
+var filtrarPrecio = function filtrarPrecio(priceMin, priceMax) {
+  return function (dispatch) {
+    return dispatch(precioObjeto(priceMin, priceMax));
+  };
+};
+
+/***/ }),
+
 /***/ "./src/action-creators/registerUser.js":
 /*!*********************************************!*\
   !*** ./src/action-creators/registerUser.js ***!
@@ -33862,7 +33891,12 @@ var logInUser = function logInUser(user) {
 var registerUser = function registerUser(newUserInfo) {
   return function (dispatch) {
     return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/users/register', newUserInfo).then(function (newUser) {
-      return dispatch(logInUser(newUser.data));
+      if (newUser.data == 'X') {
+        return true;
+      } else {
+        dispatch(logInUser(newUser.data));
+        return false;
+      }
     });
   };
 };
@@ -35992,12 +36026,21 @@ __webpack_require__.r(__webpack_exports__);
       handleDelete = _ref.handleDelete,
       handleEditar = _ref.handleEditar,
       isLoggedIn = _ref.isLoggedIn,
-      handleLocalCarrito = _ref.handleLocalCarrito;
+      handleLocalCarrito = _ref.handleLocalCarrito,
+      priceMin = _ref.priceMin,
+      priceMax = _ref.priceMax;
 
   if (list.length !== 0) {
+    if (!priceMin && !priceMax) {
+      priceMin = 0;
+      priceMax = 100000;
+    }
+
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "row"
-    }, list && list.map(function (item) {
+    }, list && list.filter(function (item) {
+      return Number(item.precio) > Number(priceMin) && Number(item.precio) < Number(priceMax);
+    }).map(function (item) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-6 col-lg-".concat(col)
       }, "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -36094,7 +36137,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT, SET_LOCAL_CARRITO, EMPTY_LOCAL_CARRITO, DELETE_USER, CHANGE_ADMIN_STATUS, ORDEN_CARRITO */
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT, SET_LOCAL_CARRITO, EMPTY_LOCAL_CARRITO, DELETE_USER, CHANGE_ADMIN_STATUS, ORDEN_CARRITO, PRECIO_FILTRO */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36118,6 +36161,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_USER", function() { return DELETE_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_ADMIN_STATUS", function() { return CHANGE_ADMIN_STATUS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ORDEN_CARRITO", function() { return ORDEN_CARRITO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PRECIO_FILTRO", function() { return PRECIO_FILTRO; });
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 var FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 var FETCH_ALL_PRODUCTS_CATEGORY = 'FETCH_ALL_PRODUCTS_CATEGORY';
@@ -36137,6 +36181,7 @@ var EMPTY_LOCAL_CARRITO = 'EMPTY_LOCAL_CARRITO';
 var DELETE_USER = 'DELETE_USER';
 var CHANGE_ADMIN_STATUS = 'CHANGE_ADMIN_STATUS';
 var ORDEN_CARRITO = 'ORDEN_CARRITO';
+var PRECIO_FILTRO = 'PRECIO_FILTRO';
 
 /***/ }),
 
@@ -36568,12 +36613,20 @@ function (_React$Component) {
   }
 
   _createClass(CarritoContainer, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      this.props.getCarrito(this.props.currentUser.id);
-      this.props.getLocalCarrito(); // this.props.validateSession()
-      //     .then(() => this.props.getCarrito(this.props.currentUser.id))
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.getLocalCarrito();
+      var miStorage = window.localStorage;
+
+      if (this.props.currentUser.id) {
+        miStorage.setItem("userId", JSON.stringify(this.props.currentUser.id));
+        this.props.getCarrito(this.props.currentUser.id);
+      } else {
+        var userId = JSON.parse(miStorage.getItem('userId'));
+        this.props.getCarrito(userId);
+      } //     .then(() => this.props.getCarrito(this.props.currentUser.id))
       // this.props.getOrdenCarrito(this.props.currentUser.id)
+
     }
   }, {
     key: "handleClick",
@@ -36802,7 +36855,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
 /* harmony import */ var _containers_ProductContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../containers/ProductContainer */ "./src/containers/ProductContainer.jsx");
 /* harmony import */ var _components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SidebarComponent */ "./src/components/SidebarComponent.jsx");
+/* harmony import */ var _action_creators_precio__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/precio */ "./src/action-creators/precio.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36819,6 +36875,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -36901,6 +36958,7 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.state.priceMin && this.handleChangeLetraMin();
       var priceMin = Number(e.target.value);
       this.setState({
@@ -36944,6 +37002,7 @@ function (_React$Component) {
       var _this5 = this;
 
       e.preventDefault();
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.state.priceMax && this.handleChangeLetraMax();
       var priceMax = Number(e.target.value);
       this.setState({
@@ -37019,6 +37078,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -37028,7 +37089,7 @@ function (_React$Component) {
         style: {
           zIndex: 8
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_5__["default"], (_React$createElement = {
         handleChangeMin: this.handleChangeMin,
         priceMin: this.props.min,
         handleClickMin: this.handleClickMin,
@@ -37041,7 +37102,7 @@ function (_React$Component) {
         handleSubmit: this.handleSubmit,
         handleRadioCateg: this.handleRadioCateg,
         listCategory: this.props.listCategory
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, _defineProperty(_React$createElement, "priceMin", this.state.priceMin), _defineProperty(_React$createElement, "priceMax", this.state.priceMax), _React$createElement))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         className: "breadcrumb"
@@ -37073,6 +37134,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchAllCategory: function fetchAllCategory() {
       return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchAllCategory"])());
+    },
+    filtrarPrecio: function filtrarPrecio(priceMin, priceMax) {
+      return dispatch(Object(_action_creators_precio__WEBPACK_IMPORTED_MODULE_6__["filtrarPrecio"])(priceMin, priceMax));
     } //fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
 
   };
@@ -38316,7 +38380,9 @@ function (_Component) {
         handleDelete: this.handleDelete,
         handleEditar: this.handleEditar,
         handleLocalCarrito: this.handleLocalCarrito,
-        isLoggedIn: this.props.isLoggedIn
+        isLoggedIn: this.props.isLoggedIn,
+        priceMin: this.props.priceMin,
+        priceMax: this.props.priceMax
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AlertComponents__WEBPACK_IMPORTED_MODULE_3__["default"], {
         show: this.state.show,
         btnCerrar: this.btnCerrar,
@@ -38342,7 +38408,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     currentUser: state.user.currentUser,
     isLoggedIn: state.user.isLoggedIn,
     tipo: state.alert.tipo,
-    mensaje: state.alert.mensaje
+    mensaje: state.alert.mensaje,
+    priceMin: state.price.priceMin,
+    priceMax: state.price.priceMax
   };
 };
 
@@ -38455,15 +38523,19 @@ function (_React$Component) {
         password: this.state.password
       };
       e.preventDefault();
-      this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser).then(function () {
-        var user = {
-          email: _this2.state.email,
-          password: _this2.state.password
-        };
+      this.state.username && this.state.email && this.state.password && this.props.registerUser(newUser).then(function (X) {
+        if (X) {
+          alert('El email ingresado ya existe');
+        } else {
+          var user = {
+            email: _this2.state.email,
+            password: _this2.state.password
+          };
 
-        _this2.props.validateUser(user);
+          _this2.props.validateUser(user);
 
-        _this2.props.handleRegister();
+          _this2.props.handleRegister();
+        }
       });
     } //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
     //modal si esta abierto y que se abra si esta cerrado!!!!
@@ -38515,6 +38587,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_creators_getProducts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../action-creators/getProducts */ "./src/action-creators/getProducts.js");
 /* harmony import */ var _action_creators_addCarrito__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../action-creators/addCarrito */ "./src/action-creators/addCarrito.js");
 /* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../action-creators/logInUser */ "./src/action-creators/logInUser.js");
+/* harmony import */ var _action_creators_precio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../action-creators/precio */ "./src/action-creators/precio.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38532,6 +38605,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -38640,6 +38714,7 @@ function (_React$Component) {
       e.preventDefault();
       this.state.priceMin && this.handleChangeLetraMin();
       var priceMin = Number(e.target.value);
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.setState({
         priceMin: priceMin
       }, function () {
@@ -38681,6 +38756,7 @@ function (_React$Component) {
       var _this5 = this;
 
       e.preventDefault();
+      this.props.filtrarPrecio(this.state.priceMin, this.state.priceMax);
       this.state.priceMax && this.handleChangeLetraMax();
       var priceMax = Number(e.target.value);
       this.setState({
@@ -38745,9 +38821,9 @@ function (_React$Component) {
         id: "press2"
       }, "CERRAR")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SidebarComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
         handleChangeMin: this.handleChangeMin,
-        priceMin: this.props.min,
         handleClickMin: this.handleClickMin,
-        priceMax: this.props.max,
+        priceMin: this.state.priceMin,
+        priceMax: this.state.priceMax,
         handleChangeMax: this.handleChangeMax,
         handleClickMax: this.handleClickMax,
         color: this.state.color,
@@ -38799,6 +38875,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchAllCategory: function fetchAllCategory() {
       return dispatch(Object(_action_creators_getProducts__WEBPACK_IMPORTED_MODULE_5__["fetchAllCategory"])());
+    },
+    filtrarPrecio: function filtrarPrecio(priceMin, priceMax) {
+      return dispatch(Object(_action_creators_precio__WEBPACK_IMPORTED_MODULE_8__["filtrarPrecio"])(priceMin, priceMax));
     }
   };
 };
@@ -39529,7 +39608,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
 /* harmony import */ var _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fetch_reviews */ "./src/reducers/fetch_reviews.js");
 /* harmony import */ var _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./carrito_reducer */ "./src/reducers/carrito_reducer.js");
-/* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
+/* harmony import */ var _precio_reducer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./precio_reducer */ "./src/reducers/precio_reducer.js");
+/* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
+
 
 
 
@@ -39546,9 +39627,45 @@ __webpack_require__.r(__webpack_exports__);
   users: _fetch_users__WEBPACK_IMPORTED_MODULE_3__["default"],
   compras: _compras_reducers__WEBPACK_IMPORTED_MODULE_5__["default"],
   productReviews: _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__["default"],
-  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_8__["default"],
-  localCarrito: _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_9__["default"],
+  localCarrito: _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
+  price: _precio_reducer__WEBPACK_IMPORTED_MODULE_10__["default"]
 }));
+
+/***/ }),
+
+/***/ "./src/reducers/precio_reducer.js":
+/*!****************************************!*\
+  !*** ./src/reducers/precio_reducer.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+
+var initialState = {
+  priceMin: '',
+  priceMax: ''
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["PRECIO_FILTRO"]:
+      {
+        return Object.assign({}, state, {
+          priceMin: action.priceMin,
+          priceMax: action.priceMax
+        });
+      }
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 
