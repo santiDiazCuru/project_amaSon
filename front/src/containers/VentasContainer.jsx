@@ -40,12 +40,14 @@ class VentasContainer extends React.Component {
                     ListOC: depurado
                 })
             })
+
+    }
+    componentWillMount(){
+        this.props.validateSession()
     }
     componentDidMount() {
-        //
         this.props.validateSession()
-            
-        var id = (this.props.currentUser.hasOwnProperty('id')) ? this.props.currentUser.id : 0
+        .then(()=>{ var id = (this.props.currentUser.hasOwnProperty('id')) ? this.props.currentUser.id : 0
         var status = this.state.data
         var admin = this.props.currentUser.isAdmin.toString()
 
@@ -61,13 +63,15 @@ class VentasContainer extends React.Component {
                 this.setState({
                     ListOC: depurado
                 })
-            })
+            })})
+       
     } 
      changeStatus(e){
          changeOCStatus(e.target.name, e.target.id)
          .then(()=>this.state.changeBuscar)
          alert('Se ha actualizado el estado correctamente')
         this.props.history.push('/ventas')
+        this.props.validateSession()
      }
 
 
