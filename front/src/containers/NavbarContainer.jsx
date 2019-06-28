@@ -33,6 +33,7 @@ class NavBarContainer extends React.Component {
         e.preventDefault()
         this.props.endSession()
         this.props.history.push('/logout')
+        window.localStorage.clear()
     }
 
     handleChange(e) {
