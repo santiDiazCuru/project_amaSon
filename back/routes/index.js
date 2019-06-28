@@ -5,6 +5,7 @@ const comprasRouter = require('./compras');
 const usersRouter = require('./users')
 const path = require('path')
 const reviewsRouter = require('./reviews')
+const misComprasRouter = require('./misCompras')
 
 //prueba para la db:
 const Products = require('../models').Products
@@ -18,6 +19,7 @@ Router.use('/api/products', productsRouter)
 Router.use('/api/users', usersRouter)
 Router.use('/api/reviews', reviewsRouter)
 Router.use('/api/compras', comprasRouter)
+Router.use('/api/miscompras', misComprasRouter)
 
 
 module.exports = Router;

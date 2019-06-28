@@ -11,6 +11,7 @@ import UserListContainer from './containers/UserListContainer';
 import AddProductContainer from './containers/AddProductContainer';
 import CarritoContainer from './containers/CarritoContainer';
 import { validateSession } from './action-creators/logInUser'
+import ComprasAll from './containers/MisComprasContainer';
 
 import Axios from 'axios';
 import SingleProductContainer from './containers/SingleProductContainer';
@@ -47,8 +48,8 @@ class Main extends React.Component {
         <Route path='/admin' component={PerfilAdmin} />
         <Route path='/logout' component={Saludo} />
         <Route path='/products/:id' component={SingleProductContainer} />
-
-
+        <Route path='/products/:id' component={SingleProductContainer} />
+        <Route path='/compras/' component={ComprasAll} />
         {/* ROUTES */}
         <Route path="/" component={notfound} />
       </Switch>
