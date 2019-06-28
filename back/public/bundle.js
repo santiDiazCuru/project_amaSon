@@ -36137,22 +36137,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, fecha(item.createdAt)), currentUser.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         className: "casillaTitulo",
         style: {
+          width: 300,
           textTransform: "capitalize",
           fontSize: 16
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-default btn-xs",
         onClick: changeStatus,
         id: item.OCId,
         name: "procesando"
-      }, "Procesando"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Procesando"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success btn-xs",
         onClick: changeStatus,
         id: item.OCId,
         name: "rechazado"
-      }, "Rechazado"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Rechazado"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-info btn-xs",
         onClick: changeStatus,
         id: item.OCId,
         name: "finalizado"
-      }, "Finalizado")) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "\xA0Finalizado\xA0")) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/details/compra/".concat(item.OCId)
       }, "VER DETALLE")));
     })))));
@@ -38369,9 +38373,12 @@ function (_React$Component) {
       }) : this.setState({
         showRegister: false
       });
-      if (this.state.showLogInModal) this.setState({
-        showLogInModal: false
-      });
+
+      if (this.state.showLogInModal) {
+        this.setState({
+          showLogInModal: false
+        });
+      }
     }
   }, {
     key: "render",
@@ -38883,6 +38890,8 @@ function (_React$Component) {
           _this2.props.validateUser(user);
 
           _this2.props.handleRegister();
+
+          _this2.props.history.push('/admin');
         }
       });
     } //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
@@ -39751,7 +39760,7 @@ function (_React$Component) {
         src: "https://previews.123rf.com/images/yupiramos/yupiramos1609/yupiramos160911629/62901362-compras-en-l%C3%ADnea-ecommerce-iconos-planos-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg",
         alt: ""
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-8 col-sm-offset-8 col-md-8 col-md-offset-2 main"
+        className: "col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-2 main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_VentasComponents__WEBPACK_IMPORTED_MODULE_2__["default"], {
         ListOC: this.state.ListOC,
         isLoggedIn: this.props.isLoggedIn,

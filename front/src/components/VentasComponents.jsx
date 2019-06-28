@@ -23,7 +23,7 @@ export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn, changeStatus, 
                 </span>
 
             </div>
-
+            
             <hr />
             <div className='panel panel-default'>
                 <table className="table table-striped">
@@ -48,10 +48,10 @@ export default ({ ListOC, changeSelect, changeBuscar, isLoggedIn, changeStatus, 
                                     <td className='casillaTitulo' style={({ textTransform: "capitalize", fontSize: 16 })}>{item.Estado}</td>
                                     <td className='casillaTitulo' style={({ textTransform: "capitalize", fontSize: 16 })}>{fecha(item.createdAt)}</td>
                                     {currentUser.isAdmin ?
-                                    <td className='casillaTitulo' style={({ textTransform: "capitalize", fontSize: 16 })}>
-                                        <button onClick={changeStatus} id={item.OCId} name='procesando'>Procesando</button>
-                                        <button onClick={changeStatus} id={item.OCId} name='rechazado'>Rechazado</button>
-                                        <button onClick={changeStatus} id={item.OCId} name='finalizado'>Finalizado</button>
+                                    <td className='casillaTitulo' style={({ width: 300,textTransform: "capitalize", fontSize: 16 })}>
+                                        <button className="btn btn-default btn-xs" onClick={changeStatus} id={item.OCId} name='procesando'>Procesando</button>&nbsp; 
+                                        <button className="btn btn-success btn-xs"  onClick={changeStatus} id={item.OCId} name='rechazado'>Rechazado</button>&nbsp; 
+                                        <button className="btn btn-info btn-xs"  onClick={changeStatus} id={item.OCId} name='finalizado'>&nbsp;Finalizado&nbsp;</button>
                                     </td> : null}
                                     <td>
                                         <Link to={`/details/compra/${item.OCId}`}>
