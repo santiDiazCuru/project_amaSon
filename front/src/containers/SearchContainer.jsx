@@ -6,6 +6,7 @@ import SidebarComponent from '../components/SidebarComponent'
 import { fetchProducts, fetchAllCategory } from '../action-creators/getProducts'
 import {addItem} from '../action-creators/addCarrito'
 import { validateSession } from '../action-creators/logInUser'
+import { filtrarPrecio } from '../action-creators/precio'
 
 class CategoryContainer extends React.Component {
     //Eventos del filtro
@@ -73,6 +74,7 @@ class CategoryContainer extends React.Component {
         e.preventDefault();
         this.state.priceMin && this.handleChangeLetraMin()
         let priceMin = Number(e.target.value)
+        this.props.filtrarPrecio(this.state.priceMin,this.state.priceMax)
 
         this.setState({ priceMin }, () => {
             if (this.state.priceMin >= this.state.priceMax) {
@@ -94,6 +96,7 @@ class CategoryContainer extends React.Component {
 
     handleChangeMax(e) {
         e.preventDefault();
+        this.props.filtrarPrecio(this.state.priceMin,this.state.priceMax)
         this.state.priceMax && this.handleChangeLetraMax()
         let priceMax = Number(e.target.value)
         this.setState({ priceMax }, () => {
@@ -127,9 +130,9 @@ class CategoryContainer extends React.Component {
                     </span>
                     <SidebarComponent
                         handleChangeMin={this.handleChangeMin}
-                        priceMin={this.props.min}
                         handleClickMin={this.handleClickMin}
-                        priceMax={this.props.max}
+                        priceMin={this.state.priceMin}
+                        priceMax={this.state.priceMax}
                         handleChangeMax={this.handleChangeMax}
                         handleClickMax={this.handleClickMax}
                         color={this.state.color}
@@ -177,6 +180,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
         validateSession: () => dispatch(validateSession()),
         fetchAllCategory: () => dispatch(fetchAllCategory()),
+        filtrarPrecio: (priceMin,priceMax) => dispatch(filtrarPrecio(priceMin,priceMax))
     }
 }
 

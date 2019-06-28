@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { fetchAllProducts, fetchAllCategory } from '../action-creators/getProducts'
 import ProductoContainer from '../containers/ProductContainer'
 import SidebarComponent from '../components/SidebarComponent'
+import { filtrarPrecio } from '../action-creators/precio'
 
 class CategoryContainer extends React.Component {
     //Eventos del filtro
@@ -17,7 +18,7 @@ class CategoryContainer extends React.Component {
             color: '#f2ff00',
             letraMax: 12,
             letraMin: 20,
-            categoria:''
+            categoria: ''
         };
         this.handleChangeMin = this.handleChangeMin.bind(this);
         this.handleChangeMax = this.handleChangeMax.bind(this);
@@ -29,23 +30,24 @@ class CategoryContainer extends React.Component {
         this.handleRadioCateg = this.handleRadioCateg.bind(this)
     };
 
-    
+
     handleClickMin(e) {
         e.preventDefault();
         // cambiar el estado de price default por la diferencia el precio menor y el mayor
-        this.setState({ priceMin: 0 },()=>this.setState({ color: '#f2ff00' }))
+        this.setState({ priceMin: 0 }, () => this.setState({ color: '#f2ff00' }))
     };
     handleChangeLetraMin() {
         // console.log(this.state.priceMin)
         this.state.priceMin.toString().length == 1 && this.setState({ letraMin: 20 })
         this.state.priceMin.toString().length == 2 && this.setState({ letraMin: 18 })
-        this.state.priceMin.toString().length == 3 && this.setState({ letraMin: 16 }) 
+        this.state.priceMin.toString().length == 3 && this.setState({ letraMin: 16 })
         this.state.priceMin.toString().length == 4 && this.setState({ letraMin: 14 })
         this.state.priceMin.toString().length == 5 && this.setState({ letraMin: 12 })
     }
 
     handleChangeMin(e) {
         e.preventDefault();
+        this.props.filtrarPrecio(this.state.priceMin,this.state.priceMax)
         this.state.priceMin && this.handleChangeLetraMin()
         let priceMin = Number(e.target.value)
         this.setState({ priceMin }, () => {
@@ -62,11 +64,12 @@ class CategoryContainer extends React.Component {
     handleClickMax(e) {
         e.preventDefault();
         // cambiar el estado de price default por la diferencia el precio menor y el mayor
-        this.setState({ priceMax: 100000 },()=>this.setState({ color: '#f2ff00' }))
+        this.setState({ priceMax: 100000 }, () => this.setState({ color: '#f2ff00' }))
     };
 
     handleChangeMax(e) {
         e.preventDefault();
+        this.props.filtrarPrecio(this.state.priceMin,this.state.priceMax)
         this.state.priceMax && this.handleChangeLetraMax()
         let priceMax = Number(e.target.value)
         this.setState({ priceMax }, () => {
@@ -82,14 +85,14 @@ class CategoryContainer extends React.Component {
     handleRadioCateg(e) {
         e.preventDefault();
         this.setState({ categoria: e.target.value })
-        
+
     }
 
-    
-    handleChangeLetraMax(){
+
+    handleChangeLetraMax() {
         this.state.priceMax.toString().length == 1 && this.setState({ letraMax: 20 })
         this.state.priceMax.toString().length == 2 && this.setState({ letraMax: 18 })
-        this.state.priceMax.toString().length == 3 && this.setState({ letraMax: 16 }) 
+        this.state.priceMax.toString().length == 3 && this.setState({ letraMax: 16 })
         this.state.priceMax.toString().length == 4 && this.setState({ letraMax: 14 })
         this.state.priceMax.toString().length == 5 && this.setState({ letraMax: 12 })
     }
@@ -98,7 +101,7 @@ class CategoryContainer extends React.Component {
         this.props.fetchAllProducts(
             this.props.categoryParams,
             this.state.priceMin, this.state.priceMax, 1
-            )
+        )
         this.props.fetchAllCategory()
     }
     handleSubmit(e) {
@@ -107,18 +110,18 @@ class CategoryContainer extends React.Component {
         this.props.fetchAllProducts(
             this.props.categoryParams,
             this.state.priceMin, this.state.priceMax, 1
-            )
+        )
     };
-    
+
     componentDidUpdate(prevProps) {
         if (this.props.categoryParams !== prevProps.categoryParams) {
             this.props.fetchAllProducts(this.props.categoryParams,
                 this.state.priceMin, this.state.priceMax, 1)
         }
     }
-    
-        // Renderiza body
-        // ===============================================
+
+    // Renderiza body
+    // ===============================================
     render() {
         return <div className="container-fluid">
             <div className="row">
@@ -136,9 +139,11 @@ class CategoryContainer extends React.Component {
                         letraMax={this.state.letraMax}
                         letraMin={this.state.letraMin}
                         handleSubmit={this.handleSubmit}
-                        handleRadioCateg={this.handleRadioCateg} 
+                        handleRadioCateg={this.handleRadioCateg}
                         listCategory={this.props.listCategory}
-                        />
+                        priceMin={this.state.priceMin}
+                        priceMax={this.state.priceMax}
+                    />
                 </div>
                 <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol className="breadcrumb">
@@ -146,7 +151,7 @@ class CategoryContainer extends React.Component {
                         <li><Link >Categorias</Link></li>
                         <li className="active">{this.props.categoryParams}</li>
                     </ol>
-                    
+
                     {/* <Producto
                         col={3}
                         page={this.props.page}
@@ -170,13 +175,14 @@ const mapStateToProps = (state, ownProps) => {
         page: state.product.page,
         totalPages: state.product.totalPages,
         inputValue: state.product.inputValue,
-        
+
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchAllProducts: (category, min, max, page) => dispatch(fetchAllProducts(category, min, max, page)),
         fetchAllCategory: () => dispatch(fetchAllCategory()),
+        filtrarPrecio: (priceMin, priceMax) => dispatch(filtrarPrecio(priceMin, priceMax))
         //fetchProducts: (input, category, min, max, page) => dispatch(fetchProducts(input, category, min, max, page)),
     }
 }
