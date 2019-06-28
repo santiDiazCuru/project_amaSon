@@ -41,6 +41,7 @@ class RegisterContainer extends React.Component {
                     }
                     this.props.validateUser(user)
                     this.props.handleRegister()
+                    
                 }
             })
     }
