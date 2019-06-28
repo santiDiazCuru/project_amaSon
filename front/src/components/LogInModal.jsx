@@ -4,7 +4,7 @@ export default ({ error, handleModal, handleRegister, handleSubmit, handleChange
     <div>
         <div className="modal-wrapper">
             <h2 id='LogInTitle'>Log In...</h2>
-                { error? <h5>El usuario o la contraseña son incorrectos</h5> : console.log('no hay error')}
+                { error ? <h5>El usuario o la contraseña son incorrectos</h5> : console.log('no hay error')}
             <span className="close-modal-btn" onClick={handleModal}>x</span>
             <div>
                 <form onSubmit={handleSubmit}>

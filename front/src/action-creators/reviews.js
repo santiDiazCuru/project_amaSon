@@ -7,13 +7,17 @@ const getReviews = (reviews) => ({
 });
 
 //POSTEA UNA NUEVA REVIEW
-export const postReviews = (body) => {
+export const postReviews = (body) => dispatch => {
+    // console.log("LLEGO O NO ACA??!!??!", body)
     return Axios.post('/api/reviews', body)
+        .then(reviews => {
+            console.log("SOY BODYYY", body)
+        })
 }
 
 //BUSCA LAS REVIEWS DE UN PRODUCTO
 export const fetchReviews = (productId) => dispatch => {
-    return Axios.get(`/api/reviews/${productId}/singleReview`)
+    return Axios.get(`/api/reviews/${productId}/singleReview/`)
         .then(reviews => {
             dispatch(getReviews(reviews.data))
         })
