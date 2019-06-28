@@ -38097,6 +38097,7 @@ function (_React$Component) {
       e.preventDefault();
       this.props.endSession();
       this.props.history.push('/logout');
+      window.localStorage.clear();
     }
   }, {
     key: "handleChange",
