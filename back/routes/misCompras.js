@@ -7,7 +7,7 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
 Router.get('/',function(req,res){
-  OC.findAll({where:{
+  OC.findOne({where:{
       userId: req.params.id,
       [Op.ne]: {
         estado: 'carrito'

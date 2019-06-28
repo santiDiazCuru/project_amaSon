@@ -27932,7 +27932,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33151,17 +33151,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_AddProductContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers/AddProductContainer */ "./src/containers/AddProductContainer.jsx");
 /* harmony import */ var _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./containers/CarritoContainer */ "./src/containers/CarritoContainer.jsx");
 /* harmony import */ var _action_creators_logInUser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./action-creators/logInUser */ "./src/action-creators/logInUser.js");
-<<<<<<< HEAD
 /* harmony import */ var _containers_MisComprasContainer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./containers/MisComprasContainer */ "./src/containers/MisComprasContainer.jsx");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./containers/SingleProductContainer */ "./src/containers/SingleProductContainer.jsx");
-=======
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _containers_SingleProductContainer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/SingleProductContainer */ "./src/containers/SingleProductContainer.jsx");
-/* harmony import */ var _containers_EditProductContainer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./containers/EditProductContainer */ "./src/containers/EditProductContainer.jsx");
->>>>>>> bf3794502f1a2797f56f32be89756de758bd139a
+/* harmony import */ var _containers_EditProductContainer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./containers/EditProductContainer */ "./src/containers/EditProductContainer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33186,6 +33180,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
  // import RegisterContainer from './containers/RegisterContainer'
 // import Sidebar2Container from './containers/Sidebar2Container';
+
 
 
 
@@ -33238,7 +33233,7 @@ function (_React$Component) {
         component: _containers_AddProductContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/product/update/:id",
-        component: _containers_EditProductContainer__WEBPACK_IMPORTED_MODULE_13__["default"]
+        component: _containers_EditProductContainer__WEBPACK_IMPORTED_MODULE_14__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/carrito",
         component: _containers_CarritoContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
@@ -35735,11 +35730,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-<<<<<<< HEAD
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_ALL_SHOPPING, FETCH_REVIEWS, SET_ALERT */
-=======
-/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_REVIEWS, SET_ALERT, SET_LOCAL_CARRITO, EMPTY_LOCAL_CARRITO, DELETE_USER, CHANGE_ADMIN_STATUS */
->>>>>>> bf3794502f1a2797f56f32be89756de758bd139a
+/*! exports provided: FETCH_PRODUCTS, FETCH_ALL_PRODUCTS, FETCH_ALL_PRODUCTS_CATEGORY, LOG_IN_USER, FETCH_ALL_USERS, LOG_OUT_USER, SET_CATEGORY_AND_PRICE, FETCH_SINGLE_PRODUCT, FETCH_ORDENES, FETCH_ALL_CATEGORY, FETCH_ALL_LIMIT_CATEGORY, FETCH_CARRITO, FETCH_ALL_SHOPPING, FETCH_REVIEWS, SET_ALERT, SET_LOCAL_CARRITO, EMPTY_LOCAL_CARRITO, DELETE_USER, CHANGE_ADMIN_STATUS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38818,18 +38809,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _products_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./products_reducer */ "./src/reducers/products_reducer.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_reducer */ "./src/reducers/users_reducer.js");
 /* harmony import */ var _fetch_users__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fetch_users */ "./src/reducers/fetch_users.js");
-<<<<<<< HEAD
 /* harmony import */ var _fetch_all_shoping__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fetch_all_shoping */ "./src/reducers/fetch_all_shoping.js");
 /* harmony import */ var _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./fetch_single_product_reducer */ "./src/reducers/fetch_single_product_reducer.js");
 /* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
 /* harmony import */ var _fetch_reviews__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./fetch_reviews */ "./src/reducers/fetch_reviews.js");
-=======
-/* harmony import */ var _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fetch_single_product_reducer */ "./src/reducers/fetch_single_product_reducer.js");
-/* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
-/* harmony import */ var _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fetch_reviews */ "./src/reducers/fetch_reviews.js");
-/* harmony import */ var _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./carrito_reducer */ "./src/reducers/carrito_reducer.js");
->>>>>>> bf3794502f1a2797f56f32be89756de758bd139a
-/* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
+/* harmony import */ var _carrito_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./carrito_reducer */ "./src/reducers/carrito_reducer.js");
+/* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
+
 
 
 
@@ -38844,17 +38830,11 @@ __webpack_require__.r(__webpack_exports__);
   singleProduct: _fetch_single_product_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
   user: _users_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   users: _fetch_users__WEBPACK_IMPORTED_MODULE_3__["default"],
-<<<<<<< HEAD
   compras: _compras_reducers__WEBPACK_IMPORTED_MODULE_6__["default"],
   productReviews: _fetch_reviews__WEBPACK_IMPORTED_MODULE_7__["default"],
-  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_8__["default"],
-  shoppingAll: _fetch_all_shoping__WEBPACK_IMPORTED_MODULE_4__["default"]
-=======
-  compras: _compras_reducers__WEBPACK_IMPORTED_MODULE_5__["default"],
-  productReviews: _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__["default"],
-  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_8__["default"],
-  localCarrito: _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__["default"]
->>>>>>> bf3794502f1a2797f56f32be89756de758bd139a
+  alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_9__["default"],
+  shoppingAll: _fetch_all_shoping__WEBPACK_IMPORTED_MODULE_4__["default"],
+  localCarrito: _carrito_reducer__WEBPACK_IMPORTED_MODULE_8__["default"]
 }));
 
 /***/ }),

@@ -23,7 +23,7 @@ export default ({ listaCompras }) => {
                         <td>{compra.cantidad}</td>
                         <td>{compra.importe}</td>
                         <td>{compra.estado}</td>
-                        <td>{compra.fecha}</td>                                                   
+                        <td>{compra.fecha}</td>                       
                         </tr>
                     })
                 }

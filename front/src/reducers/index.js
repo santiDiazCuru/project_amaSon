@@ -18,9 +18,6 @@ export default combineReducers({
     compras,
     productReviews,
     alert,
-<<<<<<< HEAD
-    shoppingAll
-=======
+    shoppingAll,
     localCarrito
->>>>>>> bf3794502f1a2797f56f32be89756de758bd139a
 });
