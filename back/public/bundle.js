@@ -39608,7 +39608,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _compras_reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./compras_reducers */ "./src/reducers/compras_reducers.js");
 /* harmony import */ var _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fetch_reviews */ "./src/reducers/fetch_reviews.js");
 /* harmony import */ var _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./carrito_reducer */ "./src/reducers/carrito_reducer.js");
-/* harmony import */ var _precio_reducer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./precio_reducer */ "./src/reducers/precio_reducer.js");
+/* harmony import */ var _precio_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./precio_reducer */ "./src/reducers/precio_reducer.js");
 /* harmony import */ var _alert_reducer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./alert_reducer */ "./src/reducers/alert_reducer.js");
 
 
@@ -39629,7 +39629,7 @@ __webpack_require__.r(__webpack_exports__);
   productReviews: _fetch_reviews__WEBPACK_IMPORTED_MODULE_6__["default"],
   alert: _alert_reducer__WEBPACK_IMPORTED_MODULE_9__["default"],
   localCarrito: _carrito_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
-  price: _precio_reducer__WEBPACK_IMPORTED_MODULE_10__["default"]
+  price: _precio_reducer__WEBPACK_IMPORTED_MODULE_8__["default"]
 }));
 
 /***/ }),
