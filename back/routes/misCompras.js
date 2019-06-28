@@ -25,6 +25,7 @@ Router.get('/',function(req,res){
       attributes: ['img1', 'titulo', 'precio']
   }, order:[['id', 'DESC']]
   })}})
+  .then((compras)=>console.log(compras, "compras"))
   .then((compras)=>res.json(compras))
 })
 
