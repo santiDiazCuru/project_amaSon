@@ -12,12 +12,13 @@ import AddProductContainer from './containers/AddProductContainer';
 import CarritoContainer from './containers/CarritoContainer';
 import { validateSession } from './action-creators/logInUser'
 
-import Axios from 'axios';
+
 import SingleProductContainer from './containers/SingleProductContainer';
 import EditProductContainer from './containers/EditProductContainer';
 import PerfilAdmin from './containers/PerfilAdmin';
 import Saludo from './components/Saludo';
 import notfound from './components/notfound';
+
 
 
 class Main extends React.Component {
@@ -26,7 +27,7 @@ class Main extends React.Component {
   }
 
   componentDidMount(){
-      this.props.validateSession();
+      this.props.validateSession()
   }
 
   render() {

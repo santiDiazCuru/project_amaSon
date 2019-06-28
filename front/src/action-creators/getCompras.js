@@ -1,4 +1,4 @@
-import { FETCH_ORDENES, FETCH_CARRITO } from "../constants"
+import { FETCH_ORDENES, FETCH_CARRITO, ORDEN_CARRITO } from "../constants"
 import Axios from "axios"
 
 const userOrdenes = (ordenes) => ({
@@ -9,10 +9,18 @@ const userCarrito = (carrito) => ({
     type: FETCH_CARRITO,
     carrito
 })
+const carritoOrden = (orden) => ({
+    type: ORDEN_CARRITO,
+    orden
+})
 
 export const getOrdenes = (userId) => dispatch => {
     return Axios.get(`/api/compras/${userId}`)
         .then((compras) => dispatch(userOrdenes(compras.data)))
+}
+export const getOrdenCarrito = (userId) => dispatch => {
+    return Axios.get(`/api/compras/updatecarrito/${userId}`)
+        .then((compras) => dispatch(carritoOrden(compras.data)))
 }
 export const getCarrito = (userId) => dispatch => {
     return Axios.get(`/api/compras/carrito/${userId}`)

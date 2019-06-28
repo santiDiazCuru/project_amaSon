@@ -38,7 +38,6 @@ class RegisterContainer extends React.Component {
                 this.props.validateUser(user)
                 this.props.handleRegister()
             })
-            .catch((err) => alert('El Email ingresado ya esta registrado', err))
     }
     //la funcion handleRegister llega desde navBar container como props y hace que se cierre el 
     //modal si esta abierto y que se abra si esta cerrado!!!!

@@ -23,14 +23,17 @@ const logOutUser = () => ({
 
 export const validateUser = (userData) => dispatch => {
     return Axios.post('/api/users/login', userData)
-        .then((user) => dispatch(logInUser(user.data)))
+        .then((user) => {
+            user.data === 'X' ?
+                alert('El usuario o la contraseña son incorrectos')
+                :
+                dispatch(logInUser(user.data))
+        })
 }
 
 export const validateSession = () => dispatch => {
-   return Axios.get('/api/users/isLoggedIn')
-        .then((user) => {
-            dispatch(logInUser(user.data))
-        })
+    return Axios.get('/api/users/isLoggedIn')
+        .then((user) => { dispatch(logInUser(user.data)) })
 }
 export const endSession = () => dispatch => {
     Axios.get('/api/users/logout')
